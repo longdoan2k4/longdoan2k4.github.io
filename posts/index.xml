@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Đoàn Đức Long - Tech Blog</title>
-    <link>https://longdoan2k4.github.io/doanduclong.github.io/posts/</link>
+    <link>https://longdoan2k4.github.io/posts/</link>
     <description>Recent content from Đoàn Đức Long - Tech Blog</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Thu, 23 Oct 2025 12:00:00 +0700</lastBuildDate>
     
     
-    <atom:link href="https://longdoan2k4.github.io/doanduclong.github.io/posts/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://longdoan2k4.github.io/posts/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>C# Cơ Bản - Bài 10: Switch case trong C#</title>
-      <link>https://longdoan2k4.github.io/doanduclong.github.io/posts/cs-switch-case/</link>
+      <link>https://longdoan2k4.github.io/posts/cs-switch-case/</link>
       <pubDate>Wed, 22 Oct 2025 18:00:00 &#43;0700</pubDate>
       <author>xxx@example.com (Đoàn Đức Long)</author>
-      <guid>https://longdoan2k4.github.io/doanduclong.github.io/posts/cs-switch-case/</guid>
+      <guid>https://longdoan2k4.github.io/posts/cs-switch-case/</guid>
       <description>
         <![CDATA[<h1>C# Cơ Bản - Bài 10: Switch case trong C#</h1><p>Author: Đoàn Đức Long(xxx@example.com)</p>
         
@@ -102,7 +102,7 @@ Video hướng dẫn
 5. Ứng dụng nâng cao - Ví dụ tính năm âm lịch từ năm dương lịch
 </h2><p>Tính can chi dùng switch case để lấy phần dư của năm dương lịch chia cho 10 và 12, lặp ghép thành năm âm lịch.</p>
         
-        <hr><p>Published on 2025-10-22 at <a href='https://longdoan2k4.github.io/doanduclong.github.io/'>Đoàn Đức Long - Tech Blog</a>, last modified on 2025-10-23</p>]]>
+        <hr><p>Published on 2025-10-22 at <a href='https://longdoan2k4.github.io/'>Đoàn Đức Long - Tech Blog</a>, last modified on 2025-10-23</p>]]>
       </description>
       
         <category>c# cơ bản</category>
@@ -113,10 +113,10 @@ Video hướng dẫn
 
     <item>
       <title>C# Cơ Bản - Bài 09: If else trong C#</title>
-      <link>https://longdoan2k4.github.io/doanduclong.github.io/posts/cs-if-else/</link>
+      <link>https://longdoan2k4.github.io/posts/cs-if-else/</link>
       <pubDate>Wed, 22 Oct 2025 18:00:00 &#43;0700</pubDate>
       <author>xxx@example.com (Đoàn Đức Long)</author>
-      <guid>https://longdoan2k4.github.io/doanduclong.github.io/posts/cs-if-else/</guid>
+      <guid>https://longdoan2k4.github.io/posts/cs-if-else/</guid>
       <description>
         <![CDATA[<h1>C# Cơ Bản - Bài 09: If else trong C#</h1><p>Author: Đoàn Đức Long(xxx@example.com)</p>
         
@@ -149,7 +149,7 @@ Video hướng dẫn
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Nếu điều kiện đúng, khối lệnh trong ngoặc được thực hiện. Nếu sai, trong dạng thiếu sẽ bỏ qua.</p>
         
-        <hr><p>Published on 2025-10-22 at <a href='https://longdoan2k4.github.io/doanduclong.github.io/'>Đoàn Đức Long - Tech Blog</a>, last modified on 2025-10-23</p>]]>
+        <hr><p>Published on 2025-10-22 at <a href='https://longdoan2k4.github.io/'>Đoàn Đức Long - Tech Blog</a>, last modified on 2025-10-23</p>]]>
       </description>
       
         <category>c# cơ bản</category>
@@ -160,10 +160,10 @@ Video hướng dẫn
 
     <item>
       <title>C# Cơ Bản - Bài 08: Ép kiểu trong C#</title>
-      <link>https://longdoan2k4.github.io/doanduclong.github.io/posts/cs-casting/</link>
+      <link>https://longdoan2k4.github.io/posts/cs-casting/</link>
       <pubDate>Wed, 22 Oct 2025 18:00:00 &#43;0700</pubDate>
       <author>xxx@example.com (Đoàn Đức Long)</author>
-      <guid>https://longdoan2k4.github.io/doanduclong.github.io/posts/cs-casting/</guid>
+      <guid>https://longdoan2k4.github.io/posts/cs-casting/</guid>
       <description>
         <![CDATA[<h1>C# Cơ Bản - Bài 08: Ép kiểu trong C#</h1><p>Author: Đoàn Đức Long(xxx@example.com)</p>
         
@@ -262,7 +262,7 @@ Tổng kết
 Video Khóa học lập trình C# Cơ bản - Bài 8: Ép kiểu trong C# | <a href="https://www.youtube.com/@KTeam">Kênh Kteam</a><br>
 Website: <a href="https://www.howkteam.com">www.howkteam.com</a></p>
         
-        <hr><p>Published on 2025-10-22 at <a href='https://longdoan2k4.github.io/doanduclong.github.io/'>Đoàn Đức Long - Tech Blog</a>, last modified on 2025-10-23</p>]]>
+        <hr><p>Published on 2025-10-22 at <a href='https://longdoan2k4.github.io/'>Đoàn Đức Long - Tech Blog</a>, last modified on 2025-10-23</p>]]>
       </description>
       
         <category>c# cơ bản</category>
@@ -273,10 +273,10 @@ Website: <a href="https://www.howkteam.com">www.howkteam.com</a></p>
 
     <item>
       <title>C# Cơ Bản - Bài 07: Hằng</title>
-      <link>https://longdoan2k4.github.io/doanduclong.github.io/posts/cs-constant/</link>
+      <link>https://longdoan2k4.github.io/posts/cs-constant/</link>
       <pubDate>Wed, 22 Oct 2025 18:00:00 &#43;0700</pubDate>
       <author>xxx@example.com (Đoàn Đức Long)</author>
-      <guid>https://longdoan2k4.github.io/doanduclong.github.io/posts/cs-constant/</guid>
+      <guid>https://longdoan2k4.github.io/posts/cs-constant/</guid>
       <description>
         <![CDATA[<h1>C# Cơ Bản - Bài 07: Hằng</h1><p>Author: Đoàn Đức Long(xxx@example.com)</p>
         
@@ -315,7 +315,7 @@ Video hướng dẫn
 3. Phân loại &amp; cú pháp khai báo Hằng
 </h2><p><strong>Khai báo hằng số:</strong></p>
         
-        <hr><p>Published on 2025-10-22 at <a href='https://longdoan2k4.github.io/doanduclong.github.io/'>Đoàn Đức Long - Tech Blog</a>, last modified on 2025-10-23</p>]]>
+        <hr><p>Published on 2025-10-22 at <a href='https://longdoan2k4.github.io/'>Đoàn Đức Long - Tech Blog</a>, last modified on 2025-10-23</p>]]>
       </description>
       
         <category>c# cơ bản</category>
@@ -326,10 +326,10 @@ Video hướng dẫn
 
     <item>
       <title>C# Cơ Bản - Bài 06: Toán tử trong C#</title>
-      <link>https://longdoan2k4.github.io/doanduclong.github.io/posts/cs-operators/</link>
+      <link>https://longdoan2k4.github.io/posts/cs-operators/</link>
       <pubDate>Wed, 22 Oct 2025 18:00:00 &#43;0700</pubDate>
       <author>xxx@example.com (Đoàn Đức Long)</author>
-      <guid>https://longdoan2k4.github.io/doanduclong.github.io/posts/cs-operators/</guid>
+      <guid>https://longdoan2k4.github.io/posts/cs-operators/</guid>
       <description>
         <![CDATA[<h1>C# Cơ Bản - Bài 06: Toán tử trong C#</h1><p>Author: Đoàn Đức Long(xxx@example.com)</p>
         
@@ -350,7 +350,7 @@ Video hướng dẫn
 1. Toán tử là gì?
 </h2><p>Toán tử là ký hiệu thao tác với dữ liệu. Là biểu diễn cho một phép toán hoặc thao tác cụ thể lên biến, dữ liệu.</p>
         
-        <hr><p>Published on 2025-10-22 at <a href='https://longdoan2k4.github.io/doanduclong.github.io/'>Đoàn Đức Long - Tech Blog</a>, last modified on 2025-10-23</p>]]>
+        <hr><p>Published on 2025-10-22 at <a href='https://longdoan2k4.github.io/'>Đoàn Đức Long - Tech Blog</a>, last modified on 2025-10-23</p>]]>
       </description>
       
         <category>c# cơ bản</category>
@@ -361,10 +361,10 @@ Video hướng dẫn
 
     <item>
       <title>C# Cơ Bản - Bài 05: Kiểu dữ liệu trong C#</title>
-      <link>https://longdoan2k4.github.io/doanduclong.github.io/posts/cs-basic-data-types/</link>
+      <link>https://longdoan2k4.github.io/posts/cs-basic-data-types/</link>
       <pubDate>Wed, 22 Oct 2025 18:00:00 &#43;0700</pubDate>
       <author>xxx@example.com (Đoàn Đức Long)</author>
-      <guid>https://longdoan2k4.github.io/doanduclong.github.io/posts/cs-basic-data-types/</guid>
+      <guid>https://longdoan2k4.github.io/posts/cs-basic-data-types/</guid>
       <description>
         <![CDATA[<h1>C# Cơ Bản - Bài 05: Kiểu dữ liệu trong C#</h1><p>Author: Đoàn Đức Long(xxx@example.com)</p>
         
@@ -390,7 +390,7 @@ Video hướng dẫn
 </ul>
 <p><strong>Ví dụ:</strong></p>
         
-        <hr><p>Published on 2025-10-22 at <a href='https://longdoan2k4.github.io/doanduclong.github.io/'>Đoàn Đức Long - Tech Blog</a>, last modified on 2025-10-23</p>]]>
+        <hr><p>Published on 2025-10-22 at <a href='https://longdoan2k4.github.io/'>Đoàn Đức Long - Tech Blog</a>, last modified on 2025-10-23</p>]]>
       </description>
       
         <category>c# cơ bản</category>
@@ -401,10 +401,10 @@ Video hướng dẫn
 
     <item>
       <title>C# Cơ Bản - Bài 04: Biến trong C#</title>
-      <link>https://longdoan2k4.github.io/doanduclong.github.io/posts/cs-basic-variable/</link>
+      <link>https://longdoan2k4.github.io/posts/cs-basic-variable/</link>
       <pubDate>Wed, 22 Oct 2025 18:00:00 &#43;0700</pubDate>
       <author>xxx@example.com (Đoàn Đức Long)</author>
-      <guid>https://longdoan2k4.github.io/doanduclong.github.io/posts/cs-basic-variable/</guid>
+      <guid>https://longdoan2k4.github.io/posts/cs-basic-variable/</guid>
       <description>
         <![CDATA[<h1>C# Cơ Bản - Bài 04: Biến trong C#</h1><p>Author: Đoàn Đức Long(xxx@example.com)</p>
         
@@ -426,7 +426,7 @@ Video hướng dẫn
 </h2><p>Biến là một giá trị dữ liệu có thể thay đổi trong quá trình chạy chương trình.</p>
 <p>Là tên gọi tham chiếu đến vùng nhớ trong bộ nhớ máy tính.</p>
         
-        <hr><p>Published on 2025-10-22 at <a href='https://longdoan2k4.github.io/doanduclong.github.io/'>Đoàn Đức Long - Tech Blog</a>, last modified on 2025-10-23</p>]]>
+        <hr><p>Published on 2025-10-22 at <a href='https://longdoan2k4.github.io/'>Đoàn Đức Long - Tech Blog</a>, last modified on 2025-10-23</p>]]>
       </description>
       
         <category>c# cơ bản</category>
@@ -437,10 +437,10 @@ Video hướng dẫn
 
     <item>
       <title>C# Cơ Bản - Bài 03: Nhập Xuất Cơ Bản</title>
-      <link>https://longdoan2k4.github.io/doanduclong.github.io/posts/cs-basic-input-output/</link>
+      <link>https://longdoan2k4.github.io/posts/cs-basic-input-output/</link>
       <pubDate>Wed, 22 Oct 2025 18:00:00 &#43;0700</pubDate>
       <author>xxx@example.com (Đoàn Đức Long)</author>
-      <guid>https://longdoan2k4.github.io/doanduclong.github.io/posts/cs-basic-input-output/</guid>
+      <guid>https://longdoan2k4.github.io/posts/cs-basic-input-output/</guid>
       <description>
         <![CDATA[<h1>C# Cơ Bản - Bài 03: Nhập Xuất Cơ Bản</h1><p>Author: Đoàn Đức Long(xxx@example.com)</p>
         
@@ -461,7 +461,7 @@ Video hướng dẫn
 Giới thiệu
 </h2><p>Chào bạn trở lại với series lập trình C# cơ bản! Bài này giúp bạn nắm chắc cách nhập – xuất dữ liệu trong Console Application.</p>
         
-        <hr><p>Published on 2025-10-22 at <a href='https://longdoan2k4.github.io/doanduclong.github.io/'>Đoàn Đức Long - Tech Blog</a>, last modified on 2025-10-23</p>]]>
+        <hr><p>Published on 2025-10-22 at <a href='https://longdoan2k4.github.io/'>Đoàn Đức Long - Tech Blog</a>, last modified on 2025-10-23</p>]]>
       </description>
       
         <category>c# cơ bản</category>
@@ -472,10 +472,10 @@ Giới thiệu
 
     <item>
       <title>C# Cơ Bản - Bài 02: Cấu Trúc Lệnh Cơ Bản</title>
-      <link>https://longdoan2k4.github.io/doanduclong.github.io/posts/cs-basic-command-structure/</link>
+      <link>https://longdoan2k4.github.io/posts/cs-basic-command-structure/</link>
       <pubDate>Wed, 22 Oct 2025 18:00:00 &#43;0700</pubDate>
       <author>xxx@example.com (Đoàn Đức Long)</author>
-      <guid>https://longdoan2k4.github.io/doanduclong.github.io/posts/cs-basic-command-structure/</guid>
+      <guid>https://longdoan2k4.github.io/posts/cs-basic-command-structure/</guid>
       <description>
         <![CDATA[<h1>C# Cơ Bản - Bài 02: Cấu Trúc Lệnh Cơ Bản</h1><p>Author: Đoàn Đức Long(xxx@example.com)</p>
         
@@ -496,7 +496,7 @@ Video hướng dẫn
 Giới thiệu
 </h2><p>Chào mừng bạn quay lại series khóa học lập trình C# cơ bản cùng Kteam! Bài này giúp bạn nắm chắc cấu trúc lệnh cơ bản—bước nền đầu tiên cho các chủ đề nâng cao sau này.</p>
         
-        <hr><p>Published on 2025-10-22 at <a href='https://longdoan2k4.github.io/doanduclong.github.io/'>Đoàn Đức Long - Tech Blog</a>, last modified on 2025-10-23</p>]]>
+        <hr><p>Published on 2025-10-22 at <a href='https://longdoan2k4.github.io/'>Đoàn Đức Long - Tech Blog</a>, last modified on 2025-10-23</p>]]>
       </description>
       
         <category>c# cơ bản</category>
@@ -507,10 +507,10 @@ Giới thiệu
 
     <item>
       <title>[Khóa học lập trình C# Cơ bản] - Bài 1: C# là gì</title>
-      <link>https://longdoan2k4.github.io/doanduclong.github.io/posts/csharp-co-ban-bai-01-csharp-la-gi/</link>
+      <link>https://longdoan2k4.github.io/posts/csharp-co-ban-bai-01-csharp-la-gi/</link>
       <pubDate>Wed, 22 Oct 2025 18:00:00 &#43;0700</pubDate>
       <author>xxx@example.com (Đoàn Đức Long)</author>
-      <guid>https://longdoan2k4.github.io/doanduclong.github.io/posts/csharp-co-ban-bai-01-csharp-la-gi/</guid>
+      <guid>https://longdoan2k4.github.io/posts/csharp-co-ban-bai-01-csharp-la-gi/</guid>
       <description>
         <![CDATA[<h1>[Khóa học lập trình C# Cơ bản] - Bài 1: C# là gì</h1><p>Author: Đoàn Đức Long(xxx@example.com)</p>
         
@@ -560,7 +560,7 @@ Video bài giảng
 <hr>
 <p><em>Bài viết thuộc series <strong>C# Cơ bản</strong>, biên soạn dựa trên nội dung học tập của HowKteam.</em></p>
         
-        <hr><p>Published on 2025-10-22 at <a href='https://longdoan2k4.github.io/doanduclong.github.io/'>Đoàn Đức Long - Tech Blog</a>, last modified on 2025-10-23</p>]]>
+        <hr><p>Published on 2025-10-22 at <a href='https://longdoan2k4.github.io/'>Đoàn Đức Long - Tech Blog</a>, last modified on 2025-10-23</p>]]>
       </description>
       
         <category>C# cơ bản</category>
