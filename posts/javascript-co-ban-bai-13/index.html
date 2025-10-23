@@ -1,0 +1,1692 @@
+<!doctype html>
+<html
+  lang="vi-vn" 
+  data-theme-mode="auto"
+  >
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  JavaScript Cơ Bản - Bài 13: Template Literals Và Chuyển Đổi Number-String | Đoàn Đức Long
+</title>
+<meta
+  name="description"
+  content="Tìm hiểu về Template Literals với backticks, nhúng biến và biểu thức động, cùng với cách chuyển đổi giữa Number và String trong JavaScript"
+/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://doandduclong.github.io/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" />
+<meta property="og:type" content="website" />
+  <meta property="og:title" content="JavaScript Cơ Bản - Bài 13: Template Literals Và Chuyển Đổi Number-String | Đoàn Đức Long" />
+  <meta
+    property="og:description"
+    content="Tìm hiểu về Template Literals với backticks, nhúng biến và biểu thức động, cùng với cách chuyển đổi giữa Number và String trong JavaScript"
+  />
+  <meta property="og:url" content="https://doandduclong.github.io/posts/javascript-co-ban-bai-13/" />
+  <meta
+    property="og:site_name"
+    content="Đoàn Đức Long - Tech Blog"
+  />
+  <meta
+    property="og:image"
+    content="/"
+  />
+  <meta property="article:author" content="Đoàn Đức Long" />
+  <meta property="article:published_time" content="2025-10-20T00:00:00&#43;07:00" />
+  <meta property="article:modified_time" content="2025-10-20T00:00:00&#43;07:00" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.030bf20ad33bf6086328005695d5aecf4e3252819f7b6c64892b3dd33ad2e2ed.css" />
+<link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css"
+    integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz&#43;YI" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/>
+
+<link rel="stylesheet" href="/css/custom-posts.min.c23bccebedc11d0eca845bea6af4b5b6337c6a67b36703c043bee39e9f606cb0.css" integrity="sha256-wjvM6&#43;3BHQ7KhFvqavS1tjN8amezZwPAQ77jnp9gbLA=">
+<link rel="stylesheet" href="/css/fixes.css"></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+          M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg></div><div class="loading-word">Loading...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+This article does not have a corresponding language version
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/">Home</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/archives">Archives</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/about">About</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/friend">Friend</a>
+      </span><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+    <a id="nav-search-btn" class="nav-icon" title="Tìm kiếm" aria-label="Tìm kiếm" onclick="toggleSearch()"></a>
+  </nav></div>
+
+
+<div id="search-overlay" class="search-overlay" style="display: none;">
+  <div class="search-container">
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="Tìm kiếm bài viết..." autocomplete="off">
+      <button type="button" id="close-search" onclick="closeSearch()">✕</button>
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+</div><style>
+:root {
+  --cover-background: transparent;
+  --site-cover-background: transparent;
+}
+.header-cover-rgb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150%;
+  z-index: -2;
+  display: block;
+  mask: linear-gradient(to top, transparent, #fff 50%);
+}
+.header-cover-params {
+  background: var(--cover-background);
+}
+.header-cover-site {
+  background: var(--site-cover-background);
+}
+</style>
+
+<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="JavaScript Cơ Bản - Bài 13: Template Literals Và Chuyển Đổi Number-String"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">JavaScript Cơ Bản - Bài 13: Template Literals Và Chuyển Đổi Number-String</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header>
+
+<style>
+ 
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(20, 20, 30, 0.95) 0%,
+    rgba(40, 40, 60, 0.95) 50%,
+    rgba(60, 30, 40, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 15vh;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.search-container {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-box {
+  position: relative;
+  margin-bottom: 2rem;
+  width: 450px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 1rem 3.5rem 1rem 1.5rem;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+.search-box input:focus {
+  border-color: rgba(255, 107, 107, 0.8);
+  box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.2),
+              0 8px 32px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+}
+
+
+
+#close-search {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 107, 107, 0.2);
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#close-search:hover {
+  background: rgba(255, 107, 107, 0.4);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.search-results {
+  max-height: 50vh;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 0;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease-out;
+  width: 450px;
+  box-sizing: border-box;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+ 
+.search-results::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-results::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background: rgba(255, 107, 107, 0.5);
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 107, 107, 0.7);
+}
+
+.search-result-item {
+  padding: 1rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0;
+  margin-bottom: 1px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(5px);
+}
+
+.search-result-item:first-child {
+  border-radius: 14px 14px 0 0;
+  margin-top: 1.5rem;
+}
+
+.search-result-item:last-child {
+  border-radius: 0 0 14px 14px;
+  margin-bottom: 1.5rem;
+}
+
+.search-result-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 107, 107, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(255, 107, 107, 0.15);
+}
+
+.search-result-item:last-child {
+  margin-bottom: 0;
+}
+
+.search-result-title {
+  color: #ff9999;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.search-result-item:hover .search-result-title {
+  color: #ff6b6b;
+}
+
+.search-result-category {
+  display: inline-block;
+  background: linear-gradient(45deg, rgba(255, 107, 107, 0.2), rgba(255, 150, 150, 0.2));
+  color: #ffaaaa;
+  padding: 0.2rem 0.6rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  transition: all 0.2s ease;
+}
+
+.search-result-item:hover .search-result-category {
+  background: linear-gradient(45deg, rgba(255, 107, 107, 0.3), rgba(255, 150, 150, 0.3));
+  color: #ff6b6b;
+  border-color: rgba(255, 107, 107, 0.5);
+}
+
+ 
+#nav-search-btn {
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#nav-search-btn:hover {
+  color: #ff6b6b;
+  transform: scale(1.1);
+}
+</style>
+
+<script>
+
+let allPosts = [];
+let searchIndex = null;
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  initializeSearch();
+});
+
+function toggleSearch() {
+  const overlay = document.getElementById('search-overlay');
+  const searchInput = document.getElementById('search-input');
+  
+  if (overlay.style.display === 'none' || overlay.style.display === '') {
+    
+    overlay.style.display = 'flex';
+    overlay.style.animation = 'fadeIn 0.3s ease-out forwards';
+    
+    
+    setTimeout(() => {
+      searchInput.focus();
+    }, 150);
+    
+    document.body.style.overflow = 'hidden';
+  } else {
+    closeSearch();
+  }
+}
+
+function closeSearch() {
+  const overlay = document.getElementById('search-overlay');
+  const searchInput = document.getElementById('search-input');
+  const results = document.getElementById('search-results');
+  
+  
+  showAllResults = false;
+  
+  
+  overlay.style.animation = 'fadeOut 0.3s ease-out forwards';
+  
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    searchInput.value = '';
+    results.innerHTML = '';
+    document.body.style.overflow = '';
+    overlay.style.animation = ''; 
+  }, 300);
+}
+
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeSearch();
+  }
+  
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    toggleSearch();
+  }
+});
+
+
+async function initializeSearch() {
+  try {
+    const response = await fetch('/index.json');
+    const data = await response.json();
+    allPosts = data;
+    
+    
+    const searchInput = document.getElementById('search-input');
+    let searchTimeout;
+    
+    searchInput.addEventListener('input', function() {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        performSearch(this.value);
+      }, 300);
+    });
+    
+  } catch (error) {
+    console.error('Error loading search data:', error);
+  }
+}
+
+function performSearch(query) {
+  const results = document.getElementById('search-results');
+  
+  if (!query || query.length < 2) {
+    results.innerHTML = '';
+    return;
+  }
+  
+  const searchQuery = query.toLowerCase();
+  const matches = allPosts.filter(post => {
+    return post.title.toLowerCase().includes(searchQuery) ||
+           post.content.toLowerCase().includes(searchQuery) ||
+           (post.categories && post.categories.some(cat => cat.toLowerCase().includes(searchQuery))) ||
+           (post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchQuery)));
+  });
+  
+  displaySearchResults(matches, query);
+}
+
+let showAllResults = false;
+
+function displaySearchResults(matches, query) {
+  const results = document.getElementById('search-results');
+  
+  if (matches.length === 0) {
+    results.innerHTML = '<div style="color: rgba(255,255,255,0.7); text-align: center; padding: 3rem 1.5rem;">Không tìm thấy kết quả nào cho "' + query + '"</div>';
+    return;
+  }
+  
+  const totalResults = matches.length;
+  const displayLimit = showAllResults ? totalResults : 8;
+  const itemsToShow = matches.slice(0, displayLimit);
+  
+  results.innerHTML = `
+    <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0; padding: 1.5rem 1.5rem 0 1.5rem;">
+      Tìm thấy ${totalResults} bài viết cho "${query}"
+    </div>
+  `;
+  
+  const html = itemsToShow.map(post => {
+    const title = highlightText(post.title, query);
+    const category = post.categories && post.categories.length > 0 ? post.categories[0] : '';
+    const date = post.date || '';
+    
+    return `
+      <div class="search-result-item" onclick="navigateToPost('${post.uri}')">
+        <div class="search-result-title">${title}</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.3rem;">
+          ${category ? `<span class="search-result-category">${category}</span>` : '<span></span>'}
+          ${date ? `<span style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">${date}</span>` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+  
+  results.innerHTML += html;
+  
+  if (totalResults > 8 && !showAllResults) {
+    results.innerHTML += `
+      <div style="color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem;">
+        <button onclick="toggleShowAllResults('${query}')" style="
+          background: rgba(255, 107, 107, 0.2);
+          border: 1px solid rgba(255, 107, 107, 0.4);
+          color: #ff6b6b;
+          padding: 0.8rem 1.5rem;
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+        " onmouseover="this.style.background='rgba(255, 107, 107, 0.3)'" onmouseout="this.style.background='rgba(255, 107, 107, 0.2)'">
+          Xem tất cả ${totalResults} bài viết
+        </button>
+      </div>
+    `;
+  } else if (showAllResults && totalResults > 8) {
+    results.innerHTML += `
+      <div style="color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem;">
+        <button onclick="toggleShowAllResults('${query}')" style="
+          background: rgba(255, 107, 107, 0.2);
+          border: 1px solid rgba(255, 107, 107, 0.4);
+          color: #ff6b6b;
+          padding: 0.8rem 1.5rem;
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+        " onmouseover="this.style.background='rgba(255, 107, 107, 0.3)'" onmouseout="this.style.background='rgba(255, 107, 107, 0.2)'">
+          Thu gọn kết quả
+        </button>
+      </div>
+    `;
+  }
+}
+
+function toggleShowAllResults(query) {
+  showAllResults = !showAllResults;
+  performSearch(query);
+}
+
+function highlightText(text, query) {
+  if (!query) return text;
+  const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+  return text.replace(regex, '<mark style="background: rgba(255,107,107,0.3); color: #fff;">$1</mark>');
+}
+
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function navigateToPost(uri) {
+  window.location.href = uri;
+}
+</script><div id="content"
+          aria-label="Page content"
+          
+          class="sidebar-right"  ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><div class="sidebar-toc-card" aria-label="Table of contents">
+	<h3 class="toc-title">Contents</h3>
+	<div class="sidebar-toc-wrapper toc-div-class" data-toc="sidebar">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#video-hướng-dẫn">Video Hướng Dẫn</a></li>
+    <li><a href="#1-template-literals-cơ-bản">1. Template Literals Cơ Bản</a>
+      <ul>
+        <li><a href="#cú-pháp-với-backticks">Cú pháp với backticks</a></li>
+        <li><a href="#ưu-điểm-của-template-literals">Ưu điểm của Template Literals</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-nhúng-biểu-thức-trong-template-literals">2. Nhúng Biểu Thức Trong Template Literals</a>
+      <ul>
+        <li><a href="#tính-toán-trong-">Tính toán trong $</a></li>
+        <li><a href="#gọi-hàm-trong-template-literals">Gọi hàm trong template literals</a></li>
+        <li><a href="#conditional-expressions">Conditional expressions</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-multiline-strings">3. Multiline Strings</a>
+      <ul>
+        <li><a href="#so-sánh-cách-viết-chuỗi-nhiều-dòng">So sánh cách viết chuỗi nhiều dòng</a></li>
+        <li><a href="#html-template-động">HTML Template động</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-chuyển-đổi-number-sang-string">4. Chuyển Đổi Number Sang String</a>
+      <ul>
+        <li><a href="#các-phương-pháp-chuyển-đổi">Các phương pháp chuyển đổi</a></li>
+        <li><a href="#format-số-khi-chuyển-thành-chuỗi">Format số khi chuyển thành chuỗi</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-chuyển-đổi-string-sang-number">5. Chuyển Đổi String Sang Number</a>
+      <ul>
+        <li><a href="#các-phương-pháp-chuyển-đổi-1">Các phương pháp chuyển đổi</a></li>
+        <li><a href="#validation-khi-chuyển-đổi">Validation khi chuyển đổi</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-ứng-dụng-thực-tế">6. Ứng Dụng Thực Tế</a>
+      <ul>
+        <li><a href="#form-calculator-với-template-literals">Form calculator với template literals</a></li>
+        <li><a href="#dynamic-content-generation">Dynamic content generation</a></li>
+        <li><a href="#url-và-query-string-builder">URL và query string builder</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-best-practices">7. Best Practices</a>
+      <ul>
+        <li><a href="#template-literals-vs-string-concatenation">Template literals vs string concatenation</a></li>
+        <li><a href="#safe-type-conversion">Safe type conversion</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-tóm-tắt">8. Tóm Tắt</a>
+      <ul>
+        <li><a href="#template-literals">Template Literals:</a></li>
+        <li><a href="#number--string-conversion">Number ↔ String Conversion:</a></li>
+        <li><a href="#lưu-ý-quan-trọng">Lưu ý quan trọng:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+	</div>
+  
+	
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/images/avatar.png"
+    data-sizes="auto"
+    alt="Đoàn Đức Long"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Đoàn Đức Long</div>
+  <div class="sidebar-description">Blog chia sẻ học tập và kiến thức về code, công nghệ và các dự án cá nhân</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div><div class="sidebar-state-number">65</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      6
+    </div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-discord sidebar-social-icon">
+      <a
+        href="https://discord.com/users/757589425466245182"
+        itemprop="url"
+        target="_blank"
+        aria-label="discord"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-facebook sidebar-social-icon">
+      <a
+        href="https://www.facebook.com/iouas.04"
+        itemprop="url"
+        target="_blank"
+        aria-label="facebook"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/longdoan2k4"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-instagram sidebar-social-icon">
+      <a
+        href="https://www.instagram.com/oglas.z3_/"
+        itemprop="url"
+        target="_blank"
+        aria-label="instagram"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="Home"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Home</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="Archives"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Archives</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="About"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">About</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="Friend"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Friend</div>
+    </div></div></div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2025-10-20 00:00:00 &#43;0700 &#43;07" itemprop="datePublished"
+      >2025-10-20</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2025-10-20</time
+    >
+  </span></div>
+<div class="article-category"><a
+      class="article-category-link"
+      href="/categories/javascript-c%c6%a1-b%e1%ba%a3n"
+      data-aos="zoom-in"
+      >JAVASCRIPT CƠ BẢN</a
+    ></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h1 id="javascript-cơ-bản---bài-13-template-literals-và-chuyển-đổi-number-string">
+<a class="header-anchor" href="#javascript-c%c6%a1-b%e1%ba%a3n---b%c3%a0i-13-template-literals-v%c3%a0-chuy%e1%bb%83n-%c4%91%e1%bb%95i-number-string"></a>
+JavaScript Cơ Bản - Bài 13: Template Literals Và Chuyển Đổi Number-String
+</h1><p>Template literals là một tính năng mạnh mẽ của ES6 giúp tối ưu hóa việc nối chuỗi và nhúng biến. Cùng với đó, việc hiểu rõ cách chuyển đổi giữa số và chuỗi sẽ giúp bạn xử lý dữ liệu hiệu quả hơn trong JavaScript.</p>
+<h2 id="video-hướng-dẫn">
+<a class="header-anchor" href="#video-h%c6%b0%e1%bb%9bng-d%e1%ba%abn"></a>
+Video Hướng Dẫn
+</h2><div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/hiFBsPtFgOg?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<h2 id="1-template-literals-cơ-bản">
+<a class="header-anchor" href="#1-template-literals-c%c6%a1-b%e1%ba%a3n"></a>
+1. Template Literals Cơ Bản
+</h2><h3 id="cú-pháp-với-backticks">
+<a class="header-anchor" href="#c%c3%ba-ph%c3%a1p-v%e1%bb%9bi-backticks"></a>
+Cú pháp với backticks
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Cách cũ - nối chuỗi với +
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Long&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">oldWay</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Xin chào, tôi là &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; và tôi &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">age</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; tuổi&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Template literals - dễ đọc và hiệu quả hơn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">newWay</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`Xin chào, tôi là </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> và tôi </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">age</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> tuổi`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">oldWay</span>);  <span style="color:#75715e">// &#34;Xin chào, tôi là Long và tôi 25 tuổi&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">newWay</span>);  <span style="color:#75715e">// &#34;Xin chào, tôi là Long và tôi 25 tuổi&#34;
+</span></span></span></code></pre></div><h3 id="ưu-điểm-của-template-literals">
+<a class="header-anchor" href="#%c6%b0u-%c4%91i%e1%bb%83m-c%e1%bb%a7a-template-literals"></a>
+Ưu điểm của Template Literals
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// 1. Code dễ đọc hơn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">product</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;iPhone&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">25000000</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">currency</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;VNĐ&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Cách cũ - khó đọc và dễ lỗi
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">message1</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Sản phẩm: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">product</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;\nGiá: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">currency</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;\nTrạng thái: Còn hàng&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Template literals - rõ ràng hơn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">message2</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`Sản phẩm: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">product</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Giá: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">price</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">currency</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Trạng thái: Còn hàng`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">message2</span>);
+</span></span></code></pre></div><h2 id="2-nhúng-biểu-thức-trong-template-literals">
+<a class="header-anchor" href="#2-nh%c3%bang-bi%e1%bb%83u-th%e1%bb%a9c-trong-template-literals"></a>
+2. Nhúng Biểu Thức Trong Template Literals
+</h2><h3 id="tính-toán-trong-">
+<a class="header-anchor" href="#t%c3%adnh-to%c3%a1n-trong-"></a>
+Tính toán trong $
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Nhúng phép tính
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">a</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> + </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">b</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> = </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);         <span style="color:#75715e">// &#34;10 + 5 = 15&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">a</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> * </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">b</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> = </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">a</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">b</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);         <span style="color:#75715e">// &#34;10 * 5 = 50&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">a</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> &gt; </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">b</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> = </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">a</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">b</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);         <span style="color:#75715e">// &#34;10 &gt; 5 = true&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Biểu thức phức tạp
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">radius</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Diện tích hình tròn: </span><span style="color:#e6db74">${</span>Math.<span style="color:#a6e22e">PI</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">radius</span> <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// &#34;Diện tích hình tròn: 78.53981633974483&#34;
+</span></span></span></code></pre></div><h3 id="gọi-hàm-trong-template-literals">
+<a class="header-anchor" href="#g%e1%bb%8di-h%c3%a0m-trong-template-literals"></a>
+Gọi hàm trong template literals
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">formatCurrency</span>(<span style="color:#a6e22e">amount</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">amount</span>.<span style="color:#a6e22e">toLocaleString</span>(<span style="color:#e6db74">&#39;vi-VN&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getGreeting</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">hour</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date().<span style="color:#a6e22e">getHours</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">hour</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">12</span>) <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Chào buổi sáng&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">hour</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">18</span>) <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Chào buổi chiều&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Chào buổi tối&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">salary</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">15000000</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">userName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Long&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">welcomeMessage</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">getGreeting</span>()<span style="color:#e6db74">}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">userName</span><span style="color:#e6db74">}</span><span style="color:#e6db74">!
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Lương của bạn tháng này: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">formatCurrency</span>(<span style="color:#a6e22e">salary</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74"> VNĐ
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Thuế phải nộp: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">formatCurrency</span>(<span style="color:#a6e22e">salary</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.1</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74"> VNĐ`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">welcomeMessage</span>);
+</span></span></code></pre></div><h3 id="conditional-expressions">
+<a class="header-anchor" href="#conditional-expressions"></a>
+Conditional expressions
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Long&#34;</span>, <span style="color:#a6e22e">isAdmin</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, <span style="color:#a6e22e">points</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">150</span> };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">userInfo</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`Người dùng: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Quyền: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">isAdmin</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;Quản trị viên&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Người dùng thường&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Hạng: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">points</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;VIP&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Thường&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Điểm thưởng: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">points</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">points</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;điểm&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;điểm&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">userInfo</span>);
+</span></span></code></pre></div><h2 id="3-multiline-strings">
+<a class="header-anchor" href="#3-multiline-strings"></a>
+3. Multiline Strings
+</h2><h3 id="so-sánh-cách-viết-chuỗi-nhiều-dòng">
+<a class="header-anchor" href="#so-s%c3%a1nh-c%c3%a1ch-vi%e1%ba%bft-chu%e1%bb%97i-nhi%e1%bb%81u-d%c3%b2ng"></a>
+So sánh cách viết chuỗi nhiều dòng
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Cách cũ - sử dụng \n và +
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">htmlOld</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&lt;div class=\&#34;card\&#34;&gt;\n&#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#e6db74">&#34;  &lt;h2&gt;Tiêu đề&lt;/h2&gt;\n&#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#e6db74">&#34;  &lt;p&gt;Nội dung&lt;/p&gt;\n&#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#e6db74">&#34;&lt;/div&gt;&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Template literals - tự nhiên hơn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">htmlNew</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`&lt;div class=&#34;card&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &lt;h2&gt;Tiêu đề&lt;/h2&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &lt;p&gt;Nội dung&lt;/p&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;/div&gt;`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">htmlNew</span>);
+</span></span></code></pre></div><h3 id="html-template-động">
+<a class="header-anchor" href="#html-template-%c4%91%e1%bb%99ng"></a>
+HTML Template động
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createUserCard</span>(<span style="color:#a6e22e">user</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;div class=&#34;user-card </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">isActive</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;active&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;inactive&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;div class=&#34;avatar&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &lt;img src=&#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">avatar</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;/default-avatar.png&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34; alt=&#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;/div&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;div class=&#34;info&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &lt;h3&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/h3&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &lt;p class=&#34;email&#34;&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">email</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/p&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &lt;p class=&#34;role&#34;&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">role</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;Người dùng&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/p&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &lt;div class=&#34;stats&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                &lt;span&gt;Đăng ký: </span><span style="color:#e6db74">${</span><span style="color:#66d9ef">new</span> Date(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">joinDate</span>).<span style="color:#a6e22e">toLocaleDateString</span>(<span style="color:#e6db74">&#39;vi-VN&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/span&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                &lt;span&gt;Điểm: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">points</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/span&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &lt;/div&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;/div&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">isAdmin</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;&lt;div class=&#34;admin-badge&#34;&gt;Admin&lt;/div&gt;&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;/div&gt;`</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Đoàn Đức Long&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">email</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;long@example.com&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Developer&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">avatar</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;/avatar.jpg&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">isActive</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">isAdmin</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">joinDate</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2023-01-15&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">points</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1250</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">createUserCard</span>(<span style="color:#a6e22e">user</span>));
+</span></span></code></pre></div><h2 id="4-chuyển-đổi-number-sang-string">
+<a class="header-anchor" href="#4-chuy%e1%bb%83n-%c4%91%e1%bb%95i-number-sang-string"></a>
+4. Chuyển Đổi Number Sang String
+</h2><h3 id="các-phương-pháp-chuyển-đổi">
+<a class="header-anchor" href="#c%c3%a1c-ph%c6%b0%c6%a1ng-ph%c3%a1p-chuy%e1%bb%83n-%c4%91%e1%bb%95i"></a>
+Các phương pháp chuyển đổi
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">number</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">123.456</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 1. toString() method
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">number</span>.<span style="color:#a6e22e">toString</span>());           <span style="color:#75715e">// &#34;123.456&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">number</span>.<span style="color:#a6e22e">toString</span>(<span style="color:#ae81ff">2</span>));          <span style="color:#75715e">// &#34;1111011.011101...&#34; (nhị phân)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">number</span>.<span style="color:#a6e22e">toString</span>(<span style="color:#ae81ff">16</span>));         <span style="color:#75715e">// &#34;7b.74bc6a7ef9db...&#34; (hex)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 2. String() constructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(String(<span style="color:#a6e22e">number</span>));              <span style="color:#75715e">// &#34;123.456&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 3. Template literals
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">number</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);                 <span style="color:#75715e">// &#34;123.456&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 4. Nối với chuỗi rỗng
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">number</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#34;</span>);                 <span style="color:#75715e">// &#34;123.456&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 5. JSON.stringify() (cho các trường hợp đặc biệt)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">number</span>));      <span style="color:#75715e">// &#34;123.456&#34;
+</span></span></span></code></pre></div><h3 id="format-số-khi-chuyển-thành-chuỗi">
+<a class="header-anchor" href="#format-s%e1%bb%91-khi-chuy%e1%bb%83n-th%c3%a0nh-chu%e1%bb%97i"></a>
+Format số khi chuyển thành chuỗi
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1234567.89</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng toFixed() cho số thập phân cố định
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">price</span>.<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">2</span>));            <span style="color:#75715e">// &#34;1234567.89&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">price</span>.<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">0</span>));            <span style="color:#75715e">// &#34;1234568&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng toPrecision() cho số chữ số có nghĩa
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">price</span>.<span style="color:#a6e22e">toPrecision</span>(<span style="color:#ae81ff">5</span>));        <span style="color:#75715e">// &#34;1.2346e+6&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng toLocaleString() cho format địa phương
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">price</span>.<span style="color:#a6e22e">toLocaleString</span>(<span style="color:#e6db74">&#39;vi-VN&#39;</span>)); <span style="color:#75715e">// &#34;1.234.567,89&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">price</span>.<span style="color:#a6e22e">toLocaleString</span>(<span style="color:#e6db74">&#39;en-US&#39;</span>)); <span style="color:#75715e">// &#34;1,234,567.89&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Format tiền tệ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">price</span>.<span style="color:#a6e22e">toLocaleString</span>(<span style="color:#e6db74">&#39;vi-VN&#39;</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">style</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;currency&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">currency</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;VND&#39;</span>
+</span></span><span style="display:flex;"><span>})); <span style="color:#75715e">// &#34;1.234.568 ₫&#34;
+</span></span></span></code></pre></div><h2 id="5-chuyển-đổi-string-sang-number">
+<a class="header-anchor" href="#5-chuy%e1%bb%83n-%c4%91%e1%bb%95i-string-sang-number"></a>
+5. Chuyển Đổi String Sang Number
+</h2><h3 id="các-phương-pháp-chuyển-đổi-1">
+<a class="header-anchor" href="#c%c3%a1c-ph%c6%b0%c6%a1ng-ph%c3%a1p-chuy%e1%bb%83n-%c4%91%e1%bb%95i-1"></a>
+Các phương pháp chuyển đổi
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">stringNumber</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;123.456&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">stringInt</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;789&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 1. Number() constructor - khuyến nghị
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number(<span style="color:#a6e22e">stringNumber</span>));        <span style="color:#75715e">// 123.456
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number(<span style="color:#a6e22e">stringInt</span>));           <span style="color:#75715e">// 789
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number(<span style="color:#e6db74">&#34;&#34;</span>));                  <span style="color:#75715e">// 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number(<span style="color:#e6db74">&#34;  42  &#34;</span>));            <span style="color:#75715e">// 42 (tự động trim)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number(<span style="color:#e6db74">&#34;abc&#34;</span>));               <span style="color:#75715e">// NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 2. parseInt() - chỉ lấy phần số nguyên
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(parseInt(<span style="color:#a6e22e">stringNumber</span>));      <span style="color:#75715e">// 123
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(parseInt(<span style="color:#e6db74">&#34;123px&#34;</span>));           <span style="color:#75715e">// 123
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(parseInt(<span style="color:#e6db74">&#34;px123&#34;</span>));           <span style="color:#75715e">// NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 3. parseFloat() - lấy số thực
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(parseFloat(<span style="color:#a6e22e">stringNumber</span>));    <span style="color:#75715e">// 123.456
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(parseFloat(<span style="color:#e6db74">&#34;123.456px&#34;</span>));     <span style="color:#75715e">// 123.456
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 4. Unary plus operator (+)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">+</span><span style="color:#a6e22e">stringNumber</span>);               <span style="color:#75715e">// 123.456
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">+</span><span style="color:#a6e22e">stringInt</span>);                  <span style="color:#75715e">// 789
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;abc&#34;</span>);                      <span style="color:#75715e">// NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 5. Math methods (tự động chuyển đổi)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Math.<span style="color:#a6e22e">floor</span>(<span style="color:#e6db74">&#34;123.456&#34;</span>));       <span style="color:#75715e">// 123
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Math.<span style="color:#a6e22e">round</span>(<span style="color:#e6db74">&#34;123.456&#34;</span>));       <span style="color:#75715e">// 123
+</span></span></span></code></pre></div><h3 id="validation-khi-chuyển-đổi">
+<a class="header-anchor" href="#validation-khi-chuy%e1%bb%83n-%c4%91%e1%bb%95i"></a>
+Validation khi chuyển đổi
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">safeNumberConversion</span>(<span style="color:#a6e22e">value</span>, <span style="color:#a6e22e">defaultValue</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> Number(<span style="color:#a6e22e">value</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (Number.isNaN(<span style="color:#a6e22e">result</span>)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">warn</span>(<span style="color:#e6db74">`Không thể chuyển &#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">value</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34; thành số, sử dụng giá trị mặc định: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">defaultValue</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">defaultValue</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Test
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">safeNumberConversion</span>(<span style="color:#e6db74">&#34;123&#34;</span>));      <span style="color:#75715e">// 123
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">safeNumberConversion</span>(<span style="color:#e6db74">&#34;abc&#34;</span>));      <span style="color:#75715e">// 0 (với warning)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">safeNumberConversion</span>(<span style="color:#e6db74">&#34;xyz&#34;</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>));  <span style="color:#75715e">// -1 (với warning)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Kiểm tra số hợp lệ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">isValidNumber</span>(<span style="color:#a6e22e">value</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">!</span>Number.isNaN(Number(<span style="color:#a6e22e">value</span>)) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">toString</span>().<span style="color:#a6e22e">trim</span>() <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">isValidNumber</span>(<span style="color:#e6db74">&#34;123&#34;</span>));    <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">isValidNumber</span>(<span style="color:#e6db74">&#34;123.45&#34;</span>)); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">isValidNumber</span>(<span style="color:#e6db74">&#34;abc&#34;</span>));    <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">isValidNumber</span>(<span style="color:#e6db74">&#34;&#34;</span>));       <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">isValidNumber</span>(<span style="color:#e6db74">&#34;  &#34;</span>));     <span style="color:#75715e">// false
+</span></span></span></code></pre></div><h2 id="6-ứng-dụng-thực-tế">
+<a class="header-anchor" href="#6-%e1%bb%a9ng-d%e1%bb%a5ng-th%e1%bb%b1c-t%e1%ba%bf"></a>
+6. Ứng Dụng Thực Tế
+</h2><h3 id="form-calculator-với-template-literals">
+<a class="header-anchor" href="#form-calculator-v%e1%bb%9bi-template-literals"></a>
+Form calculator với template literals
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Calculator</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">constructor</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">history</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">calculate</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>, <span style="color:#a6e22e">operator</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">numA</span> <span style="color:#f92672">=</span> Number(<span style="color:#a6e22e">a</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">numB</span> <span style="color:#f92672">=</span> Number(<span style="color:#a6e22e">b</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Validation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (Number.isNaN(<span style="color:#a6e22e">numA</span>) <span style="color:#f92672">||</span> Number.isNaN(<span style="color:#a6e22e">numB</span>)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`Lỗi: Vui lòng nhập số hợp lệ`</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">result</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">operation</span>;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">operator</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;+&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">numA</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">numB</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">operation</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">numA</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> + </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">numB</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;-&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">numA</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">numB</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">operation</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">numA</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">numB</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;*&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">numA</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">numB</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">operation</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">numA</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> × </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">numB</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;/&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">numB</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`Lỗi: Không thể chia cho 0`</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">numA</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">numB</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">operation</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">numA</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> ÷ </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">numB</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`Lỗi: Phép tính không hợp lệ`</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Lưu lịch sử
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">calculation</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">operation</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">operation</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">result</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">result</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">timestamp</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">new</span> Date()
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">history</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">calculation</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">operation</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> = </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">result</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">getHistory</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">history</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Chưa có phép tính nào được thực hiện.&#34;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`Lịch sử tính toán:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">history</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">calc</span>, <span style="color:#a6e22e">index</span>) =&gt; 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">index</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">. </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">operation</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> = </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">result</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>).<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;\n&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">generateReport</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">history</span>.<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">lastOperation</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">history</span>[<span style="color:#a6e22e">total</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`📊 Báo cáo Calculator
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">━━━━━━━━━━━━━━━━━━━━━
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">📈 Tổng số phép tính: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">total</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">🕐 Phép tính cuối: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">lastOperation</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">lastOperation</span>.<span style="color:#a6e22e">operation</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; = &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">lastOperation</span>.<span style="color:#a6e22e">result</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Chưa có&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">📅 Thời gian: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">lastOperation</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">lastOperation</span>.<span style="color:#a6e22e">timestamp</span>.<span style="color:#a6e22e">toLocaleString</span>(<span style="color:#e6db74">&#39;vi-VN&#39;</span>) <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;N/A&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng calculator
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">calc</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Calculator</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">calculate</span>(<span style="color:#e6db74">&#34;10&#34;</span>, <span style="color:#e6db74">&#34;5&#34;</span>, <span style="color:#e6db74">&#34;+&#34;</span>));    <span style="color:#75715e">// &#34;10 + 5 = 15&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">calculate</span>(<span style="color:#e6db74">&#34;20&#34;</span>, <span style="color:#e6db74">&#34;4&#34;</span>, <span style="color:#e6db74">&#34;/&#34;</span>));    <span style="color:#75715e">// &#34;20 ÷ 4 = 5&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">calculate</span>(<span style="color:#e6db74">&#34;abc&#34;</span>, <span style="color:#e6db74">&#34;5&#34;</span>, <span style="color:#e6db74">&#34;*&#34;</span>));   <span style="color:#75715e">// &#34;Lỗi: Vui lòng nhập số hợp lệ&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">generateReport</span>());
+</span></span></code></pre></div><h3 id="dynamic-content-generation">
+<a class="header-anchor" href="#dynamic-content-generation"></a>
+Dynamic content generation
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">generateProductCard</span>(<span style="color:#a6e22e">product</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">name</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">price</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">originalPrice</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">discount</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">rating</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">reviews</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">inStock</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">image</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">category</span>
+</span></span><span style="display:flex;"><span>    } <span style="color:#f92672">=</span> <span style="color:#a6e22e">product</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Tính toán giảm giá
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">discountPercent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">originalPrice</span> <span style="color:#f92672">?</span> 
+</span></span><span style="display:flex;"><span>        Math.<span style="color:#a6e22e">round</span>(((<span style="color:#a6e22e">originalPrice</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">price</span>) <span style="color:#f92672">/</span> <span style="color:#a6e22e">originalPrice</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>) <span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Format giá
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">formattedPrice</span> <span style="color:#f92672">=</span> Number(<span style="color:#a6e22e">price</span>).<span style="color:#a6e22e">toLocaleString</span>(<span style="color:#e6db74">&#39;vi-VN&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">formattedOriginalPrice</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">originalPrice</span> <span style="color:#f92672">?</span> 
+</span></span><span style="display:flex;"><span>        Number(<span style="color:#a6e22e">originalPrice</span>).<span style="color:#a6e22e">toLocaleString</span>(<span style="color:#e6db74">&#39;vi-VN&#39;</span>) <span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    🛍️ **</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">**
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    ━━━━━━━━━━━━━━━━━━━━━
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    💰 Giá: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">formattedPrice</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> VNĐ </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">formattedOriginalPrice</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">`(Giá gốc: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">formattedOriginalPrice</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> VNĐ)`</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">discountPercent</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">`🔥 Giảm </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">discountPercent</span><span style="color:#e6db74">}</span><span style="color:#e6db74">%`</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    ⭐ Đánh giá: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">rating</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/5 (</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">reviews</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> đánh giá)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    📦 Trạng thái: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">inStock</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;✅ Còn hàng&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;❌ Hết hàng&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    🏷️ Danh mục: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">category</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">inStock</span> <span style="color:#f92672">?</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">`\n🚀 Đặt hàng ngay để nhận ưu đãi!`</span> <span style="color:#f92672">:</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">`\n📧 Đăng ký nhận thông báo khi có hàng`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">product</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;iPhone 15 Pro Max&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">29990000</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">originalPrice</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">34990000</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">rating</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4.8</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">reviews</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1250</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">inStock</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">category</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Điện thoại&#34;</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">generateProductCard</span>(<span style="color:#a6e22e">product</span>));
+</span></span></code></pre></div><h3 id="url-và-query-string-builder">
+<a class="header-anchor" href="#url-v%c3%a0-query-string-builder"></a>
+URL và query string builder
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">URLBuilder</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">baseUrl</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">baseUrl</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">baseUrl</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Map</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">addParam</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Chuyển tất cả về string để xử lý
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">set</span>(String(<span style="color:#a6e22e">key</span>), String(<span style="color:#a6e22e">value</span>));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>; <span style="color:#75715e">// Method chaining
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">addParams</span>(<span style="color:#a6e22e">paramsObject</span>) {
+</span></span><span style="display:flex;"><span>        Object.<span style="color:#a6e22e">entries</span>(<span style="color:#a6e22e">paramsObject</span>).<span style="color:#a6e22e">forEach</span>(([<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span>]) =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">addParam</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span>);
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">build</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">size</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">baseUrl</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">queryString</span> <span style="color:#f92672">=</span> Array.<span style="color:#a6e22e">from</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">entries</span>())
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">map</span>(([<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span>]) =&gt; <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span>encodeURIComponent(<span style="color:#a6e22e">key</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">=</span><span style="color:#e6db74">${</span>encodeURIComponent(<span style="color:#a6e22e">value</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>)
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;&amp;&#39;</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">baseUrl</span><span style="color:#e6db74">}</span><span style="color:#e6db74">?</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">queryString</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">toString</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">build</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Template literal tag function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">url</span>(<span style="color:#a6e22e">strings</span>, ...<span style="color:#a6e22e">values</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">strings</span>[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">values</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">result</span> <span style="color:#f92672">+=</span> encodeURIComponent(String(<span style="color:#a6e22e">values</span>[<span style="color:#a6e22e">i</span>])) <span style="color:#f92672">+</span> <span style="color:#a6e22e">strings</span>[<span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng URL Builder
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">apiUrl</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">URLBuilder</span>(<span style="color:#e6db74">&#39;https://api.example.com/search&#39;</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">addParam</span>(<span style="color:#e6db74">&#39;q&#39;</span>, <span style="color:#e6db74">&#39;javascript tutorial&#39;</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">addParam</span>(<span style="color:#e6db74">&#39;page&#39;</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">addParam</span>(<span style="color:#e6db74">&#39;limit&#39;</span>, <span style="color:#ae81ff">20</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">addParams</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">sort</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;date&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">category</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;programming&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">lang</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;vi&#39;</span>
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`API URL: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">apiUrl</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// &#34;API URL: https://api.example.com/search?q=javascript%20tutorial&amp;page=1&amp;limit=20&amp;sort=date&amp;category=programming&amp;lang=vi&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng tagged template
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">userId</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">123</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">action</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;profile/edit&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">adminUrl</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">URLBuilder</span>.<span style="color:#a6e22e">url</span><span style="color:#e6db74">`https://admin.example.com/user/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">userId</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">action</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">adminUrl</span>);
+</span></span></code></pre></div><h2 id="7-best-practices">
+<a class="header-anchor" href="#7-best-practices"></a>
+7. Best Practices
+</h2><h3 id="template-literals-vs-string-concatenation">
+<a class="header-anchor" href="#template-literals-vs-string-concatenation"></a>
+Template literals vs string concatenation
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// ❌ Tránh - khó đọc và maintain
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createMessage</span>(<span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">order</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Xin chào &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;!\n&#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#e6db74">&#34;Đơn hàng #&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; của bạn đã được xác nhận.\n&#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#e6db74">&#34;Tổng tiền: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">total</span>.<span style="color:#a6e22e">toLocaleString</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; VNĐ\n&#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#e6db74">&#34;Thời gian giao hàng dự kiến: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">deliveryDate</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ✅ Nên dùng - rõ ràng và dễ maintain
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createMessageImproved</span>(<span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">order</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`Xin chào </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">!
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Đơn hàng #</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">id</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> của bạn đã được xác nhận.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Tổng tiền: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">total</span>.<span style="color:#a6e22e">toLocaleString</span>()<span style="color:#e6db74">}</span><span style="color:#e6db74"> VNĐ
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Thời gian giao hàng dự kiến: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">deliveryDate</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="safe-type-conversion">
+<a class="header-anchor" href="#safe-type-conversion"></a>
+Safe type conversion
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TypeConverter</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">toNumber</span>(<span style="color:#a6e22e">value</span>, <span style="color:#a6e22e">fallback</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">undefined</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fallback</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">converted</span> <span style="color:#f92672">=</span> Number(<span style="color:#a6e22e">value</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Number.isNaN(<span style="color:#a6e22e">converted</span>) <span style="color:#f92672">?</span> <span style="color:#a6e22e">fallback</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">converted</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">toString</span>(<span style="color:#a6e22e">value</span>, <span style="color:#a6e22e">fallback</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">undefined</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fallback</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> String(<span style="color:#a6e22e">value</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">formatNumber</span>(<span style="color:#a6e22e">value</span>, <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> {}) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">decimals</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">locale</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;vi-VN&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">currency</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">currencyCode</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;VND&#39;</span>
+</span></span><span style="display:flex;"><span>        } <span style="color:#f92672">=</span> <span style="color:#a6e22e">options</span>;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">toNumber</span>(<span style="color:#a6e22e">value</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">currency</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">num</span>.<span style="color:#a6e22e">toLocaleString</span>(<span style="color:#a6e22e">locale</span>, {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">style</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;currency&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">currency</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">currencyCode</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">minimumFractionDigits</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">decimals</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">maximumFractionDigits</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">decimals</span>
+</span></span><span style="display:flex;"><span>            });
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">num</span>.<span style="color:#a6e22e">toLocaleString</span>(<span style="color:#a6e22e">locale</span>, {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">minimumFractionDigits</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">decimals</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">maximumFractionDigits</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">decimals</span>
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Test type converter
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">TypeConverter</span>.<span style="color:#a6e22e">toNumber</span>(<span style="color:#e6db74">&#34;123.45&#34;</span>));        <span style="color:#75715e">// 123.45
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">TypeConverter</span>.<span style="color:#a6e22e">toNumber</span>(<span style="color:#e6db74">&#34;abc&#34;</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>));       <span style="color:#75715e">// -1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">TypeConverter</span>.<span style="color:#a6e22e">toString</span>(<span style="color:#ae81ff">123</span>));             <span style="color:#75715e">// &#34;123&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">TypeConverter</span>.<span style="color:#a6e22e">formatNumber</span>(<span style="color:#ae81ff">1234567.89</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">decimals</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">currency</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>})); <span style="color:#75715e">// &#34;1.234.567,89 ₫&#34;
+</span></span></span></code></pre></div><h2 id="8-tóm-tắt">
+<a class="header-anchor" href="#8-t%c3%b3m-t%e1%ba%aft"></a>
+8. Tóm Tắt
+</h2><h3 id="template-literals">
+<a class="header-anchor" href="#template-literals"></a>
+Template Literals:
+</h3><ol>
+<li><strong>Cú pháp:</strong> Sử dụng backticks <code>` `</code> thay vì quotes</li>
+<li><strong>Interpolation:</strong> <code>${variable}</code> để nhúng biến và biểu thức</li>
+<li><strong>Multiline:</strong> Hỗ trợ xuống dòng tự nhiên</li>
+<li><strong>Expression:</strong> Có thể chứa bất kỳ biểu thức JavaScript nào</li>
+</ol>
+<h3 id="number--string-conversion">
+<a class="header-anchor" href="#number--string-conversion"></a>
+Number ↔ String Conversion:
+</h3><table>
+  <thead>
+      <tr>
+          <th>Chuyển đổi</th>
+          <th>Phương pháp</th>
+          <th>Ghi chú</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Number → String</strong></td>
+          <td><code>String(num)</code>, <code>num.toString()</code>, <code>`${num}`</code>, <code>num + &quot;&quot;</code></td>
+          <td><code>toString()</code> hỗ trợ hệ số</td>
+      </tr>
+      <tr>
+          <td><strong>String → Number</strong></td>
+          <td><code>Number(str)</code>, <code>parseInt(str)</code>, <code>parseFloat(str)</code>, <code>+str</code></td>
+          <td>Cần validation</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="lưu-ý-quan-trọng">
+<a class="header-anchor" href="#l%c6%b0u-%c3%bd-quan-tr%e1%bb%8dng"></a>
+Lưu ý quan trọng:
+</h3><ul>
+<li>✅ <strong>Template literals</strong> dễ đọc và maintain hơn string concatenation</li>
+<li>✅ <strong>Luôn validate</strong> khi chuyển đổi kiểu dữ liệu</li>
+<li>✅ <strong>Sử dụng fallback values</strong> cho các trường hợp lỗi</li>
+<li>✅ <strong>Format số</strong> phù hợp với locale khi hiển thị</li>
+<li>❌ <strong>Tránh</strong> chuyển đổi kiểu không an toàn</li>
+</ul>
+<p>Template literals và type conversion là những kỹ năng cơ bản nhưng cực kỳ quan trọng trong JavaScript hiện đại!</p>
+</div>
+    <footer class="article-footer">
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="Tải &amp; Cài Đặt NodeJS - Khởi Đầu Hành Trình JavaScript"
+              class="lazyload"
+            /><a
+          href="/posts/javascript-co-ban/cai-dat-nodejs/"
+          aria-label="Prev:Tải &amp; Cài Đặt NodeJS - Khởi Đầu Hành Trình JavaScript"
+          title="Prev:Tải &amp; Cài Đặt NodeJS - Khởi Đầu Hành Trình JavaScript"
+        ></a>
+        <div class="article-nav-caption">Prev</div>
+        <h3 class="article-nav-title">Tải &amp; Cài Đặt NodeJS - Khởi Đầu Hành Trình JavaScript</h3>
+      </div><div class="article-nav-link-wrap right"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="JavaScript Cơ Bản - Bài 12: Kiểu Dữ Liệu Chuỗi (String)"
+              class="lazyload"
+            /><a
+          href="/posts/javascript-co-ban-bai-12/"
+          aria-label="Next:JavaScript Cơ Bản - Bài 12: Kiểu Dữ Liệu Chuỗi (String)"
+          title="Next:JavaScript Cơ Bản - Bài 12: Kiểu Dữ Liệu Chuỗi (String)"
+        ></a>
+        <div class="article-nav-caption">Next</div>
+        <h3 class="article-nav-title">JavaScript Cơ Bản - Bài 12: Kiểu Dữ Liệu Chuỗi (String)</h3>
+      </div></nav></article></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2020-2025<span class="footer-info-sep rotate"></span>
+      Đoàn Đức Long
+    </div><div>
+        Powered by&nbsp;<a
+          href="https://gohugo.io/"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Hugo</a
+        >&nbsp; Theme.<a
+          href="https://github.com/D-Sketon/hugo-theme-reimu"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Reimu</a
+        >
+      </div><div>
+        <span class="icon-brush"
+          >&nbsp;68.5k</span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;05:53</span>
+      </div><div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >Number of visits&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >Number of visitors&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><div class="sidebar-toc-card" aria-label="Table of contents">
+	<h3 class="toc-title">Contents</h3>
+	<div class="sidebar-toc-wrapper toc-div-class" data-toc="sidebar">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#video-hướng-dẫn">Video Hướng Dẫn</a></li>
+    <li><a href="#1-template-literals-cơ-bản">1. Template Literals Cơ Bản</a>
+      <ul>
+        <li><a href="#cú-pháp-với-backticks">Cú pháp với backticks</a></li>
+        <li><a href="#ưu-điểm-của-template-literals">Ưu điểm của Template Literals</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-nhúng-biểu-thức-trong-template-literals">2. Nhúng Biểu Thức Trong Template Literals</a>
+      <ul>
+        <li><a href="#tính-toán-trong-">Tính toán trong $</a></li>
+        <li><a href="#gọi-hàm-trong-template-literals">Gọi hàm trong template literals</a></li>
+        <li><a href="#conditional-expressions">Conditional expressions</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-multiline-strings">3. Multiline Strings</a>
+      <ul>
+        <li><a href="#so-sánh-cách-viết-chuỗi-nhiều-dòng">So sánh cách viết chuỗi nhiều dòng</a></li>
+        <li><a href="#html-template-động">HTML Template động</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-chuyển-đổi-number-sang-string">4. Chuyển Đổi Number Sang String</a>
+      <ul>
+        <li><a href="#các-phương-pháp-chuyển-đổi">Các phương pháp chuyển đổi</a></li>
+        <li><a href="#format-số-khi-chuyển-thành-chuỗi">Format số khi chuyển thành chuỗi</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-chuyển-đổi-string-sang-number">5. Chuyển Đổi String Sang Number</a>
+      <ul>
+        <li><a href="#các-phương-pháp-chuyển-đổi-1">Các phương pháp chuyển đổi</a></li>
+        <li><a href="#validation-khi-chuyển-đổi">Validation khi chuyển đổi</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-ứng-dụng-thực-tế">6. Ứng Dụng Thực Tế</a>
+      <ul>
+        <li><a href="#form-calculator-với-template-literals">Form calculator với template literals</a></li>
+        <li><a href="#dynamic-content-generation">Dynamic content generation</a></li>
+        <li><a href="#url-và-query-string-builder">URL và query string builder</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-best-practices">7. Best Practices</a>
+      <ul>
+        <li><a href="#template-literals-vs-string-concatenation">Template literals vs string concatenation</a></li>
+        <li><a href="#safe-type-conversion">Safe type conversion</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-tóm-tắt">8. Tóm Tắt</a>
+      <ul>
+        <li><a href="#template-literals">Template Literals:</a></li>
+        <li><a href="#number--string-conversion">Number ↔ String Conversion:</a></li>
+        <li><a href="#lưu-ý-quan-trọng">Lưu ý quan trọng:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+	</div>
+  
+	
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/images/avatar.png"
+    data-sizes="auto"
+    alt="Đoàn Đức Long"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Đoàn Đức Long</div>
+  <div class="sidebar-description">Blog chia sẻ học tập và kiến thức về code, công nghệ và các dự án cá nhân</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div><div class="sidebar-state-number">65</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      6
+    </div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-discord sidebar-social-icon">
+      <a
+        href="https://discord.com/users/757589425466245182"
+        itemprop="url"
+        target="_blank"
+        aria-label="discord"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-facebook sidebar-social-icon">
+      <a
+        href="https://www.facebook.com/iouas.04"
+        itemprop="url"
+        target="_blank"
+        aria-label="facebook"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/longdoan2k4"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-instagram sidebar-social-icon">
+      <a
+        href="https://www.instagram.com/oglas.z3_/"
+        itemprop="url"
+        target="_blank"
+        aria-label="instagram"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="Home"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Home</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="Archives"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Archives</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="About"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">About</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="Friend"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Friend</div>
+    </div></div></div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous" ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script><script
+    src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js"
+    integrity="sha384-8LyaidD9GPxQQgLJO/WRw/O2h3BoNq/ApI/ecpvM6RsrCz2qP2ppBXUKihP4V/2d" crossorigin="anonymous"></script><script>
+  if (window.firework) {
+    const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+    options.excludeElements = options.excludeelements;
+    delete options.excludeelements;
+    window.firework(options);
+  }
+</script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "Đoàn Đức Long",
+          title: "JavaScript Cơ Bản - Bài 13: Template Literals Và Chuyển Đổi Number-String",
+          url: "https:\/\/doandduclong.github.io\/posts\/javascript-co-ban-bai-13\/",
+          description: "Tìm hiểu về Template Literals với backticks, nhúng biến và biểu thức động, cùng với cách chuyển đổi giữa Number và String trong JavaScript",
+          cover: "https:\/\/doandduclong.github.io\/images\/banner.webp",
+        };
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script></div>
+</div>
+
+<script
+    src="/js/toc-sidebar.js"
+    deferdata-pjax></script><script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    asyncintegrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script><script src="/js/search.js"></script></body>
+</html>

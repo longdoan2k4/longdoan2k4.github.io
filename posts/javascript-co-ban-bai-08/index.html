@@ -1,0 +1,1517 @@
+<!doctype html>
+<html
+  lang="vi-vn" 
+  data-theme-mode="auto"
+  >
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  JavaScript Cơ Bản - Bài 08: Kiểu Dữ Liệu Số (Number) | Đoàn Đức Long
+</title>
+<meta
+  name="description"
+  content="Tìm hiểu về kiểu dữ liệu số trong JavaScript - số nguyên, số thực, Infinity, NaN và các toán tử số học cơ bản"
+/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://doandduclong.github.io/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" />
+<meta property="og:type" content="website" />
+  <meta property="og:title" content="JavaScript Cơ Bản - Bài 08: Kiểu Dữ Liệu Số (Number) | Đoàn Đức Long" />
+  <meta
+    property="og:description"
+    content="Tìm hiểu về kiểu dữ liệu số trong JavaScript - số nguyên, số thực, Infinity, NaN và các toán tử số học cơ bản"
+  />
+  <meta property="og:url" content="https://doandduclong.github.io/posts/javascript-co-ban-bai-08/" />
+  <meta
+    property="og:site_name"
+    content="Đoàn Đức Long - Tech Blog"
+  />
+  <meta
+    property="og:image"
+    content="/"
+  />
+  <meta property="article:author" content="Đoàn Đức Long" />
+  <meta property="article:published_time" content="2025-10-20T00:00:00&#43;07:00" />
+  <meta property="article:modified_time" content="2025-10-20T00:00:00&#43;07:00" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.030bf20ad33bf6086328005695d5aecf4e3252819f7b6c64892b3dd33ad2e2ed.css" />
+<link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css"
+    integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz&#43;YI" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/>
+
+<link rel="stylesheet" href="/css/custom-posts.min.c23bccebedc11d0eca845bea6af4b5b6337c6a67b36703c043bee39e9f606cb0.css" integrity="sha256-wjvM6&#43;3BHQ7KhFvqavS1tjN8amezZwPAQ77jnp9gbLA=">
+<link rel="stylesheet" href="/css/fixes.css"></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+          M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg></div><div class="loading-word">Loading...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+This article does not have a corresponding language version
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/">Home</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/archives">Archives</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/about">About</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/friend">Friend</a>
+      </span><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+    <a id="nav-search-btn" class="nav-icon" title="Tìm kiếm" aria-label="Tìm kiếm" onclick="toggleSearch()"></a>
+  </nav></div>
+
+
+<div id="search-overlay" class="search-overlay" style="display: none;">
+  <div class="search-container">
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="Tìm kiếm bài viết..." autocomplete="off">
+      <button type="button" id="close-search" onclick="closeSearch()">✕</button>
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+</div><style>
+:root {
+  --cover-background: transparent;
+  --site-cover-background: transparent;
+}
+.header-cover-rgb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150%;
+  z-index: -2;
+  display: block;
+  mask: linear-gradient(to top, transparent, #fff 50%);
+}
+.header-cover-params {
+  background: var(--cover-background);
+}
+.header-cover-site {
+  background: var(--site-cover-background);
+}
+</style>
+
+<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="JavaScript Cơ Bản - Bài 08: Kiểu Dữ Liệu Số (Number)"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">JavaScript Cơ Bản - Bài 08: Kiểu Dữ Liệu Số (Number)</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header>
+
+<style>
+ 
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(20, 20, 30, 0.95) 0%,
+    rgba(40, 40, 60, 0.95) 50%,
+    rgba(60, 30, 40, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 15vh;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.search-container {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-box {
+  position: relative;
+  margin-bottom: 2rem;
+  width: 450px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 1rem 3.5rem 1rem 1.5rem;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+.search-box input:focus {
+  border-color: rgba(255, 107, 107, 0.8);
+  box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.2),
+              0 8px 32px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+}
+
+
+
+#close-search {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 107, 107, 0.2);
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#close-search:hover {
+  background: rgba(255, 107, 107, 0.4);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.search-results {
+  max-height: 50vh;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 0;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease-out;
+  width: 450px;
+  box-sizing: border-box;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+ 
+.search-results::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-results::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background: rgba(255, 107, 107, 0.5);
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 107, 107, 0.7);
+}
+
+.search-result-item {
+  padding: 1rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0;
+  margin-bottom: 1px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(5px);
+}
+
+.search-result-item:first-child {
+  border-radius: 14px 14px 0 0;
+  margin-top: 1.5rem;
+}
+
+.search-result-item:last-child {
+  border-radius: 0 0 14px 14px;
+  margin-bottom: 1.5rem;
+}
+
+.search-result-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 107, 107, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(255, 107, 107, 0.15);
+}
+
+.search-result-item:last-child {
+  margin-bottom: 0;
+}
+
+.search-result-title {
+  color: #ff9999;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.search-result-item:hover .search-result-title {
+  color: #ff6b6b;
+}
+
+.search-result-category {
+  display: inline-block;
+  background: linear-gradient(45deg, rgba(255, 107, 107, 0.2), rgba(255, 150, 150, 0.2));
+  color: #ffaaaa;
+  padding: 0.2rem 0.6rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  transition: all 0.2s ease;
+}
+
+.search-result-item:hover .search-result-category {
+  background: linear-gradient(45deg, rgba(255, 107, 107, 0.3), rgba(255, 150, 150, 0.3));
+  color: #ff6b6b;
+  border-color: rgba(255, 107, 107, 0.5);
+}
+
+ 
+#nav-search-btn {
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#nav-search-btn:hover {
+  color: #ff6b6b;
+  transform: scale(1.1);
+}
+</style>
+
+<script>
+
+let allPosts = [];
+let searchIndex = null;
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  initializeSearch();
+});
+
+function toggleSearch() {
+  const overlay = document.getElementById('search-overlay');
+  const searchInput = document.getElementById('search-input');
+  
+  if (overlay.style.display === 'none' || overlay.style.display === '') {
+    
+    overlay.style.display = 'flex';
+    overlay.style.animation = 'fadeIn 0.3s ease-out forwards';
+    
+    
+    setTimeout(() => {
+      searchInput.focus();
+    }, 150);
+    
+    document.body.style.overflow = 'hidden';
+  } else {
+    closeSearch();
+  }
+}
+
+function closeSearch() {
+  const overlay = document.getElementById('search-overlay');
+  const searchInput = document.getElementById('search-input');
+  const results = document.getElementById('search-results');
+  
+  
+  showAllResults = false;
+  
+  
+  overlay.style.animation = 'fadeOut 0.3s ease-out forwards';
+  
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    searchInput.value = '';
+    results.innerHTML = '';
+    document.body.style.overflow = '';
+    overlay.style.animation = ''; 
+  }, 300);
+}
+
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeSearch();
+  }
+  
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    toggleSearch();
+  }
+});
+
+
+async function initializeSearch() {
+  try {
+    const response = await fetch('/index.json');
+    const data = await response.json();
+    allPosts = data;
+    
+    
+    const searchInput = document.getElementById('search-input');
+    let searchTimeout;
+    
+    searchInput.addEventListener('input', function() {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        performSearch(this.value);
+      }, 300);
+    });
+    
+  } catch (error) {
+    console.error('Error loading search data:', error);
+  }
+}
+
+function performSearch(query) {
+  const results = document.getElementById('search-results');
+  
+  if (!query || query.length < 2) {
+    results.innerHTML = '';
+    return;
+  }
+  
+  const searchQuery = query.toLowerCase();
+  const matches = allPosts.filter(post => {
+    return post.title.toLowerCase().includes(searchQuery) ||
+           post.content.toLowerCase().includes(searchQuery) ||
+           (post.categories && post.categories.some(cat => cat.toLowerCase().includes(searchQuery))) ||
+           (post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchQuery)));
+  });
+  
+  displaySearchResults(matches, query);
+}
+
+let showAllResults = false;
+
+function displaySearchResults(matches, query) {
+  const results = document.getElementById('search-results');
+  
+  if (matches.length === 0) {
+    results.innerHTML = '<div style="color: rgba(255,255,255,0.7); text-align: center; padding: 3rem 1.5rem;">Không tìm thấy kết quả nào cho "' + query + '"</div>';
+    return;
+  }
+  
+  const totalResults = matches.length;
+  const displayLimit = showAllResults ? totalResults : 8;
+  const itemsToShow = matches.slice(0, displayLimit);
+  
+  results.innerHTML = `
+    <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0; padding: 1.5rem 1.5rem 0 1.5rem;">
+      Tìm thấy ${totalResults} bài viết cho "${query}"
+    </div>
+  `;
+  
+  const html = itemsToShow.map(post => {
+    const title = highlightText(post.title, query);
+    const category = post.categories && post.categories.length > 0 ? post.categories[0] : '';
+    const date = post.date || '';
+    
+    return `
+      <div class="search-result-item" onclick="navigateToPost('${post.uri}')">
+        <div class="search-result-title">${title}</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.3rem;">
+          ${category ? `<span class="search-result-category">${category}</span>` : '<span></span>'}
+          ${date ? `<span style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">${date}</span>` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+  
+  results.innerHTML += html;
+  
+  if (totalResults > 8 && !showAllResults) {
+    results.innerHTML += `
+      <div style="color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem;">
+        <button onclick="toggleShowAllResults('${query}')" style="
+          background: rgba(255, 107, 107, 0.2);
+          border: 1px solid rgba(255, 107, 107, 0.4);
+          color: #ff6b6b;
+          padding: 0.8rem 1.5rem;
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+        " onmouseover="this.style.background='rgba(255, 107, 107, 0.3)'" onmouseout="this.style.background='rgba(255, 107, 107, 0.2)'">
+          Xem tất cả ${totalResults} bài viết
+        </button>
+      </div>
+    `;
+  } else if (showAllResults && totalResults > 8) {
+    results.innerHTML += `
+      <div style="color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem;">
+        <button onclick="toggleShowAllResults('${query}')" style="
+          background: rgba(255, 107, 107, 0.2);
+          border: 1px solid rgba(255, 107, 107, 0.4);
+          color: #ff6b6b;
+          padding: 0.8rem 1.5rem;
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+        " onmouseover="this.style.background='rgba(255, 107, 107, 0.3)'" onmouseout="this.style.background='rgba(255, 107, 107, 0.2)'">
+          Thu gọn kết quả
+        </button>
+      </div>
+    `;
+  }
+}
+
+function toggleShowAllResults(query) {
+  showAllResults = !showAllResults;
+  performSearch(query);
+}
+
+function highlightText(text, query) {
+  if (!query) return text;
+  const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+  return text.replace(regex, '<mark style="background: rgba(255,107,107,0.3); color: #fff;">$1</mark>');
+}
+
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function navigateToPost(uri) {
+  window.location.href = uri;
+}
+</script><div id="content"
+          aria-label="Page content"
+          
+          class="sidebar-right"  ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><div class="sidebar-toc-card" aria-label="Table of contents">
+	<h3 class="toc-title">Contents</h3>
+	<div class="sidebar-toc-wrapper toc-div-class" data-toc="sidebar">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#video-hướng-dẫn">Video Hướng Dẫn</a></li>
+    <li><a href="#1-giới-thiệu-về-kiểu-number">1. Giới Thiệu Về Kiểu Number</a>
+      <ul>
+        <li><a href="#đặc-điểm-chung">Đặc điểm chung</a></li>
+        <li><a href="#phạm-vi-giá-trị">Phạm vi giá trị</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-cách-khai-báo-số">2. Cách Khai Báo Số</a>
+      <ul>
+        <li><a href="#khai-báo-cơ-bản">Khai báo cơ bản</a></li>
+        <li><a href="#các-hệ-số-khác-nhau">Các hệ số khác nhau</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-giá-trị-đặc-biệt">3. Giá Trị Đặc Biệt</a>
+      <ul>
+        <li><a href="#infinity-vô-cùng">Infinity (Vô cùng)</a></li>
+        <li><a href="#nan-not-a-number">NaN (Not a Number)</a></li>
+        <li><a href="#so-sánh-isnan-và-numberisnan">So sánh isNaN() và Number.isNaN()</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-toán-tử-số-học">4. Toán Tử Số Học</a>
+      <ul>
+        <li><a href="#toán-tử-cơ-bản">Toán tử cơ bản</a></li>
+        <li><a href="#thứ-tự-ưu-tiên-toán-tử">Thứ tự ưu tiên toán tử</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-chuyển-đổi-kiểu-dữ-liệu">5. Chuyển Đổi Kiểu Dữ Liệu</a>
+      <ul>
+        <li><a href="#chuyển-từ-chuỗi-sang-số">Chuyển từ chuỗi sang số</a></li>
+        <li><a href="#chuyển-từ-boolean-sang-số">Chuyển từ boolean sang số</a></li>
+        <li><a href="#chuyển-từ-số-sang-chuỗi">Chuyển từ số sang chuỗi</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-precision-và-floating-point">6. Precision và Floating Point</a>
+      <ul>
+        <li><a href="#vấn-đề-độ-chính-xác-số-thực">Vấn đề độ chính xác số thực</a></li>
+        <li><a href="#làm-tròn-số">Làm tròn số</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-kiểm-tra-kiểu-số">7. Kiểm Tra Kiểu Số</a>
+      <ul>
+        <li><a href="#các-phương-thức-kiểm-tra">Các phương thức kiểm tra</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-ví-dụ-thực-tế">8. Ví Dụ Thực Tế</a>
+      <ul>
+        <li><a href="#tính-toán-cơ-bản">Tính toán cơ bản</a></li>
+        <li><a href="#xử-lý-tiền-tệ">Xử lý tiền tệ</a></li>
+        <li><a href="#validation-đầu-vào">Validation đầu vào</a></li>
+      </ul>
+    </li>
+    <li><a href="#9-lưu-ý-quan-trọng">9. Lưu Ý Quan Trọng</a>
+      <ul>
+        <li><a href="#1-so-sánh-số-thực">1. So sánh số thực</a></li>
+        <li><a href="#2-kiểm-tra-nan">2. Kiểm tra NaN</a></li>
+        <li><a href="#3-chuyển-đổi-kiểu-an-toàn">3. Chuyển đổi kiểu an toàn</a></li>
+      </ul>
+    </li>
+    <li><a href="#10-tóm-tắt">10. Tóm Tắt</a>
+      <ul>
+        <li><a href="#điểm-chính-cần-nhớ">Điểm chính cần nhớ:</a></li>
+        <li><a href="#best-practices">Best Practices:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+	</div>
+  
+	
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/images/avatar.png"
+    data-sizes="auto"
+    alt="Đoàn Đức Long"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Đoàn Đức Long</div>
+  <div class="sidebar-description">Blog chia sẻ học tập và kiến thức về code, công nghệ và các dự án cá nhân</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div><div class="sidebar-state-number">65</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      6
+    </div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-discord sidebar-social-icon">
+      <a
+        href="https://discord.com/users/757589425466245182"
+        itemprop="url"
+        target="_blank"
+        aria-label="discord"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-facebook sidebar-social-icon">
+      <a
+        href="https://www.facebook.com/iouas.04"
+        itemprop="url"
+        target="_blank"
+        aria-label="facebook"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/longdoan2k4"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-instagram sidebar-social-icon">
+      <a
+        href="https://www.instagram.com/oglas.z3_/"
+        itemprop="url"
+        target="_blank"
+        aria-label="instagram"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="Home"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Home</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="Archives"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Archives</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="About"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">About</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="Friend"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Friend</div>
+    </div></div></div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2025-10-20 00:00:00 &#43;0700 &#43;07" itemprop="datePublished"
+      >2025-10-20</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2025-10-20</time
+    >
+  </span></div>
+<div class="article-category"><a
+      class="article-category-link"
+      href="/categories/javascript-c%c6%a1-b%e1%ba%a3n"
+      data-aos="zoom-in"
+      >JAVASCRIPT CƠ BẢN</a
+    ></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h1 id="javascript-cơ-bản---bài-08-kiểu-dữ-liệu-số-number">
+<a class="header-anchor" href="#javascript-c%c6%a1-b%e1%ba%a3n---b%c3%a0i-08-ki%e1%bb%83u-d%e1%bb%af-li%e1%bb%87u-s%e1%bb%91-number"></a>
+JavaScript Cơ Bản - Bài 08: Kiểu Dữ Liệu Số (Number)
+</h1><p>Số (Number) là một trong những kiểu dữ liệu cơ bản và quan trọng nhất trong JavaScript. Nó được sử dụng trong tất cả các phép toán, xử lý logic và tính toán. Hãy cùng khám phá chi tiết về kiểu dữ liệu này!</p>
+<h2 id="video-hướng-dẫn">
+<a class="header-anchor" href="#video-h%c6%b0%e1%bb%9bng-d%e1%ba%abn"></a>
+Video Hướng Dẫn
+</h2><div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/bynuI8B2uho?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<h2 id="1-giới-thiệu-về-kiểu-number">
+<a class="header-anchor" href="#1-gi%e1%bb%9bi-thi%e1%bb%87u-v%e1%bb%81-ki%e1%bb%83u-number"></a>
+1. Giới Thiệu Về Kiểu Number
+</h2><h3 id="đặc-điểm-chung">
+<a class="header-anchor" href="#%c4%91%e1%ba%b7c-%c4%91i%e1%bb%83m-chung"></a>
+Đặc điểm chung
+</h3><p>JavaScript sử dụng một kiểu số duy nhất <code>Number</code> để biểu diễn cả số nguyên và số thực (khác với nhiều ngôn ngữ lập trình khác có phân biệt <code>int</code>, <code>float</code>, <code>double</code>).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Tất cả đều là kiểu Number
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">integer</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">42</span>;           <span style="color:#75715e">// Số nguyên
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">decimal</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.14159</span>;      <span style="color:#75715e">// Số thực  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">negative</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">25</span>;         <span style="color:#75715e">// Số âm
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">zero</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;              <span style="color:#75715e">// Số 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">integer</span>); <span style="color:#75715e">// &#34;number&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">decimal</span>); <span style="color:#75715e">// &#34;number&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">negative</span>); <span style="color:#75715e">// &#34;number&#34;
+</span></span></span></code></pre></div><h3 id="phạm-vi-giá-trị">
+<a class="header-anchor" href="#ph%e1%ba%a1m-vi-gi%c3%a1-tr%e1%bb%8b"></a>
+Phạm vi giá trị
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Giá trị lớn nhất và nhỏ nhất
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number.<span style="color:#a6e22e">MAX_VALUE</span>);        <span style="color:#75715e">// 1.7976931348623157e+308
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number.<span style="color:#a6e22e">MIN_VALUE</span>);        <span style="color:#75715e">// 5e-324
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number.<span style="color:#a6e22e">MAX_SAFE_INTEGER</span>); <span style="color:#75715e">// 9007199254740991
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number.<span style="color:#a6e22e">MIN_SAFE_INTEGER</span>); <span style="color:#75715e">// -9007199254740991
+</span></span></span></code></pre></div><h2 id="2-cách-khai-báo-số">
+<a class="header-anchor" href="#2-c%c3%a1ch-khai-b%c3%a1o-s%e1%bb%91"></a>
+2. Cách Khai Báo Số
+</h2><h3 id="khai-báo-cơ-bản">
+<a class="header-anchor" href="#khai-b%c3%a1o-c%c6%a1-b%e1%ba%a3n"></a>
+Khai báo cơ bản
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Các cách khai báo số
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;              <span style="color:#75715e">// Số nguyên dương
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">5</span>;              <span style="color:#75715e">// Số nguyên âm
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.14</span>;            <span style="color:#75715e">// Số thực
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">d</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>;             <span style="color:#75715e">// Số thực nhỏ hơn 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">e</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.5</span><span style="color:#a6e22e">e3</span>;           <span style="color:#75715e">// Ký hiệu khoa học (2500)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">f</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.5</span><span style="color:#a6e22e">e</span><span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>;          <span style="color:#75715e">// Ký hiệu khoa học (0.015)
+</span></span></span></code></pre></div><h3 id="các-hệ-số-khác-nhau">
+<a class="header-anchor" href="#c%c3%a1c-h%e1%bb%87-s%e1%bb%91-kh%c3%a1c-nhau"></a>
+Các hệ số khác nhau
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Hệ thập phân (mặc định)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">decimal</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Hệ nhị phân (bắt đầu với 0b)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">binary</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0b11111111</span>;  <span style="color:#75715e">// 255 trong hệ nhị phân
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">binary</span>);      <span style="color:#75715e">// 255
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Hệ bát phân (bắt đầu với 0o)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">octal</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0o377</span>;        <span style="color:#75715e">// 255 trong hệ bát phân
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">octal</span>);       <span style="color:#75715e">// 255
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Hệ thập lục phân (bắt đầu với 0x)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">hex</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xFF</span>;           <span style="color:#75715e">// 255 trong hệ thập lục phân
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">hex</span>);         <span style="color:#75715e">// 255
+</span></span></span></code></pre></div><h2 id="3-giá-trị-đặc-biệt">
+<a class="header-anchor" href="#3-gi%c3%a1-tr%e1%bb%8b-%c4%91%e1%ba%b7c-bi%e1%bb%87t"></a>
+3. Giá Trị Đặc Biệt
+</h2><h3 id="infinity-vô-cùng">
+<a class="header-anchor" href="#infinity-v%c3%b4-c%c3%b9ng"></a>
+Infinity (Vô cùng)
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Infinity xuất hiện khi:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">0</span>);           <span style="color:#75715e">// Infinity
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">0</span>);          <span style="color:#75715e">// -Infinity
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number.<span style="color:#a6e22e">POSITIVE_INFINITY</span>); <span style="color:#75715e">// Infinity
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number.<span style="color:#a6e22e">NEGATIVE_INFINITY</span>); <span style="color:#75715e">// -Infinity
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Kiểm tra Infinity
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(isFinite(<span style="color:#a6e22e">result</span>));     <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">Infinity</span>);  <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Phép toán với Infinity
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">Infinity</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);     <span style="color:#75715e">// Infinity
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">Infinity</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>);     <span style="color:#75715e">// Infinity
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">Infinity</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>);     <span style="color:#75715e">// Infinity
+</span></span></span></code></pre></div><h3 id="nan-not-a-number">
+<a class="header-anchor" href="#nan-not-a-number"></a>
+NaN (Not a Number)
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// NaN xuất hiện khi phép toán không hợp lệ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;abc&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>);        <span style="color:#75715e">// NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">0</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">0</span>);            <span style="color:#75715e">// NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Math.<span style="color:#a6e22e">sqrt</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>));    <span style="color:#75715e">// NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(parseInt(<span style="color:#e6db74">&#34;hello&#34;</span>)); <span style="color:#75715e">// NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Kiểm tra NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">invalidNumber</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abc&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(isNaN(<span style="color:#a6e22e">invalidNumber</span>));        <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number.isNaN(<span style="color:#a6e22e">invalidNumber</span>)); <span style="color:#75715e">// true (chính xác hơn)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Đặc điểm của NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">NaN</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">NaN</span>);      <span style="color:#75715e">// false (!)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">NaN</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">NaN</span>);       <span style="color:#75715e">// false (!)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Vì vậy phải dùng hàm kiểm tra
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number.isNaN(<span style="color:#66d9ef">NaN</span>)); <span style="color:#75715e">// true
+</span></span></span></code></pre></div><h3 id="so-sánh-isnan-và-numberisnan">
+<a class="header-anchor" href="#so-s%c3%a1nh-isnan-v%c3%a0-numberisnan"></a>
+So sánh isNaN() và Number.isNaN()
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// isNaN() - ép kiểu trước khi kiểm tra
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(isNaN(<span style="color:#e6db74">&#34;123&#34;</span>));     <span style="color:#75715e">// false (ép thành số 123)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(isNaN(<span style="color:#e6db74">&#34;hello&#34;</span>));   <span style="color:#75715e">// true (ép thành NaN)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(isNaN(<span style="color:#66d9ef">true</span>));      <span style="color:#75715e">// false (ép thành số 1)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Number.isNaN() - kiểm tra chính xác
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number.isNaN(<span style="color:#e6db74">&#34;123&#34;</span>));    <span style="color:#75715e">// false (không phải NaN)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number.isNaN(<span style="color:#e6db74">&#34;hello&#34;</span>));  <span style="color:#75715e">// false (không phải NaN)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number.isNaN(<span style="color:#66d9ef">NaN</span>));      <span style="color:#75715e">// true (chỉ NaN mới là NaN)
+</span></span></span></code></pre></div><h2 id="4-toán-tử-số-học">
+<a class="header-anchor" href="#4-to%c3%a1n-t%e1%bb%ad-s%e1%bb%91-h%e1%bb%8dc"></a>
+4. Toán Tử Số Học
+</h2><h3 id="toán-tử-cơ-bản">
+<a class="header-anchor" href="#to%c3%a1n-t%e1%bb%ad-c%c6%a1-b%e1%ba%a3n"></a>
+Toán tử cơ bản
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Các phép toán cơ bản
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>);    <span style="color:#75715e">// 13 (phép cộng)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">b</span>);    <span style="color:#75715e">// 7  (phép trừ)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">b</span>);    <span style="color:#75715e">// 30 (phép nhân)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">b</span>);    <span style="color:#75715e">// 3.333... (phép chia)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">%</span> <span style="color:#a6e22e">b</span>);    <span style="color:#75715e">// 1  (chia lấy dư)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">**</span> <span style="color:#a6e22e">b</span>);   <span style="color:#75715e">// 1000 (lũy thừa - ES2016)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Toán tử tăng/giảm
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">counter</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">++</span><span style="color:#a6e22e">counter</span>);  <span style="color:#75715e">// 6 (tăng trước)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">counter</span><span style="color:#f92672">++</span>);  <span style="color:#75715e">// 6 (tăng sau, trả về giá trị cũ)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">counter</span>);    <span style="color:#75715e">// 7
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">--</span><span style="color:#a6e22e">counter</span>);  <span style="color:#75715e">// 6 (giảm trước)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">counter</span><span style="color:#f92672">--</span>);  <span style="color:#75715e">// 6 (giảm sau, trả về giá trị cũ)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">counter</span>);    <span style="color:#75715e">// 5
+</span></span></span></code></pre></div><h3 id="thứ-tự-ưu-tiên-toán-tử">
+<a class="header-anchor" href="#th%e1%bb%a9-t%e1%bb%b1-%c6%b0u-ti%c3%aan-to%c3%a1n-t%e1%bb%ad"></a>
+Thứ tự ưu tiên toán tử
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Thứ tự ưu tiên: ** &gt; *, /, % &gt; +, -
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">4</span>);      <span style="color:#75715e">// 14 (không phải 20)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">2</span> <span style="color:#f92672">**</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">4</span>);     <span style="color:#75715e">// 32 (2^3 * 4 = 8 * 4)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">10</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>);     <span style="color:#75715e">// 7  (từ trái qua phải)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng dấu ngoặc để thay đổi thứ tự
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>((<span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">4</span>);    <span style="color:#75715e">// 20
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">2</span> <span style="color:#f92672">**</span> (<span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">4</span>));   <span style="color:#75715e">// 4096 (2^12)
+</span></span></span></code></pre></div><h2 id="5-chuyển-đổi-kiểu-dữ-liệu">
+<a class="header-anchor" href="#5-chuy%e1%bb%83n-%c4%91%e1%bb%95i-ki%e1%bb%83u-d%e1%bb%af-li%e1%bb%87u"></a>
+5. Chuyển Đổi Kiểu Dữ Liệu
+</h2><h3 id="chuyển-từ-chuỗi-sang-số">
+<a class="header-anchor" href="#chuy%e1%bb%83n-t%e1%bb%ab-chu%e1%bb%97i-sang-s%e1%bb%91"></a>
+Chuyển từ chuỗi sang số
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng Number()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number(<span style="color:#e6db74">&#34;123&#34;</span>));     <span style="color:#75715e">// 123
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number(<span style="color:#e6db74">&#34;3.14&#34;</span>));    <span style="color:#75715e">// 3.14
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number(<span style="color:#e6db74">&#34;&#34;</span>));        <span style="color:#75715e">// 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number(<span style="color:#e6db74">&#34;  42  &#34;</span>));  <span style="color:#75715e">// 42 (bỏ qua khoảng trắng)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number(<span style="color:#e6db74">&#34;hello&#34;</span>));   <span style="color:#75715e">// NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng parseInt() - chỉ lấy số nguyên
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(parseInt(<span style="color:#e6db74">&#34;123&#34;</span>));      <span style="color:#75715e">// 123
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(parseInt(<span style="color:#e6db74">&#34;123.45&#34;</span>));   <span style="color:#75715e">// 123 (bỏ phần thập phân)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(parseInt(<span style="color:#e6db74">&#34;123px&#34;</span>));    <span style="color:#75715e">// 123 (bỏ phần không phải số)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(parseInt(<span style="color:#e6db74">&#34;px123&#34;</span>));    <span style="color:#75715e">// NaN (phải bắt đầu bằng số)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng parseFloat() - lấy số thực
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(parseFloat(<span style="color:#e6db74">&#34;123.45&#34;</span>));   <span style="color:#75715e">// 123.45
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(parseFloat(<span style="color:#e6db74">&#34;123.45px&#34;</span>)); <span style="color:#75715e">// 123.45
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(parseFloat(<span style="color:#e6db74">&#34;px123.45&#34;</span>)); <span style="color:#75715e">// NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Toán tử + (unary plus)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;123&#34;</span>);     <span style="color:#75715e">// 123
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;3.14&#34;</span>);    <span style="color:#75715e">// 3.14
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;hello&#34;</span>);   <span style="color:#75715e">// NaN
+</span></span></span></code></pre></div><h3 id="chuyển-từ-boolean-sang-số">
+<a class="header-anchor" href="#chuy%e1%bb%83n-t%e1%bb%ab-boolean-sang-s%e1%bb%91"></a>
+Chuyển từ boolean sang số
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number(<span style="color:#66d9ef">true</span>));   <span style="color:#75715e">// 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number(<span style="color:#66d9ef">false</span>));  <span style="color:#75715e">// 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">+</span><span style="color:#66d9ef">true</span>);         <span style="color:#75715e">// 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">+</span><span style="color:#66d9ef">false</span>);        <span style="color:#75715e">// 0
+</span></span></span></code></pre></div><h3 id="chuyển-từ-số-sang-chuỗi">
+<a class="header-anchor" href="#chuy%e1%bb%83n-t%e1%bb%ab-s%e1%bb%91-sang-chu%e1%bb%97i"></a>
+Chuyển từ số sang chuỗi
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">123</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">num</span>.<span style="color:#a6e22e">toString</span>());    <span style="color:#75715e">// &#34;123&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(String(<span style="color:#a6e22e">num</span>));       <span style="color:#75715e">// &#34;123&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">num</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#34;</span>);          <span style="color:#75715e">// &#34;123&#34; (nối với chuỗi rỗng)
+</span></span></span></code></pre></div><h2 id="6-precision-và-floating-point">
+<a class="header-anchor" href="#6-precision-v%c3%a0-floating-point"></a>
+6. Precision và Floating Point
+</h2><h3 id="vấn-đề-độ-chính-xác-số-thực">
+<a class="header-anchor" href="#v%e1%ba%a5n-%c4%91%e1%bb%81-%c4%91%e1%bb%99-ch%c3%adnh-x%c3%a1c-s%e1%bb%91-th%e1%bb%b1c"></a>
+Vấn đề độ chính xác số thực
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Vấn đề nổi tiếng của số thực
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">0.1</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.2</span>);           <span style="color:#75715e">// 0.30000000000000004 (không phải 0.3!)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">0.1</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.2</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0.3</span>);   <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Cách xử lý
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>((<span style="color:#ae81ff">0.1</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.2</span>).<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">1</span>));  <span style="color:#75715e">// &#34;0.3&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">+</span>(<span style="color:#ae81ff">0.1</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.2</span>).<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">1</span>)); <span style="color:#75715e">// 0.3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Hoặc dùng epsilon để so sánh
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">isEqual</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Math.<span style="color:#a6e22e">abs</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">b</span>) <span style="color:#f92672">&lt;</span> Number.<span style="color:#a6e22e">EPSILON</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">isEqual</span>(<span style="color:#ae81ff">0.1</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.2</span>, <span style="color:#ae81ff">0.3</span>)); <span style="color:#75715e">// true
+</span></span></span></code></pre></div><h3 id="làm-tròn-số">
+<a class="header-anchor" href="#l%c3%a0m-tr%c3%b2n-s%e1%bb%91"></a>
+Làm tròn số
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.14159</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">num</span>.<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">2</span>));      <span style="color:#75715e">// &#34;3.14&#34; (chuỗi)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">+</span><span style="color:#a6e22e">num</span>.<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">2</span>));     <span style="color:#75715e">// 3.14 (số)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">num</span>.<span style="color:#a6e22e">toPrecision</span>(<span style="color:#ae81ff">3</span>));  <span style="color:#75715e">// &#34;3.14&#34; (3 chữ số có nghĩa)
+</span></span></span></code></pre></div><h2 id="7-kiểm-tra-kiểu-số">
+<a class="header-anchor" href="#7-ki%e1%bb%83m-tra-ki%e1%bb%83u-s%e1%bb%91"></a>
+7. Kiểm Tra Kiểu Số
+</h2><h3 id="các-phương-thức-kiểm-tra">
+<a class="header-anchor" href="#c%c3%a1c-ph%c6%b0%c6%a1ng-th%e1%bb%a9c-ki%e1%bb%83m-tra"></a>
+Các phương thức kiểm tra
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Kiểm tra có phải số không
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#ae81ff">123</span>);          <span style="color:#75715e">// &#34;number&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number.<span style="color:#a6e22e">isInteger</span>(<span style="color:#ae81ff">123</span>)); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number.<span style="color:#a6e22e">isInteger</span>(<span style="color:#ae81ff">123.45</span>)); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Kiểm tra số hữu hạn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number.isFinite(<span style="color:#ae81ff">123</span>));     <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number.isFinite(<span style="color:#66d9ef">Infinity</span>)); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number.isFinite(<span style="color:#66d9ef">NaN</span>));     <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Kiểm tra số an toàn (safe integer)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number.isSafeInteger(<span style="color:#ae81ff">123</span>)); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number.isSafeInteger(<span style="color:#ae81ff">9007199254740992</span>)); <span style="color:#75715e">// false
+</span></span></span></code></pre></div><h2 id="8-ví-dụ-thực-tế">
+<a class="header-anchor" href="#8-v%c3%ad-d%e1%bb%a5-th%e1%bb%b1c-t%e1%ba%bf"></a>
+8. Ví Dụ Thực Tế
+</h2><h3 id="tính-toán-cơ-bản">
+<a class="header-anchor" href="#t%c3%adnh-to%c3%a1n-c%c6%a1-b%e1%ba%a3n"></a>
+Tính toán cơ bản
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Tính diện tích hình tròn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">calculateCircleArea</span>(<span style="color:#a6e22e">radius</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>Number.isFinite(<span style="color:#a6e22e">radius</span>) <span style="color:#f92672">||</span> <span style="color:#a6e22e">radius</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">NaN</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Math.<span style="color:#a6e22e">PI</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">radius</span> <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">calculateCircleArea</span>(<span style="color:#ae81ff">5</span>));     <span style="color:#75715e">// 78.54
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">calculateCircleArea</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>));    <span style="color:#75715e">// NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">calculateCircleArea</span>(<span style="color:#e6db74">&#34;abc&#34;</span>)); <span style="color:#75715e">// NaN
+</span></span></span></code></pre></div><h3 id="xử-lý-tiền-tệ">
+<a class="header-anchor" href="#x%e1%bb%ad-l%c3%bd-ti%e1%bb%81n-t%e1%bb%87"></a>
+Xử lý tiền tệ
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">formatCurrency</span>(<span style="color:#a6e22e">amount</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>Number.isFinite(<span style="color:#a6e22e">amount</span>)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Invalid amount&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">amount</span>.<span style="color:#a6e22e">toLocaleString</span>(<span style="color:#e6db74">&#39;vi-VN&#39;</span>, {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">style</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;currency&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">currency</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;VND&#39;</span>
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">formatCurrency</span>(<span style="color:#ae81ff">1000000</span>));  <span style="color:#75715e">// &#34;1.000.000 ₫&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">formatCurrency</span>(<span style="color:#66d9ef">NaN</span>));      <span style="color:#75715e">// &#34;Invalid amount&#34;
+</span></span></span></code></pre></div><h3 id="validation-đầu-vào">
+<a class="header-anchor" href="#validation-%c4%91%e1%ba%a7u-v%c3%a0o"></a>
+Validation đầu vào
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">validateAge</span>(<span style="color:#a6e22e">input</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Chuyển đổi đầu vào thành số
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> Number(<span style="color:#a6e22e">input</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Kiểm tra tính hợp lệ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (Number.isNaN(<span style="color:#a6e22e">age</span>)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">valid</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Tuổi phải là số&#34;</span> };
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>Number.<span style="color:#a6e22e">isInteger</span>(<span style="color:#a6e22e">age</span>)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">valid</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Tuổi phải là số nguyên&#34;</span> };
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">age</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">age</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">150</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">valid</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Tuổi không hợp lệ&#34;</span> };
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">valid</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">age</span> };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Test
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">validateAge</span>(<span style="color:#e6db74">&#34;25&#34;</span>));     <span style="color:#75715e">// { valid: true, age: 25 }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">validateAge</span>(<span style="color:#e6db74">&#34;25.5&#34;</span>));   <span style="color:#75715e">// { valid: false, message: &#34;Tuổi phải là số nguyên&#34; }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">validateAge</span>(<span style="color:#e6db74">&#34;abc&#34;</span>));    <span style="color:#75715e">// { valid: false, message: &#34;Tuổi phải là số&#34; }
+</span></span></span></code></pre></div><h2 id="9-lưu-ý-quan-trọng">
+<a class="header-anchor" href="#9-l%c6%b0u-%c3%bd-quan-tr%e1%bb%8dng"></a>
+9. Lưu Ý Quan Trọng
+</h2><h3 id="1-so-sánh-số-thực">
+<a class="header-anchor" href="#1-so-s%c3%a1nh-s%e1%bb%91-th%e1%bb%b1c"></a>
+1. So sánh số thực
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Sai cách
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">0.1</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.2</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0.3</span>); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Đúng cách
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">almostEqual</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>, <span style="color:#a6e22e">epsilon</span> <span style="color:#f92672">=</span> Number.<span style="color:#a6e22e">EPSILON</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Math.<span style="color:#a6e22e">abs</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">b</span>) <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">epsilon</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">almostEqual</span>(<span style="color:#ae81ff">0.1</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.2</span>, <span style="color:#ae81ff">0.3</span>)); <span style="color:#75715e">// true
+</span></span></span></code></pre></div><h3 id="2-kiểm-tra-nan">
+<a class="header-anchor" href="#2-ki%e1%bb%83m-tra-nan"></a>
+2. Kiểm tra NaN
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Sai cách
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">NaN</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">NaN</span>); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Đúng cách  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Number.isNaN(<span style="color:#66d9ef">NaN</span>)); <span style="color:#75715e">// true
+</span></span></span></code></pre></div><h3 id="3-chuyển-đổi-kiểu-an-toàn">
+<a class="header-anchor" href="#3-chuy%e1%bb%83n-%c4%91%e1%bb%95i-ki%e1%bb%83u-an-to%c3%a0n"></a>
+3. Chuyển đổi kiểu an toàn
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">safeNumber</span>(<span style="color:#a6e22e">value</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">=</span> Number(<span style="color:#a6e22e">value</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Number.isNaN(<span style="color:#a6e22e">num</span>) <span style="color:#f92672">?</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">num</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">safeNumber</span>(<span style="color:#e6db74">&#34;123&#34;</span>));   <span style="color:#75715e">// 123
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">safeNumber</span>(<span style="color:#e6db74">&#34;abc&#34;</span>));   <span style="color:#75715e">// 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">safeNumber</span>(<span style="color:#66d9ef">null</span>));    <span style="color:#75715e">// 0
+</span></span></span></code></pre></div><h2 id="10-tóm-tắt">
+<a class="header-anchor" href="#10-t%c3%b3m-t%e1%ba%aft"></a>
+10. Tóm Tắt
+</h2><h3 id="điểm-chính-cần-nhớ">
+<a class="header-anchor" href="#%c4%91i%e1%bb%83m-ch%c3%adnh-c%e1%ba%a7n-nh%e1%bb%9b"></a>
+Điểm chính cần nhớ:
+</h3><ol>
+<li>
+<p><strong>JavaScript chỉ có một kiểu số:</strong> <code>Number</code> (bao gồm cả số nguyên và số thực)</p>
+</li>
+<li>
+<p><strong>Giá trị đặc biệt:</strong></p>
+<ul>
+<li><code>Infinity</code>: Kết quả chia cho 0 hoặc số quá lớn</li>
+<li><code>NaN</code>: Kết quả phép toán không hợp lệ</li>
+</ul>
+</li>
+<li>
+<p><strong>Toán tử số học:</strong> <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>**</code></p>
+</li>
+<li>
+<p><strong>Chuyển đổi kiểu:</strong></p>
+<ul>
+<li><code>Number()</code>, <code>parseInt()</code>, <code>parseFloat()</code></li>
+<li><code>toString()</code>, <code>String()</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Kiểm tra giá trị:</strong></p>
+<ul>
+<li><code>Number.isNaN()</code>, <code>Number.isFinite()</code></li>
+<li><code>Number.isInteger()</code>, <code>Number.isSafeInteger()</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Vấn đề độ chính xác:</strong> Số thực có thể có sai số, cần xử lý cẩn thận</p>
+</li>
+</ol>
+<h3 id="best-practices">
+<a class="header-anchor" href="#best-practices"></a>
+Best Practices:
+</h3><ul>
+<li>Sử dụng <code>Number.isNaN()</code> thay vì <code>isNaN()</code></li>
+<li>Kiểm tra input trước khi thực hiện phép toán</li>
+<li>Cẩn thận với phép so sánh số thực</li>
+<li>Sử dụng <code>Number.isFinite()</code> để kiểm tra số hợp lệ</li>
+</ul>
+<p>Hiểu rõ về kiểu dữ liệu Number sẽ giúp bạn tránh được nhiều lỗi phổ biến và xử lý dữ liệu số một cách chính xác trong JavaScript!</p>
+</div>
+    <footer class="article-footer">
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="JavaScript Cơ Bản - Bài 09: Thuộc Tính Và Phương Thức Của Số"
+              class="lazyload"
+            /><a
+          href="/posts/javascript-co-ban-bai-09/"
+          aria-label="Prev:JavaScript Cơ Bản - Bài 09: Thuộc Tính Và Phương Thức Của Số"
+          title="Prev:JavaScript Cơ Bản - Bài 09: Thuộc Tính Và Phương Thức Của Số"
+        ></a>
+        <div class="article-nav-caption">Prev</div>
+        <h3 class="article-nav-title">JavaScript Cơ Bản - Bài 09: Thuộc Tính Và Phương Thức Của Số</h3>
+      </div><div class="article-nav-link-wrap right"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="JavaScript Cơ Bản - Bài 07: Bài Tập Về Biến"
+              class="lazyload"
+            /><a
+          href="/posts/javascript-co-ban-bai-07/"
+          aria-label="Next:JavaScript Cơ Bản - Bài 07: Bài Tập Về Biến"
+          title="Next:JavaScript Cơ Bản - Bài 07: Bài Tập Về Biến"
+        ></a>
+        <div class="article-nav-caption">Next</div>
+        <h3 class="article-nav-title">JavaScript Cơ Bản - Bài 07: Bài Tập Về Biến</h3>
+      </div></nav></article></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2020-2025<span class="footer-info-sep rotate"></span>
+      Đoàn Đức Long
+    </div><div>
+        Powered by&nbsp;<a
+          href="https://gohugo.io/"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Hugo</a
+        >&nbsp; Theme.<a
+          href="https://github.com/D-Sketon/hugo-theme-reimu"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Reimu</a
+        >
+      </div><div>
+        <span class="icon-brush"
+          >&nbsp;68.5k</span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;05:53</span>
+      </div><div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >Number of visits&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >Number of visitors&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><div class="sidebar-toc-card" aria-label="Table of contents">
+	<h3 class="toc-title">Contents</h3>
+	<div class="sidebar-toc-wrapper toc-div-class" data-toc="sidebar">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#video-hướng-dẫn">Video Hướng Dẫn</a></li>
+    <li><a href="#1-giới-thiệu-về-kiểu-number">1. Giới Thiệu Về Kiểu Number</a>
+      <ul>
+        <li><a href="#đặc-điểm-chung">Đặc điểm chung</a></li>
+        <li><a href="#phạm-vi-giá-trị">Phạm vi giá trị</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-cách-khai-báo-số">2. Cách Khai Báo Số</a>
+      <ul>
+        <li><a href="#khai-báo-cơ-bản">Khai báo cơ bản</a></li>
+        <li><a href="#các-hệ-số-khác-nhau">Các hệ số khác nhau</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-giá-trị-đặc-biệt">3. Giá Trị Đặc Biệt</a>
+      <ul>
+        <li><a href="#infinity-vô-cùng">Infinity (Vô cùng)</a></li>
+        <li><a href="#nan-not-a-number">NaN (Not a Number)</a></li>
+        <li><a href="#so-sánh-isnan-và-numberisnan">So sánh isNaN() và Number.isNaN()</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-toán-tử-số-học">4. Toán Tử Số Học</a>
+      <ul>
+        <li><a href="#toán-tử-cơ-bản">Toán tử cơ bản</a></li>
+        <li><a href="#thứ-tự-ưu-tiên-toán-tử">Thứ tự ưu tiên toán tử</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-chuyển-đổi-kiểu-dữ-liệu">5. Chuyển Đổi Kiểu Dữ Liệu</a>
+      <ul>
+        <li><a href="#chuyển-từ-chuỗi-sang-số">Chuyển từ chuỗi sang số</a></li>
+        <li><a href="#chuyển-từ-boolean-sang-số">Chuyển từ boolean sang số</a></li>
+        <li><a href="#chuyển-từ-số-sang-chuỗi">Chuyển từ số sang chuỗi</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-precision-và-floating-point">6. Precision và Floating Point</a>
+      <ul>
+        <li><a href="#vấn-đề-độ-chính-xác-số-thực">Vấn đề độ chính xác số thực</a></li>
+        <li><a href="#làm-tròn-số">Làm tròn số</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-kiểm-tra-kiểu-số">7. Kiểm Tra Kiểu Số</a>
+      <ul>
+        <li><a href="#các-phương-thức-kiểm-tra">Các phương thức kiểm tra</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-ví-dụ-thực-tế">8. Ví Dụ Thực Tế</a>
+      <ul>
+        <li><a href="#tính-toán-cơ-bản">Tính toán cơ bản</a></li>
+        <li><a href="#xử-lý-tiền-tệ">Xử lý tiền tệ</a></li>
+        <li><a href="#validation-đầu-vào">Validation đầu vào</a></li>
+      </ul>
+    </li>
+    <li><a href="#9-lưu-ý-quan-trọng">9. Lưu Ý Quan Trọng</a>
+      <ul>
+        <li><a href="#1-so-sánh-số-thực">1. So sánh số thực</a></li>
+        <li><a href="#2-kiểm-tra-nan">2. Kiểm tra NaN</a></li>
+        <li><a href="#3-chuyển-đổi-kiểu-an-toàn">3. Chuyển đổi kiểu an toàn</a></li>
+      </ul>
+    </li>
+    <li><a href="#10-tóm-tắt">10. Tóm Tắt</a>
+      <ul>
+        <li><a href="#điểm-chính-cần-nhớ">Điểm chính cần nhớ:</a></li>
+        <li><a href="#best-practices">Best Practices:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+	</div>
+  
+	
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/images/avatar.png"
+    data-sizes="auto"
+    alt="Đoàn Đức Long"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Đoàn Đức Long</div>
+  <div class="sidebar-description">Blog chia sẻ học tập và kiến thức về code, công nghệ và các dự án cá nhân</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div><div class="sidebar-state-number">65</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      6
+    </div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-discord sidebar-social-icon">
+      <a
+        href="https://discord.com/users/757589425466245182"
+        itemprop="url"
+        target="_blank"
+        aria-label="discord"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-facebook sidebar-social-icon">
+      <a
+        href="https://www.facebook.com/iouas.04"
+        itemprop="url"
+        target="_blank"
+        aria-label="facebook"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/longdoan2k4"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-instagram sidebar-social-icon">
+      <a
+        href="https://www.instagram.com/oglas.z3_/"
+        itemprop="url"
+        target="_blank"
+        aria-label="instagram"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="Home"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Home</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="Archives"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Archives</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="About"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">About</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="Friend"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Friend</div>
+    </div></div></div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous" ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script><script
+    src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js"
+    integrity="sha384-8LyaidD9GPxQQgLJO/WRw/O2h3BoNq/ApI/ecpvM6RsrCz2qP2ppBXUKihP4V/2d" crossorigin="anonymous"></script><script>
+  if (window.firework) {
+    const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+    options.excludeElements = options.excludeelements;
+    delete options.excludeelements;
+    window.firework(options);
+  }
+</script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "Đoàn Đức Long",
+          title: "JavaScript Cơ Bản - Bài 08: Kiểu Dữ Liệu Số (Number)",
+          url: "https:\/\/doandduclong.github.io\/posts\/javascript-co-ban-bai-08\/",
+          description: "Tìm hiểu về kiểu dữ liệu số trong JavaScript - số nguyên, số thực, Infinity, NaN và các toán tử số học cơ bản",
+          cover: "https:\/\/doandduclong.github.io\/images\/banner.webp",
+        };
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script></div>
+</div>
+
+<script
+    src="/js/toc-sidebar.js"
+    deferdata-pjax></script><script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    asyncintegrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script><script src="/js/search.js"></script></body>
+</html>

@@ -1,0 +1,1502 @@
+<!doctype html>
+<html
+  lang="vi-vn" 
+  data-theme-mode="auto"
+  >
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  Unity Game Cơ Bản - Bài 4.2: Animated Tiles - Sóng Nước và Cây Lắc Lư | Đoàn Đức Long
+</title>
+<meta
+  name="description"
+  content="Hướng dẫn tạo và sử dụng Animated Tiles để làm thế giới game sống động với sóng nước, cây lắc lư và đá có bọt biển"
+/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://doandduclong.github.io/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" />
+<meta property="og:type" content="website" />
+  <meta property="og:title" content="Unity Game Cơ Bản - Bài 4.2: Animated Tiles - Sóng Nước và Cây Lắc Lư | Đoàn Đức Long" />
+  <meta
+    property="og:description"
+    content="Hướng dẫn tạo và sử dụng Animated Tiles để làm thế giới game sống động với sóng nước, cây lắc lư và đá có bọt biển"
+  />
+  <meta property="og:url" content="https://doandduclong.github.io/posts/unity-animated-tiles-tutorial/" />
+  <meta
+    property="og:site_name"
+    content="Đoàn Đức Long - Tech Blog"
+  />
+  <meta
+    property="og:image"
+    content="/"
+  />
+  <meta property="article:author" content="Đoàn Đức Long" />
+  <meta property="article:published_time" content="2025-10-21T13:00:00&#43;07:00" />
+  <meta property="article:modified_time" content="2025-10-21T13:00:00&#43;07:00" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.030bf20ad33bf6086328005695d5aecf4e3252819f7b6c64892b3dd33ad2e2ed.css" />
+<link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css"
+    integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz&#43;YI" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/>
+
+<link rel="stylesheet" href="/css/custom-posts.min.c23bccebedc11d0eca845bea6af4b5b6337c6a67b36703c043bee39e9f606cb0.css" integrity="sha256-wjvM6&#43;3BHQ7KhFvqavS1tjN8amezZwPAQ77jnp9gbLA=">
+<link rel="stylesheet" href="/css/fixes.css"></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+          M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg></div><div class="loading-word">Loading...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+This article does not have a corresponding language version
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/">Home</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/archives">Archives</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/about">About</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/friend">Friend</a>
+      </span><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+    <a id="nav-search-btn" class="nav-icon" title="Tìm kiếm" aria-label="Tìm kiếm" onclick="toggleSearch()"></a>
+  </nav></div>
+
+
+<div id="search-overlay" class="search-overlay" style="display: none;">
+  <div class="search-container">
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="Tìm kiếm bài viết..." autocomplete="off">
+      <button type="button" id="close-search" onclick="closeSearch()">✕</button>
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+</div><style>
+:root {
+  --cover-background: transparent;
+  --site-cover-background: transparent;
+}
+.header-cover-rgb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150%;
+  z-index: -2;
+  display: block;
+  mask: linear-gradient(to top, transparent, #fff 50%);
+}
+.header-cover-params {
+  background: var(--cover-background);
+}
+.header-cover-site {
+  background: var(--site-cover-background);
+}
+</style>
+
+<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="Unity Game Cơ Bản - Bài 4.2: Animated Tiles - Sóng Nước và Cây Lắc Lư"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">Unity Game Cơ Bản - Bài 4.2: Animated Tiles - Sóng Nước và Cây Lắc Lư</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header>
+
+<style>
+ 
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(20, 20, 30, 0.95) 0%,
+    rgba(40, 40, 60, 0.95) 50%,
+    rgba(60, 30, 40, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 15vh;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.search-container {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-box {
+  position: relative;
+  margin-bottom: 2rem;
+  width: 450px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 1rem 3.5rem 1rem 1.5rem;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+.search-box input:focus {
+  border-color: rgba(255, 107, 107, 0.8);
+  box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.2),
+              0 8px 32px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+}
+
+
+
+#close-search {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 107, 107, 0.2);
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#close-search:hover {
+  background: rgba(255, 107, 107, 0.4);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.search-results {
+  max-height: 50vh;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 0;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease-out;
+  width: 450px;
+  box-sizing: border-box;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+ 
+.search-results::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-results::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background: rgba(255, 107, 107, 0.5);
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 107, 107, 0.7);
+}
+
+.search-result-item {
+  padding: 1rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0;
+  margin-bottom: 1px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(5px);
+}
+
+.search-result-item:first-child {
+  border-radius: 14px 14px 0 0;
+  margin-top: 1.5rem;
+}
+
+.search-result-item:last-child {
+  border-radius: 0 0 14px 14px;
+  margin-bottom: 1.5rem;
+}
+
+.search-result-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 107, 107, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(255, 107, 107, 0.15);
+}
+
+.search-result-item:last-child {
+  margin-bottom: 0;
+}
+
+.search-result-title {
+  color: #ff9999;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.search-result-item:hover .search-result-title {
+  color: #ff6b6b;
+}
+
+.search-result-category {
+  display: inline-block;
+  background: linear-gradient(45deg, rgba(255, 107, 107, 0.2), rgba(255, 150, 150, 0.2));
+  color: #ffaaaa;
+  padding: 0.2rem 0.6rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  transition: all 0.2s ease;
+}
+
+.search-result-item:hover .search-result-category {
+  background: linear-gradient(45deg, rgba(255, 107, 107, 0.3), rgba(255, 150, 150, 0.3));
+  color: #ff6b6b;
+  border-color: rgba(255, 107, 107, 0.5);
+}
+
+ 
+#nav-search-btn {
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#nav-search-btn:hover {
+  color: #ff6b6b;
+  transform: scale(1.1);
+}
+</style>
+
+<script>
+
+let allPosts = [];
+let searchIndex = null;
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  initializeSearch();
+});
+
+function toggleSearch() {
+  const overlay = document.getElementById('search-overlay');
+  const searchInput = document.getElementById('search-input');
+  
+  if (overlay.style.display === 'none' || overlay.style.display === '') {
+    
+    overlay.style.display = 'flex';
+    overlay.style.animation = 'fadeIn 0.3s ease-out forwards';
+    
+    
+    setTimeout(() => {
+      searchInput.focus();
+    }, 150);
+    
+    document.body.style.overflow = 'hidden';
+  } else {
+    closeSearch();
+  }
+}
+
+function closeSearch() {
+  const overlay = document.getElementById('search-overlay');
+  const searchInput = document.getElementById('search-input');
+  const results = document.getElementById('search-results');
+  
+  
+  showAllResults = false;
+  
+  
+  overlay.style.animation = 'fadeOut 0.3s ease-out forwards';
+  
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    searchInput.value = '';
+    results.innerHTML = '';
+    document.body.style.overflow = '';
+    overlay.style.animation = ''; 
+  }, 300);
+}
+
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeSearch();
+  }
+  
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    toggleSearch();
+  }
+});
+
+
+async function initializeSearch() {
+  try {
+    const response = await fetch('/index.json');
+    const data = await response.json();
+    allPosts = data;
+    
+    
+    const searchInput = document.getElementById('search-input');
+    let searchTimeout;
+    
+    searchInput.addEventListener('input', function() {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        performSearch(this.value);
+      }, 300);
+    });
+    
+  } catch (error) {
+    console.error('Error loading search data:', error);
+  }
+}
+
+function performSearch(query) {
+  const results = document.getElementById('search-results');
+  
+  if (!query || query.length < 2) {
+    results.innerHTML = '';
+    return;
+  }
+  
+  const searchQuery = query.toLowerCase();
+  const matches = allPosts.filter(post => {
+    return post.title.toLowerCase().includes(searchQuery) ||
+           post.content.toLowerCase().includes(searchQuery) ||
+           (post.categories && post.categories.some(cat => cat.toLowerCase().includes(searchQuery))) ||
+           (post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchQuery)));
+  });
+  
+  displaySearchResults(matches, query);
+}
+
+let showAllResults = false;
+
+function displaySearchResults(matches, query) {
+  const results = document.getElementById('search-results');
+  
+  if (matches.length === 0) {
+    results.innerHTML = '<div style="color: rgba(255,255,255,0.7); text-align: center; padding: 3rem 1.5rem;">Không tìm thấy kết quả nào cho "' + query + '"</div>';
+    return;
+  }
+  
+  const totalResults = matches.length;
+  const displayLimit = showAllResults ? totalResults : 8;
+  const itemsToShow = matches.slice(0, displayLimit);
+  
+  results.innerHTML = `
+    <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0; padding: 1.5rem 1.5rem 0 1.5rem;">
+      Tìm thấy ${totalResults} bài viết cho "${query}"
+    </div>
+  `;
+  
+  const html = itemsToShow.map(post => {
+    const title = highlightText(post.title, query);
+    const category = post.categories && post.categories.length > 0 ? post.categories[0] : '';
+    const date = post.date || '';
+    
+    return `
+      <div class="search-result-item" onclick="navigateToPost('${post.uri}')">
+        <div class="search-result-title">${title}</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.3rem;">
+          ${category ? `<span class="search-result-category">${category}</span>` : '<span></span>'}
+          ${date ? `<span style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">${date}</span>` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+  
+  results.innerHTML += html;
+  
+  if (totalResults > 8 && !showAllResults) {
+    results.innerHTML += `
+      <div style="color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem;">
+        <button onclick="toggleShowAllResults('${query}')" style="
+          background: rgba(255, 107, 107, 0.2);
+          border: 1px solid rgba(255, 107, 107, 0.4);
+          color: #ff6b6b;
+          padding: 0.8rem 1.5rem;
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+        " onmouseover="this.style.background='rgba(255, 107, 107, 0.3)'" onmouseout="this.style.background='rgba(255, 107, 107, 0.2)'">
+          Xem tất cả ${totalResults} bài viết
+        </button>
+      </div>
+    `;
+  } else if (showAllResults && totalResults > 8) {
+    results.innerHTML += `
+      <div style="color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem;">
+        <button onclick="toggleShowAllResults('${query}')" style="
+          background: rgba(255, 107, 107, 0.2);
+          border: 1px solid rgba(255, 107, 107, 0.4);
+          color: #ff6b6b;
+          padding: 0.8rem 1.5rem;
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+        " onmouseover="this.style.background='rgba(255, 107, 107, 0.3)'" onmouseout="this.style.background='rgba(255, 107, 107, 0.2)'">
+          Thu gọn kết quả
+        </button>
+      </div>
+    `;
+  }
+}
+
+function toggleShowAllResults(query) {
+  showAllResults = !showAllResults;
+  performSearch(query);
+}
+
+function highlightText(text, query) {
+  if (!query) return text;
+  const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+  return text.replace(regex, '<mark style="background: rgba(255,107,107,0.3); color: #fff;">$1</mark>');
+}
+
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function navigateToPost(uri) {
+  window.location.href = uri;
+}
+</script><div id="content"
+          aria-label="Page content"
+          
+          class="sidebar-right"  ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><div class="sidebar-toc-card" aria-label="Table of contents">
+	<h3 class="toc-title">Contents</h3>
+	<div class="sidebar-toc-wrapper toc-div-class" data-toc="sidebar">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#video-hướng-dẫn">Video Hướng Dẫn</a></li>
+    <li><a href="#ôn-tập-các-bài-trước">Ôn Tập Các Bài Trước</a></li>
+    <li><a href="#mục-tiêu-của-bài-học">Mục Tiêu Của Bài Học</a>
+      <ul>
+        <li><a href="#chúng-ta-sẽ-tạo">Chúng ta sẽ tạo:</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-1-chuẩn-bị-sprite-assets">Bước 1: Chuẩn Bị Sprite Assets</a>
+      <ul>
+        <li><a href="#11-import-và-organize-sprites">1.1. Import và organize sprites</a></li>
+        <li><a href="#12-cấu-hình-sprite-import-settings">1.2. Cấu hình Sprite Import Settings</a></li>
+        <li><a href="#13-slice-sprite-sheets">1.3. Slice Sprite Sheets</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-2-tạo-animated-tiles">Bước 2: Tạo Animated Tiles</a>
+      <ul>
+        <li><a href="#21-tạo-water-animated-tile">2.1. Tạo Water Animated Tile</a></li>
+        <li><a href="#22-cấu-hình-water-animation">2.2. Cấu hình Water Animation</a></li>
+        <li><a href="#23-tạo-tree-swaying-animated-tile">2.3. Tạo Tree Swaying Animated Tile</a></li>
+        <li><a href="#24-tạo-foamy-rocks-animated-tile">2.4. Tạo Foamy Rocks Animated Tile</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-3-organize-tile-palette">Bước 3: Organize Tile Palette</a>
+      <ul>
+        <li><a href="#31-tạo-animated-tile-palette-riêng">3.1. Tạo Animated Tile Palette riêng</a></li>
+        <li><a href="#32-thêm-animated-tiles-vào-palette">3.2. Thêm Animated Tiles vào Palette</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-4-thiết-lập-tilemap-layers-cho-animations">Bước 4: Thiết Lập Tilemap Layers Cho Animations</a>
+      <ul>
+        <li><a href="#41-tạo-layers-mới-cho-animated-content">4.1. Tạo layers mới cho animated content</a></li>
+        <li><a href="#42-cấu-hình-layer-properties">4.2. Cấu hình layer properties</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-5-painting-animated-environment">Bước 5: Painting Animated Environment</a>
+      <ul>
+        <li><a href="#51-paint-water-areas">5.1. Paint Water Areas</a></li>
+        <li><a href="#52-paint-trees-với-kỹ-thuật-layering">5.2. Paint Trees với kỹ thuật layering</a></li>
+        <li><a href="#53-paint-foamy-rocks">5.3. Paint Foamy Rocks</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-6-advanced-animation-techniques">Bước 6: Advanced Animation Techniques</a>
+      <ul>
+        <li><a href="#61-tạo-tile-animation-rules">6.1. Tạo Tile Animation Rules</a></li>
+        <li><a href="#62-synchronization-vs-randomization">6.2. Synchronization vs Randomization</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-7-performance-optimization">Bước 7: Performance Optimization</a>
+      <ul>
+        <li><a href="#71-tilemap-renderer-settings">7.1. Tilemap Renderer Settings</a></li>
+        <li><a href="#72-animation-optimization">7.2. Animation Optimization</a></li>
+        <li><a href="#73-lod-cho-animated-tiles">7.3. LOD cho Animated Tiles</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-8-advanced-features">Bước 8: Advanced Features</a>
+      <ul>
+        <li><a href="#81-seasonal-animation-changes">8.1. Seasonal Animation Changes</a></li>
+        <li><a href="#82-interactive-animated-tiles">8.2. Interactive Animated Tiles</a></li>
+      </ul>
+    </li>
+    <li><a href="#troubleshooting">Troubleshooting</a>
+      <ul>
+        <li><a href="#lỗi-thường-gặp">Lỗi thường gặp:</a></li>
+      </ul>
+    </li>
+    <li><a href="#kiến-thức-đã-học">Kiến Thức Đã Học</a></li>
+    <li><a href="#bài-tập-thực-hành">Bài Tập Thực Hành</a></li>
+    <li><a href="#chuẩn-bị-cho-bài-tiếp-theo">Chuẩn Bị Cho Bài Tiếp Theo</a></li>
+    <li><a href="#lưu-ý-quan-trọng">Lưu Ý Quan Trọng</a></li>
+  </ul>
+</nav>
+	</div>
+  
+	
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/images/avatar.png"
+    data-sizes="auto"
+    alt="Đoàn Đức Long"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Đoàn Đức Long</div>
+  <div class="sidebar-description">Blog chia sẻ học tập và kiến thức về code, công nghệ và các dự án cá nhân</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div><div class="sidebar-state-number">65</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      6
+    </div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-discord sidebar-social-icon">
+      <a
+        href="https://discord.com/users/757589425466245182"
+        itemprop="url"
+        target="_blank"
+        aria-label="discord"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-facebook sidebar-social-icon">
+      <a
+        href="https://www.facebook.com/iouas.04"
+        itemprop="url"
+        target="_blank"
+        aria-label="facebook"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/longdoan2k4"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-instagram sidebar-social-icon">
+      <a
+        href="https://www.instagram.com/oglas.z3_/"
+        itemprop="url"
+        target="_blank"
+        aria-label="instagram"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="Home"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Home</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="Archives"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Archives</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="About"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">About</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="Friend"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Friend</div>
+    </div></div></div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2025-10-21 13:00:00 &#43;0700 &#43;07" itemprop="datePublished"
+      >2025-10-21</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2025-10-21</time
+    >
+  </span></div>
+<div class="article-category"><a
+      class="article-category-link"
+      href="/categories/unity-game-c%c6%a1-b%e1%ba%a3n"
+      data-aos="zoom-in"
+      >UNITY GAME CƠ BẢN</a
+    ></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h1 id="unity-game-cơ-bản---bài-42-animated-tiles---sóng-nước-và-cây-lắc-lư">
+<a class="header-anchor" href="#unity-game-c%c6%a1-b%e1%ba%a3n---b%c3%a0i-42-animated-tiles---s%c3%b3ng-n%c6%b0%e1%bb%9bc-v%c3%a0-c%c3%a2y-l%e1%ba%afc-l%c6%b0"></a>
+Unity Game Cơ Bản - Bài 4.2: Animated Tiles - Sóng Nước và Cây Lắc Lư
+</h1><p>Chào mừng các bạn quay trở lại với series Unity Game cơ bản! Trong bài thứ sáu này, chúng ta sẽ học cách sử dụng <strong>Animated Tiles</strong> để biến thế giới tĩnh lặng thành một môi trường sống động với sóng nước cuồn cuộn, cây cối lắc lư trong gió và những chi tiết nhỏ khiến game trở nên hấp dẫn hơn.</p>
+<h2 id="video-hướng-dẫn">
+<a class="header-anchor" href="#video-h%c6%b0%e1%bb%9bng-d%e1%ba%abn"></a>
+Video Hướng Dẫn
+</h2><div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/XlecVMb9h0U?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<h2 id="ôn-tập-các-bài-trước">
+<a class="header-anchor" href="#%c3%b4n-t%e1%ba%adp-c%c3%a1c-b%c3%a0i-tr%c6%b0%e1%bb%9bc"></a>
+Ôn Tập Các Bài Trước
+</h2><p><strong>Bài 01-04:</strong> ✅ Foundation và Layer Systems<br>
+<strong>Bài 4.1:</strong> ✅ Multi-level Tilemaps và Elevation<br>
+<strong>Bài 4.2:</strong> 🎯 <strong>Animated Tiles cho dynamic environment</strong></p>
+<h2 id="mục-tiêu-của-bài-học">
+<a class="header-anchor" href="#m%e1%bb%a5c-ti%c3%aau-c%e1%bb%a7a-b%c3%a0i-h%e1%bb%8dc"></a>
+Mục Tiêu Của Bài Học
+</h2><h3 id="chúng-ta-sẽ-tạo">
+<a class="header-anchor" href="#ch%c3%bang-ta-s%e1%ba%bd-t%e1%ba%a1o"></a>
+Chúng ta sẽ tạo:
+</h3><ul>
+<li>✅ <strong>Animated water tiles</strong> với sóng nước tự nhiên</li>
+<li>✅ <strong>Swaying trees</strong> với animation lắc lư</li>
+<li>✅ <strong>Foamy rocks</strong> với hiệu ứng bọt biển</li>
+<li>✅ <strong>Optimization</strong> cho performance tốt</li>
+<li>✅ <strong>Tile Palette</strong> organization hiệu quả</li>
+</ul>
+<h2 id="bước-1-chuẩn-bị-sprite-assets">
+<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-1-chu%e1%ba%a9n-b%e1%bb%8b-sprite-assets"></a>
+Bước 1: Chuẩn Bị Sprite Assets
+</h2><h3 id="11-import-và-organize-sprites">
+<a class="header-anchor" href="#11-import-v%c3%a0-organize-sprites"></a>
+1.1. Import và organize sprites
+</h3><pre tabindex="0"><code>Assets/
+└── Sprites/
+    └── Environment/
+        ├── Water/
+        │   ├── water_01.png
+        │   ├── water_02.png
+        │   └── ...
+        ├── Trees/
+        │   ├── tree_sway_01.png
+        │   └── ...
+        └── Rocks/
+            ├── rock_foam_01.png
+            └── ...
+</code></pre><h3 id="12-cấu-hình-sprite-import-settings">
+<a class="header-anchor" href="#12-c%e1%ba%a5u-h%c3%acnh-sprite-import-settings"></a>
+1.2. Cấu hình Sprite Import Settings
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Cho tất cả animated sprites:</span>
+</span></span><span style="display:flex;"><span>Sprite Mode: Multiple
+</span></span><span style="display:flex;"><span>Pixels Per Unit: <span style="color:#ae81ff">64</span>
+</span></span><span style="display:flex;"><span>Filter Mode: Point (no filter)
+</span></span><span style="display:flex;"><span>Format: <span style="color:#ae81ff">32</span>-bit
+</span></span><span style="display:flex;"><span>Compression: None (hoặc Low Compression)
+</span></span></code></pre></div><h3 id="13-slice-sprite-sheets">
+<a class="header-anchor" href="#13-slice-sprite-sheets"></a>
+1.3. Slice Sprite Sheets
+</h3><pre tabindex="0"><code>1. Chọn sprite sheet
+2. Mở Sprite Editor
+3. Slice → Grid by Cell Size
+4. Cell Size: 64x64 pixels
+5. Apply changes
+</code></pre><h2 id="bước-2-tạo-animated-tiles">
+<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-2-t%e1%ba%a1o-animated-tiles"></a>
+Bước 2: Tạo Animated Tiles
+</h2><h3 id="21-tạo-water-animated-tile">
+<a class="header-anchor" href="#21-t%e1%ba%a1o-water-animated-tile"></a>
+2.1. Tạo Water Animated Tile
+</h3><pre tabindex="0"><code>1. Right-click trong Project
+2. Create → 2D → Tiles → Animated Tile
+3. Đặt tên: &#34;Water_Animated&#34;
+4. Lưu trong folder: Assets/Tiles/Animated/
+</code></pre><h3 id="22-cấu-hình-water-animation">
+<a class="header-anchor" href="#22-c%e1%ba%a5u-h%c3%acnh-water-animation"></a>
+2.2. Cấu hình Water Animation
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Trong Animated Tile Inspector:</span>
+</span></span><span style="display:flex;"><span>Number of Animated Sprites: <span style="color:#ae81ff">8</span> (tùy số frame)
+</span></span><span style="display:flex;"><span>Animation Speed: <span style="color:#ae81ff">5.0f</span>
+</span></span><span style="display:flex;"><span>Minimum Speed: <span style="color:#ae81ff">5.0f</span>  
+</span></span><span style="display:flex;"><span>Maximum Speed: <span style="color:#ae81ff">5.0f</span> (cố <span style="color:#960050;background-color:#1e0010">đị</span>nh cho sync)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Kéo từng frame vào slots:</span>
+</span></span><span style="display:flex;"><span>Animated Sprites:
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">├──</span> [<span style="color:#ae81ff">0</span>] water_frame_01
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">├──</span> [<span style="color:#ae81ff">1</span>] water_frame_02  
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">├──</span> [<span style="color:#ae81ff">2</span>] water_frame_03
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">└──</span> ...
+</span></span></code></pre></div><h3 id="23-tạo-tree-swaying-animated-tile">
+<a class="header-anchor" href="#23-t%e1%ba%a1o-tree-swaying-animated-tile"></a>
+2.3. Tạo Tree Swaying Animated Tile
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Tree Animated Tile settings:</span>
+</span></span><span style="display:flex;"><span>Number of Animated Sprites: <span style="color:#ae81ff">4</span>-<span style="color:#ae81ff">5</span> frames
+</span></span><span style="display:flex;"><span>Animation Speed: <span style="color:#ae81ff">2.0f</span> (chậm hơn nước)
+</span></span><span style="display:flex;"><span>Minimum Speed: <span style="color:#ae81ff">1.5f</span>
+</span></span><span style="display:flex;"><span>Maximum Speed: <span style="color:#ae81ff">2.5f</span> (random <span style="color:#960050;background-color:#1e0010">để</span> tự nhiên)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Lưu ý: Không lặp frame đầu ở cuối</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 4-5 frames là đủ cho hiệu ứng mượt mà</span>
+</span></span></code></pre></div><h3 id="24-tạo-foamy-rocks-animated-tile">
+<a class="header-anchor" href="#24-t%e1%ba%a1o-foamy-rocks-animated-tile"></a>
+2.4. Tạo Foamy Rocks Animated Tile
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Rock Foam settings:</span>
+</span></span><span style="display:flex;"><span>Number of Animated Sprites: <span style="color:#ae81ff">6</span> frames
+</span></span><span style="display:flex;"><span>Animation Speed: <span style="color:#ae81ff">3.0f</span>
+</span></span><span style="display:flex;"><span>Minimum Speed: <span style="color:#ae81ff">2.5f</span>
+</span></span><span style="display:flex;"><span>Maximum Speed: <span style="color:#ae81ff">3.5f</span> (slight randomization)
+</span></span></code></pre></div><h2 id="bước-3-organize-tile-palette">
+<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-3-organize-tile-palette"></a>
+Bước 3: Organize Tile Palette
+</h2><h3 id="31-tạo-animated-tile-palette-riêng">
+<a class="header-anchor" href="#31-t%e1%ba%a1o-animated-tile-palette-ri%c3%aang"></a>
+3.1. Tạo Animated Tile Palette riêng
+</h3><pre tabindex="0"><code>Window → 2D → Tile Palette
+Create New Palette: &#34;Animated_Environment&#34;
+Grid: Rectangle
+Cell Size: Automatic
+</code></pre><h3 id="32-thêm-animated-tiles-vào-palette">
+<a class="header-anchor" href="#32-th%c3%aam-animated-tiles-v%c3%a0o-palette"></a>
+3.2. Thêm Animated Tiles vào Palette
+</h3><pre tabindex="0"><code>1. Kéo các Animated Tiles vào Palette
+2. Organize theo categories:
+   ├── Water section
+   ├── Trees section  
+   └── Rocks section
+</code></pre><h2 id="bước-4-thiết-lập-tilemap-layers-cho-animations">
+<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-4-thi%e1%ba%bft-l%e1%ba%adp-tilemap-layers-cho-animations"></a>
+Bước 4: Thiết Lập Tilemap Layers Cho Animations
+</h2><h3 id="41-tạo-layers-mới-cho-animated-content">
+<a class="header-anchor" href="#41-t%e1%ba%a1o-layers-m%e1%bb%9bi-cho-animated-content"></a>
+4.1. Tạo layers mới cho animated content
+</h3><pre tabindex="0"><code>Hierarchy → 2D Object → Tilemap → Rectangular
+
+Tạo các layers:
+├── Water_Animated (Order: -2)
+├── Rocks_Animated (Order: 1)  
+└── Trees_Animated (Order: 12)
+</code></pre><h3 id="42-cấu-hình-layer-properties">
+<a class="header-anchor" href="#42-c%e1%ba%a5u-h%c3%acnh-layer-properties"></a>
+4.2. Cấu hình layer properties
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Water Layer:</span>
+</span></span><span style="display:flex;"><span>Order <span style="color:#66d9ef">in</span> Layer: -<span style="color:#ae81ff">2</span> (dưới ground)
+</span></span><span style="display:flex;"><span>Material: None
+</span></span><span style="display:flex;"><span>Color: White (<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Rocks Layer:  </span>
+</span></span><span style="display:flex;"><span>Order <span style="color:#66d9ef">in</span> Layer: <span style="color:#ae81ff">1</span> (trên ground, dưới player)
+</span></span><span style="display:flex;"><span>+ Tilemap Collider <span style="color:#ae81ff">2D</span> (nếu cần collision)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Trees Layer:</span>
+</span></span><span style="display:flex;"><span>Order <span style="color:#66d9ef">in</span> Layer: <span style="color:#ae81ff">12</span> (trên player <span style="color:#960050;background-color:#1e0010">để</span> che khuất)
+</span></span><span style="display:flex;"><span>No Collider (decoration only)
+</span></span></code></pre></div><h2 id="bước-5-painting-animated-environment">
+<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-5-painting-animated-environment"></a>
+Bước 5: Painting Animated Environment
+</h2><h3 id="51-paint-water-areas">
+<a class="header-anchor" href="#51-paint-water-areas"></a>
+5.1. Paint Water Areas
+</h3><pre tabindex="0"><code>1. Chọn Water_Animated layer
+2. Select Water animated tile từ Palette  
+3. Sử dụng Paint Bucket để tô vùng nước lớn
+4. Sử dụng Paint Brush cho chi tiết
+</code></pre><h3 id="52-paint-trees-với-kỹ-thuật-layering">
+<a class="header-anchor" href="#52-paint-trees-v%e1%bb%9bi-k%e1%bb%b9-thu%e1%ba%adt-layering"></a>
+5.2. Paint Trees với kỹ thuật layering
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Cây phức tạp cần 2 layers:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Collision Low layer:</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">└──</span> Tree trunk (<span style="color:#66d9ef">static</span> sprite + collider)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Trees_Animated layer:  </span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">└──</span> Tree canopy (animated swaying leaves)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Kết quả: Player bị chặn bởi thân, che khuất bởi tán</span>
+</span></span></code></pre></div><h3 id="53-paint-foamy-rocks">
+<a class="header-anchor" href="#53-paint-foamy-rocks"></a>
+5.3. Paint Foamy Rocks
+</h3><pre tabindex="0"><code>1. Chọn Rocks_Animated layer
+2. Paint rocks gần vùng nước
+3. Tạo hiệu ứng bọt tự nhiên
+4. Mix với static rocks để đa dạng
+</code></pre><h2 id="bước-6-advanced-animation-techniques">
+<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-6-advanced-animation-techniques"></a>
+Bước 6: Advanced Animation Techniques
+</h2><h3 id="61-tạo-tile-animation-rules">
+<a class="header-anchor" href="#61-t%e1%ba%a1o-tile-animation-rules"></a>
+6.1. Tạo Tile Animation Rules
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng Rule Tiles (cần package 2D Tilemap Extras)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Để tạo transitions mượt mà giữa animated/static tiles</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1.</span> Install <span style="color:#ae81ff">2D</span> Tilemap Extras package
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2.</span> Create <span style="color:#960050;background-color:#1e0010">→</span> <span style="color:#ae81ff">2D</span> <span style="color:#960050;background-color:#1e0010">→</span> Tiles <span style="color:#960050;background-color:#1e0010">→</span> Rule Tile  
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">3.</span> Setup rules cho water edges
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4.</span> Combine với Animated Tiles
+</span></span></code></pre></div><h3 id="62-synchronization-vs-randomization">
+<a class="header-anchor" href="#62-synchronization-vs-randomization"></a>
+6.2. Synchronization vs Randomization
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Water: Sync animation (cùng speed)</span>
+</span></span><span style="display:flex;"><span>Animation Speed: <span style="color:#ae81ff">5.0f</span> (<span style="color:#66d9ef">fixed</span>)
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">→</span> Tất cả water tiles cùng nhịp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Trees: Random animation (khác speed)  </span>
+</span></span><span style="display:flex;"><span>Min Speed: <span style="color:#ae81ff">1.5f</span>, Max Speed: <span style="color:#ae81ff">2.5f</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">→</span> Mỗi tree có nhịp riêng, tự nhiên hơn
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Rocks: Slight randomization</span>
+</span></span><span style="display:flex;"><span>Min Speed: <span style="color:#ae81ff">2.5f</span>, Max Speed: <span style="color:#ae81ff">3.5f</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">→</span> Vừa <span style="color:#960050;background-color:#1e0010">đồ</span>ng bộ vừa <span style="color:#960050;background-color:#1e0010">đ</span>a dạng
+</span></span></code></pre></div><h2 id="bước-7-performance-optimization">
+<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-7-performance-optimization"></a>
+Bước 7: Performance Optimization
+</h2><h3 id="71-tilemap-renderer-settings">
+<a class="header-anchor" href="#71-tilemap-renderer-settings"></a>
+7.1. Tilemap Renderer Settings
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Cho các Animated Tilemaps:</span>
+</span></span><span style="display:flex;"><span>Mode: Chunk
+</span></span><span style="display:flex;"><span>Chunk Size: <span style="color:#ae81ff">16</span>x16 (nhỏ hơn cho animated)
+</span></span><span style="display:flex;"><span>Detect Chunk Culling Bounds: Enable
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Lý do: Animated tiles tốn performance hơn</span>
+</span></span></code></pre></div><h3 id="72-animation-optimization">
+<a class="header-anchor" href="#72-animation-optimization"></a>
+7.2. Animation Optimization
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Best practices:</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">✅</span> <span style="color:#960050;background-color:#1e0010">Í</span>t frames hơn = performance tốt hơn (<span style="color:#ae81ff">4</span>-<span style="color:#ae81ff">8</span> frames max)
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">✅</span> Reuse animations cho similar objects  
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">✅</span> Sử dụng compression cho sprite sheets
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">✅</span> Limit số lượng animated tiles trên screen
+</span></span></code></pre></div><h3 id="73-lod-cho-animated-tiles">
+<a class="header-anchor" href="#73-lod-cho-animated-tiles"></a>
+7.3. LOD cho Animated Tiles
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AnimatedTileLOD</span> : MonoBehaviour
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Tilemap animatedTilemap;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">float</span> disableDistance = <span style="color:#ae81ff">20f</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Transform player;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> Update()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">float</span> distance = Vector3.Distance(player.position, transform.position);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Tắt animation khi player xa</span>
+</span></span><span style="display:flex;"><span>        animatedTilemap.enabled = distance &lt; disableDistance;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="bước-8-advanced-features">
+<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-8-advanced-features"></a>
+Bước 8: Advanced Features
+</h2><h3 id="81-seasonal-animation-changes">
+<a class="header-anchor" href="#81-seasonal-animation-changes"></a>
+8.1. Seasonal Animation Changes
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SeasonalAnimatedTiles</span> : MonoBehaviour
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">    [System.Serializable]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SeasonTiles</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> TileBase[] springTiles;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> TileBase[] summerTiles;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> TileBase[] autumnTiles;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> TileBase[] winterTiles;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> SeasonTiles seasonTiles;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Tilemap targetTilemap;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> ChangeSeason(<span style="color:#66d9ef">int</span> season)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        TileBase[] tilesToUse = season <span style="color:#66d9ef">switch</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">0</span> =&gt; seasonTiles.springTiles,
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">1</span> =&gt; seasonTiles.summerTiles,
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">2</span> =&gt; seasonTiles.autumnTiles,
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">3</span> =&gt; seasonTiles.winterTiles,
+</span></span><span style="display:flex;"><span>            _ =&gt; seasonTiles.summerTiles
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Replace tiles logic here...</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="82-interactive-animated-tiles">
+<a class="header-anchor" href="#82-interactive-animated-tiles"></a>
+8.2. Interactive Animated Tiles
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InteractiveWater</span> : MonoBehaviour
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Tilemap waterTilemap;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> TileBase calmWater;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> TileBase roughWater;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> OnTriggerEnter2D(Collider2D other)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (other.CompareTag(<span style="color:#e6db74">&#34;Player&#34;</span>))
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Thay đổi animation khi player vào nước</span>
+</span></span><span style="display:flex;"><span>            Vector3Int cellPosition = waterTilemap.WorldToCell(other.transform.position);
+</span></span><span style="display:flex;"><span>            waterTilemap.SetTile(cellPosition, roughWater);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="troubleshooting">
+<a class="header-anchor" href="#troubleshooting"></a>
+Troubleshooting
+</h2><h3 id="lỗi-thường-gặp">
+<a class="header-anchor" href="#l%e1%bb%97i-th%c6%b0%e1%bb%9dng-g%e1%ba%b7p"></a>
+Lỗi thường gặp:
+</h3><pre tabindex="0"><code>❌ Animation bị giật
+→ Kiểm tra frame count và loại bỏ frame duplicate
+
+❌ Performance lag với nhiều animated tiles
+→ Giảm Chunk Size và sử dụng LOD system
+
+❌ Animations không sync
+→ Đặt cùng Animation Speed cho tiles muốn sync
+
+❌ Tiles biến mất
+→ Kiểm tra Tilemap Renderer bounds và culling settings
+</code></pre><h2 id="kiến-thức-đã-học">
+<a class="header-anchor" href="#ki%e1%ba%bfn-th%e1%bb%a9c-%c4%91%c3%a3-h%e1%bb%8dc"></a>
+Kiến Thức Đã Học
+</h2><p>Trong bài này, chúng ta đã học được:</p>
+<p>✅ <strong>Tạo và cấu hình Animated Tiles</strong> từ sprite sheets<br>
+✅ <strong>Organization</strong> tile palettes cho workflow hiệu quả<br>
+✅ <strong>Layering strategy</strong> cho animated environment<br>
+✅ <strong>Performance optimization</strong> cho animated content<br>
+✅ <strong>Animation synchronization</strong> vs randomization<br>
+✅ <strong>Advanced techniques</strong> như Rule Tiles integration<br>
+✅ <strong>Interactive animations</strong> với scripting</p>
+<h2 id="bài-tập-thực-hành">
+<a class="header-anchor" href="#b%c3%a0i-t%e1%ba%adp-th%e1%bb%b1c-h%c3%a0nh"></a>
+Bài Tập Thực Hành
+</h2><ol>
+<li><strong>Tạo animated campfire</strong> với lửa nhảy múa</li>
+<li><strong>Design animated flowers</strong> với hiệu ứng nở/tàn</li>
+<li><strong>Create weather effects</strong> với animated rain/snow tiles</li>
+<li><strong>Build animated waterfalls</strong> với multiple layers</li>
+</ol>
+<h2 id="chuẩn-bị-cho-bài-tiếp-theo">
+<a class="header-anchor" href="#chu%e1%ba%a9n-b%e1%bb%8b-cho-b%c3%a0i-ti%e1%ba%bfp-theo"></a>
+Chuẩn Bị Cho Bài Tiếp Theo
+</h2><p>Trong <strong>Bài 05</strong>, chúng ta sẽ học:</p>
+<ul>
+<li><strong>Camera Follow system</strong> với Cinemachine</li>
+<li><strong>Advanced camera behaviors</strong> cho gameplay smooth</li>
+<li><strong>Camera transitions</strong> giữa các areas</li>
+<li><strong>Cinematic sequences</strong> cơ bản</li>
+</ul>
+<h2 id="lưu-ý-quan-trọng">
+<a class="header-anchor" href="#l%c6%b0u-%c3%bd-quan-tr%e1%bb%8dng"></a>
+Lưu Ý Quan Trọng
+</h2><blockquote>
+<p><strong>Performance First:</strong> Luôn optimize animated tiles cho mobile/low-end devices</p></blockquote>
+<blockquote>
+<p><strong>Natural Feel:</strong> Sử dụng random speeds cho organic animations như trees</p></blockquote>
+<blockquote>
+<p><strong>Layer Organization:</strong> Animated content cần layer riêng để dễ quản lý</p></blockquote>
+<blockquote>
+<p><strong>Frame Economy:</strong> 4-6 frames thường đủ cho most animations, không cần quá nhiều</p></blockquote>
+<hr>
+<p><strong>Nguồn:</strong> <em>Bài viết được tổng hợp từ video hướng dẫn của kênh <strong><a href="https://www.youtube.com/@NightRunStudio">Night Run Studio</a></strong>. Xem video gốc để có trải nghiệm học tập tốt nhất!</em></p>
+</div>
+    <footer class="article-footer">
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="Unity Game Cơ Bản - Bài 4.1: Multi-level Tilemaps và Elevation System"
+              class="lazyload"
+            /><a
+          href="/posts/unity-multi-level-tilemaps/"
+          aria-label="Prev:Unity Game Cơ Bản - Bài 4.1: Multi-level Tilemaps và Elevation System"
+          title="Prev:Unity Game Cơ Bản - Bài 4.1: Multi-level Tilemaps và Elevation System"
+        ></a>
+        <div class="article-nav-caption">Prev</div>
+        <h3 class="article-nav-title">Unity Game Cơ Bản - Bài 4.1: Multi-level Tilemaps và Elevation System</h3>
+      </div><div class="article-nav-link-wrap right"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="Unity Game Cơ Bản - Bài 05: Camera Follow với Cinemachine"
+              class="lazyload"
+            /><a
+          href="/posts/unity-cinemachine-camera-follow/"
+          aria-label="Next:Unity Game Cơ Bản - Bài 05: Camera Follow với Cinemachine"
+          title="Next:Unity Game Cơ Bản - Bài 05: Camera Follow với Cinemachine"
+        ></a>
+        <div class="article-nav-caption">Next</div>
+        <h3 class="article-nav-title">Unity Game Cơ Bản - Bài 05: Camera Follow với Cinemachine</h3>
+      </div></nav></article></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2020-2025<span class="footer-info-sep rotate"></span>
+      Đoàn Đức Long
+    </div><div>
+        Powered by&nbsp;<a
+          href="https://gohugo.io/"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Hugo</a
+        >&nbsp; Theme.<a
+          href="https://github.com/D-Sketon/hugo-theme-reimu"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Reimu</a
+        >
+      </div><div>
+        <span class="icon-brush"
+          >&nbsp;68.5k</span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;05:53</span>
+      </div><div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >Number of visits&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >Number of visitors&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><div class="sidebar-toc-card" aria-label="Table of contents">
+	<h3 class="toc-title">Contents</h3>
+	<div class="sidebar-toc-wrapper toc-div-class" data-toc="sidebar">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#video-hướng-dẫn">Video Hướng Dẫn</a></li>
+    <li><a href="#ôn-tập-các-bài-trước">Ôn Tập Các Bài Trước</a></li>
+    <li><a href="#mục-tiêu-của-bài-học">Mục Tiêu Của Bài Học</a>
+      <ul>
+        <li><a href="#chúng-ta-sẽ-tạo">Chúng ta sẽ tạo:</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-1-chuẩn-bị-sprite-assets">Bước 1: Chuẩn Bị Sprite Assets</a>
+      <ul>
+        <li><a href="#11-import-và-organize-sprites">1.1. Import và organize sprites</a></li>
+        <li><a href="#12-cấu-hình-sprite-import-settings">1.2. Cấu hình Sprite Import Settings</a></li>
+        <li><a href="#13-slice-sprite-sheets">1.3. Slice Sprite Sheets</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-2-tạo-animated-tiles">Bước 2: Tạo Animated Tiles</a>
+      <ul>
+        <li><a href="#21-tạo-water-animated-tile">2.1. Tạo Water Animated Tile</a></li>
+        <li><a href="#22-cấu-hình-water-animation">2.2. Cấu hình Water Animation</a></li>
+        <li><a href="#23-tạo-tree-swaying-animated-tile">2.3. Tạo Tree Swaying Animated Tile</a></li>
+        <li><a href="#24-tạo-foamy-rocks-animated-tile">2.4. Tạo Foamy Rocks Animated Tile</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-3-organize-tile-palette">Bước 3: Organize Tile Palette</a>
+      <ul>
+        <li><a href="#31-tạo-animated-tile-palette-riêng">3.1. Tạo Animated Tile Palette riêng</a></li>
+        <li><a href="#32-thêm-animated-tiles-vào-palette">3.2. Thêm Animated Tiles vào Palette</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-4-thiết-lập-tilemap-layers-cho-animations">Bước 4: Thiết Lập Tilemap Layers Cho Animations</a>
+      <ul>
+        <li><a href="#41-tạo-layers-mới-cho-animated-content">4.1. Tạo layers mới cho animated content</a></li>
+        <li><a href="#42-cấu-hình-layer-properties">4.2. Cấu hình layer properties</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-5-painting-animated-environment">Bước 5: Painting Animated Environment</a>
+      <ul>
+        <li><a href="#51-paint-water-areas">5.1. Paint Water Areas</a></li>
+        <li><a href="#52-paint-trees-với-kỹ-thuật-layering">5.2. Paint Trees với kỹ thuật layering</a></li>
+        <li><a href="#53-paint-foamy-rocks">5.3. Paint Foamy Rocks</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-6-advanced-animation-techniques">Bước 6: Advanced Animation Techniques</a>
+      <ul>
+        <li><a href="#61-tạo-tile-animation-rules">6.1. Tạo Tile Animation Rules</a></li>
+        <li><a href="#62-synchronization-vs-randomization">6.2. Synchronization vs Randomization</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-7-performance-optimization">Bước 7: Performance Optimization</a>
+      <ul>
+        <li><a href="#71-tilemap-renderer-settings">7.1. Tilemap Renderer Settings</a></li>
+        <li><a href="#72-animation-optimization">7.2. Animation Optimization</a></li>
+        <li><a href="#73-lod-cho-animated-tiles">7.3. LOD cho Animated Tiles</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-8-advanced-features">Bước 8: Advanced Features</a>
+      <ul>
+        <li><a href="#81-seasonal-animation-changes">8.1. Seasonal Animation Changes</a></li>
+        <li><a href="#82-interactive-animated-tiles">8.2. Interactive Animated Tiles</a></li>
+      </ul>
+    </li>
+    <li><a href="#troubleshooting">Troubleshooting</a>
+      <ul>
+        <li><a href="#lỗi-thường-gặp">Lỗi thường gặp:</a></li>
+      </ul>
+    </li>
+    <li><a href="#kiến-thức-đã-học">Kiến Thức Đã Học</a></li>
+    <li><a href="#bài-tập-thực-hành">Bài Tập Thực Hành</a></li>
+    <li><a href="#chuẩn-bị-cho-bài-tiếp-theo">Chuẩn Bị Cho Bài Tiếp Theo</a></li>
+    <li><a href="#lưu-ý-quan-trọng">Lưu Ý Quan Trọng</a></li>
+  </ul>
+</nav>
+	</div>
+  
+	
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/images/avatar.png"
+    data-sizes="auto"
+    alt="Đoàn Đức Long"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Đoàn Đức Long</div>
+  <div class="sidebar-description">Blog chia sẻ học tập và kiến thức về code, công nghệ và các dự án cá nhân</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div><div class="sidebar-state-number">65</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      6
+    </div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-discord sidebar-social-icon">
+      <a
+        href="https://discord.com/users/757589425466245182"
+        itemprop="url"
+        target="_blank"
+        aria-label="discord"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-facebook sidebar-social-icon">
+      <a
+        href="https://www.facebook.com/iouas.04"
+        itemprop="url"
+        target="_blank"
+        aria-label="facebook"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/longdoan2k4"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-instagram sidebar-social-icon">
+      <a
+        href="https://www.instagram.com/oglas.z3_/"
+        itemprop="url"
+        target="_blank"
+        aria-label="instagram"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="Home"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Home</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="Archives"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Archives</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="About"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">About</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="Friend"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Friend</div>
+    </div></div></div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous" ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script><script
+    src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js"
+    integrity="sha384-8LyaidD9GPxQQgLJO/WRw/O2h3BoNq/ApI/ecpvM6RsrCz2qP2ppBXUKihP4V/2d" crossorigin="anonymous"></script><script>
+  if (window.firework) {
+    const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+    options.excludeElements = options.excludeelements;
+    delete options.excludeelements;
+    window.firework(options);
+  }
+</script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "Đoàn Đức Long",
+          title: "Unity Game Cơ Bản - Bài 4.2: Animated Tiles - Sóng Nước và Cây Lắc Lư",
+          url: "https:\/\/doandduclong.github.io\/posts\/unity-animated-tiles-tutorial\/",
+          description: "Hướng dẫn tạo và sử dụng Animated Tiles để làm thế giới game sống động với sóng nước, cây lắc lư và đá có bọt biển",
+          cover: "https:\/\/doandduclong.github.io\/images\/banner.webp",
+        };
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script></div>
+</div>
+
+<script
+    src="/js/toc-sidebar.js"
+    deferdata-pjax></script><script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    asyncintegrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script><script src="/js/search.js"></script></body>
+</html>

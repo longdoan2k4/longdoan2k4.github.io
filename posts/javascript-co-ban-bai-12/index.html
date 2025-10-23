@@ -1,0 +1,1834 @@
+<!doctype html>
+<html
+  lang="vi-vn" 
+  data-theme-mode="auto"
+  >
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  JavaScript Cơ Bản - Bài 12: Kiểu Dữ Liệu Chuỗi (String) | Đoàn Đức Long
+</title>
+<meta
+  name="description"
+  content="Tìm hiểu về kiểu dữ liệu chuỗi trong JavaScript - cách khai báo, template literals, các phương thức xử lý chuỗi và ví dụ thực tế"
+/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://doandduclong.github.io/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" />
+<meta property="og:type" content="website" />
+  <meta property="og:title" content="JavaScript Cơ Bản - Bài 12: Kiểu Dữ Liệu Chuỗi (String) | Đoàn Đức Long" />
+  <meta
+    property="og:description"
+    content="Tìm hiểu về kiểu dữ liệu chuỗi trong JavaScript - cách khai báo, template literals, các phương thức xử lý chuỗi và ví dụ thực tế"
+  />
+  <meta property="og:url" content="https://doandduclong.github.io/posts/javascript-co-ban-bai-12/" />
+  <meta
+    property="og:site_name"
+    content="Đoàn Đức Long - Tech Blog"
+  />
+  <meta
+    property="og:image"
+    content="/"
+  />
+  <meta property="article:author" content="Đoàn Đức Long" />
+  <meta property="article:published_time" content="2025-10-20T00:00:00&#43;07:00" />
+  <meta property="article:modified_time" content="2025-10-20T00:00:00&#43;07:00" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.030bf20ad33bf6086328005695d5aecf4e3252819f7b6c64892b3dd33ad2e2ed.css" />
+<link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css"
+    integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz&#43;YI" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/>
+
+<link rel="stylesheet" href="/css/custom-posts.min.c23bccebedc11d0eca845bea6af4b5b6337c6a67b36703c043bee39e9f606cb0.css" integrity="sha256-wjvM6&#43;3BHQ7KhFvqavS1tjN8amezZwPAQ77jnp9gbLA=">
+<link rel="stylesheet" href="/css/fixes.css"></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+          M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg></div><div class="loading-word">Loading...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+This article does not have a corresponding language version
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/">Home</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/archives">Archives</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/about">About</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/friend">Friend</a>
+      </span><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+    <a id="nav-search-btn" class="nav-icon" title="Tìm kiếm" aria-label="Tìm kiếm" onclick="toggleSearch()"></a>
+  </nav></div>
+
+
+<div id="search-overlay" class="search-overlay" style="display: none;">
+  <div class="search-container">
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="Tìm kiếm bài viết..." autocomplete="off">
+      <button type="button" id="close-search" onclick="closeSearch()">✕</button>
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+</div><style>
+:root {
+  --cover-background: transparent;
+  --site-cover-background: transparent;
+}
+.header-cover-rgb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150%;
+  z-index: -2;
+  display: block;
+  mask: linear-gradient(to top, transparent, #fff 50%);
+}
+.header-cover-params {
+  background: var(--cover-background);
+}
+.header-cover-site {
+  background: var(--site-cover-background);
+}
+</style>
+
+<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="JavaScript Cơ Bản - Bài 12: Kiểu Dữ Liệu Chuỗi (String)"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">JavaScript Cơ Bản - Bài 12: Kiểu Dữ Liệu Chuỗi (String)</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header>
+
+<style>
+ 
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(20, 20, 30, 0.95) 0%,
+    rgba(40, 40, 60, 0.95) 50%,
+    rgba(60, 30, 40, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 15vh;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.search-container {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-box {
+  position: relative;
+  margin-bottom: 2rem;
+  width: 450px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 1rem 3.5rem 1rem 1.5rem;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+.search-box input:focus {
+  border-color: rgba(255, 107, 107, 0.8);
+  box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.2),
+              0 8px 32px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+}
+
+
+
+#close-search {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 107, 107, 0.2);
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#close-search:hover {
+  background: rgba(255, 107, 107, 0.4);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.search-results {
+  max-height: 50vh;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 0;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease-out;
+  width: 450px;
+  box-sizing: border-box;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+ 
+.search-results::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-results::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background: rgba(255, 107, 107, 0.5);
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 107, 107, 0.7);
+}
+
+.search-result-item {
+  padding: 1rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0;
+  margin-bottom: 1px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(5px);
+}
+
+.search-result-item:first-child {
+  border-radius: 14px 14px 0 0;
+  margin-top: 1.5rem;
+}
+
+.search-result-item:last-child {
+  border-radius: 0 0 14px 14px;
+  margin-bottom: 1.5rem;
+}
+
+.search-result-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 107, 107, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(255, 107, 107, 0.15);
+}
+
+.search-result-item:last-child {
+  margin-bottom: 0;
+}
+
+.search-result-title {
+  color: #ff9999;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.search-result-item:hover .search-result-title {
+  color: #ff6b6b;
+}
+
+.search-result-category {
+  display: inline-block;
+  background: linear-gradient(45deg, rgba(255, 107, 107, 0.2), rgba(255, 150, 150, 0.2));
+  color: #ffaaaa;
+  padding: 0.2rem 0.6rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  transition: all 0.2s ease;
+}
+
+.search-result-item:hover .search-result-category {
+  background: linear-gradient(45deg, rgba(255, 107, 107, 0.3), rgba(255, 150, 150, 0.3));
+  color: #ff6b6b;
+  border-color: rgba(255, 107, 107, 0.5);
+}
+
+ 
+#nav-search-btn {
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#nav-search-btn:hover {
+  color: #ff6b6b;
+  transform: scale(1.1);
+}
+</style>
+
+<script>
+
+let allPosts = [];
+let searchIndex = null;
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  initializeSearch();
+});
+
+function toggleSearch() {
+  const overlay = document.getElementById('search-overlay');
+  const searchInput = document.getElementById('search-input');
+  
+  if (overlay.style.display === 'none' || overlay.style.display === '') {
+    
+    overlay.style.display = 'flex';
+    overlay.style.animation = 'fadeIn 0.3s ease-out forwards';
+    
+    
+    setTimeout(() => {
+      searchInput.focus();
+    }, 150);
+    
+    document.body.style.overflow = 'hidden';
+  } else {
+    closeSearch();
+  }
+}
+
+function closeSearch() {
+  const overlay = document.getElementById('search-overlay');
+  const searchInput = document.getElementById('search-input');
+  const results = document.getElementById('search-results');
+  
+  
+  showAllResults = false;
+  
+  
+  overlay.style.animation = 'fadeOut 0.3s ease-out forwards';
+  
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    searchInput.value = '';
+    results.innerHTML = '';
+    document.body.style.overflow = '';
+    overlay.style.animation = ''; 
+  }, 300);
+}
+
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeSearch();
+  }
+  
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    toggleSearch();
+  }
+});
+
+
+async function initializeSearch() {
+  try {
+    const response = await fetch('/index.json');
+    const data = await response.json();
+    allPosts = data;
+    
+    
+    const searchInput = document.getElementById('search-input');
+    let searchTimeout;
+    
+    searchInput.addEventListener('input', function() {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        performSearch(this.value);
+      }, 300);
+    });
+    
+  } catch (error) {
+    console.error('Error loading search data:', error);
+  }
+}
+
+function performSearch(query) {
+  const results = document.getElementById('search-results');
+  
+  if (!query || query.length < 2) {
+    results.innerHTML = '';
+    return;
+  }
+  
+  const searchQuery = query.toLowerCase();
+  const matches = allPosts.filter(post => {
+    return post.title.toLowerCase().includes(searchQuery) ||
+           post.content.toLowerCase().includes(searchQuery) ||
+           (post.categories && post.categories.some(cat => cat.toLowerCase().includes(searchQuery))) ||
+           (post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchQuery)));
+  });
+  
+  displaySearchResults(matches, query);
+}
+
+let showAllResults = false;
+
+function displaySearchResults(matches, query) {
+  const results = document.getElementById('search-results');
+  
+  if (matches.length === 0) {
+    results.innerHTML = '<div style="color: rgba(255,255,255,0.7); text-align: center; padding: 3rem 1.5rem;">Không tìm thấy kết quả nào cho "' + query + '"</div>';
+    return;
+  }
+  
+  const totalResults = matches.length;
+  const displayLimit = showAllResults ? totalResults : 8;
+  const itemsToShow = matches.slice(0, displayLimit);
+  
+  results.innerHTML = `
+    <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0; padding: 1.5rem 1.5rem 0 1.5rem;">
+      Tìm thấy ${totalResults} bài viết cho "${query}"
+    </div>
+  `;
+  
+  const html = itemsToShow.map(post => {
+    const title = highlightText(post.title, query);
+    const category = post.categories && post.categories.length > 0 ? post.categories[0] : '';
+    const date = post.date || '';
+    
+    return `
+      <div class="search-result-item" onclick="navigateToPost('${post.uri}')">
+        <div class="search-result-title">${title}</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.3rem;">
+          ${category ? `<span class="search-result-category">${category}</span>` : '<span></span>'}
+          ${date ? `<span style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">${date}</span>` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+  
+  results.innerHTML += html;
+  
+  if (totalResults > 8 && !showAllResults) {
+    results.innerHTML += `
+      <div style="color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem;">
+        <button onclick="toggleShowAllResults('${query}')" style="
+          background: rgba(255, 107, 107, 0.2);
+          border: 1px solid rgba(255, 107, 107, 0.4);
+          color: #ff6b6b;
+          padding: 0.8rem 1.5rem;
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+        " onmouseover="this.style.background='rgba(255, 107, 107, 0.3)'" onmouseout="this.style.background='rgba(255, 107, 107, 0.2)'">
+          Xem tất cả ${totalResults} bài viết
+        </button>
+      </div>
+    `;
+  } else if (showAllResults && totalResults > 8) {
+    results.innerHTML += `
+      <div style="color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem;">
+        <button onclick="toggleShowAllResults('${query}')" style="
+          background: rgba(255, 107, 107, 0.2);
+          border: 1px solid rgba(255, 107, 107, 0.4);
+          color: #ff6b6b;
+          padding: 0.8rem 1.5rem;
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+        " onmouseover="this.style.background='rgba(255, 107, 107, 0.3)'" onmouseout="this.style.background='rgba(255, 107, 107, 0.2)'">
+          Thu gọn kết quả
+        </button>
+      </div>
+    `;
+  }
+}
+
+function toggleShowAllResults(query) {
+  showAllResults = !showAllResults;
+  performSearch(query);
+}
+
+function highlightText(text, query) {
+  if (!query) return text;
+  const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+  return text.replace(regex, '<mark style="background: rgba(255,107,107,0.3); color: #fff;">$1</mark>');
+}
+
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function navigateToPost(uri) {
+  window.location.href = uri;
+}
+</script><div id="content"
+          aria-label="Page content"
+          
+          class="sidebar-right"  ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><div class="sidebar-toc-card" aria-label="Table of contents">
+	<h3 class="toc-title">Contents</h3>
+	<div class="sidebar-toc-wrapper toc-div-class" data-toc="sidebar">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#video-hướng-dẫn">Video Hướng Dẫn</a></li>
+    <li><a href="#1-cách-khai-báo-chuỗi">1. Cách Khai Báo Chuỗi</a>
+      <ul>
+        <li><a href="#sử-dụng-dấu-nháy-đơn-và-nháy-kép">Sử dụng dấu nháy đơn và nháy kép</a></li>
+        <li><a href="#template-literals-es6">Template Literals (ES6)</a></li>
+        <li><a href="#chuỗi-nhiều-dòng">Chuỗi nhiều dòng</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-escape-characters-ký-tự-thoát">2. Escape Characters (Ký Tự Thoát)</a>
+      <ul>
+        <li><a href="#các-ký-tự-thoát-thường-dùng">Các ký tự thoát thường dùng</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-thuộc-tính-và-phương-thức-cơ-bản">3. Thuộc Tính Và Phương Thức Cơ Bản</a>
+      <ul>
+        <li><a href="#độ-dài-chuỗi">Độ dài chuỗi</a></li>
+        <li><a href="#truy-cập-ký-tự">Truy cập ký tự</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-nối-chuỗi-string-concatenation">4. Nối Chuỗi (String Concatenation)</a>
+      <ul>
+        <li><a href="#các-cách-nối-chuỗi">Các cách nối chuỗi</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-phương-thức-tìm-kiếm">5. Phương Thức Tìm Kiếm</a>
+      <ul>
+        <li><a href="#indexof-và-lastindexof">indexOf() và lastIndexOf()</a></li>
+        <li><a href="#includes-startswith-endswith-es6">includes(), startsWith(), endsWith() (ES6)</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-phương-thức-cắt-chuỗi">6. Phương Thức Cắt Chuỗi</a>
+      <ul>
+        <li><a href="#substring-slice">substring(), slice()</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-phương-thức-thay-thế">7. Phương Thức Thay Thế</a>
+      <ul>
+        <li><a href="#replace-và-replaceall">replace() và replaceAll()</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-phương-thức-chuyển-đổi-case">8. Phương Thức Chuyển Đổi Case</a>
+      <ul>
+        <li><a href="#chuyển-đổi-chữ-hoathường">Chuyển đổi chữ hoa/thường</a></li>
+        <li><a href="#capitalize-first-letter">Capitalize first letter</a></li>
+      </ul>
+    </li>
+    <li><a href="#9-phương-thức-trim">9. Phương Thức Trim</a>
+      <ul>
+        <li><a href="#loại-bỏ-khoảng-trắng">Loại bỏ khoảng trắng</a></li>
+      </ul>
+    </li>
+    <li><a href="#10-split-và-join">10. Split Và Join</a>
+      <ul>
+        <li><a href="#tách-chuỗi-thành-mảng">Tách chuỗi thành mảng</a></li>
+        <li><a href="#nối-mảng-thành-chuỗi">Nối mảng thành chuỗi</a></li>
+      </ul>
+    </li>
+    <li><a href="#11-chuyển-đổi-số-sang-chuỗi">11. Chuyển Đổi Số Sang Chuỗi</a>
+      <ul>
+        <li><a href="#các-cách-chuyển-đổi">Các cách chuyển đổi</a></li>
+      </ul>
+    </li>
+    <li><a href="#12-ví-dụ-thực-tế">12. Ví Dụ Thực Tế</a>
+      <ul>
+        <li><a href="#validate-email-đơn-giản">Validate email đơn giản</a></li>
+        <li><a href="#format-tên-người-dùng">Format tên người dùng</a></li>
+        <li><a href="#tạo-slug-từ-tiêu-đề">Tạo slug từ tiêu đề</a></li>
+        <li><a href="#đếm-số-từ">Đếm số từ</a></li>
+        <li><a href="#ẩn-thông-tin-nhạy-cảm">Ẩn thông tin nhạy cảm</a></li>
+      </ul>
+    </li>
+    <li><a href="#13-template-literals-nâng-cao">13. Template Literals Nâng Cao</a>
+      <ul>
+        <li><a href="#multiline-strings-với-indentation">Multiline strings với indentation</a></li>
+        <li><a href="#html-template-generation">HTML template generation</a></li>
+      </ul>
+    </li>
+    <li><a href="#14-utility-functions-hữu-ích">14. Utility Functions Hữu Ích</a>
+      <ul>
+        <li><a href="#text-processing-utilities">Text processing utilities</a></li>
+      </ul>
+    </li>
+    <li><a href="#15-tóm-tắt">15. Tóm Tắt</a>
+      <ul>
+        <li><a href="#kiến-thức-cốt-lõi-về-string">Kiến thức cốt lõi về String:</a></li>
+        <li><a href="#phương-thức-quan-trọng">Phương thức quan trọng:</a></li>
+        <li><a href="#best-practices">Best Practices:</a></li>
+        <li><a href="#lưu-ý-quan-trọng">Lưu ý quan trọng:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+	</div>
+  
+	
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/images/avatar.png"
+    data-sizes="auto"
+    alt="Đoàn Đức Long"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Đoàn Đức Long</div>
+  <div class="sidebar-description">Blog chia sẻ học tập và kiến thức về code, công nghệ và các dự án cá nhân</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div><div class="sidebar-state-number">65</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      6
+    </div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-discord sidebar-social-icon">
+      <a
+        href="https://discord.com/users/757589425466245182"
+        itemprop="url"
+        target="_blank"
+        aria-label="discord"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-facebook sidebar-social-icon">
+      <a
+        href="https://www.facebook.com/iouas.04"
+        itemprop="url"
+        target="_blank"
+        aria-label="facebook"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/longdoan2k4"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-instagram sidebar-social-icon">
+      <a
+        href="https://www.instagram.com/oglas.z3_/"
+        itemprop="url"
+        target="_blank"
+        aria-label="instagram"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="Home"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Home</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="Archives"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Archives</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="About"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">About</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="Friend"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Friend</div>
+    </div></div></div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2025-10-20 00:00:00 &#43;0700 &#43;07" itemprop="datePublished"
+      >2025-10-20</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2025-10-20</time
+    >
+  </span></div>
+<div class="article-category"><a
+      class="article-category-link"
+      href="/categories/javascript-c%c6%a1-b%e1%ba%a3n"
+      data-aos="zoom-in"
+      >JAVASCRIPT CƠ BẢN</a
+    ></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h1 id="javascript-cơ-bản---bài-12-kiểu-dữ-liệu-chuỗi-string">
+<a class="header-anchor" href="#javascript-c%c6%a1-b%e1%ba%a3n---b%c3%a0i-12-ki%e1%bb%83u-d%e1%bb%af-li%e1%bb%87u-chu%e1%bb%97i-string"></a>
+JavaScript Cơ Bản - Bài 12: Kiểu Dữ Liệu Chuỗi (String)
+</h1><p>Chuỗi (String) là kiểu dữ liệu cực kỳ quan trọng trong JavaScript, được sử dụng để lưu trữ và xử lý văn bản. Từ việc hiển thị thông tin cho người dùng đến xử lý dữ liệu phức tạp, chuỗi đóng vai trò không thể thiếu trong lập trình web.</p>
+<h2 id="video-hướng-dẫn">
+<a class="header-anchor" href="#video-h%c6%b0%e1%bb%9bng-d%e1%ba%abn"></a>
+Video Hướng Dẫn
+</h2><div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/45QT4WHXbX8?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<h2 id="1-cách-khai-báo-chuỗi">
+<a class="header-anchor" href="#1-c%c3%a1ch-khai-b%c3%a1o-chu%e1%bb%97i"></a>
+1. Cách Khai Báo Chuỗi
+</h2><h3 id="sử-dụng-dấu-nháy-đơn-và-nháy-kép">
+<a class="header-anchor" href="#s%e1%bb%ad-d%e1%bb%a5ng-d%e1%ba%a5u-nh%c3%a1y-%c4%91%c6%a1n-v%c3%a0-nh%c3%a1y-k%c3%a9p"></a>
+Sử dụng dấu nháy đơn và nháy kép
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Dấu nháy đơn (single quotes)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">singleQuoted</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Xin chào Việt Nam&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">singleQuoted</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Dấu nháy kép (double quotes)  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">doubleQuoted</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;JavaScript cơ bản&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">doubleQuoted</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Cả hai cách đều cho kết quả giống nhau
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">singleQuoted</span>);  <span style="color:#75715e">// &#34;string&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">doubleQuoted</span>);  <span style="color:#75715e">// &#34;string&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Lồng nhau
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">nested1</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Anh ấy nói: &#39;Xin chào!&#39;&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">nested2</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Cô ấy nói: &#34;Tạm biệt!&#34;&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">nested1</span>);  <span style="color:#75715e">// Anh ấy nói: &#39;Xin chào!&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">nested2</span>);  <span style="color:#75715e">// Cô ấy nói: &#34;Tạm biệt!&#34;
+</span></span></span></code></pre></div><h3 id="template-literals-es6">
+<a class="header-anchor" href="#template-literals-es6"></a>
+Template Literals (ES6)
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng backticks (`)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Long&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Cách cũ - nối chuỗi
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">oldWay</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tôi tên &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; và tôi &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">age</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; tuổi&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Template literals - hiện đại và dễ đọc hơn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">newWay</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`Tôi tên </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> và tôi </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">age</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> tuổi`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">oldWay</span>);   <span style="color:#75715e">// Tôi tên Long và tôi 25 tuổi
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">newWay</span>);   <span style="color:#75715e">// Tôi tên Long và tôi 25 tuổi
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Có thể chứa biểu thức
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">50000</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">quantity</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`Tổng cộng: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">quantity</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> VNĐ`</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">total</span>);    <span style="color:#75715e">// Tổng cộng: 150000 VNĐ
+</span></span></span></code></pre></div><h3 id="chuỗi-nhiều-dòng">
+<a class="header-anchor" href="#chu%e1%bb%97i-nhi%e1%bb%81u-d%c3%b2ng"></a>
+Chuỗi nhiều dòng
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Cách cũ - sử dụng \n
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">multilineOld</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Dòng 1\nDòng 2\nDòng 3&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Template literals - tự nhiên hơn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">multilineNew</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`Dòng 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Dòng 2  
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Dòng 3`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">multilineOld</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">multilineNew</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Ví dụ HTML template
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">htmlTemplate</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;div class=&#34;card&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;h2&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/h2&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;p&gt;Tuổi: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">age</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/p&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;p&gt;Ngày tạo: </span><span style="color:#e6db74">${</span><span style="color:#66d9ef">new</span> Date().<span style="color:#a6e22e">toLocaleDateString</span>()<span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/p&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;/div&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">htmlTemplate</span>);
+</span></span></code></pre></div><h2 id="2-escape-characters-ký-tự-thoát">
+<a class="header-anchor" href="#2-escape-characters-k%c3%bd-t%e1%bb%b1-tho%c3%a1t"></a>
+2. Escape Characters (Ký Tự Thoát)
+</h2><h3 id="các-ký-tự-thoát-thường-dùng">
+<a class="header-anchor" href="#c%c3%a1c-k%c3%bd-t%e1%bb%b1-tho%c3%a1t-th%c6%b0%e1%bb%9dng-d%c3%b9ng"></a>
+Các ký tự thoát thường dùng
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Dấu nháy trong chuỗi
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">quote1</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Anh ấy nói: \&#34;Xin chào!\&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">quote2</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Cô ấy nói: \&#39;Tạm biệt!\&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Xuống dòng
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">newline</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Dòng 1\nDòng 2&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tab
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tabbed</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tên:\tLong\nTuổi:\t25&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Backslash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;C:\\Users\\Documents\\file.txt&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Carriage return và form feed (ít dùng)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">special</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Before\rAfter\fNext&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">quote1</span>);   <span style="color:#75715e">// Anh ấy nói: &#34;Xin chào!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">quote2</span>);   <span style="color:#75715e">// Cô ấy nói: &#39;Tạm biệt!&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">newline</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">tabbed</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">path</span>);
+</span></span></code></pre></div><h2 id="3-thuộc-tính-và-phương-thức-cơ-bản">
+<a class="header-anchor" href="#3-thu%e1%bb%99c-t%c3%adnh-v%c3%a0-ph%c6%b0%c6%a1ng-th%e1%bb%a9c-c%c6%a1-b%e1%ba%a3n"></a>
+3. Thuộc Tính Và Phương Thức Cơ Bản
+</h2><h3 id="độ-dài-chuỗi">
+<a class="header-anchor" href="#%c4%91%e1%bb%99-d%c3%a0i-chu%e1%bb%97i"></a>
+Độ dài chuỗi
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;JavaScript&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">length</span>);        <span style="color:#75715e">// 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">vietnamese</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Xin chào&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">vietnamese</span>.<span style="color:#a6e22e">length</span>);  <span style="color:#75715e">// 9
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">emoji</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;😀😃😄&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">emoji</span>.<span style="color:#a6e22e">length</span>);       <span style="color:#75715e">// 6 (mỗi emoji = 2 units)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Chuỗi rỗng
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">empty</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">empty</span>.<span style="color:#a6e22e">length</span>);       <span style="color:#75715e">// 0
+</span></span></span></code></pre></div><h3 id="truy-cập-ký-tự">
+<a class="header-anchor" href="#truy-c%e1%ba%adp-k%c3%bd-t%e1%bb%b1"></a>
+Truy cập ký tự
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello World&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng bracket notation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>[<span style="color:#ae81ff">0</span>]);          <span style="color:#75715e">// &#34;H&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>[<span style="color:#ae81ff">6</span>]);          <span style="color:#75715e">// &#34;W&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>[<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]); <span style="color:#75715e">// &#34;d&#34; (ký tự cuối)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng charAt()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">charAt</span>(<span style="color:#ae81ff">0</span>));   <span style="color:#75715e">// &#34;H&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">charAt</span>(<span style="color:#ae81ff">100</span>)); <span style="color:#75715e">// &#34;&#34; (rỗng nếu index không tồn tại)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// charCodeAt() - lấy mã ASCII/Unicode
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">charCodeAt</span>(<span style="color:#ae81ff">0</span>)); <span style="color:#75715e">// 72 (mã của &#39;H&#39;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">charCodeAt</span>(<span style="color:#ae81ff">1</span>)); <span style="color:#75715e">// 101 (mã của &#39;e&#39;)
+</span></span></span></code></pre></div><h2 id="4-nối-chuỗi-string-concatenation">
+<a class="header-anchor" href="#4-n%e1%bb%91i-chu%e1%bb%97i-string-concatenation"></a>
+4. Nối Chuỗi (String Concatenation)
+</h2><h3 id="các-cách-nối-chuỗi">
+<a class="header-anchor" href="#c%c3%a1c-c%c3%a1ch-n%e1%bb%91i-chu%e1%bb%97i"></a>
+Các cách nối chuỗi
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">firstName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Đoàn&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">lastName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Long&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Phép cộng (+)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">fullName1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">firstName</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">lastName</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">fullName1</span>); <span style="color:#75715e">// &#34;Đoàn Long&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Template literals
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">fullName2</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">firstName</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">lastName</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">fullName2</span>); <span style="color:#75715e">// &#34;Đoàn Long&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// concat() method
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">fullName3</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">firstName</span>.<span style="color:#a6e22e">concat</span>(<span style="color:#e6db74">&#34; &#34;</span>, <span style="color:#a6e22e">lastName</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">fullName3</span>); <span style="color:#75715e">// &#34;Đoàn Long&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Nối nhiều chuỗi
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">greeting</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Xin chào, &#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;tôi là &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">firstName</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">lastName</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;!&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">greetingTemplate</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`Xin chào, tôi là </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">firstName</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">lastName</span><span style="color:#e6db74">}</span><span style="color:#e6db74">!`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">greeting</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">greetingTemplate</span>);
+</span></span></code></pre></div><h2 id="5-phương-thức-tìm-kiếm">
+<a class="header-anchor" href="#5-ph%c6%b0%c6%a1ng-th%e1%bb%a9c-t%c3%acm-ki%e1%ba%bfm"></a>
+5. Phương Thức Tìm Kiếm
+</h2><h3 id="indexof-và-lastindexof">
+<a class="header-anchor" href="#indexof-v%c3%a0-lastindexof"></a>
+indexOf() và lastIndexOf()
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;JavaScript là ngôn ngữ lập trình JavaScript&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tìm vị trí đầu tiên
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#34;JavaScript&#34;</span>));     <span style="color:#75715e">// 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#34;ngôn ngữ&#34;</span>));       <span style="color:#75715e">// 14  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#34;Python&#34;</span>));         <span style="color:#75715e">// -1 (không tìm thấy)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tìm từ vị trí cụ thể
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#34;JavaScript&#34;</span>, <span style="color:#ae81ff">5</span>));  <span style="color:#75715e">// 37 (tìm từ index 5)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tìm vị trí cuối cùng
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">lastIndexOf</span>(<span style="color:#e6db74">&#34;JavaScript&#34;</span>)); <span style="color:#75715e">// 37
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">lastIndexOf</span>(<span style="color:#e6db74">&#34;a&#34;</span>));          <span style="color:#75715e">// 40
+</span></span></span></code></pre></div><h3 id="includes-startswith-endswith-es6">
+<a class="header-anchor" href="#includes-startswith-endswith-es6"></a>
+includes(), startsWith(), endsWith() (ES6)
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">email</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;long@gmail.com&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://www.example.com&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">filename</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;document.pdf&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Kiểm tra chứa chuỗi con
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">email</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#34;@&#34;</span>));        <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">email</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#34;yahoo&#34;</span>));    <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Kiểm tra bắt đầu bằng
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">url</span>.<span style="color:#a6e22e">startsWith</span>(<span style="color:#e6db74">&#34;https&#34;</span>));    <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">url</span>.<span style="color:#a6e22e">startsWith</span>(<span style="color:#e6db74">&#34;http&#34;</span>));     <span style="color:#75715e">// true  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">url</span>.<span style="color:#a6e22e">startsWith</span>(<span style="color:#e6db74">&#34;ftp&#34;</span>));      <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Kiểm tra kết thúc bằng
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">filename</span>.<span style="color:#a6e22e">endsWith</span>(<span style="color:#e6db74">&#34;.pdf&#34;</span>));  <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">filename</span>.<span style="color:#a6e22e">endsWith</span>(<span style="color:#e6db74">&#34;.doc&#34;</span>));  <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">email</span>.<span style="color:#a6e22e">endsWith</span>(<span style="color:#e6db74">&#34;.com&#34;</span>));     <span style="color:#75715e">// true
+</span></span></span></code></pre></div><h2 id="6-phương-thức-cắt-chuỗi">
+<a class="header-anchor" href="#6-ph%c6%b0%c6%a1ng-th%e1%bb%a9c-c%e1%ba%aft-chu%e1%bb%97i"></a>
+6. Phương Thức Cắt Chuỗi
+</h2><h3 id="substring-slice">
+<a class="header-anchor" href="#substring-slice"></a>
+substring(), slice()
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;JavaScript Programming&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// substring(start, end) - không bao gồm end
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>));    <span style="color:#75715e">// &#34;JavaScript&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">10</span>));    <span style="color:#75715e">// &#34;Script&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">4</span>));        <span style="color:#75715e">// &#34;Script Programming&#34; (từ 4 đến cuối)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// slice(start, end) - tương tự substring nhưng hỗ trợ số âm
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>));        <span style="color:#75715e">// &#34;JavaScript&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">11</span>));          <span style="color:#75715e">// &#34;Programming&#34; (11 ký tự cuối)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">11</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">6</span>));      <span style="color:#75715e">// &#34;Progr&#34; (từ cuối lên)
+</span></span></span></code></pre></div><h2 id="7-phương-thức-thay-thế">
+<a class="header-anchor" href="#7-ph%c6%b0%c6%a1ng-th%e1%bb%a9c-thay-th%e1%ba%bf"></a>
+7. Phương Thức Thay Thế
+</h2><h3 id="replace-và-replaceall">
+<a class="header-anchor" href="#replace-v%c3%a0-replaceall"></a>
+replace() và replaceAll()
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;JavaScript là tuyệt vời. JavaScript dễ học.&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// replace() - chỉ thay thế lần đầu tiên
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">&#34;JavaScript&#34;</span>, <span style="color:#e6db74">&#34;JS&#34;</span>));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// &#34;JS là tuyệt vời. JavaScript dễ học.&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// replace() với RegEx để thay thế tất cả
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/JavaScript/g</span>, <span style="color:#e6db74">&#34;JS&#34;</span>));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// &#34;JS là tuyệt vời. JS dễ học.&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// replaceAll() (ES2021) - thay thế tất cả
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">replaceAll</span>(<span style="color:#e6db74">&#34;JavaScript&#34;</span>, <span style="color:#e6db74">&#34;JS&#34;</span>));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// &#34;JS là tuyệt vời. JS dễ học.&#34;
+</span></span></span></code></pre></div><h2 id="8-phương-thức-chuyển-đổi-case">
+<a class="header-anchor" href="#8-ph%c6%b0%c6%a1ng-th%e1%bb%a9c-chuy%e1%bb%83n-%c4%91%e1%bb%95i-case"></a>
+8. Phương Thức Chuyển Đổi Case
+</h2><h3 id="chuyển-đổi-chữ-hoathường">
+<a class="header-anchor" href="#chuy%e1%bb%83n-%c4%91%e1%bb%95i-ch%e1%bb%af-hoath%c6%b0%e1%bb%9dng"></a>
+Chuyển đổi chữ hoa/thường
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;JavaScript Programming&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Chuyển thành chữ thường
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">toLowerCase</span>());     <span style="color:#75715e">// &#34;javascript programming&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Chuyển thành chữ hoa
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">toUpperCase</span>());     <span style="color:#75715e">// &#34;JAVASCRIPT PROGRAMMING&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Chuyển đổi tiếng Việt
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">vietnamese</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;TIẾNG VIỆT&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">vietnamese</span>.<span style="color:#a6e22e">toLowerCase</span>());       <span style="color:#75715e">// &#34;tiếng việt&#34;
+</span></span></span></code></pre></div><h3 id="capitalize-first-letter">
+<a class="header-anchor" href="#capitalize-first-letter"></a>
+Capitalize first letter
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">capitalize</span>(<span style="color:#a6e22e">str</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">charAt</span>(<span style="color:#ae81ff">0</span>).<span style="color:#a6e22e">toUpperCase</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">toLowerCase</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">capitalize</span>(<span style="color:#e6db74">&#34;javascript&#34;</span>));       <span style="color:#75715e">// &#34;Javascript&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">capitalize</span>(<span style="color:#e6db74">&#34;PROGRAMMING&#34;</span>));      <span style="color:#75715e">// &#34;Programming&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Title Case (viết hoa đầu mỗi từ)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">toTitleCase</span>(<span style="color:#a6e22e">str</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">toLowerCase</span>().<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/\b\w/g</span>, <span style="color:#66d9ef">char</span> =&gt; <span style="color:#66d9ef">char</span>.<span style="color:#a6e22e">toUpperCase</span>());
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">toTitleCase</span>(<span style="color:#e6db74">&#34;javascript programming&#34;</span>)); <span style="color:#75715e">// &#34;Javascript Programming&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">toTitleCase</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>));           <span style="color:#75715e">// &#34;Hello World&#34;
+</span></span></span></code></pre></div><h2 id="9-phương-thức-trim">
+<a class="header-anchor" href="#9-ph%c6%b0%c6%a1ng-th%e1%bb%a9c-trim"></a>
+9. Phương Thức Trim
+</h2><h3 id="loại-bỏ-khoảng-trắng">
+<a class="header-anchor" href="#lo%e1%ba%a1i-b%e1%bb%8f-kho%e1%ba%a3ng-tr%e1%ba%afng"></a>
+Loại bỏ khoảng trắng
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;   Hello World   &#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Loại bỏ khoảng trắng đầu và cuối
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">trim</span>());           <span style="color:#75715e">// &#34;Hello World&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">trim</span>().<span style="color:#a6e22e">length</span>);    <span style="color:#75715e">// 11
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Loại bỏ khoảng trắng đầu (ES2019)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">trimStart</span>());      <span style="color:#75715e">// &#34;Hello World   &#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Loại bỏ khoảng trắng cuối (ES2019)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">trimEnd</span>());        <span style="color:#75715e">// &#34;   Hello World&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Original string không thay đổi
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">text</span>);                  <span style="color:#75715e">// &#34;   Hello World   &#34;
+</span></span></span></code></pre></div><h2 id="10-split-và-join">
+<a class="header-anchor" href="#10-split-v%c3%a0-join"></a>
+10. Split Và Join
+</h2><h3 id="tách-chuỗi-thành-mảng">
+<a class="header-anchor" href="#t%c3%a1ch-chu%e1%bb%97i-th%c3%a0nh-m%e1%ba%a3ng"></a>
+Tách chuỗi thành mảng
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">sentence</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;JavaScript,Python,Java,C++&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tách theo dấu phay
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">sentence</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;,&#34;</span>));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// [&#34;JavaScript&#34;, &#34;Python&#34;, &#34;Java&#34;, &#34;C++&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tách theo khoảng trắng
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">words</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello World Programming&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">words</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34; &#34;</span>));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// [&#34;Hello&#34;, &#34;World&#34;, &#34;Programming&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Giới hạn số phần tử
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">sentence</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;,&#34;</span>, <span style="color:#ae81ff">2</span>));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// [&#34;JavaScript&#34;, &#34;Python&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tách thành từng ký tự
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Hello&#34;</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;&#34;</span>));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// [&#34;H&#34;, &#34;e&#34;, &#34;l&#34;, &#34;l&#34;, &#34;o&#34;]
+</span></span></span></code></pre></div><h3 id="nối-mảng-thành-chuỗi">
+<a class="header-anchor" href="#n%e1%bb%91i-m%e1%ba%a3ng-th%c3%a0nh-chu%e1%bb%97i"></a>
+Nối mảng thành chuỗi
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">fruits</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;táo&#34;</span>, <span style="color:#e6db74">&#34;cam&#34;</span>, <span style="color:#e6db74">&#34;chuối&#34;</span>, <span style="color:#e6db74">&#34;xoài&#34;</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Nối với dấu phay
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">fruits</span>.<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34;, &#34;</span>));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// &#34;táo, cam, chuối, xoài&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Nối với &#34; và &#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">fruits</span>.<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34; và &#34;</span>));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// &#34;táo và cam và chuối và xoài&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Nối không có separator
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">fruits</span>.<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34;&#34;</span>));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// &#34;táocamchuốixoài&#34;
+</span></span></span></code></pre></div><h2 id="11-chuyển-đổi-số-sang-chuỗi">
+<a class="header-anchor" href="#11-chuy%e1%bb%83n-%c4%91%e1%bb%95i-s%e1%bb%91-sang-chu%e1%bb%97i"></a>
+11. Chuyển Đổi Số Sang Chuỗi
+</h2><h3 id="các-cách-chuyển-đổi">
+<a class="header-anchor" href="#c%c3%a1c-c%c3%a1ch-chuy%e1%bb%83n-%c4%91%e1%bb%95i"></a>
+Các cách chuyển đổi
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">number</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">123</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng toString()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">number</span>.<span style="color:#a6e22e">toString</span>());    <span style="color:#75715e">// &#34;123&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng String()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(String(<span style="color:#a6e22e">number</span>));       <span style="color:#75715e">// &#34;123&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Nối với chuỗi rỗng
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">number</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#34;</span>);          <span style="color:#75715e">// &#34;123&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Template literals
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">number</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);          <span style="color:#75715e">// &#34;123&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Chuyển sang hệ số khác
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">number</span>.<span style="color:#a6e22e">toString</span>(<span style="color:#ae81ff">2</span>));   <span style="color:#75715e">// &#34;1111011&#34; (nhị phân)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">number</span>.<span style="color:#a6e22e">toString</span>(<span style="color:#ae81ff">16</span>));  <span style="color:#75715e">// &#34;7b&#34; (thập lục phân)
+</span></span></span></code></pre></div><h2 id="12-ví-dụ-thực-tế">
+<a class="header-anchor" href="#12-v%c3%ad-d%e1%bb%a5-th%e1%bb%b1c-t%e1%ba%bf"></a>
+12. Ví Dụ Thực Tế
+</h2><h3 id="validate-email-đơn-giản">
+<a class="header-anchor" href="#validate-email-%c4%91%c6%a1n-gi%e1%ba%a3n"></a>
+Validate email đơn giản
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">isValidEmail</span>(<span style="color:#a6e22e">email</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Kiểm tra cơ bản
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">email</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#34;@&#34;</span>) <span style="color:#f92672">&amp;&amp;</span> 
+</span></span><span style="display:flex;"><span>           <span style="color:#a6e22e">email</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#34;.&#34;</span>) <span style="color:#f92672">&amp;&amp;</span> 
+</span></span><span style="display:flex;"><span>           <span style="color:#a6e22e">email</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#34;@&#34;</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> 
+</span></span><span style="display:flex;"><span>           <span style="color:#a6e22e">email</span>.<span style="color:#a6e22e">lastIndexOf</span>(<span style="color:#e6db74">&#34;.&#34;</span>) <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">email</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#34;@&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">isValidEmail</span>(<span style="color:#e6db74">&#34;test@gmail.com&#34;</span>));  <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">isValidEmail</span>(<span style="color:#e6db74">&#34;invalid-email&#34;</span>));   <span style="color:#75715e">// false
+</span></span></span></code></pre></div><h3 id="format-tên-người-dùng">
+<a class="header-anchor" href="#format-t%c3%aan-ng%c6%b0%e1%bb%9di-d%c3%b9ng"></a>
+Format tên người dùng
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">formatName</span>(<span style="color:#a6e22e">fullName</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fullName</span>
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">trim</span>()
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">toLowerCase</span>()
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34; &#34;</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">word</span> =&gt; <span style="color:#a6e22e">word</span>.<span style="color:#a6e22e">charAt</span>(<span style="color:#ae81ff">0</span>).<span style="color:#a6e22e">toUpperCase</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">word</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34; &#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">formatName</span>(<span style="color:#e6db74">&#34;  nguyễn văn   a  &#34;</span>)); <span style="color:#75715e">// &#34;Nguyễn Văn A&#34;
+</span></span></span></code></pre></div><h3 id="tạo-slug-từ-tiêu-đề">
+<a class="header-anchor" href="#t%e1%ba%a1o-slug-t%e1%bb%ab-ti%c3%aau-%c4%91%e1%bb%81"></a>
+Tạo slug từ tiêu đề
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createSlug</span>(<span style="color:#a6e22e">title</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">title</span>
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">toLowerCase</span>()
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">trim</span>()
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/[^\w\s-]/g</span>, <span style="color:#e6db74">&#39;&#39;</span>)     <span style="color:#75715e">// Xóa ký tự đặc biệt
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        .<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/[\s_-]+/g</span>, <span style="color:#e6db74">&#39;-&#39;</span>)     <span style="color:#75715e">// Thay space thành dash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        .<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/^-+|-+$/g</span>, <span style="color:#e6db74">&#39;&#39;</span>);     <span style="color:#75715e">// Xóa dash ở đầu/cuối
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">createSlug</span>(<span style="color:#e6db74">&#34;Học JavaScript Cơ Bản!&#34;</span>)); <span style="color:#75715e">// &#34;hoc-javascript-co-ban&#34;
+</span></span></span></code></pre></div><h3 id="đếm-số-từ">
+<a class="header-anchor" href="#%c4%91%e1%ba%bfm-s%e1%bb%91-t%e1%bb%ab"></a>
+Đếm số từ
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">countWords</span>(<span style="color:#a6e22e">text</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">trim</span>()
+</span></span><span style="display:flex;"><span>               .<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">/\s+/</span>)
+</span></span><span style="display:flex;"><span>               .<span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">word</span> =&gt; <span style="color:#a6e22e">word</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>               .<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">countWords</span>(<span style="color:#e6db74">&#34;Hello World JavaScript&#34;</span>));   <span style="color:#75715e">// 3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">countWords</span>(<span style="color:#e6db74">&#34;  Hello    World  &#34;</span>));       <span style="color:#75715e">// 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">countWords</span>(<span style="color:#e6db74">&#34;&#34;</span>));                         <span style="color:#75715e">// 0
+</span></span></span></code></pre></div><h3 id="ẩn-thông-tin-nhạy-cảm">
+<a class="header-anchor" href="#%e1%ba%a9n-th%c3%b4ng-tin-nh%e1%ba%a1y-c%e1%ba%a3m"></a>
+Ẩn thông tin nhạy cảm
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">maskEmail</span>(<span style="color:#a6e22e">email</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">atIndex</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">email</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#39;@&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">atIndex</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">email</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">username</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">email</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">atIndex</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">domain</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">email</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#a6e22e">atIndex</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">maskedUsername</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">username</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;*&#39;</span>.<span style="color:#a6e22e">repeat</span>(<span style="color:#a6e22e">username</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">username</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">maskedUsername</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">domain</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">maskEmail</span>(<span style="color:#e6db74">&#34;long@gmail.com&#34;</span>));    <span style="color:#75715e">// &#34;l**g@gmail.com&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">maskPhoneNumber</span>(<span style="color:#a6e22e">phone</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">phone</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">4</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">phone</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">visibleDigits</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">masked</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">phone</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">visibleDigits</span>) <span style="color:#f92672">+</span> 
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;*&#39;</span>.<span style="color:#a6e22e">repeat</span>(<span style="color:#a6e22e">phone</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">visibleDigits</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">+</span> 
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">phone</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#f92672">-</span><span style="color:#a6e22e">visibleDigits</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">masked</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">maskPhoneNumber</span>(<span style="color:#e6db74">&#34;0123456789&#34;</span>)); <span style="color:#75715e">// &#34;01******89&#34;
+</span></span></span></code></pre></div><h2 id="13-template-literals-nâng-cao">
+<a class="header-anchor" href="#13-template-literals-n%c3%a2ng-cao"></a>
+13. Template Literals Nâng Cao
+</h2><h3 id="multiline-strings-với-indentation">
+<a class="header-anchor" href="#multiline-strings-v%e1%bb%9bi-indentation"></a>
+Multiline strings với indentation
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Long&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">skills</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;JavaScript&#34;</span>, <span style="color:#e6db74">&#34;HTML&#34;</span>, <span style="color:#e6db74">&#34;CSS&#34;</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Template literals với expression phức tạp
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">profile</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Thông tin cá nhân:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">==================
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Tên: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Kỹ năng: 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#e6db74">${</span><span style="color:#a6e22e">skills</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">skill</span> =&gt; <span style="color:#e6db74">`  - </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">skill</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>).<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;\n&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Tổng số kỹ năng: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">skills</span>.<span style="color:#a6e22e">length</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Ngày cập nhật: </span><span style="color:#e6db74">${</span><span style="color:#66d9ef">new</span> Date().<span style="color:#a6e22e">toLocaleDateString</span>(<span style="color:#e6db74">&#39;vi-VN&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">profile</span>);
+</span></span></code></pre></div><h3 id="html-template-generation">
+<a class="header-anchor" href="#html-template-generation"></a>
+HTML template generation
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createUserCard</span>(<span style="color:#a6e22e">user</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;div class=&#34;user-card&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;img src=&#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">avatar</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;/default-avatar.png&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34; alt=&#34;Avatar&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;h3&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/h3&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;p class=&#34;email&#34;&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">email</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/p&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;p class=&#34;phone&#34;&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">phone</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;Chưa cập nhật&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/p&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;div class=&#34;skills&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">skills</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">skill</span> =&gt; 
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">`&lt;span class=&#34;skill-tag&#34;&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">skill</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/span&gt;`</span>
+</span></span><span style="display:flex;"><span>            ).<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;/div&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;/div&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    `</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Đoàn Đức Long&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">email</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;long@gmail.com&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">phone</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0123456789&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">avatar</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;/avatar.jpg&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">skills</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;JavaScript&#34;</span>, <span style="color:#e6db74">&#34;React&#34;</span>, <span style="color:#e6db74">&#34;Node.js&#34;</span>]
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">createUserCard</span>(<span style="color:#a6e22e">user</span>));
+</span></span></code></pre></div><h2 id="14-utility-functions-hữu-ích">
+<a class="header-anchor" href="#14-utility-functions-h%e1%bb%afu-%c3%adch"></a>
+14. Utility Functions Hữu Ích
+</h2><h3 id="text-processing-utilities">
+<a class="header-anchor" href="#text-processing-utilities"></a>
+Text processing utilities
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StringUtils</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Kiểm tra chuỗi rỗng hoặc chỉ chứa khoảng trắng
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">isEmpty</span>(<span style="color:#a6e22e">str</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">str</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">trim</span>().<span style="color:#a6e22e">length</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Cắt chuỗi và thêm &#34;...&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">truncate</span>(<span style="color:#a6e22e">str</span>, <span style="color:#a6e22e">length</span>, <span style="color:#a6e22e">suffix</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;...&#39;</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">length</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">str</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">suffix</span>.<span style="color:#a6e22e">length</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">suffix</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Chuyển snake_case thành camelCase
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">toCamelCase</span>(<span style="color:#a6e22e">str</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/_([a-z])/g</span>, (<span style="color:#a6e22e">match</span>, <span style="color:#a6e22e">letter</span>) =&gt; <span style="color:#a6e22e">letter</span>.<span style="color:#a6e22e">toUpperCase</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Chuyển camelCase thành snake_case
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">toSnakeCase</span>(<span style="color:#a6e22e">str</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/[A-Z]/g</span>, <span style="color:#a6e22e">letter</span> =&gt; <span style="color:#e6db74">`_</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">letter</span>.<span style="color:#a6e22e">toLowerCase</span>()<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Đảo ngược chuỗi
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">reverse</span>(<span style="color:#a6e22e">str</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;&#39;</span>).<span style="color:#a6e22e">reverse</span>().<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;&#39;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Kiểm tra palindrome
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">isPalindrome</span>(<span style="color:#a6e22e">str</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cleaned</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">toLowerCase</span>().<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/[^a-z0-9]/g</span>, <span style="color:#e6db74">&#39;&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cleaned</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">cleaned</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;&#39;</span>).<span style="color:#a6e22e">reverse</span>().<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;&#39;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Đếm số lần xuất hiện của substring
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">countOccurrences</span>(<span style="color:#a6e22e">str</span>, <span style="color:#a6e22e">substring</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> (<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">match</span>(<span style="color:#66d9ef">new</span> RegExp(<span style="color:#a6e22e">substring</span>, <span style="color:#e6db74">&#39;g&#39;</span>)) <span style="color:#f92672">||</span> []).<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Xóa dấu tiếng Việt
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">removeVietnameseTones</span>(<span style="color:#a6e22e">str</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">toneMap</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;àáạảãâầấậẩẫăằắặẳẵ&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;a&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;èéẹẻẽêềếệểễ&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;e&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;ìíịỉĩ&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;i&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;òóọỏõôồốộổỗơờớợởỡ&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;o&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;ùúụủũưừứựửữ&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;u&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;ỳýỵỷỹ&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;y&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;đ&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;d&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;ÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴ&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;A&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;ÈÉẸẺẼÊỀẾỆỂỄ&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;E&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;ÌÍỊỈĨ&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;I&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;ÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠ&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;O&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;ÙÚỤỦŨƯỪỨỰỬỮ&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;U&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;ỲÝỴỶỸ&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Y&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;Đ&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;D&#39;</span>
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">accented</span>, <span style="color:#a6e22e">plain</span>] <span style="color:#66d9ef">of</span> Object.<span style="color:#a6e22e">entries</span>(<span style="color:#a6e22e">toneMap</span>)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">accented</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#66d9ef">new</span> RegExp(<span style="color:#66d9ef">char</span>, <span style="color:#e6db74">&#39;g&#39;</span>), <span style="color:#a6e22e">plain</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">str</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Test utilities
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">StringUtils</span>.<span style="color:#a6e22e">isEmpty</span>(<span style="color:#e6db74">&#34;   &#34;</span>));           <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">StringUtils</span>.<span style="color:#a6e22e">truncate</span>(<span style="color:#e6db74">&#34;Hello World&#34;</span>, <span style="color:#ae81ff">8</span>)); <span style="color:#75715e">// &#34;Hello...&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">StringUtils</span>.<span style="color:#a6e22e">toCamelCase</span>(<span style="color:#e6db74">&#34;user_name&#34;</span>));   <span style="color:#75715e">// &#34;userName&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">StringUtils</span>.<span style="color:#a6e22e">toSnakeCase</span>(<span style="color:#e6db74">&#34;userName&#34;</span>));    <span style="color:#75715e">// &#34;user_name&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">StringUtils</span>.<span style="color:#a6e22e">reverse</span>(<span style="color:#e6db74">&#34;Hello&#34;</span>));           <span style="color:#75715e">// &#34;olleH&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">StringUtils</span>.<span style="color:#a6e22e">isPalindrome</span>(<span style="color:#e6db74">&#34;A man a plan a canal Panama&#34;</span>)); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">StringUtils</span>.<span style="color:#a6e22e">countOccurrences</span>(<span style="color:#e6db74">&#34;hello world hello&#34;</span>, <span style="color:#e6db74">&#34;hello&#34;</span>)); <span style="color:#75715e">// 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">StringUtils</span>.<span style="color:#a6e22e">removeVietnameseTones</span>(<span style="color:#e6db74">&#34;Tiếng Việt&#34;</span>)); <span style="color:#75715e">// &#34;Tieng Viet&#34;
+</span></span></span></code></pre></div><h2 id="15-tóm-tắt">
+<a class="header-anchor" href="#15-t%c3%b3m-t%e1%ba%aft"></a>
+15. Tóm Tắt
+</h2><h3 id="kiến-thức-cốt-lõi-về-string">
+<a class="header-anchor" href="#ki%e1%ba%bfn-th%e1%bb%a9c-c%e1%bb%91t-l%c3%b5i-v%e1%bb%81-string"></a>
+Kiến thức cốt lõi về String:
+</h3><ol>
+<li><strong>Khai báo:</strong> Single quotes <code>''</code>, double quotes <code>&quot;&quot;</code>, template literals <code>` `</code></li>
+<li><strong>Template literals:</strong> <code>${}</code> syntax cho string interpolation</li>
+<li><strong>Immutability:</strong> String methods không thay đổi string gốc</li>
+<li><strong>Indexing:</strong> Zero-based indexing với <code>[]</code> hoặc <code>charAt()</code></li>
+<li><strong>Length:</strong> Sử dụng <code>.length</code> property</li>
+</ol>
+<h3 id="phương-thức-quan-trọng">
+<a class="header-anchor" href="#ph%c6%b0%c6%a1ng-th%e1%bb%a9c-quan-tr%e1%bb%8dng"></a>
+Phương thức quan trọng:
+</h3><table>
+  <thead>
+      <tr>
+          <th>Nhóm</th>
+          <th>Methods</th>
+          <th>Mô tả</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Tìm kiếm</strong></td>
+          <td><code>indexOf()</code>, <code>includes()</code>, <code>startsWith()</code>, <code>endsWith()</code></td>
+          <td>Tìm vị trí và kiểm tra</td>
+      </tr>
+      <tr>
+          <td><strong>Cắt chuỗi</strong></td>
+          <td><code>slice()</code>, <code>substring()</code></td>
+          <td>Trích xuất phần chuỗi</td>
+      </tr>
+      <tr>
+          <td><strong>Thay thế</strong></td>
+          <td><code>replace()</code>, <code>replaceAll()</code></td>
+          <td>Thay thế nội dung</td>
+      </tr>
+      <tr>
+          <td><strong>Case</strong></td>
+          <td><code>toLowerCase()</code>, <code>toUpperCase()</code></td>
+          <td>Chuyển đổi chữ hoa/thường</td>
+      </tr>
+      <tr>
+          <td><strong>Trim</strong></td>
+          <td><code>trim()</code>, <code>trimStart()</code>, <code>trimEnd()</code></td>
+          <td>Loại bỏ khoảng trắng</td>
+      </tr>
+      <tr>
+          <td><strong>Split/Join</strong></td>
+          <td><code>split()</code>, Array&rsquo;s <code>join()</code></td>
+          <td>Tách/nối chuỗi</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="best-practices">
+<a class="header-anchor" href="#best-practices"></a>
+Best Practices:
+</h3><ul>
+<li>✅ <strong>Ưu tiên template literals</strong> cho string interpolation</li>
+<li>✅ <strong>Sử dụng <code>includes()</code></strong> thay vì <code>indexOf() !== -1</code></li>
+<li>✅ <strong>Validate user input</strong> trước khi xử lý</li>
+<li>✅ <strong>Sử dụng const</strong> cho string không thay đổi</li>
+<li>✅ <strong>Cache string operations</strong> khi xử lý nhiều lần</li>
+<li>✅ <strong>Sử dụng utility functions</strong> để tái sử dụng code</li>
+</ul>
+<h3 id="lưu-ý-quan-trọng">
+<a class="header-anchor" href="#l%c6%b0u-%c3%bd-quan-tr%e1%bb%8dng"></a>
+Lưu ý quan trọng:
+</h3><ul>
+<li>String trong JavaScript là <strong>immutable</strong> (không thể thay đổi)</li>
+<li>Mọi operation đều tạo ra string mới</li>
+<li>Template literals hỗ trợ multiline và expression</li>
+<li>Cẩn thận với Unicode và emoji (có thể chiếm 2 code units)</li>
+</ul>
+<p>Nắm vững kiến thức về String sẽ giúp bạn xử lý văn bản hiệu quả trong JavaScript!</p>
+</div>
+    <footer class="article-footer">
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="JavaScript Cơ Bản - Bài 13: Template Literals Và Chuyển Đổi Number-String"
+              class="lazyload"
+            /><a
+          href="/posts/javascript-co-ban-bai-13/"
+          aria-label="Prev:JavaScript Cơ Bản - Bài 13: Template Literals Và Chuyển Đổi Number-String"
+          title="Prev:JavaScript Cơ Bản - Bài 13: Template Literals Và Chuyển Đổi Number-String"
+        ></a>
+        <div class="article-nav-caption">Prev</div>
+        <h3 class="article-nav-title">JavaScript Cơ Bản - Bài 13: Template Literals Và Chuyển Đổi Number-String</h3>
+      </div><div class="article-nav-link-wrap right"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="JavaScript Cơ Bản - Bài 11: Tổng Hợp Kiến Thức Về Number"
+              class="lazyload"
+            /><a
+          href="/posts/javascript-co-ban-bai-11/"
+          aria-label="Next:JavaScript Cơ Bản - Bài 11: Tổng Hợp Kiến Thức Về Number"
+          title="Next:JavaScript Cơ Bản - Bài 11: Tổng Hợp Kiến Thức Về Number"
+        ></a>
+        <div class="article-nav-caption">Next</div>
+        <h3 class="article-nav-title">JavaScript Cơ Bản - Bài 11: Tổng Hợp Kiến Thức Về Number</h3>
+      </div></nav></article></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2020-2025<span class="footer-info-sep rotate"></span>
+      Đoàn Đức Long
+    </div><div>
+        Powered by&nbsp;<a
+          href="https://gohugo.io/"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Hugo</a
+        >&nbsp; Theme.<a
+          href="https://github.com/D-Sketon/hugo-theme-reimu"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Reimu</a
+        >
+      </div><div>
+        <span class="icon-brush"
+          >&nbsp;68.5k</span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;05:53</span>
+      </div><div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >Number of visits&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >Number of visitors&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><div class="sidebar-toc-card" aria-label="Table of contents">
+	<h3 class="toc-title">Contents</h3>
+	<div class="sidebar-toc-wrapper toc-div-class" data-toc="sidebar">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#video-hướng-dẫn">Video Hướng Dẫn</a></li>
+    <li><a href="#1-cách-khai-báo-chuỗi">1. Cách Khai Báo Chuỗi</a>
+      <ul>
+        <li><a href="#sử-dụng-dấu-nháy-đơn-và-nháy-kép">Sử dụng dấu nháy đơn và nháy kép</a></li>
+        <li><a href="#template-literals-es6">Template Literals (ES6)</a></li>
+        <li><a href="#chuỗi-nhiều-dòng">Chuỗi nhiều dòng</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-escape-characters-ký-tự-thoát">2. Escape Characters (Ký Tự Thoát)</a>
+      <ul>
+        <li><a href="#các-ký-tự-thoát-thường-dùng">Các ký tự thoát thường dùng</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-thuộc-tính-và-phương-thức-cơ-bản">3. Thuộc Tính Và Phương Thức Cơ Bản</a>
+      <ul>
+        <li><a href="#độ-dài-chuỗi">Độ dài chuỗi</a></li>
+        <li><a href="#truy-cập-ký-tự">Truy cập ký tự</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-nối-chuỗi-string-concatenation">4. Nối Chuỗi (String Concatenation)</a>
+      <ul>
+        <li><a href="#các-cách-nối-chuỗi">Các cách nối chuỗi</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-phương-thức-tìm-kiếm">5. Phương Thức Tìm Kiếm</a>
+      <ul>
+        <li><a href="#indexof-và-lastindexof">indexOf() và lastIndexOf()</a></li>
+        <li><a href="#includes-startswith-endswith-es6">includes(), startsWith(), endsWith() (ES6)</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-phương-thức-cắt-chuỗi">6. Phương Thức Cắt Chuỗi</a>
+      <ul>
+        <li><a href="#substring-slice">substring(), slice()</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-phương-thức-thay-thế">7. Phương Thức Thay Thế</a>
+      <ul>
+        <li><a href="#replace-và-replaceall">replace() và replaceAll()</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-phương-thức-chuyển-đổi-case">8. Phương Thức Chuyển Đổi Case</a>
+      <ul>
+        <li><a href="#chuyển-đổi-chữ-hoathường">Chuyển đổi chữ hoa/thường</a></li>
+        <li><a href="#capitalize-first-letter">Capitalize first letter</a></li>
+      </ul>
+    </li>
+    <li><a href="#9-phương-thức-trim">9. Phương Thức Trim</a>
+      <ul>
+        <li><a href="#loại-bỏ-khoảng-trắng">Loại bỏ khoảng trắng</a></li>
+      </ul>
+    </li>
+    <li><a href="#10-split-và-join">10. Split Và Join</a>
+      <ul>
+        <li><a href="#tách-chuỗi-thành-mảng">Tách chuỗi thành mảng</a></li>
+        <li><a href="#nối-mảng-thành-chuỗi">Nối mảng thành chuỗi</a></li>
+      </ul>
+    </li>
+    <li><a href="#11-chuyển-đổi-số-sang-chuỗi">11. Chuyển Đổi Số Sang Chuỗi</a>
+      <ul>
+        <li><a href="#các-cách-chuyển-đổi">Các cách chuyển đổi</a></li>
+      </ul>
+    </li>
+    <li><a href="#12-ví-dụ-thực-tế">12. Ví Dụ Thực Tế</a>
+      <ul>
+        <li><a href="#validate-email-đơn-giản">Validate email đơn giản</a></li>
+        <li><a href="#format-tên-người-dùng">Format tên người dùng</a></li>
+        <li><a href="#tạo-slug-từ-tiêu-đề">Tạo slug từ tiêu đề</a></li>
+        <li><a href="#đếm-số-từ">Đếm số từ</a></li>
+        <li><a href="#ẩn-thông-tin-nhạy-cảm">Ẩn thông tin nhạy cảm</a></li>
+      </ul>
+    </li>
+    <li><a href="#13-template-literals-nâng-cao">13. Template Literals Nâng Cao</a>
+      <ul>
+        <li><a href="#multiline-strings-với-indentation">Multiline strings với indentation</a></li>
+        <li><a href="#html-template-generation">HTML template generation</a></li>
+      </ul>
+    </li>
+    <li><a href="#14-utility-functions-hữu-ích">14. Utility Functions Hữu Ích</a>
+      <ul>
+        <li><a href="#text-processing-utilities">Text processing utilities</a></li>
+      </ul>
+    </li>
+    <li><a href="#15-tóm-tắt">15. Tóm Tắt</a>
+      <ul>
+        <li><a href="#kiến-thức-cốt-lõi-về-string">Kiến thức cốt lõi về String:</a></li>
+        <li><a href="#phương-thức-quan-trọng">Phương thức quan trọng:</a></li>
+        <li><a href="#best-practices">Best Practices:</a></li>
+        <li><a href="#lưu-ý-quan-trọng">Lưu ý quan trọng:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+	</div>
+  
+	
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/images/avatar.png"
+    data-sizes="auto"
+    alt="Đoàn Đức Long"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Đoàn Đức Long</div>
+  <div class="sidebar-description">Blog chia sẻ học tập và kiến thức về code, công nghệ và các dự án cá nhân</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div><div class="sidebar-state-number">65</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      6
+    </div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-discord sidebar-social-icon">
+      <a
+        href="https://discord.com/users/757589425466245182"
+        itemprop="url"
+        target="_blank"
+        aria-label="discord"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-facebook sidebar-social-icon">
+      <a
+        href="https://www.facebook.com/iouas.04"
+        itemprop="url"
+        target="_blank"
+        aria-label="facebook"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/longdoan2k4"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-instagram sidebar-social-icon">
+      <a
+        href="https://www.instagram.com/oglas.z3_/"
+        itemprop="url"
+        target="_blank"
+        aria-label="instagram"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="Home"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Home</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="Archives"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Archives</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="About"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">About</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="Friend"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Friend</div>
+    </div></div></div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous" ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script><script
+    src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js"
+    integrity="sha384-8LyaidD9GPxQQgLJO/WRw/O2h3BoNq/ApI/ecpvM6RsrCz2qP2ppBXUKihP4V/2d" crossorigin="anonymous"></script><script>
+  if (window.firework) {
+    const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+    options.excludeElements = options.excludeelements;
+    delete options.excludeelements;
+    window.firework(options);
+  }
+</script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "Đoàn Đức Long",
+          title: "JavaScript Cơ Bản - Bài 12: Kiểu Dữ Liệu Chuỗi (String)",
+          url: "https:\/\/doandduclong.github.io\/posts\/javascript-co-ban-bai-12\/",
+          description: "Tìm hiểu về kiểu dữ liệu chuỗi trong JavaScript - cách khai báo, template literals, các phương thức xử lý chuỗi và ví dụ thực tế",
+          cover: "https:\/\/doandduclong.github.io\/images\/banner.webp",
+        };
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script></div>
+</div>
+
+<script
+    src="/js/toc-sidebar.js"
+    deferdata-pjax></script><script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    asyncintegrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script><script src="/js/search.js"></script></body>
+</html>

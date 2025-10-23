@@ -1,0 +1,1807 @@
+<!doctype html>
+<html
+  lang="vi-vn" 
+  data-theme-mode="auto"
+  >
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  JavaScript Cơ Bản - Bài 02: Chạy Chương Trình JavaScript Với Node | Đoàn Đức Long
+</title>
+<meta
+  name="description"
+  content="Hướng dẫn cách chạy chương trình JavaScript đầu tiên với NodeJS"
+/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://doandduclong.github.io/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" />
+<meta property="og:type" content="website" />
+  <meta property="og:title" content="JavaScript Cơ Bản - Bài 02: Chạy Chương Trình JavaScript Với Node | Đoàn Đức Long" />
+  <meta
+    property="og:description"
+    content="Hướng dẫn cách chạy chương trình JavaScript đầu tiên với NodeJS"
+  />
+  <meta property="og:url" content="https://doandduclong.github.io/posts/javascript-co-ban-bai-02/" />
+  <meta
+    property="og:site_name"
+    content="Đoàn Đức Long - Tech Blog"
+  />
+  <meta
+    property="og:image"
+    content="/"
+  />
+  <meta property="article:author" content="Đoàn Đức Long" />
+  <meta property="article:published_time" content="2025-10-20T00:00:00&#43;07:00" />
+  <meta property="article:modified_time" content="2025-10-20T00:00:00&#43;07:00" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.030bf20ad33bf6086328005695d5aecf4e3252819f7b6c64892b3dd33ad2e2ed.css" />
+<link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css"
+    integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz&#43;YI" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/>
+
+<link rel="stylesheet" href="/css/custom-posts.min.c23bccebedc11d0eca845bea6af4b5b6337c6a67b36703c043bee39e9f606cb0.css" integrity="sha256-wjvM6&#43;3BHQ7KhFvqavS1tjN8amezZwPAQ77jnp9gbLA=">
+<link rel="stylesheet" href="/css/fixes.css"></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+          M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg></div><div class="loading-word">Loading...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+This article does not have a corresponding language version
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/">Home</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/archives">Archives</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/about">About</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/friend">Friend</a>
+      </span><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+    <a id="nav-search-btn" class="nav-icon" title="Tìm kiếm" aria-label="Tìm kiếm" onclick="toggleSearch()"></a>
+  </nav></div>
+
+
+<div id="search-overlay" class="search-overlay" style="display: none;">
+  <div class="search-container">
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="Tìm kiếm bài viết..." autocomplete="off">
+      <button type="button" id="close-search" onclick="closeSearch()">✕</button>
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+</div><style>
+:root {
+  --cover-background: transparent;
+  --site-cover-background: transparent;
+}
+.header-cover-rgb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150%;
+  z-index: -2;
+  display: block;
+  mask: linear-gradient(to top, transparent, #fff 50%);
+}
+.header-cover-params {
+  background: var(--cover-background);
+}
+.header-cover-site {
+  background: var(--site-cover-background);
+}
+</style>
+
+<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="JavaScript Cơ Bản - Bài 02: Chạy Chương Trình JavaScript Với Node"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">JavaScript Cơ Bản - Bài 02: Chạy Chương Trình JavaScript Với Node</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header>
+
+<style>
+ 
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(20, 20, 30, 0.95) 0%,
+    rgba(40, 40, 60, 0.95) 50%,
+    rgba(60, 30, 40, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 15vh;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.search-container {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-box {
+  position: relative;
+  margin-bottom: 2rem;
+  width: 450px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 1rem 3.5rem 1rem 1.5rem;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+.search-box input:focus {
+  border-color: rgba(255, 107, 107, 0.8);
+  box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.2),
+              0 8px 32px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+}
+
+
+
+#close-search {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 107, 107, 0.2);
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#close-search:hover {
+  background: rgba(255, 107, 107, 0.4);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.search-results {
+  max-height: 50vh;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 0;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease-out;
+  width: 450px;
+  box-sizing: border-box;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+ 
+.search-results::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-results::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background: rgba(255, 107, 107, 0.5);
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 107, 107, 0.7);
+}
+
+.search-result-item {
+  padding: 1rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0;
+  margin-bottom: 1px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(5px);
+}
+
+.search-result-item:first-child {
+  border-radius: 14px 14px 0 0;
+  margin-top: 1.5rem;
+}
+
+.search-result-item:last-child {
+  border-radius: 0 0 14px 14px;
+  margin-bottom: 1.5rem;
+}
+
+.search-result-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 107, 107, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(255, 107, 107, 0.15);
+}
+
+.search-result-item:last-child {
+  margin-bottom: 0;
+}
+
+.search-result-title {
+  color: #ff9999;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.search-result-item:hover .search-result-title {
+  color: #ff6b6b;
+}
+
+.search-result-category {
+  display: inline-block;
+  background: linear-gradient(45deg, rgba(255, 107, 107, 0.2), rgba(255, 150, 150, 0.2));
+  color: #ffaaaa;
+  padding: 0.2rem 0.6rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  transition: all 0.2s ease;
+}
+
+.search-result-item:hover .search-result-category {
+  background: linear-gradient(45deg, rgba(255, 107, 107, 0.3), rgba(255, 150, 150, 0.3));
+  color: #ff6b6b;
+  border-color: rgba(255, 107, 107, 0.5);
+}
+
+ 
+#nav-search-btn {
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#nav-search-btn:hover {
+  color: #ff6b6b;
+  transform: scale(1.1);
+}
+</style>
+
+<script>
+
+let allPosts = [];
+let searchIndex = null;
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  initializeSearch();
+});
+
+function toggleSearch() {
+  const overlay = document.getElementById('search-overlay');
+  const searchInput = document.getElementById('search-input');
+  
+  if (overlay.style.display === 'none' || overlay.style.display === '') {
+    
+    overlay.style.display = 'flex';
+    overlay.style.animation = 'fadeIn 0.3s ease-out forwards';
+    
+    
+    setTimeout(() => {
+      searchInput.focus();
+    }, 150);
+    
+    document.body.style.overflow = 'hidden';
+  } else {
+    closeSearch();
+  }
+}
+
+function closeSearch() {
+  const overlay = document.getElementById('search-overlay');
+  const searchInput = document.getElementById('search-input');
+  const results = document.getElementById('search-results');
+  
+  
+  showAllResults = false;
+  
+  
+  overlay.style.animation = 'fadeOut 0.3s ease-out forwards';
+  
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    searchInput.value = '';
+    results.innerHTML = '';
+    document.body.style.overflow = '';
+    overlay.style.animation = ''; 
+  }, 300);
+}
+
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeSearch();
+  }
+  
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    toggleSearch();
+  }
+});
+
+
+async function initializeSearch() {
+  try {
+    const response = await fetch('/index.json');
+    const data = await response.json();
+    allPosts = data;
+    
+    
+    const searchInput = document.getElementById('search-input');
+    let searchTimeout;
+    
+    searchInput.addEventListener('input', function() {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        performSearch(this.value);
+      }, 300);
+    });
+    
+  } catch (error) {
+    console.error('Error loading search data:', error);
+  }
+}
+
+function performSearch(query) {
+  const results = document.getElementById('search-results');
+  
+  if (!query || query.length < 2) {
+    results.innerHTML = '';
+    return;
+  }
+  
+  const searchQuery = query.toLowerCase();
+  const matches = allPosts.filter(post => {
+    return post.title.toLowerCase().includes(searchQuery) ||
+           post.content.toLowerCase().includes(searchQuery) ||
+           (post.categories && post.categories.some(cat => cat.toLowerCase().includes(searchQuery))) ||
+           (post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchQuery)));
+  });
+  
+  displaySearchResults(matches, query);
+}
+
+let showAllResults = false;
+
+function displaySearchResults(matches, query) {
+  const results = document.getElementById('search-results');
+  
+  if (matches.length === 0) {
+    results.innerHTML = '<div style="color: rgba(255,255,255,0.7); text-align: center; padding: 3rem 1.5rem;">Không tìm thấy kết quả nào cho "' + query + '"</div>';
+    return;
+  }
+  
+  const totalResults = matches.length;
+  const displayLimit = showAllResults ? totalResults : 8;
+  const itemsToShow = matches.slice(0, displayLimit);
+  
+  results.innerHTML = `
+    <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0; padding: 1.5rem 1.5rem 0 1.5rem;">
+      Tìm thấy ${totalResults} bài viết cho "${query}"
+    </div>
+  `;
+  
+  const html = itemsToShow.map(post => {
+    const title = highlightText(post.title, query);
+    const category = post.categories && post.categories.length > 0 ? post.categories[0] : '';
+    const date = post.date || '';
+    
+    return `
+      <div class="search-result-item" onclick="navigateToPost('${post.uri}')">
+        <div class="search-result-title">${title}</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.3rem;">
+          ${category ? `<span class="search-result-category">${category}</span>` : '<span></span>'}
+          ${date ? `<span style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">${date}</span>` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+  
+  results.innerHTML += html;
+  
+  if (totalResults > 8 && !showAllResults) {
+    results.innerHTML += `
+      <div style="color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem;">
+        <button onclick="toggleShowAllResults('${query}')" style="
+          background: rgba(255, 107, 107, 0.2);
+          border: 1px solid rgba(255, 107, 107, 0.4);
+          color: #ff6b6b;
+          padding: 0.8rem 1.5rem;
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+        " onmouseover="this.style.background='rgba(255, 107, 107, 0.3)'" onmouseout="this.style.background='rgba(255, 107, 107, 0.2)'">
+          Xem tất cả ${totalResults} bài viết
+        </button>
+      </div>
+    `;
+  } else if (showAllResults && totalResults > 8) {
+    results.innerHTML += `
+      <div style="color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem;">
+        <button onclick="toggleShowAllResults('${query}')" style="
+          background: rgba(255, 107, 107, 0.2);
+          border: 1px solid rgba(255, 107, 107, 0.4);
+          color: #ff6b6b;
+          padding: 0.8rem 1.5rem;
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+        " onmouseover="this.style.background='rgba(255, 107, 107, 0.3)'" onmouseout="this.style.background='rgba(255, 107, 107, 0.2)'">
+          Thu gọn kết quả
+        </button>
+      </div>
+    `;
+  }
+}
+
+function toggleShowAllResults(query) {
+  showAllResults = !showAllResults;
+  performSearch(query);
+}
+
+function highlightText(text, query) {
+  if (!query) return text;
+  const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+  return text.replace(regex, '<mark style="background: rgba(255,107,107,0.3); color: #fff;">$1</mark>');
+}
+
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function navigateToPost(uri) {
+  window.location.href = uri;
+}
+</script><div id="content"
+          aria-label="Page content"
+          
+          class="sidebar-right"  ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><div class="sidebar-toc-card" aria-label="Table of contents">
+	<h3 class="toc-title">Contents</h3>
+	<div class="sidebar-toc-wrapper toc-div-class" data-toc="sidebar">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#video-hướng-dẫn">Video Hướng Dẫn</a></li>
+    <li><a href="#tạo-file-javascript-đầu-tiên">Tạo File JavaScript Đầu Tiên</a>
+      <ul>
+        <li><a href="#1-tạo-thư-mục-làm-việc">1. Tạo thư mục làm việc</a></li>
+        <li><a href="#2-tạo-file-javascript">2. Tạo file JavaScript</a></li>
+        <li><a href="#3-chạy-chương-trình">3. Chạy chương trình</a></li>
+      </ul>
+    </li>
+    <li><a href="#các-cách-chạy-javascript">Các Cách Chạy JavaScript</a>
+      <ul>
+        <li><a href="#1-chạy-file-trực-tiếp">1. Chạy file trực tiếp</a></li>
+        <li><a href="#2-chạy-trong-node-repl">2. Chạy trong Node REPL</a></li>
+        <li><a href="#3-chạy-với-nodemon-auto-restart">3. Chạy với nodemon (auto-restart)</a></li>
+        <li><a href="#in-nhiều-giá-trị">In nhiều giá trị</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-interactive-mode">4. Interactive Mode</a>
+      <ul>
+        <li><a href="#lỗi-file-không-tồn-tại">Lỗi file không tồn tại</a></li>
+      </ul>
+    </li>
+    <li><a href="#best-practices">Best Practices</a>
+      <ul>
+        <li><a href="#52-tạo-file-chínhconsolelogđã-qua-môn-ispassed">5.2. Tạo file chínhconsole.log(&ldquo;Đã qua môn:&rdquo;, isPassed);</a></li>
+        <li><a href="#3-tổ-chức-code">3. Tổ chức code</a></li>
+      </ul>
+    </li>
+    <li><a href="#shortcuts-hữu-ích">Shortcuts Hữu Ích</a>
+      <ul>
+        <li><a href="#terminalcommand-prompt">Terminal/Command Prompt</a></li>
+        <li><a href="#node-replconsolelogtên-studentname">Node REPL```console.log(&ldquo;Tên:&rdquo;, student.name);</a></li>
+      </ul>
+    </li>
+    <li><a href="#bài-tập-thực-hành">Bài Tập Thực Hành</a>
+      <ul>
+        <li><a href="#bài-1-chương-trình-chào-hỏi-61-extension-file-làm-việc-với-functions-hàm">Bài 1: Chương trình chào hỏi### 6.1. Extension file## Làm việc với Functions (Hàm)</a></li>
+        <li><a href="#bài-2-máy-tính-đơn-giản">Bài 2: Máy tính đơn giản</a></li>
+        <li><a href="#bài-3-thông-tin-hệ-thốngjavascript">Bài 3: Thông tin hệ thống```javascript</a></li>
+        <li><a href="#62-encoding-function-declaration-khai-báo-hàm">6.2. Encoding// Function declaration (Khai báo hàm)</a></li>
+      </ul>
+    </li>
+    <li><a href="#kết-luận">Kết Luận</a></li>
+    <li><a href="#làm-việc-với-input-từ-người-dùng">Làm việc với Input từ người dùng</a>
+      <ul>
+        <li><a href="#sử-dụng-readline-module">Sử dụng readline module</a></li>
+      </ul>
+    </li>
+    <li><a href="#xử-lý-điều-kiện-và-vòng-lặp">Xử lý điều kiện và vòng lặp</a></li>
+    <li><a href="#chương-trình-thực-tế-calculator-đơn-giản">Chương trình thực tế: Calculator đơn giản</a></li>
+    <li><a href="#debugging-và-error-handling">Debugging và Error Handling</a></li>
+    <li><a href="#tổng-kết">Tổng kết</a></li>
+    <li><a href="#bài-tập-thực-hành-1">Bài tập thực hành</a></li>
+    <li><a href="#bài-tiếp-theo">Bài tiếp theo</a></li>
+  </ul>
+</nav>
+	</div>
+  
+	
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/images/avatar.png"
+    data-sizes="auto"
+    alt="Đoàn Đức Long"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Đoàn Đức Long</div>
+  <div class="sidebar-description">Blog chia sẻ học tập và kiến thức về code, công nghệ và các dự án cá nhân</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div><div class="sidebar-state-number">65</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      6
+    </div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-discord sidebar-social-icon">
+      <a
+        href="https://discord.com/users/757589425466245182"
+        itemprop="url"
+        target="_blank"
+        aria-label="discord"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-facebook sidebar-social-icon">
+      <a
+        href="https://www.facebook.com/iouas.04"
+        itemprop="url"
+        target="_blank"
+        aria-label="facebook"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/longdoan2k4"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-instagram sidebar-social-icon">
+      <a
+        href="https://www.instagram.com/oglas.z3_/"
+        itemprop="url"
+        target="_blank"
+        aria-label="instagram"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="Home"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Home</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="Archives"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Archives</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="About"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">About</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="Friend"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Friend</div>
+    </div></div></div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2025-10-20 00:00:00 &#43;0700 &#43;07" itemprop="datePublished"
+      >2025-10-20</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2025-10-20</time
+    >
+  </span></div>
+<div class="article-category"><a
+      class="article-category-link"
+      href="/categories/javascript-c%c6%a1-b%e1%ba%a3n"
+      data-aos="zoom-in"
+      >JAVASCRIPT CƠ BẢN</a
+    ></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h1 id="javascript-cơ-bản---bài-02-chạy-chương-trình-javascript-với-node">
+<a class="header-anchor" href="#javascript-c%c6%a1-b%e1%ba%a3n---b%c3%a0i-02-ch%e1%ba%a1y-ch%c6%b0%c6%a1ng-tr%c3%acnh-javascript-v%e1%bb%9bi-node"></a>
+JavaScript Cơ Bản - Bài 02: Chạy Chương Trình JavaScript Với Node
+</h1><p>Sau khi cài đặt NodeJS thành công, bây giờ chúng ta sẽ học cách chạy chương trình JavaScript đầu tiên. Đây là bước quan trọng để bắt đầu hành trình lập trình JavaScript.</p>
+<h2 id="video-hướng-dẫn">
+<a class="header-anchor" href="#video-h%c6%b0%e1%bb%9bng-d%e1%ba%abn"></a>
+Video Hướng Dẫn
+</h2><div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/cbZfmmIlzaU?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<h2 id="tạo-file-javascript-đầu-tiên">
+<a class="header-anchor" href="#t%e1%ba%a1o-file-javascript-%c4%91%e1%ba%a7u-ti%c3%aan"></a>
+Tạo File JavaScript Đầu Tiên
+</h2><h3 id="1-tạo-thư-mục-làm-việc">
+<a class="header-anchor" href="#1-t%e1%ba%a1o-th%c6%b0-m%e1%bb%a5c-l%c3%a0m-vi%e1%bb%87c"></a>
+1. Tạo thư mục làm việc
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Tạo thư mục cho project</span>
+</span></span><span style="display:flex;"><span>mkdir javascript-basic
+</span></span><span style="display:flex;"><span>cd javascript-basic
+</span></span></code></pre></div><h3 id="2-tạo-file-javascript">
+<a class="header-anchor" href="#2-t%e1%ba%a1o-file-javascript"></a>
+2. Tạo file JavaScript
+</h3><p>Tạo file <code>hello.js</code> với nội dung:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Xin chào thế giới JavaScript!&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Đây là chương trình đầu tiên của tôi&#34;</span>);
+</span></span></code></pre></div><h3 id="3-chạy-chương-trình">
+<a class="header-anchor" href="#3-ch%e1%ba%a1y-ch%c6%b0%c6%a1ng-tr%c3%acnh"></a>
+3. Chạy chương trình
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>node hello.js
+</span></span></code></pre></div><p><strong>Kết quả:</strong></p>
+<pre tabindex="0"><code>Xin chào thế giới JavaScript!
+Đây là chương trình đầu tiên của tôi
+</code></pre><h2 id="các-cách-chạy-javascript">
+<a class="header-anchor" href="#c%c3%a1c-c%c3%a1ch-ch%e1%ba%a1y-javascript"></a>
+Các Cách Chạy JavaScript
+</h2><h3 id="1-chạy-file-trực-tiếp">
+<a class="header-anchor" href="#1-ch%e1%ba%a1y-file-tr%e1%bb%b1c-ti%e1%ba%bfp"></a>
+1. Chạy file trực tiếp
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Cú pháp: node &lt;tên-file&gt;.js</span>
+</span></span><span style="display:flex;"><span>node hello.js
+</span></span><span style="display:flex;"><span>node app.js
+</span></span><span style="display:flex;"><span>node index.js
+</span></span></code></pre></div><h3 id="2-chạy-trong-node-repl">
+<a class="header-anchor" href="#2-ch%e1%ba%a1y-trong-node-repl"></a>
+2. Chạy trong Node REPL
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Khởi động Node REPL (Read-Eval-Print Loop)</span>
+</span></span><span style="display:flex;"><span>node
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Viết JavaScript trực tiếp</span>
+</span></span><span style="display:flex;"><span>&gt; console.log<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Hello from REPL&#34;</span><span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>&gt; <span style="color:#ae81ff">2</span> + <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>&gt; let name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;JavaScript&#34;</span>;
+</span></span><span style="display:flex;"><span>&gt; console.log<span style="color:#f92672">(</span>name<span style="color:#f92672">)</span>;
+</span></span></code></pre></div><p><strong>Thoát REPL:</strong></p>
+<ul>
+<li>Gõ <code>.exit</code> hoặc <code>Ctrl + C</code> (2 lần)</li>
+</ul>
+<h3 id="3-chạy-với-nodemon-auto-restart">
+<a class="header-anchor" href="#3-ch%e1%ba%a1y-v%e1%bb%9bi-nodemon-auto-restart"></a>
+3. Chạy với nodemon (auto-restart)
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Cài đặt nodemon global</span>
+</span></span><span style="display:flex;"><span>npm install -g nodemon
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Chạy với nodemon</span>
+</span></span><span style="display:flex;"><span>nodemon hello.js
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```</span>console.log<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Đây là chương trình JavaScript đầu tiên của tôi&#34;</span><span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Console.log() - In Kết Quả### 2.2. Chạy file```</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Syntax cơ bản```bash</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```</span>javascript
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>console.log<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Hello World&#34;</span><span style="color:#f92672">)</span>;node hello.js**Chạy chương trình:**
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>console.log<span style="color:#f92672">(</span>42<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>console.log<span style="color:#f92672">(</span>true<span style="color:#f92672">)</span>;<span style="color:#e6db74">``````</span>bash
+</span></span></code></pre></div><p>node hello.js</p>
+<h3 id="in-nhiều-giá-trị">
+<a class="header-anchor" href="#in-nhi%e1%bb%81u-gi%c3%a1-tr%e1%bb%8b"></a>
+In nhiều giá trị
+</h3><p><code>javascript## 3. Các lệnh cơ bản</code></p>
+<p>console.log(&ldquo;Tên:&rdquo;, &ldquo;JavaScript&rdquo;, &ldquo;Tuổi:&rdquo;, 28);</p>
+<p>console.log(&ldquo;Kết quả:&rdquo;, 5 + 3);</p>
+<pre tabindex="0"><code>
+### 3.1. Console.log**Kết quả:**
+
+### Template literals
+
+```javascript```javascript```
+
+let name = &#34;Node.js&#34;;
+
+let version = 18;console.log(&#34;Xin chào&#34;);Xin chào thế giới!
+
+console.log(`Tôi đang học ${name} phiên bản ${version}`);
+
+```console.log(123);Đây là chương trình JavaScript đầu tiên của tôi
+
+
+
+## Ví Dụ Thực Hànhconsole.log(true);```
+
+
+
+### Chương trình tính toán```
+
+Tạo file `calculator.js`:
+
+```javascript### 2. Làm việc với Variables (Biến)
+
+// Phép tính cơ bản
+
+let a = 10;### 3.2. Khai báo biến
+
+let b = 5;
+
+```javascriptTạo file `variables.js`:
+
+console.log(&#34;Số thứ nhất:&#34;, a);
+
+console.log(&#34;Số thứ hai:&#34;, b);let name = &#34;Long&#34;;```javascript
+
+
+
+console.log(&#34;Cộng:&#34;, a + b);let age = 20;// Khai báo biến với let
+
+console.log(&#34;Trừ:&#34;, a - b);
+
+console.log(&#34;Nhân:&#34;, a * b);console.log(&#34;Tên:&#34;, name);let name = &#34;Nguyễn Văn A&#34;;
+
+console.log(&#34;Chia:&#34;, a / b);
+
+```console.log(&#34;Tuổi:&#34;, age);let age = 25;
+
+
+
+### Chương trình thông tin```let isStudent = true;
+
+Tạo file `info.js`:
+
+```javascript
+
+// Hiển thị thông tin hệ thống
+
+console.log(&#34;=== THÔNG TIN HỆ THỐNG ===&#34;);### 3.3. Phép toán cơ bản// Khai báo hằng số với const
+
+console.log(&#34;Node.js version:&#34;, process.version);
+
+console.log(&#34;Platform:&#34;, process.platform);```javascriptconst PI = 3.14159;
+
+console.log(&#34;Architecture:&#34;, process.arch);
+
+let a = 10;const SCHOOL_NAME = &#34;Đại học Bách Khoa&#34;;
+
+console.log(&#34;\n=== THÔNG TIN THỜI GIAN ===&#34;);
+
+console.log(&#34;Thời gian hiện tại:&#34;, new Date());let b = 5;
+
+console.log(&#34;Timestamp:&#34;, Date.now());
+
+```console.log(&#34;Cộng:&#34;, a + b);// Hiển thị thông tin
+
+
+
+## Xử Lý Lỗi Cơ Bảnconsole.log(&#34;Trừ:&#34;, a - b);console.log(&#34;Tên:&#34;, name);
+
+
+
+### Lỗi syntaxconsole.log(&#34;Nhân:&#34;, a * b);console.log(&#34;Tuổi:&#34;, age);
+
+```javascript
+
+// Lỗi: thiếu dấu ngoặcconsole.log(&#34;Chia:&#34;, a / b);console.log(&#34;Là học sinh:&#34;, isStudent);
+
+console.log(&#34;Hello World&#34;;  // SyntaxError
+
+```console.log(&#34;Số PI:&#34;, PI);
+
+// Đúng:
+
+console.log(&#34;Hello World&#34;);console.log(&#34;Trường:&#34;, SCHOOL_NAME);
+</code></pre><h2 id="4-interactive-mode">
+<a class="header-anchor" href="#4-interactive-mode"></a>
+4. Interactive Mode
+</h2><h3 id="lỗi-file-không-tồn-tại">
+<a class="header-anchor" href="#l%e1%bb%97i-file-kh%c3%b4ng-t%e1%bb%93n-t%e1%ba%a1i"></a>
+Lỗi file không tồn tại
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash//" data-lang="bash//"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Chạy file không tồn tại</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>node notfound.js### 4.1. REPL <span style="color:#f92672">(</span>Read-Eval-Print Loop<span style="color:#f92672">)</span>age <span style="color:#f92672">=</span> 26;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Error: Cannot find module</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">``````</span>bashconsole.log<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Tuổi mới:&#34;</span>, age<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Lỗi runtimenode</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```</span>javascript
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>// Lỗi: biến chưa khai báo<span style="color:#e6db74">```</span>// Template strings <span style="color:#f92672">(</span>ES6<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>console.log<span style="color:#f92672">(</span>undefinedVariable<span style="color:#f92672">)</span>;  // ReferenceError
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>console.log<span style="color:#f92672">(</span><span style="color:#e6db74">`</span>Xin chào, tôi là <span style="color:#e6db74">${</span>name<span style="color:#e6db74">}</span>, <span style="color:#e6db74">${</span>age<span style="color:#e6db74">}</span> tuổi<span style="color:#e6db74">`</span><span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>// Lỗi: chia cho <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>console.log<span style="color:#f92672">(</span><span style="color:#ae81ff">10</span> / 0<span style="color:#f92672">)</span>;  // Infinity <span style="color:#f92672">(</span>không lỗi nhưng cần chú ý<span style="color:#f92672">)</span>Sau đó có thể gõ JavaScript trực tiếp:<span style="color:#e6db74">```</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">##</span> <span style="color:#a6e22e">Arguments</span> <span style="color:#a6e22e">và</span> <span style="color:#a6e22e">Process</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Hello&#34;</span>)<span style="color:#960050;background-color:#1e0010">###</span> <span style="color:#ae81ff">3.</span> <span style="color:#a6e22e">Các</span> <span style="color:#a6e22e">kiểu</span> <span style="color:#a6e22e">dữ</span> <span style="color:#a6e22e">liệu</span> <span style="color:#a6e22e">cơ</span> <span style="color:#a6e22e">bản</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">###</span> <span style="color:#a6e22e">Nhận</span> <span style="color:#a6e22e">arguments</span> <span style="color:#a6e22e">từ</span> <span style="color:#a6e22e">command</span> <span style="color:#a6e22e">line</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Tạo</span> <span style="color:#a6e22e">file</span> <span style="color:#e6db74">`args.js`</span><span style="color:#f92672">:</span><span style="color:#a6e22e">Hello</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```javascript
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">// Lấy arguments từ command line&gt; 2 + 3Tạo file `</span><span style="color:#a6e22e">data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">types</span>.<span style="color:#a6e22e">js</span><span style="color:#e6db74">`:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">console.log(&#34;Arguments:&#34;, process.argv);
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">5```</span><span style="color:#a6e22e">javascript</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Lấy arguments tùy chỉnh (bỏ qua node và tên file)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">userArgs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">argv</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">2</span>);<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span><span style="color:#75715e">// Number (Số)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;User arguments:&#34;</span>, <span style="color:#a6e22e">userArgs</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">undefinedlet</span> <span style="color:#a6e22e">score</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">95</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng arguments
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">userArgs</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">299.99</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Tên bạn là:&#34;</span>, <span style="color:#a6e22e">userArgs</span>[<span style="color:#ae81ff">0</span>]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {<span style="color:#ae81ff">20</span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">temperature</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Vui lòng nhập tên của bạn!&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}<span style="color:#e6db74">```
+</span></span></span></code></pre></div><p>console.log(&ldquo;Điểm số:&rdquo;, score);</p>
+<p><strong>Chạy với arguments:</strong></p>
+<pre tabindex="0"><code class="language-bash###" data-lang="bash###">
+node args.js &#34;Doan Duc Long&#34;
+
+# Output: Tên bạn là: Doan Duc Long```javascriptconsole.log(&#34;Nhiệt độ:&#34;, temperature);
+</code></pre><blockquote>
+<p>.exit</p></blockquote>
+<h2 id="best-practices">
+<a class="header-anchor" href="#best-practices"></a>
+Best Practices
+</h2><pre tabindex="0"><code class="language-//" data-lang="//">
+### 1. Đặt tên file rõ ràng
+
+```hoặc `Ctrl + C` hai lầnlet firstName = &#34;Đức&#34;;
+
+✅ calculator.js
+
+✅ user-info.jslet lastName = &#34;Long&#34;;
+
+✅ hello-world.js
+
+## 5. Cấu trúc projectlet fullName = firstName + &#34; &#34; + lastName;
+
+❌ test.js
+
+❌ abc.js
+
+❌ 123.js
+
+```### 5.1. Tạo thư mục projectconsole.log(&#34;Họ tên:&#34;, fullName);
+
+
+
+### 2. Sử dụng console.log() hiệu quả```bash
+
+```javascript
+
+// Thêm labels rõ ràngmkdir javascript-basics// Boolean (Logic)
+
+console.log(&#34;=== KẾT QUẢ TÍNH TOÁN ===&#34;);
+
+console.log(&#34;Input:&#34;, input);cd javascript-basicslet isPassed = true;
+
+console.log(&#34;Output:&#34;, result);
+
+```let isRaining = false;
+
+// Sử dụng template literals
+
+console.log(`Kết quả: ${a} + ${b} = ${a + b}`);
+</code></pre><h3 id="52-tạo-file-chínhconsolelogđã-qua-môn-ispassed">
+<a class="header-anchor" href="#52-t%e1%ba%a1o-file-ch%c3%adnhconsolelog%c4%91%c3%a3-qua-m%c3%b4n-ispassed"></a>
+5.2. Tạo file chínhconsole.log(&ldquo;Đã qua môn:&rdquo;, isPassed);
+</h3><h3 id="3-tổ-chức-code">
+<a class="header-anchor" href="#3-t%e1%bb%95-ch%e1%bb%a9c-code"></a>
+3. Tổ chức code
+</h3><p><code>javascript</code>javascriptconsole.log(&ldquo;Trời mưa:&rdquo;, isRaining);</p>
+<p>// Khai báo biến ở đầu</p>
+<p>let name = &ldquo;JavaScript&rdquo;;// index.js</p>
+<p>let version = &ldquo;ES6&rdquo;;</p>
+<p>console.log(&quot;=== JAVASCRIPT CƠ BẢN ===&quot;);// Array (Mảng)</p>
+<p>// Logic chính</p>
+<p>console.log(&ldquo;Ngôn ngữ:&rdquo;, name);let fruits = [&ldquo;táo&rdquo;, &ldquo;cam&rdquo;, &ldquo;xoài&rdquo;, &ldquo;chuối&rdquo;];</p>
+<p>console.log(&ldquo;Phiên bản:&rdquo;, version);</p>
+<p>// Biến và kiểu dữ liệulet numbers = [1, 2, 3, 4, 5];</p>
+<p>// Kết quả cuối</p>
+<p>console.log(&ldquo;Hoàn thành chương trình!&rdquo;);let message = &ldquo;Học JavaScript cùng K Team&rdquo;;</p>
+<pre tabindex="0"><code>
+let number = 42;console.log(&#34;Trái cây:&#34;, fruits);
+
+## Debugging Cơ Bản
+
+let isActive = true;console.log(&#34;Số đầu tiên:&#34;, numbers[0]);
+
+### 1. Sử dụng console.log()
+
+```javascriptconsole.log(&#34;Số cuối cùng:&#34;, numbers[numbers.length - 1]);
+
+let x = 5;
+
+console.log(&#34;Giá trị x:&#34;, x);  // Debug pointconsole.log(&#34;Message:&#34;, message);
+
+
+
+let result = x * 2;console.log(&#34;Number:&#34;, number);// Object (Đối tượng)
+
+console.log(&#34;Kết quả:&#34;, result);  // Debug point
+
+```console.log(&#34;Boolean:&#34;, isActive);let student = {
+
+
+
+### 2. Hiển thị type của biến    name: &#34;Trần Thị B&#34;,
+
+```javascript
+
+let value = 42;// Function đơn giản    age: 20,
+
+console.log(&#34;Value:&#34;, value);
+
+console.log(&#34;Type:&#34;, typeof value);function greet(name) {    major: &#34;Công nghệ thông tin&#34;,
+</code></pre><pre><code>return &quot;Xin chào &quot; + name + &quot;!&quot;;    gpa: 3.8
+</code></pre>
+<h2 id="shortcuts-hữu-ích">
+<a class="header-anchor" href="#shortcuts-h%e1%bb%afu-%c3%adch"></a>
+Shortcuts Hữu Ích
+</h2><p>}};</p>
+<h3 id="terminalcommand-prompt">
+<a class="header-anchor" href="#terminalcommand-prompt"></a>
+Terminal/Command Prompt
+</h3><ul>
+<li>
+<p><code>Ctrl + C</code>: Dừng chương trình đang chạy</p>
+</li>
+<li>
+<p><code>↑ ↓</code>: Di chuyển qua lịch sử commands</p>
+</li>
+<li>
+<p><code>Tab</code>: Auto-complete tên fileconsole.log(greet(&ldquo;Developer&rdquo;));console.log(&ldquo;Thông tin sinh viên:&rdquo;, student);</p>
+</li>
+</ul>
+<h3 id="node-replconsolelogtên-studentname">
+<a class="header-anchor" href="#node-replconsolelogt%c3%aan-studentname"></a>
+Node REPL```console.log(&ldquo;Tên:&rdquo;, student.name);
+</h3><ul>
+<li>
+<p><code>.help</code>: Hiển thị help</p>
+</li>
+<li>
+<p><code>.exit</code>: Thoát REPLconsole.log(&ldquo;Ngành học:&rdquo;, student.major);</p>
+</li>
+<li>
+<p><code>.clear</code>: Xóa context</p>
+</li>
+<li>
+<p><code>.save filename</code>: Lưu session## 6. Tips và lưu ý```</p>
+</li>
+</ul>
+<h2 id="bài-tập-thực-hành">
+<a class="header-anchor" href="#b%c3%a0i-t%e1%ba%adp-th%e1%bb%b1c-h%c3%a0nh"></a>
+Bài Tập Thực Hành
+</h2><h3 id="bài-1-chương-trình-chào-hỏi-61-extension-file-làm-việc-với-functions-hàm">
+<a class="header-anchor" href="#b%c3%a0i-1-ch%c6%b0%c6%a1ng-tr%c3%acnh-ch%c3%a0o-h%e1%bb%8fi-61-extension-file-l%c3%a0m-vi%e1%bb%87c-v%e1%bb%9bi-functions-h%c3%a0m"></a>
+Bài 1: Chương trình chào hỏi### 6.1. Extension file## Làm việc với Functions (Hàm)
+</h3><p>Tạo chương trình nhận tên từ command line và in lời chào.</p>
+<ul>
+<li>Luôn sử dụng <code>.js</code> cho file JavaScript</li>
+</ul>
+<h3 id="bài-2-máy-tính-đơn-giản">
+<a class="header-anchor" href="#b%c3%a0i-2-m%c3%a1y-t%c3%adnh-%c4%91%c6%a1n-gi%e1%ba%a3n"></a>
+Bài 2: Máy tính đơn giản
+</h3><p>Tạo chương trình tính toán với 2 số được truyền vào.- Tên file không có khoảng trắng, dùng <code>-</code> hoặc <code>_</code>Tạo file <code>functions.js</code>:</p>
+<h3 id="bài-3-thông-tin-hệ-thốngjavascript">
+<a class="header-anchor" href="#b%c3%a0i-3-th%c3%b4ng-tin-h%e1%bb%87-th%e1%bb%91ngjavascript"></a>
+Bài 3: Thông tin hệ thống```javascript
+</h3><p>Hiển thị thông tin chi tiết về NodeJS và hệ điều hành.</p>
+<h3 id="62-encoding-function-declaration-khai-báo-hàm">
+<a class="header-anchor" href="#62-encoding-function-declaration-khai-b%c3%a1o-h%c3%a0m"></a>
+6.2. Encoding// Function declaration (Khai báo hàm)
+</h3><h2 id="kết-luận">
+<a class="header-anchor" href="#k%e1%ba%bft-lu%e1%ba%adn"></a>
+Kết Luận
+</h2><ul>
+<li>Sử dụng UTF-8 để hiển thị tiếng Việt đúngfunction sayHello(name) {</li>
+</ul>
+<p>🎉 <strong>Chúc mừng!</strong> Bạn đã học được cách:</p>
+<ul>
+<li>
+<p>✅ Chạy file JavaScript với Node- Lưu file với encoding UTF-8    return <code>Xin chào ${name}!</code>;</p>
+</li>
+<li>
+<p>✅ Sử dụng console.log() để in kết quả</p>
+</li>
+<li>
+<p>✅ Làm việc với Node REPL}</p>
+</li>
+<li>
+<p>✅ Xử lý arguments từ command line</p>
+</li>
+<li>
+<p>✅ Debug cơ bản với console.log()### 6.3. Comments</p>
+</li>
+</ul>
+<p><strong>Bước tiếp theo</strong>: Học về comments, keywords và khối lệnh trong JavaScript!```javascript// Function expression (Biểu thức hàm)</p>
+<p>&mdash;// Comment một dòngconst calculateSum = function(a, b) {</p>
+<p>*Hãy xem video hướng dẫn để hiểu rõ hơn cách chạy JavaScript với Node. Thực hành nhiều để thành thạo!*console.log(&ldquo;Hello&rdquo;);    return a + b;</p>
+<p>};</p>
+<p>/*</p>
+<p>Comment nhiều dòng// Arrow function (Hàm mũi tên - ES6)</p>
+<p>Có thể viết ghi chú dàiconst calculateProduct = (a, b) =&gt; a * b;</p>
+<p>*/</p>
+<pre tabindex="0"><code class="language-//" data-lang="//">
+console.log(sayHello(&#34;Đức Long&#34;));
+
+## Tổng kếtconsole.log(&#34;Tổng:&#34;, calculateSum(10, 5));
+
+console.log(&#34;Tích:&#34;, calculateProduct(4, 3));
+
+Đã học cách:
+
+- Cài đặt Node.js// Hàm với nhiều tham số
+
+- Chạy file JavaScript với nodefunction introduce(name, age, city) {
+
+- Sử dụng console.log    return `Tôi là ${name}, ${age} tuổi, sống ở ${city}`;
+
+- Tạo biến và function cơ bản}
+
+- Sử dụng REPL mode
+
+console.log(introduce(&#34;An&#34;, 22, &#34;Hà Nội&#34;));
+
+## Bài tiếp theo
+
+// Hàm với giá trị mặc định
+
+Bài 03: Chú thích - keywords - khối lệnh trong JavaScriptfunction greet(name = &#34;Bạn&#34;, time = &#34;ngày&#34;) {
+    return `Chào ${name}, chúc ${time} tốt lành!`;
+}
+
+console.log(greet());
+console.log(greet(&#34;Mai&#34;));
+console.log(greet(&#34;Hùng&#34;, &#34;buổi sáng&#34;));
+</code></pre><h2 id="làm-việc-với-input-từ-người-dùng">
+<a class="header-anchor" href="#l%c3%a0m-vi%e1%bb%87c-v%e1%bb%9bi-input-t%e1%bb%ab-ng%c6%b0%e1%bb%9di-d%c3%b9ng"></a>
+Làm việc với Input từ người dùng
+</h2><h3 id="sử-dụng-readline-module">
+<a class="header-anchor" href="#s%e1%bb%ad-d%e1%bb%a5ng-readline-module"></a>
+Sử dụng readline module
+</h3><p>Tạo file <code>input.js</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Import readline module
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">readline</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;readline&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tạo interface để đọc input
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rl</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">readline</span>.<span style="color:#a6e22e">createInterface</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">input</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">stdin</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">stdout</span>
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Hàm hỏi tên
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">askName</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">rl</span>.<span style="color:#a6e22e">question</span>(<span style="color:#e6db74">&#39;Tên của bạn là gì? &#39;</span>, (<span style="color:#a6e22e">name</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Xin chào </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">!`</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">askAge</span>(<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Hàm hỏi tuổi
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">askAge</span>(<span style="color:#a6e22e">name</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">rl</span>.<span style="color:#a6e22e">question</span>(<span style="color:#e6db74">&#39;Bạn bao nhiêu tuổi? &#39;</span>, (<span style="color:#a6e22e">age</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nextYear</span> <span style="color:#f92672">=</span> parseInt(<span style="color:#a6e22e">age</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">, năm sau bạn sẽ </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">nextYear</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> tuổi!`</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Đóng interface
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">rl</span>.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Bắt đầu chương trình
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;=== CHƯƠNG TRÌNH THÔNG TIN CÁ NHÂN ===&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">askName</span>();
+</span></span></code></pre></div><p><strong>Chạy và tương tác:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>node input.js
+</span></span></code></pre></div><h2 id="xử-lý-điều-kiện-và-vòng-lặp">
+<a class="header-anchor" href="#x%e1%bb%ad-l%c3%bd-%c4%91i%e1%bb%81u-ki%e1%bb%87n-v%c3%a0-v%c3%b2ng-l%e1%ba%b7p"></a>
+Xử lý điều kiện và vòng lặp
+</h2><p>Tạo file <code>control-flow.js</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// If-else statements
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">score</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">85</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">score</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">90</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Hạng A - Xuất sắc&#34;</span>);
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">score</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">80</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Hạng B - Giỏi&#34;</span>);
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">score</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">70</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Hạng C - Khá&#34;</span>);
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">score</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">60</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Hạng D - Trung bình&#34;</span>);
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Hạng F - Yếu&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Switch statement
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">day</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;thứ hai&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">day</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;thứ hai&#34;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Bắt đầu tuần mới!&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;thứ sáu&#34;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Sắp đến cuối tuần!&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;chủ nhật&#34;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Ngày nghỉ!&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Ngày thường trong tuần&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// For loop
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Đếm từ 1 đến 5:&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">5</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Số </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">i</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// While loop
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Đếm ngược từ 5:&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">count</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">count</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">count</span><span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// For...of loop với array
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">colors</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;đỏ&#34;</span>, <span style="color:#e6db74">&#34;xanh&#34;</span>, <span style="color:#e6db74">&#34;vàng&#34;</span>, <span style="color:#e6db74">&#34;tím&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Các màu sắc:&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">color</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">colors</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`- </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">color</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="chương-trình-thực-tế-calculator-đơn-giản">
+<a class="header-anchor" href="#ch%c6%b0%c6%a1ng-tr%c3%acnh-th%e1%bb%b1c-t%e1%ba%bf-calculator-%c4%91%c6%a1n-gi%e1%ba%a3n"></a>
+Chương trình thực tế: Calculator đơn giản
+</h2><p>Tạo file <code>calculator.js</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">readline</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;readline&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rl</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">readline</span>.<span style="color:#a6e22e">createInterface</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">input</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">stdin</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">stdout</span>
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">calculator</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;=== MÁY TÍNH ĐơN GIẢN ===&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Các phép toán: +, -, *, /&#34;</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">rl</span>.<span style="color:#a6e22e">question</span>(<span style="color:#e6db74">&#39;Nhập số thứ nhất: &#39;</span>, (<span style="color:#a6e22e">num1</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">rl</span>.<span style="color:#a6e22e">question</span>(<span style="color:#e6db74">&#39;Nhập phép toán (+, -, *, /): &#39;</span>, (<span style="color:#a6e22e">operator</span>) =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">rl</span>.<span style="color:#a6e22e">question</span>(<span style="color:#e6db74">&#39;Nhập số thứ hai: &#39;</span>, (<span style="color:#a6e22e">num2</span>) =&gt; {
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> parseFloat(<span style="color:#a6e22e">num1</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> parseFloat(<span style="color:#a6e22e">num2</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">result</span>;
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">operator</span>) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;+&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;-&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;*&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;/&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">b</span> <span style="color:#f92672">!==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>                        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Lỗi: Không thể chia cho 0!&#34;</span>);
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">rl</span>.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>                            <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Phép toán không hợp lệ!&#34;</span>);
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">rl</span>.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Kết quả: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">a</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">operator</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">b</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> = </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">result</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">rl</span>.<span style="color:#a6e22e">question</span>(<span style="color:#e6db74">&#39;Bạn muốn tính tiếp? (y/n): &#39;</span>, (<span style="color:#a6e22e">answer</span>) =&gt; {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">answer</span>.<span style="color:#a6e22e">toLowerCase</span>() <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;y&#39;</span>) {
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">calculator</span>();
+</span></span><span style="display:flex;"><span>                    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Cảm ơn bạn đã sử dụng!&#34;</span>);
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">rl</span>.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                });
+</span></span><span style="display:flex;"><span>            });
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Khởi chạy máy tính
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">calculator</span>();
+</span></span></code></pre></div><h2 id="debugging-và-error-handling">
+<a class="header-anchor" href="#debugging-v%c3%a0-error-handling"></a>
+Debugging và Error Handling
+</h2><p>Tạo file <code>error-handling.js</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Try-catch để xử lý lỗi
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">divideNumbers</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">b</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;Không thể chia cho 0!&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Lỗi:&#34;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;10 / 2 =&#34;</span>, <span style="color:#a6e22e">divideNumbers</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">2</span>));
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;10 / 0 =&#34;</span>, <span style="color:#a6e22e">divideNumbers</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">0</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Console methods để debug
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Thông tin thường&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">warn</span>(<span style="color:#e6db74">&#34;Cảnh báo&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#34;Lỗi&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Console.table cho dữ liệu dạng bảng
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">students</span> <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;An&#34;</span>, <span style="color:#a6e22e">score</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">85</span> },
+</span></span><span style="display:flex;"><span>    { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Bình&#34;</span>, <span style="color:#a6e22e">score</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">92</span> },
+</span></span><span style="display:flex;"><span>    { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Cường&#34;</span>, <span style="color:#a6e22e">score</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">78</span> }
+</span></span><span style="display:flex;"><span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">table</span>(<span style="color:#a6e22e">students</span>);
+</span></span></code></pre></div><h2 id="tổng-kết">
+<a class="header-anchor" href="#t%e1%bb%95ng-k%e1%ba%bft"></a>
+Tổng kết
+</h2><p>Trong bài này, chúng ta đã học:</p>
+<p>✅ <strong>Chạy JavaScript với Node</strong> - Hello World
+✅ <strong>Variables và Constants</strong> - let, const
+✅ <strong>Kiểu dữ liệu cơ bản</strong> - number, string, boolean, array, object
+✅ <strong>Functions</strong> - declaration, expression, arrow functions
+✅ <strong>Input/Output</strong> - readline module
+✅ <strong>Control Flow</strong> - if/else, switch, loops
+✅ <strong>Chương trình thực tế</strong> - Calculator
+✅ <strong>Error Handling</strong> - try/catch</p>
+<h2 id="bài-tập-thực-hành-1">
+<a class="header-anchor" href="#b%c3%a0i-t%e1%ba%adp-th%e1%bb%b1c-h%c3%a0nh-1"></a>
+Bài tập thực hành
+</h2><ol>
+<li><strong>Viết chương trình</strong> tính điểm trung bình của 3 môn học</li>
+<li><strong>Tạo game đoán số</strong> từ 1-100</li>
+<li><strong>Xây dựng todolist</strong> đơn giản với array</li>
+<li><strong>Viết hàm</strong> kiểm tra số nguyên tố</li>
+</ol>
+<h2 id="bài-tiếp-theo">
+<a class="header-anchor" href="#b%c3%a0i-ti%e1%ba%bfp-theo"></a>
+Bài tiếp theo
+</h2><p><strong>Bài 03</strong>: Làm việc với Objects và Arrays nâng cao trong JavaScript</p>
+<hr>
+<p><em>Hãy thực hành các ví dụ trên và làm bài tập để củng cố kiến thức. JavaScript cơ bản là nền tảng quan trọng!</em></p>
+</div>
+    <footer class="article-footer">
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="JavaScript Cơ Bản - Bài 03: Chú Thích, Keywords và Khối Lệnh"
+              class="lazyload"
+            /><a
+          href="/posts/javascript-co-ban-bai-03/"
+          aria-label="Prev:JavaScript Cơ Bản - Bài 03: Chú Thích, Keywords và Khối Lệnh"
+          title="Prev:JavaScript Cơ Bản - Bài 03: Chú Thích, Keywords và Khối Lệnh"
+        ></a>
+        <div class="article-nav-caption">Prev</div>
+        <h3 class="article-nav-title">JavaScript Cơ Bản - Bài 03: Chú Thích, Keywords và Khối Lệnh</h3>
+      </div><div class="article-nav-link-wrap right"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="JavaScript Cơ Bản - Bài 14: Các Phương Thức Tìm Kiếm Và Xác Định Trong String"
+              class="lazyload"
+            /><a
+          href="/posts/javascript-co-ban-bai-14/"
+          aria-label="Next:JavaScript Cơ Bản - Bài 14: Các Phương Thức Tìm Kiếm Và Xác Định Trong String"
+          title="Next:JavaScript Cơ Bản - Bài 14: Các Phương Thức Tìm Kiếm Và Xác Định Trong String"
+        ></a>
+        <div class="article-nav-caption">Next</div>
+        <h3 class="article-nav-title">JavaScript Cơ Bản - Bài 14: Các Phương Thức Tìm Kiếm Và Xác Định Trong String</h3>
+      </div></nav></article></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2020-2025<span class="footer-info-sep rotate"></span>
+      Đoàn Đức Long
+    </div><div>
+        Powered by&nbsp;<a
+          href="https://gohugo.io/"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Hugo</a
+        >&nbsp; Theme.<a
+          href="https://github.com/D-Sketon/hugo-theme-reimu"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Reimu</a
+        >
+      </div><div>
+        <span class="icon-brush"
+          >&nbsp;68.5k</span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;05:53</span>
+      </div><div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >Number of visits&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >Number of visitors&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><div class="sidebar-toc-card" aria-label="Table of contents">
+	<h3 class="toc-title">Contents</h3>
+	<div class="sidebar-toc-wrapper toc-div-class" data-toc="sidebar">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#video-hướng-dẫn">Video Hướng Dẫn</a></li>
+    <li><a href="#tạo-file-javascript-đầu-tiên">Tạo File JavaScript Đầu Tiên</a>
+      <ul>
+        <li><a href="#1-tạo-thư-mục-làm-việc">1. Tạo thư mục làm việc</a></li>
+        <li><a href="#2-tạo-file-javascript">2. Tạo file JavaScript</a></li>
+        <li><a href="#3-chạy-chương-trình">3. Chạy chương trình</a></li>
+      </ul>
+    </li>
+    <li><a href="#các-cách-chạy-javascript">Các Cách Chạy JavaScript</a>
+      <ul>
+        <li><a href="#1-chạy-file-trực-tiếp">1. Chạy file trực tiếp</a></li>
+        <li><a href="#2-chạy-trong-node-repl">2. Chạy trong Node REPL</a></li>
+        <li><a href="#3-chạy-với-nodemon-auto-restart">3. Chạy với nodemon (auto-restart)</a></li>
+        <li><a href="#in-nhiều-giá-trị">In nhiều giá trị</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-interactive-mode">4. Interactive Mode</a>
+      <ul>
+        <li><a href="#lỗi-file-không-tồn-tại">Lỗi file không tồn tại</a></li>
+      </ul>
+    </li>
+    <li><a href="#best-practices">Best Practices</a>
+      <ul>
+        <li><a href="#52-tạo-file-chínhconsolelogđã-qua-môn-ispassed">5.2. Tạo file chínhconsole.log(&ldquo;Đã qua môn:&rdquo;, isPassed);</a></li>
+        <li><a href="#3-tổ-chức-code">3. Tổ chức code</a></li>
+      </ul>
+    </li>
+    <li><a href="#shortcuts-hữu-ích">Shortcuts Hữu Ích</a>
+      <ul>
+        <li><a href="#terminalcommand-prompt">Terminal/Command Prompt</a></li>
+        <li><a href="#node-replconsolelogtên-studentname">Node REPL```console.log(&ldquo;Tên:&rdquo;, student.name);</a></li>
+      </ul>
+    </li>
+    <li><a href="#bài-tập-thực-hành">Bài Tập Thực Hành</a>
+      <ul>
+        <li><a href="#bài-1-chương-trình-chào-hỏi-61-extension-file-làm-việc-với-functions-hàm">Bài 1: Chương trình chào hỏi### 6.1. Extension file## Làm việc với Functions (Hàm)</a></li>
+        <li><a href="#bài-2-máy-tính-đơn-giản">Bài 2: Máy tính đơn giản</a></li>
+        <li><a href="#bài-3-thông-tin-hệ-thốngjavascript">Bài 3: Thông tin hệ thống```javascript</a></li>
+        <li><a href="#62-encoding-function-declaration-khai-báo-hàm">6.2. Encoding// Function declaration (Khai báo hàm)</a></li>
+      </ul>
+    </li>
+    <li><a href="#kết-luận">Kết Luận</a></li>
+    <li><a href="#làm-việc-với-input-từ-người-dùng">Làm việc với Input từ người dùng</a>
+      <ul>
+        <li><a href="#sử-dụng-readline-module">Sử dụng readline module</a></li>
+      </ul>
+    </li>
+    <li><a href="#xử-lý-điều-kiện-và-vòng-lặp">Xử lý điều kiện và vòng lặp</a></li>
+    <li><a href="#chương-trình-thực-tế-calculator-đơn-giản">Chương trình thực tế: Calculator đơn giản</a></li>
+    <li><a href="#debugging-và-error-handling">Debugging và Error Handling</a></li>
+    <li><a href="#tổng-kết">Tổng kết</a></li>
+    <li><a href="#bài-tập-thực-hành-1">Bài tập thực hành</a></li>
+    <li><a href="#bài-tiếp-theo">Bài tiếp theo</a></li>
+  </ul>
+</nav>
+	</div>
+  
+	
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/images/avatar.png"
+    data-sizes="auto"
+    alt="Đoàn Đức Long"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Đoàn Đức Long</div>
+  <div class="sidebar-description">Blog chia sẻ học tập và kiến thức về code, công nghệ và các dự án cá nhân</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div><div class="sidebar-state-number">65</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      6
+    </div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-discord sidebar-social-icon">
+      <a
+        href="https://discord.com/users/757589425466245182"
+        itemprop="url"
+        target="_blank"
+        aria-label="discord"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-facebook sidebar-social-icon">
+      <a
+        href="https://www.facebook.com/iouas.04"
+        itemprop="url"
+        target="_blank"
+        aria-label="facebook"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/longdoan2k4"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-instagram sidebar-social-icon">
+      <a
+        href="https://www.instagram.com/oglas.z3_/"
+        itemprop="url"
+        target="_blank"
+        aria-label="instagram"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="Home"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Home</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="Archives"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Archives</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="About"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">About</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="Friend"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Friend</div>
+    </div></div></div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous" ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script><script
+    src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js"
+    integrity="sha384-8LyaidD9GPxQQgLJO/WRw/O2h3BoNq/ApI/ecpvM6RsrCz2qP2ppBXUKihP4V/2d" crossorigin="anonymous"></script><script>
+  if (window.firework) {
+    const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+    options.excludeElements = options.excludeelements;
+    delete options.excludeelements;
+    window.firework(options);
+  }
+</script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "Đoàn Đức Long",
+          title: "JavaScript Cơ Bản - Bài 02: Chạy Chương Trình JavaScript Với Node",
+          url: "https:\/\/doandduclong.github.io\/posts\/javascript-co-ban-bai-02\/",
+          description: "Hướng dẫn cách chạy chương trình JavaScript đầu tiên với NodeJS",
+          cover: "https:\/\/doandduclong.github.io\/images\/banner.webp",
+        };
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script></div>
+</div>
+
+<script
+    src="/js/toc-sidebar.js"
+    deferdata-pjax></script><script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    asyncintegrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script><script src="/js/search.js"></script></body>
+</html>

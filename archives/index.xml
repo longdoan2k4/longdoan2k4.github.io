@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Archives on Đoàn Đức Long - Tech Blog</title>
+    <link>https://doandduclong.github.io/archives/</link>
+    <description>Recent content from Đoàn Đức Long - Tech Blog</description>
+    <generator>Hugo</generator>
+    <language>vi-vn</language>
+    
+    <managingEditor>xxx@example.com (Đoàn Đức Long)</managingEditor>
+    <webMaster>xxx@example.com (Đoàn Đức Long)</webMaster>
+    
+    <copyright>All articles on this blog are licensed under the BY-NC-SA license agreement unless otherwise stated. Please indicate the source when reprinting!</copyright>
+    
+    
+    <atom:link href="https://doandduclong.github.io/archives/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+  </channel>
+</rss>
