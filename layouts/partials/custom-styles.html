@@ -1,0 +1,3 @@
+{{/* Site-level custom styles entry. Keep minimal; styles live in assets/css/custom-posts.css */}}
+{{ $customPostsCSS := resources.Get "css/custom-posts.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $customPostsCSS.RelPermalink }}" integrity="{{ $customPostsCSS.Data.Integrity }}">

@@ -1,0 +1,89 @@
+baseURL = "https://longdoan2k4.github.io/"
+languageCode = "vi-vn"
+title = "Đoàn Đức Long - Tech Blog"
+theme = "reimu"
+publishDir = "public"
+enableRobotsTXT = true
+buildFuture = false
+
+# Reading time configuration
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[pagination]
+  pagerSize = 10
+  path = "page"
+
+[taxonomies]
+  category = "categories"
+
+# ✅ CHỈ MỘT LẦN [params]
+[params]
+  readingSpeed = 300  # Tăng tốc độ đọc (mặc định ~250)
+  subtitle = "Học tập • Công nghệ • Dự án cá nhân"
+  description = "Blog chia sẻ học tập và kiến thức về code, công nghệ và các dự án cá nhân"
+  defaultTheme = "dark"
+  toc = true
+
+  author = "Đoàn Đức Long"
+  avatar = "/images/avatar.png"
+  bio = "Học tập, công nghệ và dự án cá nhân."
+  
+  # Main sections cho theme Reimu
+  mainSections = ["posts"]
+  
+  # Cấu hình cho theme Reimu
+  yearFormat = "2006"
+  only_show_capsule_in_index = false
+  
+  # Cấu hình số bài hiển thị trên trang chủ
+  index_posts_count = 10
+  
+  [params.sort_order]
+    archive = "date"
+
+  # Social đúng chuẩn Reimu
+  [params.social]
+    github = "https://github.com/longdoan2k4"
+    facebook = "https://www.facebook.com/iouas.04"
+    instagram = "https://www.instagram.com/oglas.z3_/"
+    discord = "https://discord.com/users/757589425466245182"
+
+  # CSS và JS injection để custom giao diện
+  [params.injector]
+    head_end = '<link rel="stylesheet" href="/css/fixes.css">'
+    body_end = '<script src="/js/search.js"></script>'
+
+# ✅ Main sections cho Hugo
+mainSections = ["posts"]
+
+# ✅ MENU CHÍNH
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    name = "Archives"
+    url = "/archives/"
+    weight = 2
+
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 3
+
+  [[menu.main]]
+    name = "Posts"
+    url = "/posts/"
+    weight = 4
+
+# ✅ Outputs để tránh lỗi trang Tags/Archives
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML"]
+  term = ["HTML"]

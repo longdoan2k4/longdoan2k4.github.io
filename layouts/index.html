@@ -1,0 +1,1006 @@
+{{ define "main" }}
+<main class="homepage">
+  <!-- Hero Section với Gradient Background -->
+  <link rel="stylesheet" href="/css/typewriter.css">
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-avatar fade-in">
+        <div class="avatar-glow fade-in">
+          <img src="{{ .Site.Params.avatar | default "/images/avatar.png" }}" alt="{{ .Site.Params.author }}">
+        </div>
+      </div>
+      <h1 class="hero-title fade-in">{{ .Site.Params.author }}</h1>
+      <p class="hero-subtitle fade-in"><span id="typewriter"></span><span id="typewriter-bar">|</span></p>
+      <p class="hero-description fade-in">{{ .Site.Params.description }}</p>
+      <div class="hero-cta fade-in">
+        <a href="#recent-posts" class="btn-primary fade-in">Xem Bài Viết</a>
+        <a href="#skills" class="btn-secondary fade-in">Kỹ Năng</a>
+        <a href="#contact" class="btn-secondary fade-in">Liên Hệ</a>
+      </div>
+    </div>
+  <div class="hero-bg-animation"></div>
+  <script src="/js/typewriter.js"></script>
+  <script src="/js/particles.js"></script>
+  </section>
+
+  <!-- Skills Section với Modern Cards -->
+  <section id="skills" class="skills-section fade-in">
+    <div class="container">
+      <div class="section-header">
+        <h2>🛠️ Kỹ Năng Chuyên Môn</h2>
+        <p>Những công nghệ và công cụ tôi sử dụng hàng ngày</p>
+      </div>
+      
+      <div class="skills-grid">
+        <!-- Frontend Skills -->
+        <div class="skill-card frontend">
+          <div class="skill-icon">🎨</div>
+          <h3>Frontend Development</h3>
+          <div class="skill-items">
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">Bootstrap</span>
+            <span class="skill-tag">Tailwind CSS</span>
+            <span class="skill-tag">JavaScript (ES6+)</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">React.js</span>
+            <span class="skill-tag">Dart</span>
+            <span class="skill-tag">Flutter</span>
+          </div>
+        </div>
+
+        <!-- Backend Skills -->
+        <div class="skill-card backend">
+          <div class="skill-icon">⚙️</div>
+          <h3>Backend Development</h3>
+          <div class="skill-items">
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Express.js</span>
+            <span class="skill-tag">PHP</span>
+            <span class="skill-tag">Laravel</span>
+            <span class="skill-tag">C#</span>
+            <span class="skill-tag">Java</span>
+          </div>
+        </div>
+
+        <!-- Tools & DevOps -->
+        <div class="skill-card tools">
+          <div class="skill-icon">🔧</div>
+          <h3>Database & Tools</h3>
+          <div class="skill-items">
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">Firebase</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">VS Code</span>
+          </div>
+        </div>
+
+        <!-- Game Development -->
+        <div class="skill-card game">
+          <div class="skill-icon">🎮</div>
+          <h3>Game Development</h3>
+          <div class="skill-items">
+            <span class="skill-tag">Unity</span>
+            <span class="skill-tag">C# (Unity)</span>
+            <span class="skill-tag">Game Design</span>
+            <span class="skill-tag">2D Graphics</span>
+            <span class="skill-tag">Animation</span>
+            <span class="skill-tag">Physics</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Posts Section -->
+  <section id="recent-posts" class="recent-posts-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>📝 Bài Viết Gần Đây</h2>
+        <p>Những bài viết mới nhất từ blog của tôi</p>
+      </div>
+      
+      {{ $recentPosts := (where .Site.RegularPages "Section" "posts") | first 3 }}
+      {{ if $recentPosts }}
+        <div class="posts-grid">
+          {{ range $index, $post := $recentPosts }}
+            <article class="post-card" data-aos="fade-up" data-aos-delay="{{ mul $index 200 }}">
+              <div class="post-meta">
+                <time datetime="{{ $post.Date.Format "2006-01-02" }}">
+                  {{ $post.Date.Format "02/01/2006" }}
+                </time>
+                {{ if $post.Params.categories }}
+                  <div class="post-categories">
+                    {{ range first 1 $post.Params.categories }}
+                      <span class="category-tag">{{ . }}</span>
+                    {{ end }}
+                  </div>
+                {{ end }}
+              </div>
+              
+              <h3 class="post-title">
+                <a href="{{ $post.Permalink }}">{{ $post.Title }}</a>
+              </h3>
+              
+              <p class="post-excerpt">
+                {{ if $post.Description }}
+                  {{ $post.Description }}
+                {{ else if $post.Summary }}
+                  {{ $post.Summary | truncate 120 }}
+                {{ else }}
+                  {{ $post.Content | plainify | truncate 120 }}
+                {{ end }}
+              </p>
+              
+              <div class="post-footer">
+                <a href="{{ $post.Permalink }}" class="read-more">
+                  Đọc thêm
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14m-7-7 7 7-7 7"/>
+                  </svg>
+                </a>
+                
+                <span class="post-time">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12,6 12,12 16,14"/>
+                  </svg>
+                  {{ $timeDiff := sub now.Unix $post.Date.Unix }}
+                  {{ $minutesSince := div $timeDiff 60 }}
+                  {{ $hoursSince := div $timeDiff 3600 }}
+                  {{ $daysSince := div $timeDiff 86400 }}
+                  
+                  {{ if lt $minutesSince 1 }}
+                    Vừa xong
+                  {{ else if lt $minutesSince 60 }}
+                    {{ $minutesSince }} phút trước
+                  {{ else if lt $hoursSince 24 }}
+                    {{ $hoursSince }} giờ trước
+                  {{ else if eq $daysSince 1 }}
+                    1 ngày trước
+                  {{ else if lt $daysSince 7 }}
+                    {{ $daysSince }} ngày trước
+                  {{ else if lt $daysSince 30 }}
+                    {{ $weeksSince := div $daysSince 7 }}
+                    {{ if eq $weeksSince 1 }}
+                      1 tuần trước
+                    {{ else }}
+                      {{ $weeksSince }} tuần trước
+                    {{ end }}
+                  {{ else if lt $daysSince 365 }}
+                    {{ $monthsSince := div $daysSince 30 }}
+                    {{ if eq $monthsSince 1 }}
+                      1 tháng trước
+                    {{ else }}
+                      {{ $monthsSince }} tháng trước
+                    {{ end }}
+                  {{ else }}
+                    {{ $yearsSince := div $daysSince 365 }}
+                    {{ if eq $yearsSince 1 }}
+                      1 năm trước
+                    {{ else }}
+                      {{ $yearsSince }} năm trước
+                    {{ end }}
+                  {{ end }}
+                </span>
+              </div>
+            </article>
+          {{ end }}
+        </div>
+        
+        <div class="posts-cta">
+          <a href="/posts/" class="btn-outline">
+            Xem Tất Cả Bài Viết
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14m-7-7 7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      {{ else }}
+        <div class="no-posts">
+          <p>Chưa có bài viết nào được xuất bản.</p>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+
+  <!-- Contact Section với Gradient -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="fade-in">📫 Kết Nối Với Tôi</h2>
+        <p class="fade-in">Hãy cùng nhau học hỏi và chia sẻ kiến thức!</p>
+      </div>
+      
+      <div class="social-grid fade-in">
+        {{ if .Site.Params.social.github }}
+          <a href="{{ .Site.Params.social.github }}" target="_blank" class="social-link github fade-in">
+            <div class="social-icon fade-in">📚</div>
+            <span class="fade-in">GitHub</span>
+          </a>
+        {{ end }}
+        {{ if .Site.Params.social.facebook }}
+          <a href="{{ .Site.Params.social.facebook }}" target="_blank" class="social-link facebook fade-in">
+            <div class="social-icon fade-in">📘</div>
+            <span class="fade-in">Facebook</span>
+          </a>
+        {{ end }}
+        {{ if .Site.Params.social.instagram }}
+          <a href="{{ .Site.Params.social.instagram }}" target="_blank" class="social-link instagram fade-in">
+            <div class="social-icon fade-in">📸</div>
+            <span class="fade-in">Instagram</span>
+          </a>
+        {{ end }}
+        {{ if .Site.Params.social.discord }}
+          <a href="{{ .Site.Params.social.discord }}" target="_blank" class="social-link discord fade-in">
+            <div class="social-icon fade-in">💬</div>
+            <span class="fade-in">Discord</span>
+          </a>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+</main>
+
+<style>
+/* Global Styles */
+.homepage {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, #ff6b6b, #ff8e8e, #ffa8a8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.section-header p {
+  font-size: 1.1rem;
+  color: #999;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+  overflow: hidden;
+}
+
+.hero-bg-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(97, 218, 251, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(251, 187, 206, 0.1) 0%, transparent 50%);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-avatar {
+  margin-bottom: 2rem;
+}
+
+.avatar-glow {
+  position: relative;
+  display: inline-block;
+}
+
+.avatar-glow img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 107, 107, 0.3);
+  box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.5);
+  animation: pulse 2s infinite;
+  transition: all 0.3s ease;
+}
+
+.avatar-glow:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 20px rgba(255, 107, 107, 0);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(255, 107, 107, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+  }
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ff6b6b, #ff8e8e, #ffa8a8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  animation: slideInDown 1s ease-out 0.3s both;
+}
+
+.hero-subtitle {
+  font-size: 1.4rem;
+  color: #ddd;
+  margin-bottom: 1.5rem;
+  animation: slideInDown 1s ease-out 0.6s both;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  color: #bbb;
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+  animation: slideInDown 1s ease-out 0.9s both;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeIn 1s ease-out 1.2s both;
+}
+
+@media (max-width: 768px) {
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn-primary, .btn-secondary {
+    width: 200px;
+    text-align: center;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: transparent;
+  color: #ff6b6b;
+  border: 2px solid #ff6b6b;
+  box-shadow: none;
+}
+
+.btn-primary:hover {
+  background: #ff6b6b;
+  color: white;
+  border-color: #ff6b6b;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #ff6b6b;
+  border: 2px solid #ff6b6b;
+}
+
+.btn-secondary:hover {
+  background: #ff6b6b;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Skills Section */
+.skills-section {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, #0f0f23 0%, #1a1a2e 100%);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.skill-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6b6b, #61dafb, #68d391, #9b59b6);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.skill-card:hover::before {
+  transform: scaleX(1);
+}
+
+.skill-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 107, 107, 0.3);
+}
+
+.skill-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.skill-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+.skill-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background: rgba(255, 107, 107, 0.3);
+  transform: scale(1.05);
+}
+
+/* Game Development Card Styling */
+.skill-card.game:hover {
+  border-color: rgba(155, 89, 182, 0.3);
+}
+
+.skill-card.game .skill-tag {
+  background: rgba(155, 89, 182, 0.2);
+  color: #9b59b6;
+  border: 1px solid rgba(155, 89, 182, 0.3);
+}
+
+.skill-card.game .skill-tag:hover {
+  background: rgba(155, 89, 182, 0.3);
+}
+
+/* Recent Posts Section */
+.recent-posts-section {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.post-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  height: fit-content;
+}
+
+.post-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.post-card:hover::before {
+  transform: scaleX(1);
+}
+
+.post-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 107, 107, 0.3);
+}
+
+.post-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.post-meta time {
+  font-size: 0.9rem;
+  color: #aaa;
+  font-weight: 500;
+}
+
+.post-categories {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.category-tag {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.post-title {
+  margin: 0 0 1rem 0;
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+
+.post-title a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.post-title a:hover {
+  color: #ff6b6b;
+}
+
+.post-excerpt {
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ff6b6b;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.read-more:hover {
+  color: #ff8e8e;
+  transform: translateX(5px);
+}
+
+.read-more svg {
+  transition: transform 0.3s ease;
+}
+
+.read-more:hover svg {
+  transform: translateX(3px);
+}
+
+.post-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.post-time svg {
+  opacity: 0.7;
+}
+
+.posts-cta {
+  text-align: center;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2.5rem;
+  border: 2px solid #ff6b6b;
+  background: transparent;
+  color: #ff6b6b;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background: #ff6b6b;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+}
+
+.btn-outline svg {
+  transition: transform 0.3s ease;
+}
+
+.btn-outline:hover svg {
+  transform: translateX(5px);
+}
+
+.no-posts {
+  text-align: center;
+  padding: 3rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .recent-posts-section {
+    padding: 4rem 0;
+  }
+  
+  .posts-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .post-card {
+    padding: 1.5rem;
+  }
+  
+  .post-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .post-title {
+    font-size: 1.2rem;
+  }
+  
+  .post-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  
+  .btn-outline {
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .recent-posts-section {
+    padding: 3rem 0;
+  }
+  
+  .post-card {
+    padding: 1.2rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Contact Section */
+.contact-section {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, #16213e 0%, #0f0f23 100%);
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.social-link.github:hover {
+  border-color: #333;
+  box-shadow: 0 10px 20px rgba(51, 51, 51, 0.3);
+}
+
+.social-link.facebook:hover {
+  border-color: #1877f2;
+  box-shadow: 0 10px 20px rgba(24, 119, 242, 0.3);
+}
+
+.social-link.instagram:hover {
+  border-color: #e4405f;
+  box-shadow: 0 10px 20px rgba(228, 64, 95, 0.3);
+}
+
+.social-link.discord:hover {
+  border-color: #5865f2;
+  box-shadow: 0 10px 20px rgba(88, 101, 242, 0.3);
+}
+
+.social-icon {
+  font-size: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .social-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .section-header h2 {
+    font-size: 2rem;
+  }
+  
+  .skill-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .avatar-glow img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #ff5252, #ff6b6b);
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+  
+  // Add entrance animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+  
+  // Observe skill cards and post cards
+  document.querySelectorAll('.skill-card, .post-card').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(card);
+    
+    // Ensure links are clickable after animation
+    card.addEventListener('transitionend', function() {
+      const links = card.querySelectorAll('a');
+      links.forEach(link => {
+        link.style.pointerEvents = 'auto';
+        link.style.position = 'relative';
+        link.style.zIndex = '100';
+      });
+    });
+  });
+  
+  // Staggered animation for post cards
+  document.querySelectorAll('.post-card').forEach((card, index) => {
+    card.style.transitionDelay = `${index * 0.2}s`;
+  });
+  
+  // Ensure all links are clickable (fallback)
+  setTimeout(() => {
+    document.querySelectorAll('.post-card a, .read-more').forEach(link => {
+      link.style.pointerEvents = 'auto';
+      link.style.position = 'relative';
+      link.style.zIndex = '100';
+    });
+  }, 100);
+});
+</script>
+{{ end }}

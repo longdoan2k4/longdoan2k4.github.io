@@ -1,0 +1,683 @@
+{{- $params := .Site.Params -}}
+<div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+    {{- range .Site.Params.menu -}}
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon {{ if or (and (eq .icon "e62b") ($params.icon_font)) (and (eq .icon "f6ad") (not $params.icon_font)) (not .icon) }}rotate{{ end }}'>
+          {{- if .icon -}}
+            {{- if and (strings.Contains .icon ".") (strings.Contains .icon "/") -}}
+              <img src="{{ .icon | relURL }}" alt="{{ .name }} icon" class="" style="height: 1em;">
+            {{- else -}}
+              &#x{{- .icon -}};
+            {{- end -}}
+          {{- else -}}
+            {{- if $params.icon_font -}}
+              &#xe62b;
+            {{- else -}}
+              &#xf6ad;
+            {{- end -}}
+          {{- end -}}
+        </div>
+        <a class="main-nav-link" href="{{ .url | relLangURL }}">{{ i18n .name }}</a>
+      </span>
+    {{- end -}}
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+    {{- with .OutputFormats.Get "rss" -}}
+      <a id="nav-rss-link" class="nav-icon" href="{{ .Permalink | relURL }}" title="{{ i18n "rss_feed" }}" aria-label="{{ i18n "rss_feed" }}" target="_blank"></a>
+    {{- end -}}
+    
+    <!-- Search Button -->
+    <a id="nav-search-btn" class="nav-icon" title="Tìm kiếm" aria-label="Tìm kiếm" onclick="toggleSearch()"></a>
+  </nav>
+  {{- if and hugo.IsMultilingual (ne "404" .Type) -}}
+    {{- $i18nMap := dict -}}
+    {{- range .Site.Languages -}}
+      {{- $i18nMap = merge $i18nMap (dict .Lang .LanguageName) -}}
+    {{- end -}}
+    <nav id="i18n-nav" aria-label="Language selection">
+      <div class="custom-dropdown">
+        <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
+          <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
+          <span id="selected-lang">{{ index $i18nMap $.Language.Lang }}</span>
+        </div>
+        <ul class="select-items" id="select-items" role="listbox" aria-label="Languages">
+          {{- range .Site.Languages -}}
+            {{- $translation := "" -}}
+            {{- with $.Translations -}}
+              {{- range . -}}
+                {{- if eq .Language.Lang .Lang -}}
+                  {{- $translation = .RelPermalink -}}
+                {{- end -}}
+              {{- end -}}
+            {{- end -}}
+            <li data-value="{{ .Lang }}" data-url="{{ $translation }}" role="option" {{ if eq $.Language.Lang .Lang }}class="selected" arial-selected="true"{{ else }}arial-selected="false"{{ end }} >{{ .LanguageName }}</li>
+          {{- end -}}
+        </ul>
+      </div>
+      <script>
+        // Language mapping will be populated dynamically
+        const langMap = {};
+
+        var selectSelected = document.getElementById("select-selected");
+        var selectedLang = document.getElementById("selected-lang");
+        var selectItems = document.getElementById("select-items");
+        var selectOptions = selectItems.querySelectorAll("li");
+
+        selectSelected.addEventListener("click", () => {
+          selectItems.classList.toggle("show");
+          var expanded = selectSelected.getAttribute("aria-expanded") === "true";
+          selectSelected.setAttribute("aria-expanded", (!expanded).toString());
+        });
+
+        selectOptions.forEach((item) => {
+          item.addEventListener("click", () => {
+            selectedLang.textContent = item.textContent;
+            selectItems.classList.remove("show");
+            selectOptions.forEach((option) => {
+              option.classList.remove("selected");
+            });
+            item.classList.add("selected");
+            if (item.dataset.value === '{{ $.Language.Lang }}') {
+              return;
+            }
+            // Use data-url attribute instead of langMap
+            const targetUrl = item.dataset.url;
+            if (!targetUrl) {
+              // Show tooltip if no translation available
+              const tooltip = document.getElementById("lang-tooltip");
+              if (tooltip) {
+                tooltip.style.opacity = "1";
+                setTimeout(() => {
+                  tooltip.style.opacity = "0";
+                }, 1000);
+              }
+              return;
+            }
+            window.location = targetUrl;
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!event.target.closest(".custom-dropdown")) {
+            selectItems.classList.remove("show");
+            selectSelected.setAttribute("aria-expanded", "false");
+          }
+        });
+      </script>
+    </nav>
+  {{- end -}}
+</div>
+
+<!-- Search Overlay -->
+<div id="search-overlay" class="search-overlay" style="display: none;">
+  <div class="search-container">
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="Tìm kiếm bài viết..." autocomplete="off">
+      <button type="button" id="close-search" onclick="closeSearch()">✕</button>
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+</div>
+
+{{- $coverStyle := "" -}}
+{{- $siteCoverStyle := "" -}}
+{{- if and .Params.cover (strings.HasPrefix .Params.cover "rgb") -}}
+  {{- $coverStyle = .Params.cover | safeCSS -}}
+{{- end -}}
+{{- if and .Site.Params.cover (strings.HasPrefix .Site.Params.cover "rgb") -}}
+  {{- $siteCoverStyle = .Site.Params.cover | safeCSS -}}
+{{- end -}}
+
+<style>
+:root {
+  --cover-background: {{ $coverStyle | default "transparent" }};
+  --site-cover-background: {{ $siteCoverStyle | default "transparent" }};
+}
+.header-cover-rgb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150%;
+  z-index: -2;
+  display: block;
+  mask: linear-gradient(to top, transparent, #fff 50%);
+}
+.header-cover-params {
+  background: var(--cover-background);
+}
+.header-cover-site {
+  background: var(--site-cover-background);
+}
+</style>
+
+<header id="header" aria-label="Site header">
+  {{- if and .Params.cover (strings.HasPrefix .Params.cover "rgb") -}}
+    <picture></picture>
+    <img class="header-cover-rgb header-cover-params" alt="">
+  {{- else if .Params.cover -}}
+    <picture></picture>
+    <img {{ if .Site.Params.material_theme.enable }}crossorigin="anonymous"{{ end }} fetchpriority="high" src="{{ .Params.cover | relURL }}" alt="{{ .Title }}">
+  {{- else if eq .Params.cover false -}}
+    <picture></picture>
+    <img style="visibility:hidden" alt="">
+  {{- else -}}
+    {{- if in .Site.Params.mainSections .Type -}}
+      {{- if and .Site.Params.cover (strings.HasPrefix .Site.Params.cover "rgb") -}}
+        <picture></picture>
+        <img class="header-cover-rgb header-cover-site" alt="">
+      {{- else if .Site.Params.cover -}}
+        <picture></picture>
+        <img {{ if .Site.Params.material_theme.enable }}crossorigin="anonymous"{{ end }} fetchpriority="high" src="{{ .Site.Params.cover | relURL }}" alt="{{ .Title }}">
+      {{- else if eq .Site.Params.cover false -}}
+        <picture></picture>
+        <img style="visibility:hidden" alt="">
+      {{- else -}}
+        <picture>
+          {{- if .Site.Params.banner_srcset.enable -}}
+            {{- range .Site.Params.banner_srcset.srcset -}}
+              <source media="{{ .media }}" srcset="{{ .src | relURL }}">
+            {{- end -}}
+            <img {{ if .Site.Params.material_theme.enable }}crossorigin="anonymous"{{ end }} fetchpriority="high" src="{{ .Site.Params.banner | relURL }}" alt="{{ .Title }}">
+          {{- end -}}
+        </picture>
+        {{- if .Site.Params.banner_srcset.enable -}}
+          <img alt="{{ .Title }}" style="visibility: hidden;">
+        {{- else -}}
+          <img {{ if .Site.Params.material_theme.enable }}crossorigin="anonymous"{{ end }} fetchpriority="high" src="{{ .Site.Params.banner | relURL }}" alt="{{ .Title }}">
+        {{- end -}}
+      {{- end -}}
+    {{- else -}}
+      <picture>
+        {{- if .Site.Params.banner_srcset.enable -}}
+          {{- range .Site.Params.banner_srcset.srcset -}}
+            <source media="{{ .media }}" srcset="{{ .src | relURL }}">
+          {{- end -}}
+          <img {{ if .Site.Params.material_theme.enable }}crossorigin="anonymous"{{ end }} fetchpriority="high" src="{{ .Site.Params.banner | relURL }}" alt="{{ .Title }}">
+        {{- end -}}
+      </picture>
+      {{- if .Site.Params.banner_srcset.enable -}}
+        <img alt="{{ .Title }}" style="visibility: hidden;">
+      {{- else -}}
+        <img {{ if .Site.Params.material_theme.enable }}crossorigin="anonymous"{{ end }} fetchpriority="high" src="{{ .Site.Params.banner | relURL }}" alt="{{ .Title }}">
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
+  <div id="header-outer">
+    <div id="header-title">
+      {{- if eq .Type "404" -}}
+        <a href="{{ "" | relLangURL }}" id="logo">
+          <h1 data-aos="{{ .Site.Params.animation.options.header.title }}">{{ i18n "not_found.title" }}</h1>
+        </a>
+      {{- else -}}
+        {{- $title := "" -}}
+        {{- if .IsHome -}}
+          {{- $title = .Site.Title -}}
+        {{- else if eq .Type "archives" -}}
+          {{- $title = i18n "archive_a" -}}
+        {{- else if eq .Type "tags" -}}
+          {{- $title = i18n "tag" -}}
+        {{- else if eq .Type "categories" -}}
+          {{- $title = i18n "category" -}}
+        {{- else if .Title -}}
+          {{- $title = .Title -}}
+        {{- else -}}
+          {{- $title = .Site.Title -}}
+        {{- end -}}
+  
+        {{- if $title -}}
+          <span id="logo">
+            <h1 data-aos="{{ .Site.Params.animation.options.header.title }}">{{ $title }}</h1>
+          </span>
+        {{- end -}}
+      {{- end -}}
+  
+      {{- if eq .Type "404" -}}
+        <h2 id="subtitle-wrap" data-aos="{{ .Site.Params.animation.options.header.subTitle }}">
+          <a href="{{ "" | relLangURL }}" id="subtitle">{{ i18n "not_found.subtitle" }}</a>
+        </h2>
+      {{- else -}}
+        {{- $subtitle := "" -}}
+        {{- if .IsHome -}}
+          {{- $subtitle = .Site.Params.subtitle | default .Site.Params.subtitle -}}
+        {{- else if and (eq .Type "categories") (not (eq .Title "Categories")) -}}
+          {{- $subtitle = .Title -}}
+        {{- else if and (eq .Type "tags") (not (eq .Title "Tags")) -}}
+          {{- $subtitle = .Title -}}
+        {{- else if and .Site.Params.summary.enable (eq .Site.Params.summary.style "subtitle") (in .Site.Params.mainSections .Type) -}}
+          {{- if .Summary -}}
+            {{- $subtitle = .Summary | plainify | truncate 200 -}}
+          {{- end -}}
+        {{- end -}}
+        <h2 id="subtitle-wrap" data-aos="{{ .Site.Params.animation.options.header.subTitle }}">
+          {{- if $subtitle -}}
+            <span id="subtitle">{{ $subtitle }}</span>
+          {{- end -}}
+        </h2>
+      {{- end -}}
+    </div>
+  </div>
+</header>
+
+<style>
+/* Search Overlay Styles */
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(20, 20, 30, 0.95) 0%,
+    rgba(40, 40, 60, 0.95) 50%,
+    rgba(60, 30, 40, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 15vh;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.search-container {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-box {
+  position: relative;
+  margin-bottom: 2rem;
+  width: 450px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 1rem 3.5rem 1rem 1.5rem;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+.search-box input:focus {
+  border-color: rgba(255, 107, 107, 0.8);
+  box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.2),
+              0 8px 32px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+}
+
+
+
+#close-search {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 107, 107, 0.2);
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#close-search:hover {
+  background: rgba(255, 107, 107, 0.4);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.search-results {
+  max-height: 50vh;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 0;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease-out;
+  width: 450px;
+  box-sizing: border-box;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Scrollbar */
+.search-results::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-results::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background: rgba(255, 107, 107, 0.5);
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 107, 107, 0.7);
+}
+
+.search-result-item {
+  padding: 1rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0;
+  margin-bottom: 1px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(5px);
+}
+
+.search-result-item:first-child {
+  border-radius: 14px 14px 0 0;
+  margin-top: 1.5rem;
+}
+
+.search-result-item:last-child {
+  border-radius: 0 0 14px 14px;
+  margin-bottom: 1.5rem;
+}
+
+.search-result-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 107, 107, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(255, 107, 107, 0.15);
+}
+
+.search-result-item:last-child {
+  margin-bottom: 0;
+}
+
+.search-result-title {
+  color: #ff9999;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.search-result-item:hover .search-result-title {
+  color: #ff6b6b;
+}
+
+.search-result-category {
+  display: inline-block;
+  background: linear-gradient(45deg, rgba(255, 107, 107, 0.2), rgba(255, 150, 150, 0.2));
+  color: #ffaaaa;
+  padding: 0.2rem 0.6rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  transition: all 0.2s ease;
+}
+
+.search-result-item:hover .search-result-category {
+  background: linear-gradient(45deg, rgba(255, 107, 107, 0.3), rgba(255, 150, 150, 0.3));
+  color: #ff6b6b;
+  border-color: rgba(255, 107, 107, 0.5);
+}
+
+/* Search Button Styles */
+#nav-search-btn {
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#nav-search-btn:hover {
+  color: #ff6b6b;
+  transform: scale(1.1);
+}
+</style>
+
+<script>
+// Search functionality
+let allPosts = [];
+let searchIndex = null;
+
+// Initialize search when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  initializeSearch();
+});
+
+function toggleSearch() {
+  const overlay = document.getElementById('search-overlay');
+  const searchInput = document.getElementById('search-input');
+  
+  if (overlay.style.display === 'none' || overlay.style.display === '') {
+    // Show overlay
+    overlay.style.display = 'flex';
+    overlay.style.animation = 'fadeIn 0.3s ease-out forwards';
+    
+    // Focus input after animation
+    setTimeout(() => {
+      searchInput.focus();
+    }, 150);
+    
+    document.body.style.overflow = 'hidden';
+  } else {
+    closeSearch();
+  }
+}
+
+function closeSearch() {
+  const overlay = document.getElementById('search-overlay');
+  const searchInput = document.getElementById('search-input');
+  const results = document.getElementById('search-results');
+  
+  // Reset show all results
+  showAllResults = false;
+  
+  // Apply fade out animation
+  overlay.style.animation = 'fadeOut 0.3s ease-out forwards';
+  
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    searchInput.value = '';
+    results.innerHTML = '';
+    document.body.style.overflow = '';
+    overlay.style.animation = ''; // Reset animation
+  }, 300);
+}
+
+// ESC key to close search
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeSearch();
+  }
+  // Ctrl/Cmd + K to open search
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    toggleSearch();
+  }
+});
+
+// Initialize search data
+async function initializeSearch() {
+  try {
+    const response = await fetch('/index.json');
+    const data = await response.json();
+    allPosts = data;
+    
+    // Set up search input listener
+    const searchInput = document.getElementById('search-input');
+    let searchTimeout;
+    
+    searchInput.addEventListener('input', function() {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        performSearch(this.value);
+      }, 300);
+    });
+    
+  } catch (error) {
+    console.error('Error loading search data:', error);
+  }
+}
+
+function performSearch(query) {
+  const results = document.getElementById('search-results');
+  
+  if (!query || query.length < 2) {
+    results.innerHTML = '';
+    return;
+  }
+  
+  const searchQuery = query.toLowerCase();
+  const matches = allPosts.filter(post => {
+    return post.title.toLowerCase().includes(searchQuery) ||
+           post.content.toLowerCase().includes(searchQuery) ||
+           (post.categories && post.categories.some(cat => cat.toLowerCase().includes(searchQuery))) ||
+           (post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchQuery)));
+  });
+  
+  displaySearchResults(matches, query);
+}
+
+let showAllResults = false;
+
+function displaySearchResults(matches, query) {
+  const results = document.getElementById('search-results');
+  
+  if (matches.length === 0) {
+    results.innerHTML = '<div style="color: rgba(255,255,255,0.7); text-align: center; padding: 3rem 1.5rem;">Không tìm thấy kết quả nào cho "' + query + '"</div>';
+    return;
+  }
+  
+  const totalResults = matches.length;
+  const displayLimit = showAllResults ? totalResults : 8;
+  const itemsToShow = matches.slice(0, displayLimit);
+  
+  results.innerHTML = `
+    <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0; padding: 1.5rem 1.5rem 0 1.5rem;">
+      Tìm thấy ${totalResults} bài viết cho "${query}"
+    </div>
+  `;
+  
+  const html = itemsToShow.map(post => {
+    const title = highlightText(post.title, query);
+    const category = post.categories && post.categories.length > 0 ? post.categories[0] : '';
+    const date = post.date || '';
+    
+    return `
+      <div class="search-result-item" onclick="navigateToPost('${post.uri}')">
+        <div class="search-result-title">${title}</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.3rem;">
+          ${category ? `<span class="search-result-category">${category}</span>` : '<span></span>'}
+          ${date ? `<span style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">${date}</span>` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+  
+  results.innerHTML += html;
+  
+  if (totalResults > 8 && !showAllResults) {
+    results.innerHTML += `
+      <div style="color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem;">
+        <button onclick="toggleShowAllResults('${query}')" style="
+          background: rgba(255, 107, 107, 0.2);
+          border: 1px solid rgba(255, 107, 107, 0.4);
+          color: #ff6b6b;
+          padding: 0.8rem 1.5rem;
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+        " onmouseover="this.style.background='rgba(255, 107, 107, 0.3)'" onmouseout="this.style.background='rgba(255, 107, 107, 0.2)'">
+          Xem tất cả ${totalResults} bài viết
+        </button>
+      </div>
+    `;
+  } else if (showAllResults && totalResults > 8) {
+    results.innerHTML += `
+      <div style="color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem;">
+        <button onclick="toggleShowAllResults('${query}')" style="
+          background: rgba(255, 107, 107, 0.2);
+          border: 1px solid rgba(255, 107, 107, 0.4);
+          color: #ff6b6b;
+          padding: 0.8rem 1.5rem;
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+        " onmouseover="this.style.background='rgba(255, 107, 107, 0.3)'" onmouseout="this.style.background='rgba(255, 107, 107, 0.2)'">
+          Thu gọn kết quả
+        </button>
+      </div>
+    `;
+  }
+}
+
+function toggleShowAllResults(query) {
+  showAllResults = !showAllResults;
+  performSearch(query);
+}
+
+function highlightText(text, query) {
+  if (!query) return text;
+  const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+  return text.replace(regex, '<mark style="background: rgba(255,107,107,0.3); color: #fff;">$1</mark>');
+}
+
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function navigateToPost(uri) {
+  window.location.href = uri;
+}
+</script>

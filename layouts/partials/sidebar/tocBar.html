@@ -1,0 +1,11 @@
+<div class="sidebar-toc-card" aria-label="Table of contents">
+	<h3 class="toc-title">{{ i18n "toc" }}</h3>
+	<div class="sidebar-toc-wrapper toc-div-class" data-toc="sidebar">
+		{{ .TableOfContents }}
+	</div>
+  
+	{{/*
+		Note: This file overrides the theme's tocBar.html.
+		We keep the original class names so Reimu's CSS/JS keeps working.
+	*/}}
+</div>

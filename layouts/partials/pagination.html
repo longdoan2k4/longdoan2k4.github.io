@@ -1,0 +1,76 @@
+{{- $pag := .Paginator -}}
+{{- $tps := $pag.TotalPages -}}
+{{- $currentPage := $pag.PageNumber -}}
+
+<nav id="page-nav" aria-label="Pagination navigation" data-aos="{{ .Site.Params.animation.options.archive.nav }}">
+  {{- if $pag.HasPrev -}}
+    <a class="extend prev" rel="prev" href="{{ $pag.Prev.URL | relURL }}">
+      &laquo;
+      {{ i18n "prev" -}}
+    </a>
+  {{- end -}}
+  
+  {{- if le $tps 5 -}}
+    {{/* Hiển thị tất cả trang nếu <= 5 trang */}}
+    {{- range $p := $pag.Pagers -}}
+      {{- if eq $p $pag -}}
+        <span class="page-number current">{{ $p.PageNumber }}</span>
+      {{- else -}}
+        <a class="page-number" href="{{ $p.URL | relURL }}">{{ $p.PageNumber }}</a>
+      {{- end -}}
+    {{- end -}}
+  {{- else -}}
+    {{/* Logic phức tạp cho > 5 trang với dấu ... */}}
+    {{- if eq $currentPage 1 -}}
+      <span class="page-number current">1</span>
+      <a class="page-number" href="{{ (index $pag.Pagers 1).URL | relURL }}">2</a>
+      <a class="page-number" href="{{ (index $pag.Pagers 2).URL | relURL }}">3</a>
+      <span class="page-number ellipsis">...</span>
+      <a class="page-number" href="{{ (index $pag.Pagers (sub $tps 1)).URL | relURL }}">{{ $tps }}</a>
+    {{- else if eq $currentPage 2 -}}
+      <a class="page-number" href="{{ (index $pag.Pagers 0).URL | relURL }}">1</a>
+      <span class="page-number current">2</span>
+      <a class="page-number" href="{{ (index $pag.Pagers 2).URL | relURL }}">3</a>
+      <span class="page-number ellipsis">...</span>
+      <a class="page-number" href="{{ (index $pag.Pagers (sub $tps 1)).URL | relURL }}">{{ $tps }}</a>
+    {{- else if eq $currentPage (sub $tps 1) -}}
+      <a class="page-number" href="{{ (index $pag.Pagers 0).URL | relURL }}">1</a>
+      <span class="page-number ellipsis">...</span>
+      <a class="page-number" href="{{ (index $pag.Pagers (sub $tps 3)).URL | relURL }}">{{ sub $tps 1 }}</a>
+      <span class="page-number current">{{ $currentPage }}</span>
+      <a class="page-number" href="{{ (index $pag.Pagers (sub $tps 1)).URL | relURL }}">{{ $tps }}</a>
+    {{- else if eq $currentPage $tps -}}
+      <a class="page-number" href="{{ (index $pag.Pagers 0).URL | relURL }}">1</a>
+      <span class="page-number ellipsis">...</span>
+      <a class="page-number" href="{{ (index $pag.Pagers (sub $tps 3)).URL | relURL }}">{{ sub $tps 1 }}</a>
+      <a class="page-number" href="{{ (index $pag.Pagers (sub $tps 2)).URL | relURL }}">{{ sub $tps 0 }}</a>
+      <span class="page-number current">{{ $tps }}</span>
+    {{- else -}}
+      <a class="page-number" href="{{ (index $pag.Pagers 0).URL | relURL }}">1</a>
+      <span class="page-number ellipsis">...</span>
+      <a class="page-number" href="{{ (index $pag.Pagers (sub $currentPage 2)).URL | relURL }}">{{ sub $currentPage 1 }}</a>
+      <span class="page-number current">{{ $currentPage }}</span>
+      <a class="page-number" href="{{ (index $pag.Pagers $currentPage).URL | relURL }}">{{ add $currentPage 1 }}</a>
+      <span class="page-number ellipsis">...</span>
+      <a class="page-number" href="{{ (index $pag.Pagers (sub $tps 1)).URL | relURL }}">{{ $tps }}</a>
+    {{- end -}}
+  {{- end -}}
+  
+  {{- if $pag.HasNext -}}
+    <a class="extend next" rel="next" href="{{ $pag.Next.URL | relURL }}">
+      {{ i18n "next" }} &raquo;
+    </a>
+  {{- end -}}
+</nav>
+
+<style>
+#page-nav .page-number.ellipsis {
+  cursor: default;
+  opacity: 0.7;
+}
+
+#page-nav .page-number.ellipsis:hover {
+  background: transparent;
+  transform: none;
+}
+</style>
