@@ -1,0 +1,43 @@
+/* Gradient động cho background hero-section */
+.hero-section {
+  background: linear-gradient(-45deg, #23243a, #2c2e4a, #ff7a7a, #23243a);
+  background-size: 400% 400%;
+  animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+#typewriter {
+  color: #ff7a7a;
+  font-weight: bold;
+  font-size: 1.2em;
+  letter-spacing: 1px;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInMove 0.8s ease forwards;
+}
+
+@keyframes fadeInMove {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#typewriter-bar {
+  color: #ff7a7a;
+  font-weight: bold;
+  font-size: 1.2em;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
