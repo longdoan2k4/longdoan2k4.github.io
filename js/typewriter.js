@@ -1,5 +1,5 @@
 // Typewriter effect for hero subtitle
-const words = ["Front-End Developer", "Student", "Ho Chi Minh City University of Technology"];
+const words = ["FullStack Developer", "Student", "Ho Chi Minh City University of Technology"];
 const typewriter = document.getElementById("typewriter");
 let wordIndex = 0;
 let charIndex = 0;
