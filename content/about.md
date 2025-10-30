@@ -20,12 +20,21 @@ Tôi là một người đam mê công nghệ và luôn muốn học hỏi nhữ
 - 🚀 **Dự án cá nhân**: Ghi chép và chia sẻ các dự án thú vị
 - 🌱 **Phát triển bản thân**: Lưu lại những bài học và kinh nghiệm
 
+
 ## Kỹ năng và sở thích
 
 - **Ngôn ngữ lập trình**: Python, JavaScript, HTML/CSS
 - **Framework**: React, Django, Hugo
 - **Tools**: Git, VS Code, Docker
 - **Sở thích**: Đọc sách công nghệ, tìm hiểu AI/ML, xây dựng side projects
+
+## Chứng chỉ
+
+## Chứng chỉ
+
+- [JavaScript Essentials 1](/files/certificate1.pdf)
+- [NetWork Basic](/files/certificate2.pdf)
+- [JavaScript Essentials2](/files/certificate3.pdf)
 
 ## Liên hệ
 
