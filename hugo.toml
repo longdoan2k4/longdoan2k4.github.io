@@ -22,14 +22,14 @@ buildFuture = false
 # ✅ CHỈ MỘT LẦN [params]
 [params]
   readingSpeed = 300  # Tăng tốc độ đọc (mặc định ~250)
-  subtitle = "Học tập • Công nghệ • Dự án cá nhân"
-  description = "Blog chia sẻ học tập và kiến thức về code, công nghệ và các dự án cá nhân"
+  subtitle = "Frontend Developer Intern • Software Engineering @ HUTECH"
+  description = "Blog cá nhân của Đoàn Đức Long — sinh viên KTPM HUTECH, chia sẻ hành trình học lập trình, kiến thức Frontend và các dự án thực tế"
   defaultTheme = "dark"
   toc = true
 
   author = "Đoàn Đức Long"
   avatar = "/images/avatar.png"
-  bio = "Học tập, công nghệ và dự án cá nhân."
+  bio = "Frontend Intern | Software Engineering @ HUTECH | Đam mê xây dựng web hiện đại"
   
   # Main sections cho theme Reimu
   mainSections = ["posts"]

@@ -1,2 +1,48 @@
-# Hugo generated site output
+# ========================
+# Hugo Build Output
+# ========================
 public/
+resources/_gen/
+
+# ========================
+# Hugo Cache & Lock Files
+# ========================
+.hugo_build.lock
+.cache/
+
+# ========================
+# Generated / Compiled Files
+# (không cần commit vì Hugo tự tạo lại)
+# ========================
+index.html
+index.json
+index.xml
+sitemap.xml
+robots.txt
+404.html
+about/
+archives/
+categories/
+friend/
+js/
+css/
+images/
+posts/
+files/
+
+# ========================
+# OS & Editor Files
+# ========================
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# ========================
+# Node / NPM (nếu có dùng)
+# ========================
+node_modules/
+npm-debug.log*

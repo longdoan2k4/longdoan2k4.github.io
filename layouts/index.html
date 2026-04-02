@@ -15,6 +15,7 @@
       <div class="hero-cta fade-in">
         <a href="#recent-posts" class="btn-primary fade-in">Xem Bài Viết</a>
         <a href="#skills" class="btn-secondary fade-in">Kỹ Năng</a>
+        <a href="#projects" class="btn-secondary fade-in">Dự Án</a>
         <a href="#contact" class="btn-secondary fade-in">Liên Hệ</a>
       </div>
     </div>
@@ -93,6 +94,68 @@
             <span class="skill-tag">Teamwork</span>
             <span class="skill-tag">Time Management</span>
             <span class="skill-tag">Communication</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects-section fade-in">
+    <div class="container">
+      <div class="section-header">
+        <h2>💼 Dự Án Tiêu Biểu</h2>
+        <p>Các dự án thực tế tôi đã xây dựng và đóng góp</p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1: Riviere Restaurant -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">🍽️</div>
+            <div class="project-meta">
+              <span class="project-role">Fullstack Developer</span>
+              <span class="project-date">01/2026 – 03/2026</span>
+            </div>
+          </div>
+          <h3 class="project-title">Web Riviere Restaurant</h3>
+          <p class="project-desc">Hệ thống đặt bàn và đặt món trước cho nhà hàng fine-dining, tích hợp thanh toán trực tuyến và xác thực bảo mật hiện đại.</p>
+          <div class="project-features">
+            <span class="feature-tag">✅ Thanh toán VNPAY</span>
+            <span class="feature-tag">✅ Google OAuth2 + OTP</span>
+            <span class="feature-tag">✅ Chống spam tự động</span>
+            <span class="feature-tag">✅ Admin Dashboard</span>
+          </div>
+          <div class="project-tech">
+            <span class="tech-badge java">Java</span>
+            <span class="tech-badge spring">Spring Boot</span>
+            <span class="tech-badge db">MySQL</span>
+            <span class="tech-badge tw">Tailwind CSS</span>
+          </div>
+        </div>
+
+        <!-- Project 2: DiDongStore -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">📱</div>
+            <div class="project-meta">
+              <span class="project-role">Fullstack Developer</span>
+              <span class="project-date">04/2025 – 06/2025</span>
+            </div>
+          </div>
+          <h3 class="project-title">Website DiDongStore</h3>
+          <p class="project-desc">Nền tảng thương mại điện tử chuyên về điện thoại di động, với giỏ hàng AJAX, phân quyền admin và xuất hóa đơn tự động.</p>
+          <div class="project-features">
+            <span class="feature-tag">✅ Giỏ hàng AJAX</span>
+            <span class="feature-tag">✅ Phân quyền Admin</span>
+            <span class="feature-tag">✅ Xuất hóa đơn PDF</span>
+            <span class="feature-tag">✅ Đặt hàng trực tuyến</span>
+          </div>
+          <div class="project-tech">
+            <span class="tech-badge php">PHP (MVC)</span>
+            <span class="tech-badge db">MySQL</span>
+            <span class="tech-badge js">JavaScript</span>
+            <span class="tech-badge js">jQuery</span>
           </div>
         </div>
       </div>
@@ -561,18 +624,183 @@
   background: rgba(155, 89, 182, 0.3);
 }
 
+/* Projects Section */
+.projects-section {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, #1a1a2e 0%, #0f1929 100%);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6b6b, #ffd700, #ff8e8e);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover::before {
+  transform: scaleX(1);
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 107, 107, 0.4);
+}
+
+.project-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.project-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+}
+
+.project-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.project-role {
+  font-size: 0.85rem;
+  color: #ff6b6b;
+  font-weight: 600;
+  background: rgba(255, 107, 107, 0.15);
+  padding: 0.2rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  display: inline-block;
+}
+
+.project-date {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.project-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.8rem 0;
+}
+
+.project-desc {
+  font-size: 0.95rem;
+  color: #bbb;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+.project-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.feature-tag {
+  font-size: 0.8rem;
+  color: #68d391;
+  background: rgba(104, 211, 145, 0.1);
+  border: 1px solid rgba(104, 211, 145, 0.25);
+  padding: 0.3rem 0.7rem;
+  border-radius: 12px;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-badge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+}
+
+.tech-badge.java {
+  background: rgba(248, 152, 32, 0.2);
+  color: #f89820;
+  border: 1px solid rgba(248, 152, 32, 0.3);
+}
+
+.tech-badge.spring {
+  background: rgba(109, 179, 63, 0.2);
+  color: #6db33f;
+  border: 1px solid rgba(109, 179, 63, 0.3);
+}
+
+.tech-badge.db {
+  background: rgba(0, 117, 143, 0.2);
+  color: #00758f;
+  border: 1px solid rgba(0, 117, 143, 0.3);
+}
+
+.tech-badge.tw {
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.tech-badge.php {
+  background: rgba(119, 123, 180, 0.2);
+  color: #777bb4;
+  border: 1px solid rgba(119, 123, 180, 0.3);
+}
+
+.tech-badge.js {
+  background: rgba(247, 223, 30, 0.2);
+  color: #f7df1e;
+  border: 1px solid rgba(247, 223, 30, 0.3);
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Recent Posts Section */
 .recent-posts-section {
   padding: 6rem 0;
-  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  background: linear-gradient(180deg, #0f1929 0%, #16213e 100%);
 }
 
 .posts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-bottom: 3rem;
 }
+
 
 .post-card {
   background: rgba(255, 255, 255, 0.05);
@@ -761,6 +989,12 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .posts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .recent-posts-section {
     padding: 4rem 0;
@@ -771,6 +1005,7 @@
     gap: 1.5rem;
     margin-bottom: 2rem;
   }
+
   
   .post-card {
     padding: 1.5rem;
@@ -973,8 +1208,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }, observerOptions);
   
-  // Observe skill cards and post cards
-  document.querySelectorAll('.skill-card, .post-card').forEach(card => {
+  // Observe skill cards, project cards and post cards
+  document.querySelectorAll('.skill-card, .post-card, .project-card').forEach(card => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(30px)';
     card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -994,6 +1229,11 @@ document.addEventListener('DOMContentLoaded', function() {
   // Staggered animation for post cards
   document.querySelectorAll('.post-card').forEach((card, index) => {
     card.style.transitionDelay = `${index * 0.2}s`;
+  });
+  
+  // Staggered animation for project cards
+  document.querySelectorAll('.project-card').forEach((card, index) => {
+    card.style.transitionDelay = `${index * 0.15}s`;
   });
   
   // Ensure all links are clickable (fallback)
