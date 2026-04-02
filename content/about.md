@@ -52,12 +52,13 @@ Tôi là **Thực tập sinh Frontend** đang tìm kiếm cơ hội để áp d�
 
 ## <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: bottom; margin-right: 8px; color: #38bdf8;"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Dự án tiêu biểu
 
-### Web Riviere Restaurant *(01/2026 – 03/2026)*
+### [Web Riviere Restaurant](https://github.com/longdoan2k4/WebRiviereRestaurant) *(01/2026 – 03/2026)*
 **Vai trò:** Fullstack Developer
 
 Hệ thống đặt bàn và đặt món trước cho nhà hàng fine-dining.
 
 **Công nghệ:** Java • Spring Boot • MySQL • Tailwind CSS
+**Mã nguồn:** [Xem trên GitHub](https://github.com/longdoan2k4/WebRiviereRestaurant)
 
 **Tính năng nổi bật:**
 - Tích hợp thanh toán **VNPAY**
@@ -67,12 +68,13 @@ Hệ thống đặt bàn và đặt món trước cho nhà hàng fine-dining.
 
 ---
 
-### Website DiDongStore *(04/2025 – 06/2025)*
+### [Website DiDongStore](https://github.com/longdoan2k4/WebDIDONGSTORE) *(04/2025 – 06/2025)*
 **Vai trò:** Fullstack Developer
 
 Nền tảng thương mại điện tử chuyên về điện thoại di động.
 
 **Công nghệ:** PHP (MVC) • MySQL • JavaScript/jQuery
+**Mã nguồn:** [Xem trên GitHub](https://github.com/longdoan2k4/WebDIDONGSTORE)
 
 **Tính năng nổi bật:**
 - Luồng mua sắm **AJAX** với giỏ hàng động
