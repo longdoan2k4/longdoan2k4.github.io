@@ -10,16 +10,11 @@ type: "page"
 Chào mừng bạn đến với blog cá nhân của tôi!
 
 ## Giới thiệu
+Tôi là một sinh viên năm thứ 4 và học tại Đại Học Công Nghệ Thành Phố Hồ Chí Minh (HUTECH).
 
 Tôi là một người đam mê công nghệ và luôn muốn học hỏi những điều mới mẻ. Blog này được tạo ra để chia sẻ hành trình học tập, những kiến thức về lập trình và các dự án cá nhân mà tôi đang thực hiện.
 
-## Mục tiêu của blog
-
-- 📚 **Học tập**: Chia sẻ quá trình học các công nghệ mới
-- 💻 **Công nghệ**: Viết về các công cụ, framework và ngôn ngữ lập trình
-- 🚀 **Dự án cá nhân**: Ghi chép và chia sẻ các dự án thú vị
-- 🌱 **Phát triển bản thân**: Lưu lại những bài học và kinh nghiệm
-
+"Tri thức là hành trang quý giá nhất trên con đường chinh phục ước mơ. "
 
 ## Kỹ năng và sở thích
 
@@ -30,11 +25,21 @@ Tôi là một người đam mê công nghệ và luôn muốn học hỏi nhữ
 
 ## Chứng chỉ
 
-## Chứng chỉ
-
 - [JavaScript Essentials 1](/files/certificate1.pdf)
 - [NetWork Basic](/files/certificate2.pdf)
 - [JavaScript Essentials2](/files/certificate3.pdf)
+
+## Tự động deploy website
+
+Blog này đã được cấu hình GitHub Actions để tự động deploy lên:
+
+https://longdoan2k4.github.io/
+
+Mỗi khi mình `git add`, `git commit` và `git push` lên nhánh `main`, hệ thống sẽ tự động:
+
+- Build lại toàn bộ website bằng Hugo
+- Deploy lên GitHub Pages
+- Cập nhật nội dung mới trên trang web sau ít phút
 
 ## Liên hệ
 

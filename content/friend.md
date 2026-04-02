@@ -21,7 +21,7 @@ Danh sách những blog và trang web hay mà tôi muốn giới thiệu:
 - **[DEV Community](https://dev.to/)** - Nơi developers chia sẻ kiến thức
 - **[GitHub](https://github.com/)** - Nền tảng lưu trữ code và cộng tác
 
-## 🔧 Công cụ hữu ích
+## 🔧 Công cụ yêu thích
 
 - **[Visual Studio Code](https://code.visualstudio.com/)** - Editor code miễn phí từ Microsoft
 - **[Git](https://git-scm.com/)** - Hệ thống quản lý phiên bản
