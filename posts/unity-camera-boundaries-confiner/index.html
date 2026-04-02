@@ -1,0 +1,1420 @@
+<!doctype html>
+<html
+  lang="vi-vn" 
+  data-theme-mode="auto"
+  >
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  Unity Game Cơ Bản - Bài 5.1: Camera Boundaries với Cinemachine Confiner | Đoàn Đức Long
+</title>
+<meta
+  name="description"
+  content="Hướng dẫn thêm ranh giới camera để không vượt quá bản đồ sử dụng Cinemachine Confiner2D, tương thích Unity 6"
+/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://longdoan2k4.github.io/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" />
+<meta property="og:type" content="website" />
+  <meta property="og:title" content="Unity Game Cơ Bản - Bài 5.1: Camera Boundaries với Cinemachine Confiner | Đoàn Đức Long" />
+  <meta
+    property="og:description"
+    content="Hướng dẫn thêm ranh giới camera để không vượt quá bản đồ sử dụng Cinemachine Confiner2D, tương thích Unity 6"
+  />
+  <meta property="og:url" content="https://longdoan2k4.github.io/posts/unity-camera-boundaries-confiner/" />
+  <meta
+    property="og:site_name"
+    content="Đoàn Đức Long - Tech Blog"
+  />
+  <meta
+    property="og:image"
+    content="/"
+  />
+  <meta property="article:author" content="Đoàn Đức Long" />
+  <meta property="article:published_time" content="2025-10-21T15:00:00&#43;07:00" />
+  <meta property="article:modified_time" content="2025-10-21T15:00:00&#43;07:00" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.030bf20ad33bf6086328005695d5aecf4e3252819f7b6c64892b3dd33ad2e2ed.css" />
+<link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css"
+    integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz&#43;YI" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/>
+
+<link rel="stylesheet" href="/css/custom-posts.min.c23bccebedc11d0eca845bea6af4b5b6337c6a67b36703c043bee39e9f606cb0.css" integrity="sha256-wjvM6&#43;3BHQ7KhFvqavS1tjN8amezZwPAQ77jnp9gbLA=">
+<link rel="stylesheet" href="/css/fixes.css"></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+          M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg></div><div class="loading-word">Loading...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+This article does not have a corresponding language version
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/">Home</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/archives">Archives</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/about">About</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/friend">Friend</a>
+      </span><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+    <a id="nav-search-btn" class="nav-icon" title="Tìm kiếm" aria-label="Tìm kiếm" onclick="toggleSearch()"></a>
+  </nav></div>
+
+
+<div id="search-overlay" class="search-overlay" style="display: none;">
+  <div class="search-container">
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="Tìm kiếm bài viết..." autocomplete="off">
+      <button type="button" id="close-search" onclick="closeSearch()">✕</button>
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+</div><style>
+:root {
+  --cover-background: transparent;
+  --site-cover-background: transparent;
+}
+.header-cover-rgb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150%;
+  z-index: -2;
+  display: block;
+  mask: linear-gradient(to top, transparent, #fff 50%);
+}
+.header-cover-params {
+  background: var(--cover-background);
+}
+.header-cover-site {
+  background: var(--site-cover-background);
+}
+</style>
+
+<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="Unity Game Cơ Bản - Bài 5.1: Camera Boundaries với Cinemachine Confiner"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">Unity Game Cơ Bản - Bài 5.1: Camera Boundaries với Cinemachine Confiner</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header>
+
+<style>
+ 
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(20, 20, 30, 0.95) 0%,
+    rgba(40, 40, 60, 0.95) 50%,
+    rgba(60, 30, 40, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 15vh;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.search-container {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-box {
+  position: relative;
+  margin-bottom: 2rem;
+  width: 450px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 1rem 3.5rem 1rem 1.5rem;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+.search-box input:focus {
+  border-color: rgba(255, 107, 107, 0.8);
+  box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.2),
+              0 8px 32px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+}
+
+
+
+#close-search {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 107, 107, 0.2);
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#close-search:hover {
+  background: rgba(255, 107, 107, 0.4);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.search-results {
+  max-height: 50vh;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 0;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease-out;
+  width: 450px;
+  box-sizing: border-box;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+ 
+.search-results::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-results::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background: rgba(255, 107, 107, 0.5);
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 107, 107, 0.7);
+}
+
+.search-result-item {
+  padding: 1rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0;
+  margin-bottom: 1px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(5px);
+}
+
+.search-result-item:first-child {
+  border-radius: 14px 14px 0 0;
+  margin-top: 1.5rem;
+}
+
+.search-result-item:last-child {
+  border-radius: 0 0 14px 14px;
+  margin-bottom: 1.5rem;
+}
+
+.search-result-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 107, 107, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(255, 107, 107, 0.15);
+}
+
+.search-result-item:last-child {
+  margin-bottom: 0;
+}
+
+.search-result-title {
+  color: #ff9999;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.search-result-item:hover .search-result-title {
+  color: #ff6b6b;
+}
+
+.search-result-category {
+  display: inline-block;
+  background: linear-gradient(45deg, rgba(255, 107, 107, 0.2), rgba(255, 150, 150, 0.2));
+  color: #ffaaaa;
+  padding: 0.2rem 0.6rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  transition: all 0.2s ease;
+}
+
+.search-result-item:hover .search-result-category {
+  background: linear-gradient(45deg, rgba(255, 107, 107, 0.3), rgba(255, 150, 150, 0.3));
+  color: #ff6b6b;
+  border-color: rgba(255, 107, 107, 0.5);
+}
+
+ 
+#nav-search-btn {
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#nav-search-btn:hover {
+  color: #ff6b6b;
+  transform: scale(1.1);
+}
+</style>
+
+<script>
+
+let allPosts = [];
+let searchIndex = null;
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  initializeSearch();
+});
+
+function toggleSearch() {
+  const overlay = document.getElementById('search-overlay');
+  const searchInput = document.getElementById('search-input');
+  
+  if (overlay.style.display === 'none' || overlay.style.display === '') {
+    
+    overlay.style.display = 'flex';
+    overlay.style.animation = 'fadeIn 0.3s ease-out forwards';
+    
+    
+    setTimeout(() => {
+      searchInput.focus();
+    }, 150);
+    
+    document.body.style.overflow = 'hidden';
+  } else {
+    closeSearch();
+  }
+}
+
+function closeSearch() {
+  const overlay = document.getElementById('search-overlay');
+  const searchInput = document.getElementById('search-input');
+  const results = document.getElementById('search-results');
+  
+  
+  showAllResults = false;
+  
+  
+  overlay.style.animation = 'fadeOut 0.3s ease-out forwards';
+  
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    searchInput.value = '';
+    results.innerHTML = '';
+    document.body.style.overflow = '';
+    overlay.style.animation = ''; 
+  }, 300);
+}
+
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeSearch();
+  }
+  
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    toggleSearch();
+  }
+});
+
+
+async function initializeSearch() {
+  try {
+    const response = await fetch('/index.json');
+    const data = await response.json();
+    allPosts = data;
+    
+    
+    const searchInput = document.getElementById('search-input');
+    let searchTimeout;
+    
+    searchInput.addEventListener('input', function() {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        performSearch(this.value);
+      }, 300);
+    });
+    
+  } catch (error) {
+    console.error('Error loading search data:', error);
+  }
+}
+
+function performSearch(query) {
+  const results = document.getElementById('search-results');
+  
+  if (!query || query.length < 2) {
+    results.innerHTML = '';
+    return;
+  }
+  
+  const searchQuery = query.toLowerCase();
+  const matches = allPosts.filter(post => {
+    return post.title.toLowerCase().includes(searchQuery) ||
+           post.content.toLowerCase().includes(searchQuery) ||
+           (post.categories && post.categories.some(cat => cat.toLowerCase().includes(searchQuery))) ||
+           (post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchQuery)));
+  });
+  
+  displaySearchResults(matches, query);
+}
+
+let showAllResults = false;
+
+function displaySearchResults(matches, query) {
+  const results = document.getElementById('search-results');
+  
+  if (matches.length === 0) {
+    results.innerHTML = '<div style="color: rgba(255,255,255,0.7); text-align: center; padding: 3rem 1.5rem;">Không tìm thấy kết quả nào cho "' + query + '"</div>';
+    return;
+  }
+  
+  const totalResults = matches.length;
+  const displayLimit = showAllResults ? totalResults : 8;
+  const itemsToShow = matches.slice(0, displayLimit);
+  
+  results.innerHTML = `
+    <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0; padding: 1.5rem 1.5rem 0 1.5rem;">
+      Tìm thấy ${totalResults} bài viết cho "${query}"
+    </div>
+  `;
+  
+  const html = itemsToShow.map(post => {
+    const title = highlightText(post.title, query);
+    const category = post.categories && post.categories.length > 0 ? post.categories[0] : '';
+    const date = post.date || '';
+    
+    return `
+      <div class="search-result-item" onclick="navigateToPost('${post.uri}')">
+        <div class="search-result-title">${title}</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.3rem;">
+          ${category ? `<span class="search-result-category">${category}</span>` : '<span></span>'}
+          ${date ? `<span style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">${date}</span>` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+  
+  results.innerHTML += html;
+  
+  if (totalResults > 8 && !showAllResults) {
+    results.innerHTML += `
+      <div style="color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem;">
+        <button onclick="toggleShowAllResults('${query}')" style="
+          background: rgba(255, 107, 107, 0.2);
+          border: 1px solid rgba(255, 107, 107, 0.4);
+          color: #ff6b6b;
+          padding: 0.8rem 1.5rem;
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+        " onmouseover="this.style.background='rgba(255, 107, 107, 0.3)'" onmouseout="this.style.background='rgba(255, 107, 107, 0.2)'">
+          Xem tất cả ${totalResults} bài viết
+        </button>
+      </div>
+    `;
+  } else if (showAllResults && totalResults > 8) {
+    results.innerHTML += `
+      <div style="color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem;">
+        <button onclick="toggleShowAllResults('${query}')" style="
+          background: rgba(255, 107, 107, 0.2);
+          border: 1px solid rgba(255, 107, 107, 0.4);
+          color: #ff6b6b;
+          padding: 0.8rem 1.5rem;
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+        " onmouseover="this.style.background='rgba(255, 107, 107, 0.3)'" onmouseout="this.style.background='rgba(255, 107, 107, 0.2)'">
+          Thu gọn kết quả
+        </button>
+      </div>
+    `;
+  }
+}
+
+function toggleShowAllResults(query) {
+  showAllResults = !showAllResults;
+  performSearch(query);
+}
+
+function highlightText(text, query) {
+  if (!query) return text;
+  const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+  return text.replace(regex, '<mark style="background: rgba(255,107,107,0.3); color: #fff;">$1</mark>');
+}
+
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function navigateToPost(uri) {
+  window.location.href = uri;
+}
+</script><div id="content"
+          aria-label="Page content"
+          
+          class="sidebar-right"  ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><div class="sidebar-toc-card" aria-label="Table of contents">
+	<h3 class="toc-title">Contents</h3>
+	<div class="sidebar-toc-wrapper toc-div-class" data-toc="sidebar">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#video-hướng-dẫn">Video Hướng Dẫn</a></li>
+    <li><a href="#ôn-tập-bài-trước">Ôn Tập Bài Trước</a></li>
+    <li><a href="#vấn-đề-cần-giải-quyết">Vấn Đề Cần Giải Quyết</a>
+      <ul>
+        <li><a href="#hiện-tại-camera-có-vấn-đề">Hiện tại camera có vấn đề:</a></li>
+        <li><a href="#mục-tiêu">Mục tiêu:</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-1-tạo-camera-confiner-gameobject">Bước 1: Tạo Camera Confiner GameObject</a>
+      <ul>
+        <li><a href="#11-tạo-confiner-object">1.1. Tạo Confiner object</a></li>
+        <li><a href="#12-thêm-polygon-collider-2d">1.2. Thêm Polygon Collider 2D</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-2-thiết-lập-polygon-boundaries">Bước 2: Thiết Lập Polygon Boundaries</a>
+      <ul>
+        <li><a href="#21-edit-polygon-collider">2.1. Edit Polygon Collider</a></li>
+        <li><a href="#22-tạo-boundary-shape">2.2. Tạo boundary shape</a></li>
+        <li><a href="#23-fine-tune-boundaries">2.3. Fine-tune boundaries</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-3-cấu-hình-cinemachine-confiner2d">Bước 3: Cấu Hình Cinemachine Confiner2D</a>
+      <ul>
+        <li><a href="#31-thêm-confiner-extension-vào-virtual-camera">3.1. Thêm Confiner Extension vào Virtual Camera</a></li>
+        <li><a href="#32-assign-bounding-shape">3.2. Assign Bounding Shape</a></li>
+        <li><a href="#33-verify-settings">3.3. Verify settings</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-4-testing-và-fine-tuning">Bước 4: Testing và Fine-tuning</a>
+      <ul>
+        <li><a href="#41-test-basic-functionality">4.1. Test basic functionality</a></li>
+        <li><a href="#42-adjust-damping-cho-feel-tốt-hơn">4.2. Adjust damping cho feel tốt hơn</a></li>
+        <li><a href="#43-handle-edge-cases">4.3. Handle edge cases</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-5-advanced-confiner-techniques">Bước 5: Advanced Confiner Techniques</a>
+      <ul>
+        <li><a href="#51-multiple-boundaries-cho-different-areas">5.1. Multiple Boundaries cho different areas</a></li>
+        <li><a href="#52-dynamic-boundary-adjustment">5.2. Dynamic boundary adjustment</a></li>
+        <li><a href="#53-smooth-area-transitions">5.3. Smooth area transitions</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-6-optimization-và-best-practices">Bước 6: Optimization và Best Practices</a>
+      <ul>
+        <li><a href="#61-performance-optimization">6.1. Performance optimization</a></li>
+        <li><a href="#62-multi-resolution-support">6.2. Multi-resolution support</a></li>
+      </ul>
+    </li>
+    <li><a href="#troubleshooting">Troubleshooting</a>
+      <ul>
+        <li><a href="#lỗi-thường-gặp">Lỗi thường gặp:</a></li>
+      </ul>
+    </li>
+    <li><a href="#kiến-thức-đã-học">Kiến Thức Đã Học</a></li>
+    <li><a href="#bài-tập-thực-hành">Bài Tập Thực Hành</a></li>
+    <li><a href="#chuẩn-bị-cho-bài-tiếp-theo">Chuẩn Bị Cho Bài Tiếp Theo</a></li>
+    <li><a href="#lưu-ý-quan-trọng">Lưu Ý Quan Trọng</a></li>
+  </ul>
+</nav>
+	</div>
+  
+	
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/images/avatar.png"
+    data-sizes="auto"
+    alt="Đoàn Đức Long"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Đoàn Đức Long</div>
+  <div class="sidebar-description">Blog chia sẻ học tập và kiến thức về code, công nghệ và các dự án cá nhân</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div><div class="sidebar-state-number">65</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      6
+    </div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-discord sidebar-social-icon">
+      <a
+        href="https://discord.com/users/757589425466245182"
+        itemprop="url"
+        target="_blank"
+        aria-label="discord"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-facebook sidebar-social-icon">
+      <a
+        href="https://www.facebook.com/iouas.04"
+        itemprop="url"
+        target="_blank"
+        aria-label="facebook"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/longdoan2k4"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-instagram sidebar-social-icon">
+      <a
+        href="https://www.instagram.com/oglas.z3_/"
+        itemprop="url"
+        target="_blank"
+        aria-label="instagram"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="Home"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Home</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="Archives"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Archives</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="About"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">About</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="Friend"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Friend</div>
+    </div></div></div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2025-10-21 15:00:00 &#43;0700 &#43;07" itemprop="datePublished"
+      >2025-10-21</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2025-10-21</time
+    >
+  </span></div>
+<div class="article-category"><a
+      class="article-category-link"
+      href="/categories/unity-game-c%c6%a1-b%e1%ba%a3n"
+      data-aos="zoom-in"
+      >UNITY GAME CƠ BẢN</a
+    ></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h1 id="unity-game-cơ-bản---bài-51-camera-boundaries-với-cinemachine-confiner">
+<a class="header-anchor" href="#unity-game-c%c6%a1-b%e1%ba%a3n---b%c3%a0i-51-camera-boundaries-v%e1%bb%9bi-cinemachine-confiner"></a>
+Unity Game Cơ Bản - Bài 5.1: Camera Boundaries với Cinemachine Confiner
+</h1><p>Chào mừng các bạn quay trở lại với series Unity Game cơ bản! Trong bài 5.1 này, chúng ta sẽ học cách thêm <strong>camera boundaries</strong> để ngăn camera di chuyển ra ngoài ranh giới bản đồ bằng <strong>Cinemachine Confiner2D</strong> - một tính năng quan trọng cho mọi game RPG 2D chuyên nghiệp.</p>
+<h2 id="video-hướng-dẫn">
+<a class="header-anchor" href="#video-h%c6%b0%e1%bb%9bng-d%e1%ba%abn"></a>
+Video Hướng Dẫn
+</h2><div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/9HZ-vq2d8S4?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<h2 id="ôn-tập-bài-trước">
+<a class="header-anchor" href="#%c3%b4n-t%e1%ba%adp-b%c3%a0i-tr%c6%b0%e1%bb%9bc"></a>
+Ôn Tập Bài Trước
+</h2><p><strong>Bài 05:</strong> ✅ Camera Follow system với Cinemachine cơ bản<br>
+<strong>Bài 5.1:</strong> 🎯 <strong>Camera Boundaries và Confiner system</strong></p>
+<h2 id="vấn-đề-cần-giải-quyết">
+<a class="header-anchor" href="#v%e1%ba%a5n-%c4%91%e1%bb%81-c%e1%ba%a7n-gi%e1%ba%a3i-quy%e1%ba%bft"></a>
+Vấn Đề Cần Giải Quyết
+</h2><h3 id="hiện-tại-camera-có-vấn-đề">
+<a class="header-anchor" href="#hi%e1%bb%87n-t%e1%ba%a1i-camera-c%c3%b3-v%e1%ba%a5n-%c4%91%e1%bb%81"></a>
+Hiện tại camera có vấn đề:
+</h3><ul>
+<li>❌ <strong>Camera theo player vô hạn</strong> ra ngoài map boundaries</li>
+<li>❌ <strong>Hiển thị vùng trống</strong> bên ngoài tilemap</li>
+<li>❌ <strong>Không có ranh giới tự nhiên</strong> như game professional</li>
+<li>❌ <strong>Player có thể đi ra ngoài map</strong> mà camera vẫn theo</li>
+</ul>
+<h3 id="mục-tiêu">
+<a class="header-anchor" href="#m%e1%bb%a5c-ti%c3%aau"></a>
+Mục tiêu:
+</h3><ul>
+<li>✅ <strong>Camera dừng tại ranh giới</strong> map một cách mượt mà</li>
+<li>✅ <strong>Không hiển thị vùng trống</strong> bên ngoài game world</li>
+<li>✅ <strong>Flexible boundaries</strong> cho các khu vực khác nhau</li>
+<li>✅ <strong>Tương thích Unity 6</strong> và các phiên bản cũ</li>
+</ul>
+<h2 id="bước-1-tạo-camera-confiner-gameobject">
+<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-1-t%e1%ba%a1o-camera-confiner-gameobject"></a>
+Bước 1: Tạo Camera Confiner GameObject
+</h2><h3 id="11-tạo-confiner-object">
+<a class="header-anchor" href="#11-t%e1%ba%a1o-confiner-object"></a>
+1.1. Tạo Confiner object
+</h3><pre tabindex="0"><code>1. Right-click trong Hierarchy
+2. Create Empty → đặt tên &#34;Camera_Confiner&#34;
+3. Position: (0, 0, 0)
+4. Organize trong folder &#34;Camera System&#34;
+</code></pre><h3 id="12-thêm-polygon-collider-2d">
+<a class="header-anchor" href="#12-th%c3%aam-polygon-collider-2d"></a>
+1.2. Thêm Polygon Collider 2D
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Add Component:</span>
+</span></span><span style="display:flex;"><span>Polygon Collider <span style="color:#ae81ff">2D</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Settings:</span>
+</span></span><span style="display:flex;"><span>Is Trigger: <span style="color:#960050;background-color:#1e0010">✅</span> <span style="color:#66d9ef">true</span> (không cản player, chỉ limit camera)
+</span></span><span style="display:flex;"><span>Material: None
+</span></span><span style="display:flex;"><span>Used By Effector: <span style="color:#66d9ef">false</span>
+</span></span></code></pre></div><h2 id="bước-2-thiết-lập-polygon-boundaries">
+<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-2-thi%e1%ba%bft-l%e1%ba%adp-polygon-boundaries"></a>
+Bước 2: Thiết Lập Polygon Boundaries
+</h2><h3 id="21-edit-polygon-collider">
+<a class="header-anchor" href="#21-edit-polygon-collider"></a>
+2.1. Edit Polygon Collider
+</h3><pre tabindex="0"><code>1. Chọn Camera_Confiner object
+2. Click &#34;Edit Collider&#34; button trong Polygon Collider 2D
+3. Màn hình sẽ hiện wireframe với các điểm control
+</code></pre><h3 id="22-tạo-boundary-shape">
+<a class="header-anchor" href="#22-t%e1%ba%a1o-boundary-shape"></a>
+2.2. Tạo boundary shape
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Default polygon có 5 điểm, customize như sau:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Xóa điểm: Ctrl + Left Click (Windows) / Cmd + Left Click (Mac)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Thêm điểm: Click và kéo trên edge bất kỳ</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Di chuyển điểm: Click và kéo điểm existing</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Recommended shape: Rectangle bao quanh toàn bộ playable area</span>
+</span></span><span style="display:flex;"><span>Top-Left: (-<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">30</span>)
+</span></span><span style="display:flex;"><span>Top-Right: (<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">30</span>)  
+</span></span><span style="display:flex;"><span>Bottom-Right: (<span style="color:#ae81ff">50</span>, -<span style="color:#ae81ff">30</span>)
+</span></span><span style="display:flex;"><span>Bottom-Left: (-<span style="color:#ae81ff">50</span>, -<span style="color:#ae81ff">30</span>)
+</span></span></code></pre></div><h3 id="23-fine-tune-boundaries">
+<a class="header-anchor" href="#23-fine-tune-boundaries"></a>
+2.3. Fine-tune boundaries
+</h3><pre tabindex="0"><code>🎯 Best practices:
+- Boundary nên lớn hơn visible map một chút
+- Tránh tạo polygon quá phức tạp (performance)
+- Đảm bảo không có self-intersection
+- Test với different screen ratios
+</code></pre><h2 id="bước-3-cấu-hình-cinemachine-confiner2d">
+<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-3-c%e1%ba%a5u-h%c3%acnh-cinemachine-confiner2d"></a>
+Bước 3: Cấu Hình Cinemachine Confiner2D
+</h2><h3 id="31-thêm-confiner-extension-vào-virtual-camera">
+<a class="header-anchor" href="#31-th%c3%aam-confiner-extension-v%c3%a0o-virtual-camera"></a>
+3.1. Thêm Confiner Extension vào Virtual Camera
+</h3><pre tabindex="0"><code>1. Chọn Virtual Camera (Follow Camera) trong Hierarchy
+2. Trong Inspector, scroll xuống phần &#34;Extensions&#34;
+3. Click &#34;Add Extension&#34; dropdown
+4. Chọn &#34;CinemachineConfiner2D&#34;
+</code></pre><h3 id="32-assign-bounding-shape">
+<a class="header-anchor" href="#32-assign-bounding-shape"></a>
+3.2. Assign Bounding Shape
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Trong CinemachineConfiner2D component:</span>
+</span></span><span style="display:flex;"><span>Bounding Shape <span style="color:#ae81ff">2D</span>: [Kéo Camera_Confiner <span style="color:#66d9ef">object</span> vào <span style="color:#960050;background-color:#1e0010">đâ</span>y]
+</span></span><span style="display:flex;"><span>Confine Mode: Confine2D
+</span></span><span style="display:flex;"><span>Damping: <span style="color:#ae81ff">5</span> (smooth transition khi hit boundary)
+</span></span></code></pre></div><h3 id="33-verify-settings">
+<a class="header-anchor" href="#33-verify-settings"></a>
+3.3. Verify settings
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Đảm bảo các settings sau:</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">✅</span> Bounding Shape <span style="color:#ae81ff">2D</span> <span style="color:#960050;background-color:#1e0010">đượ</span>c assign
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">✅</span> Camera_Confiner có Polygon Collider <span style="color:#ae81ff">2D</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">✅</span> Is Trigger = <span style="color:#66d9ef">true</span> trên Polygon Collider
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">✅</span> Virtual Camera có CinemachineConfiner2D extension
+</span></span></code></pre></div><h2 id="bước-4-testing-và-fine-tuning">
+<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-4-testing-v%c3%a0-fine-tuning"></a>
+Bước 4: Testing và Fine-tuning
+</h2><h3 id="41-test-basic-functionality">
+<a class="header-anchor" href="#41-test-basic-functionality"></a>
+4.1. Test basic functionality
+</h3><pre tabindex="0"><code>1. Click Play
+2. Di chuyển Player đến các rìa map
+3. Observe:
+   ✅ Camera dừng tại boundaries
+   ✅ Camera vẫn smooth khi trong boundaries  
+   ✅ Không hiển thị vùng trống bên ngoài map
+</code></pre><h3 id="42-adjust-damping-cho-feel-tốt-hơn">
+<a class="header-anchor" href="#42-adjust-damping-cho-feel-t%e1%bb%91t-h%c6%a1n"></a>
+4.2. Adjust damping cho feel tốt hơn
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Trong CinemachineConfiner2D:</span>
+</span></span><span style="display:flex;"><span>Damping values:
+</span></span><span style="display:flex;"><span>- <span style="color:#ae81ff">0</span>: Camera stop ngay lập tức (harsh)
+</span></span><span style="display:flex;"><span>- <span style="color:#ae81ff">5</span>: Smooth transition (recommended)  
+</span></span><span style="display:flex;"><span>- <span style="color:#ae81ff">10</span>+: Rất smooth nhưng có thể lag feeling
+</span></span></code></pre></div><h3 id="43-handle-edge-cases">
+<a class="header-anchor" href="#43-handle-edge-cases"></a>
+4.3. Handle edge cases
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Nếu camera bị &#34;squeeze&#34; ở góc:</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1.</span> Kiểm tra Rotation Control = <span style="color:#e6db74">&#34;Do Nothing&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2.</span> <span style="color:#960050;background-color:#1e0010">Đả</span>m bảo polygon không quá nhỏ cho screen size
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">3.</span> Test với different aspect ratios (<span style="color:#ae81ff">16</span>:<span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">4</span>:<span style="color:#ae81ff">3</span>, etc.)
+</span></span></code></pre></div><h2 id="bước-5-advanced-confiner-techniques">
+<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-5-advanced-confiner-techniques"></a>
+Bước 5: Advanced Confiner Techniques
+</h2><h3 id="51-multiple-boundaries-cho-different-areas">
+<a class="header-anchor" href="#51-multiple-boundaries-cho-different-areas"></a>
+5.1. Multiple Boundaries cho different areas
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AreaCameraConfiner</span> : MonoBehaviour
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">    [System.Serializable]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CameraArea</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> areaName;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> Collider2D boundaryCollider;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> Vector3 cameraOffset;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> CameraArea[] cameraAreas;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> CinemachineConfiner2D confiner;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SwitchToArea(<span style="color:#66d9ef">string</span> areaName)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        CameraArea targetArea = System.Array.Find(cameraAreas, 
+</span></span><span style="display:flex;"><span>            area =&gt; area.areaName == areaName);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (targetArea != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            confiner.m_BoundingShape2D = targetArea.boundaryCollider;
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Optionally adjust camera offset for different areas</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="52-dynamic-boundary-adjustment">
+<a class="header-anchor" href="#52-dynamic-boundary-adjustment"></a>
+5.2. Dynamic boundary adjustment
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Cinemachine;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEngine;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DynamicBoundary</span> : MonoBehaviour
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> PolygonCollider2D boundaryCollider;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Transform[] boundaryPoints;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> Update()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Dynamically adjust boundary based on game state</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (boundaryPoints.Length &gt;= <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            Vector2[] points = <span style="color:#66d9ef">new</span> Vector2[boundaryPoints.Length];
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i = <span style="color:#ae81ff">0</span>; i &lt; boundaryPoints.Length; i++)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                points[i] = transform.InverseTransformPoint(boundaryPoints[i].position);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            boundaryCollider.points = points;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="53-smooth-area-transitions">
+<a class="header-anchor" href="#53-smooth-area-transitions"></a>
+5.3. Smooth area transitions
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Collections;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Cinemachine;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEngine;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SmoothAreaTransition</span> : MonoBehaviour
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> CinemachineConfiner2D confiner;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">float</span> transitionDuration = <span style="color:#ae81ff">1f</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> TransitionToNewBoundary(Collider2D newBoundary)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        StartCoroutine(SmoothTransition(newBoundary));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> IEnumerator SmoothTransition(Collider2D newBoundary)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Temporarily disable confiner</span>
+</span></span><span style="display:flex;"><span>        confiner.enabled = <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> WaitForSeconds(<span style="color:#ae81ff">0.1f</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Switch boundary</span>
+</span></span><span style="display:flex;"><span>        confiner.m_BoundingShape2D = newBoundary;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Re-enable with smooth transition</span>
+</span></span><span style="display:flex;"><span>        confiner.enabled = <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> WaitForSeconds(transitionDuration);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="bước-6-optimization-và-best-practices">
+<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-6-optimization-v%c3%a0-best-practices"></a>
+Bước 6: Optimization và Best Practices
+</h2><h3 id="61-performance-optimization">
+<a class="header-anchor" href="#61-performance-optimization"></a>
+6.1. Performance optimization
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Cho maps lớn:</span>
+</span></span><span style="display:flex;"><span>- Sử dụng simple rectangle thay vì complex polygon
+</span></span><span style="display:flex;"><span>- Combine multiple simple shapes thay vì một shape phức tạp
+</span></span><span style="display:flex;"><span>- Cache boundary calculations
+</span></span><span style="display:flex;"><span>- Sử dụng LOD cho confiner complexity
+</span></span></code></pre></div><h3 id="62-multi-resolution-support">
+<a class="header-anchor" href="#62-multi-resolution-support"></a>
+6.2. Multi-resolution support
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ResponsiveBoundary</span> : MonoBehaviour
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Vector2 referenceResolution = <span style="color:#66d9ef">new</span> Vector2(<span style="color:#ae81ff">1920</span>, <span style="color:#ae81ff">1080</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> PolygonCollider2D boundaryCollider;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> Start()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        AdjustBoundaryForResolution();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> AdjustBoundaryForResolution()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">float</span> aspectRatio = (<span style="color:#66d9ef">float</span>)Screen.width / Screen.height;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">float</span> referenceAspect = referenceResolution.x / referenceResolution.y;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (aspectRatio != referenceAspect)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Adjust boundary points based on aspect ratio</span>
+</span></span><span style="display:flex;"><span>            Vector2[] points = boundaryCollider.points;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">float</span> scaleFactor = aspectRatio / referenceAspect;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i = <span style="color:#ae81ff">0</span>; i &lt; points.Length; i++)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                points[i] = <span style="color:#66d9ef">new</span> Vector2(points[i].x * scaleFactor, points[i].y);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            boundaryCollider.points = points;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="troubleshooting">
+<a class="header-anchor" href="#troubleshooting"></a>
+Troubleshooting
+</h2><h3 id="lỗi-thường-gặp">
+<a class="header-anchor" href="#l%e1%bb%97i-th%c6%b0%e1%bb%9dng-g%e1%ba%b7p"></a>
+Lỗi thường gặp:
+</h3><pre tabindex="0"><code>❌ Camera vẫn vượt boundaries
+→ Kiểm tra Is Trigger = true trên Polygon Collider
+→ Verify CinemachineConfiner2D được add vào Virtual Camera
+
+❌ Camera bị &#34;squeeze&#34; ở góc maps
+→ Đảm bảo boundaries đủ lớn cho camera viewport  
+→ Check Rotation Control = &#34;Do Nothing&#34;
+
+❌ Performance lag với complex boundaries
+→ Simplify polygon shape
+→ Sử dụng multiple simple boundaries thay vì một complex
+
+❌ Player đi ra ngoài map nhưng camera dừng đúng
+→ Thêm separate colliders cho player physics
+→ Map boundaries ≠ Camera boundaries
+</code></pre><h2 id="kiến-thức-đã-học">
+<a class="header-anchor" href="#ki%e1%ba%bfn-th%e1%bb%a9c-%c4%91%c3%a3-h%e1%bb%8dc"></a>
+Kiến Thức Đã Học
+</h2><p>Trong bài này, chúng ta đã học được:</p>
+<p>✅ <strong>Thiết lập Polygon Collider 2D</strong> cho camera boundaries<br>
+✅ <strong>Cấu hình CinemachineConfiner2D</strong> extension<br>
+✅ <strong>Edit polygon shapes</strong> hiệu quả trong Scene view<br>
+✅ <strong>Multiple area boundaries</strong> với dynamic switching<br>
+✅ <strong>Performance optimization</strong> cho complex boundaries<br>
+✅ <strong>Responsive design</strong> cho different screen ratios<br>
+✅ <strong>Smooth transitions</strong> giữa camera areas</p>
+<h2 id="bài-tập-thực-hành">
+<a class="header-anchor" href="#b%c3%a0i-t%e1%ba%adp-th%e1%bb%b1c-h%c3%a0nh"></a>
+Bài Tập Thực Hành
+</h2><ol>
+<li><strong>Tạo multiple camera areas</strong> cho Town và Forest với boundaries riêng biệt</li>
+<li><strong>Implement area transition triggers</strong> để tự động switch boundaries</li>
+<li><strong>Create dynamic boundaries</strong> thay đổi theo game progression</li>
+<li><strong>Setup different boundaries</strong> cho different camera modes (normal/combat)</li>
+</ol>
+<h2 id="chuẩn-bị-cho-bài-tiếp-theo">
+<a class="header-anchor" href="#chu%e1%ba%a9n-b%e1%bb%8b-cho-b%c3%a0i-ti%e1%ba%bfp-theo"></a>
+Chuẩn Bị Cho Bài Tiếp Theo
+</h2><p>Trong <strong>Bài 06</strong>, chúng ta sẽ học:</p>
+<ul>
+<li><strong>Combat System</strong> cơ bản với attack animations</li>
+<li><strong>Health và Damage</strong> mechanics</li>
+<li><strong>Enemy AI</strong> đơn giản với state machines</li>
+<li><strong>Weapon systems</strong> và collision detection</li>
+</ul>
+<h2 id="lưu-ý-quan-trọng">
+<a class="header-anchor" href="#l%c6%b0u-%c3%bd-quan-tr%e1%bb%8dng"></a>
+Lưu Ý Quan Trọng
+</h2><blockquote>
+<p><strong>Unity 6 Compatibility:</strong> CinemachineConfiner2D hoạt động tương thích hoàn toàn với Unity 6</p></blockquote>
+<blockquote>
+<p><strong>Performance:</strong> Sử dụng simple shapes cho boundaries để tối ưu performance</p></blockquote>
+<blockquote>
+<p><strong>Design Rule:</strong> Camera boundaries nên lớn hơn player movement boundaries</p></blockquote>
+<blockquote>
+<p><strong>Testing:</strong> Luôn test với different aspect ratios để đảm bảo responsive</p></blockquote>
+<hr>
+<p><strong>Nguồn:</strong> <em>Bài viết được tổng hợp từ video hướng dẫn của kênh <strong><a href="https://www.youtube.com/@NightRunStudio">Night Run Studio</a></strong>. Xem video gốc để có trải nghiệm học tập tốt nhất!</em></p>
+</div>
+    <footer class="article-footer">
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="Unity Game Cơ Bản - Bài 05: Camera Follow với Cinemachine"
+              class="lazyload"
+            /><a
+          href="/posts/unity-cinemachine-camera-follow/"
+          aria-label="Prev:Unity Game Cơ Bản - Bài 05: Camera Follow với Cinemachine"
+          title="Prev:Unity Game Cơ Bản - Bài 05: Camera Follow với Cinemachine"
+        ></a>
+        <div class="article-nav-caption">Prev</div>
+        <h3 class="article-nav-title">Unity Game Cơ Bản - Bài 05: Camera Follow với Cinemachine</h3>
+      </div><div class="article-nav-link-wrap right"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="Unity Game Cơ Bản - Bài 06: Hệ Thống Máu và Gây Sát Thương"
+              class="lazyload"
+            /><a
+          href="/posts/unity-action-rpg-health-damage-system/"
+          aria-label="Next:Unity Game Cơ Bản - Bài 06: Hệ Thống Máu và Gây Sát Thương"
+          title="Next:Unity Game Cơ Bản - Bài 06: Hệ Thống Máu và Gây Sát Thương"
+        ></a>
+        <div class="article-nav-caption">Next</div>
+        <h3 class="article-nav-title">Unity Game Cơ Bản - Bài 06: Hệ Thống Máu và Gây Sát Thương</h3>
+      </div></nav></article></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2020-2025<span class="footer-info-sep rotate"></span>
+      Đoàn Đức Long
+    </div>
+  </div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><div class="sidebar-toc-card" aria-label="Table of contents">
+	<h3 class="toc-title">Contents</h3>
+	<div class="sidebar-toc-wrapper toc-div-class" data-toc="sidebar">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#video-hướng-dẫn">Video Hướng Dẫn</a></li>
+    <li><a href="#ôn-tập-bài-trước">Ôn Tập Bài Trước</a></li>
+    <li><a href="#vấn-đề-cần-giải-quyết">Vấn Đề Cần Giải Quyết</a>
+      <ul>
+        <li><a href="#hiện-tại-camera-có-vấn-đề">Hiện tại camera có vấn đề:</a></li>
+        <li><a href="#mục-tiêu">Mục tiêu:</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-1-tạo-camera-confiner-gameobject">Bước 1: Tạo Camera Confiner GameObject</a>
+      <ul>
+        <li><a href="#11-tạo-confiner-object">1.1. Tạo Confiner object</a></li>
+        <li><a href="#12-thêm-polygon-collider-2d">1.2. Thêm Polygon Collider 2D</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-2-thiết-lập-polygon-boundaries">Bước 2: Thiết Lập Polygon Boundaries</a>
+      <ul>
+        <li><a href="#21-edit-polygon-collider">2.1. Edit Polygon Collider</a></li>
+        <li><a href="#22-tạo-boundary-shape">2.2. Tạo boundary shape</a></li>
+        <li><a href="#23-fine-tune-boundaries">2.3. Fine-tune boundaries</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-3-cấu-hình-cinemachine-confiner2d">Bước 3: Cấu Hình Cinemachine Confiner2D</a>
+      <ul>
+        <li><a href="#31-thêm-confiner-extension-vào-virtual-camera">3.1. Thêm Confiner Extension vào Virtual Camera</a></li>
+        <li><a href="#32-assign-bounding-shape">3.2. Assign Bounding Shape</a></li>
+        <li><a href="#33-verify-settings">3.3. Verify settings</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-4-testing-và-fine-tuning">Bước 4: Testing và Fine-tuning</a>
+      <ul>
+        <li><a href="#41-test-basic-functionality">4.1. Test basic functionality</a></li>
+        <li><a href="#42-adjust-damping-cho-feel-tốt-hơn">4.2. Adjust damping cho feel tốt hơn</a></li>
+        <li><a href="#43-handle-edge-cases">4.3. Handle edge cases</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-5-advanced-confiner-techniques">Bước 5: Advanced Confiner Techniques</a>
+      <ul>
+        <li><a href="#51-multiple-boundaries-cho-different-areas">5.1. Multiple Boundaries cho different areas</a></li>
+        <li><a href="#52-dynamic-boundary-adjustment">5.2. Dynamic boundary adjustment</a></li>
+        <li><a href="#53-smooth-area-transitions">5.3. Smooth area transitions</a></li>
+      </ul>
+    </li>
+    <li><a href="#bước-6-optimization-và-best-practices">Bước 6: Optimization và Best Practices</a>
+      <ul>
+        <li><a href="#61-performance-optimization">6.1. Performance optimization</a></li>
+        <li><a href="#62-multi-resolution-support">6.2. Multi-resolution support</a></li>
+      </ul>
+    </li>
+    <li><a href="#troubleshooting">Troubleshooting</a>
+      <ul>
+        <li><a href="#lỗi-thường-gặp">Lỗi thường gặp:</a></li>
+      </ul>
+    </li>
+    <li><a href="#kiến-thức-đã-học">Kiến Thức Đã Học</a></li>
+    <li><a href="#bài-tập-thực-hành">Bài Tập Thực Hành</a></li>
+    <li><a href="#chuẩn-bị-cho-bài-tiếp-theo">Chuẩn Bị Cho Bài Tiếp Theo</a></li>
+    <li><a href="#lưu-ý-quan-trọng">Lưu Ý Quan Trọng</a></li>
+  </ul>
+</nav>
+	</div>
+  
+	
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/images/avatar.png"
+    data-sizes="auto"
+    alt="Đoàn Đức Long"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Đoàn Đức Long</div>
+  <div class="sidebar-description">Blog chia sẻ học tập và kiến thức về code, công nghệ và các dự án cá nhân</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div><div class="sidebar-state-number">65</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      6
+    </div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-discord sidebar-social-icon">
+      <a
+        href="https://discord.com/users/757589425466245182"
+        itemprop="url"
+        target="_blank"
+        aria-label="discord"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-facebook sidebar-social-icon">
+      <a
+        href="https://www.facebook.com/iouas.04"
+        itemprop="url"
+        target="_blank"
+        aria-label="facebook"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/longdoan2k4"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-instagram sidebar-social-icon">
+      <a
+        href="https://www.instagram.com/oglas.z3_/"
+        itemprop="url"
+        target="_blank"
+        aria-label="instagram"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="Home"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Home</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="Archives"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Archives</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="About"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">About</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="Friend"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Friend</div>
+    </div></div></div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous" ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script><script
+    src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js"
+    integrity="sha384-8LyaidD9GPxQQgLJO/WRw/O2h3BoNq/ApI/ecpvM6RsrCz2qP2ppBXUKihP4V/2d" crossorigin="anonymous"></script><script>
+  if (window.firework) {
+    const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+    options.excludeElements = options.excludeelements;
+    delete options.excludeelements;
+    window.firework(options);
+  }
+</script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "Đoàn Đức Long",
+          title: "Unity Game Cơ Bản - Bài 5.1: Camera Boundaries với Cinemachine Confiner",
+          url: "https:\/\/longdoan2k4.github.io\/posts\/unity-camera-boundaries-confiner\/",
+          description: "Hướng dẫn thêm ranh giới camera để không vượt quá bản đồ sử dụng Cinemachine Confiner2D, tương thích Unity 6",
+          cover: "https:\/\/longdoan2k4.github.io\/images\/banner.webp",
+        };
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script></div>
+</div>
+
+<script
+    src="/js/toc-sidebar.js"
+    deferdata-pjax></script><script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    asyncintegrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script><script src="/js/search.js"></script></body>
+</html>

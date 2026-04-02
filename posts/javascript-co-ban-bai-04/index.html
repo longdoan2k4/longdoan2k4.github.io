@@ -1,0 +1,1625 @@
+<!doctype html>
+<html
+  lang="vi-vn" 
+  data-theme-mode="auto"
+  >
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  JavaScript Cơ Bản - Bài 04: Biến và Hằng Số | Đoàn Đức Long
+</title>
+<meta
+  name="description"
+  content="Học về Variables và Constants trong JavaScript - cách khai báo, sử dụng và phân biệt giữa let, const và var"
+/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://longdoan2k4.github.io/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" />
+<meta property="og:type" content="website" />
+  <meta property="og:title" content="JavaScript Cơ Bản - Bài 04: Biến và Hằng Số | Đoàn Đức Long" />
+  <meta
+    property="og:description"
+    content="Học về Variables và Constants trong JavaScript - cách khai báo, sử dụng và phân biệt giữa let, const và var"
+  />
+  <meta property="og:url" content="https://longdoan2k4.github.io/posts/javascript-co-ban-bai-04/" />
+  <meta
+    property="og:site_name"
+    content="Đoàn Đức Long - Tech Blog"
+  />
+  <meta
+    property="og:image"
+    content="/"
+  />
+  <meta property="article:author" content="Đoàn Đức Long" />
+  <meta property="article:published_time" content="2025-10-20T00:00:00&#43;07:00" />
+  <meta property="article:modified_time" content="2025-10-20T00:00:00&#43;07:00" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.030bf20ad33bf6086328005695d5aecf4e3252819f7b6c64892b3dd33ad2e2ed.css" />
+<link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css"
+    integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz&#43;YI" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/>
+
+<link rel="stylesheet" href="/css/custom-posts.min.c23bccebedc11d0eca845bea6af4b5b6337c6a67b36703c043bee39e9f606cb0.css" integrity="sha256-wjvM6&#43;3BHQ7KhFvqavS1tjN8amezZwPAQ77jnp9gbLA=">
+<link rel="stylesheet" href="/css/fixes.css"></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+          M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg></div><div class="loading-word">Loading...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+This article does not have a corresponding language version
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/">Home</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/archives">Archives</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/about">About</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <a class="main-nav-link" href="/friend">Friend</a>
+      </span><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+    <a id="nav-search-btn" class="nav-icon" title="Tìm kiếm" aria-label="Tìm kiếm" onclick="toggleSearch()"></a>
+  </nav></div>
+
+
+<div id="search-overlay" class="search-overlay" style="display: none;">
+  <div class="search-container">
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="Tìm kiếm bài viết..." autocomplete="off">
+      <button type="button" id="close-search" onclick="closeSearch()">✕</button>
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+</div><style>
+:root {
+  --cover-background: transparent;
+  --site-cover-background: transparent;
+}
+.header-cover-rgb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150%;
+  z-index: -2;
+  display: block;
+  mask: linear-gradient(to top, transparent, #fff 50%);
+}
+.header-cover-params {
+  background: var(--cover-background);
+}
+.header-cover-site {
+  background: var(--site-cover-background);
+}
+</style>
+
+<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="JavaScript Cơ Bản - Bài 04: Biến và Hằng Số"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">JavaScript Cơ Bản - Bài 04: Biến và Hằng Số</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header>
+
+<style>
+ 
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(20, 20, 30, 0.95) 0%,
+    rgba(40, 40, 60, 0.95) 50%,
+    rgba(60, 30, 40, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 15vh;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.search-container {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-box {
+  position: relative;
+  margin-bottom: 2rem;
+  width: 450px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 1rem 3.5rem 1rem 1.5rem;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+.search-box input:focus {
+  border-color: rgba(255, 107, 107, 0.8);
+  box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.2),
+              0 8px 32px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+}
+
+
+
+#close-search {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 107, 107, 0.2);
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#close-search:hover {
+  background: rgba(255, 107, 107, 0.4);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.search-results {
+  max-height: 50vh;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 0;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease-out;
+  width: 450px;
+  box-sizing: border-box;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+ 
+.search-results::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-results::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background: rgba(255, 107, 107, 0.5);
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 107, 107, 0.7);
+}
+
+.search-result-item {
+  padding: 1rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0;
+  margin-bottom: 1px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(5px);
+}
+
+.search-result-item:first-child {
+  border-radius: 14px 14px 0 0;
+  margin-top: 1.5rem;
+}
+
+.search-result-item:last-child {
+  border-radius: 0 0 14px 14px;
+  margin-bottom: 1.5rem;
+}
+
+.search-result-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 107, 107, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(255, 107, 107, 0.15);
+}
+
+.search-result-item:last-child {
+  margin-bottom: 0;
+}
+
+.search-result-title {
+  color: #ff9999;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.search-result-item:hover .search-result-title {
+  color: #ff6b6b;
+}
+
+.search-result-category {
+  display: inline-block;
+  background: linear-gradient(45deg, rgba(255, 107, 107, 0.2), rgba(255, 150, 150, 0.2));
+  color: #ffaaaa;
+  padding: 0.2rem 0.6rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  transition: all 0.2s ease;
+}
+
+.search-result-item:hover .search-result-category {
+  background: linear-gradient(45deg, rgba(255, 107, 107, 0.3), rgba(255, 150, 150, 0.3));
+  color: #ff6b6b;
+  border-color: rgba(255, 107, 107, 0.5);
+}
+
+ 
+#nav-search-btn {
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#nav-search-btn:hover {
+  color: #ff6b6b;
+  transform: scale(1.1);
+}
+</style>
+
+<script>
+
+let allPosts = [];
+let searchIndex = null;
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  initializeSearch();
+});
+
+function toggleSearch() {
+  const overlay = document.getElementById('search-overlay');
+  const searchInput = document.getElementById('search-input');
+  
+  if (overlay.style.display === 'none' || overlay.style.display === '') {
+    
+    overlay.style.display = 'flex';
+    overlay.style.animation = 'fadeIn 0.3s ease-out forwards';
+    
+    
+    setTimeout(() => {
+      searchInput.focus();
+    }, 150);
+    
+    document.body.style.overflow = 'hidden';
+  } else {
+    closeSearch();
+  }
+}
+
+function closeSearch() {
+  const overlay = document.getElementById('search-overlay');
+  const searchInput = document.getElementById('search-input');
+  const results = document.getElementById('search-results');
+  
+  
+  showAllResults = false;
+  
+  
+  overlay.style.animation = 'fadeOut 0.3s ease-out forwards';
+  
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    searchInput.value = '';
+    results.innerHTML = '';
+    document.body.style.overflow = '';
+    overlay.style.animation = ''; 
+  }, 300);
+}
+
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeSearch();
+  }
+  
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    toggleSearch();
+  }
+});
+
+
+async function initializeSearch() {
+  try {
+    const response = await fetch('/index.json');
+    const data = await response.json();
+    allPosts = data;
+    
+    
+    const searchInput = document.getElementById('search-input');
+    let searchTimeout;
+    
+    searchInput.addEventListener('input', function() {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        performSearch(this.value);
+      }, 300);
+    });
+    
+  } catch (error) {
+    console.error('Error loading search data:', error);
+  }
+}
+
+function performSearch(query) {
+  const results = document.getElementById('search-results');
+  
+  if (!query || query.length < 2) {
+    results.innerHTML = '';
+    return;
+  }
+  
+  const searchQuery = query.toLowerCase();
+  const matches = allPosts.filter(post => {
+    return post.title.toLowerCase().includes(searchQuery) ||
+           post.content.toLowerCase().includes(searchQuery) ||
+           (post.categories && post.categories.some(cat => cat.toLowerCase().includes(searchQuery))) ||
+           (post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchQuery)));
+  });
+  
+  displaySearchResults(matches, query);
+}
+
+let showAllResults = false;
+
+function displaySearchResults(matches, query) {
+  const results = document.getElementById('search-results');
+  
+  if (matches.length === 0) {
+    results.innerHTML = '<div style="color: rgba(255,255,255,0.7); text-align: center; padding: 3rem 1.5rem;">Không tìm thấy kết quả nào cho "' + query + '"</div>';
+    return;
+  }
+  
+  const totalResults = matches.length;
+  const displayLimit = showAllResults ? totalResults : 8;
+  const itemsToShow = matches.slice(0, displayLimit);
+  
+  results.innerHTML = `
+    <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0; padding: 1.5rem 1.5rem 0 1.5rem;">
+      Tìm thấy ${totalResults} bài viết cho "${query}"
+    </div>
+  `;
+  
+  const html = itemsToShow.map(post => {
+    const title = highlightText(post.title, query);
+    const category = post.categories && post.categories.length > 0 ? post.categories[0] : '';
+    const date = post.date || '';
+    
+    return `
+      <div class="search-result-item" onclick="navigateToPost('${post.uri}')">
+        <div class="search-result-title">${title}</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.3rem;">
+          ${category ? `<span class="search-result-category">${category}</span>` : '<span></span>'}
+          ${date ? `<span style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">${date}</span>` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+  
+  results.innerHTML += html;
+  
+  if (totalResults > 8 && !showAllResults) {
+    results.innerHTML += `
+      <div style="color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem;">
+        <button onclick="toggleShowAllResults('${query}')" style="
+          background: rgba(255, 107, 107, 0.2);
+          border: 1px solid rgba(255, 107, 107, 0.4);
+          color: #ff6b6b;
+          padding: 0.8rem 1.5rem;
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+        " onmouseover="this.style.background='rgba(255, 107, 107, 0.3)'" onmouseout="this.style.background='rgba(255, 107, 107, 0.2)'">
+          Xem tất cả ${totalResults} bài viết
+        </button>
+      </div>
+    `;
+  } else if (showAllResults && totalResults > 8) {
+    results.innerHTML += `
+      <div style="color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem;">
+        <button onclick="toggleShowAllResults('${query}')" style="
+          background: rgba(255, 107, 107, 0.2);
+          border: 1px solid rgba(255, 107, 107, 0.4);
+          color: #ff6b6b;
+          padding: 0.8rem 1.5rem;
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+        " onmouseover="this.style.background='rgba(255, 107, 107, 0.3)'" onmouseout="this.style.background='rgba(255, 107, 107, 0.2)'">
+          Thu gọn kết quả
+        </button>
+      </div>
+    `;
+  }
+}
+
+function toggleShowAllResults(query) {
+  showAllResults = !showAllResults;
+  performSearch(query);
+}
+
+function highlightText(text, query) {
+  if (!query) return text;
+  const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+  return text.replace(regex, '<mark style="background: rgba(255,107,107,0.3); color: #fff;">$1</mark>');
+}
+
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function navigateToPost(uri) {
+  window.location.href = uri;
+}
+</script><div id="content"
+          aria-label="Page content"
+          
+          class="sidebar-right"  ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><div class="sidebar-toc-card" aria-label="Table of contents">
+	<h3 class="toc-title">Contents</h3>
+	<div class="sidebar-toc-wrapper toc-div-class" data-toc="sidebar">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#video-hướng-dẫn">Video Hướng Dẫn</a></li>
+    <li><a href="#variables-biến-là-gì">Variables (Biến) Là Gì?</a>
+      <ul>
+        <li><a href="#analogy-ví-dụ-tương-tự">Analogy (Ví dụ tương tự)</a></li>
+      </ul>
+    </li>
+    <li><a href="#constants-hằng-số-là-gì">Constants (Hằng Số) Là Gì?</a>
+      <ul>
+        <li><a href="#ví-dụ-cơ-bản">Ví dụ cơ bản</a></li>
+      </ul>
+    </li>
+    <li><a href="#cách-khai-báo-biến">Cách Khai Báo Biến</a>
+      <ul>
+        <li><a href="#1-sử-dụng-let-es6">1. Sử dụng <code>let</code> (ES6+)</a></li>
+        <li><a href="#2-sử-dụng-var-cũ-không-khuyến-khích">2. Sử dụng <code>var</code> (Cũ, không khuyến khích)</a></li>
+        <li><a href="#3-sử-dụng-const-hằng-số">3. Sử dụng <code>const</code> (Hằng số)</a></li>
+      </ul>
+    </li>
+    <li><a href="#quy-tắc-đặt-tên">Quy Tắc Đặt Tên</a>
+      <ul>
+        <li><a href="#-hợp-lệ">✅ Hợp lệ</a></li>
+        <li><a href="#-không-hợp-lệ">❌ Không hợp lệ</a></li>
+        <li><a href="#naming-conventions">Naming Conventions</a></li>
+      </ul>
+    </li>
+    <li><a href="#khởi-tạo-biến">Khởi Tạo Biến</a>
+      <ul>
+        <li><a href="#1-khai-báo-và-gán-cùng-lúc">1. Khai báo và gán cùng lúc</a></li>
+        <li><a href="#2-khai-báo-trước-gán-sau">2. Khai báo trước, gán sau</a></li>
+        <li><a href="#3-khai-báo-nhiều-biến">3. Khai báo nhiều biến</a></li>
+      </ul>
+    </li>
+    <li><a href="#data-types-kiểu-dữ-liệu">Data Types (Kiểu Dữ Liệu)</a>
+      <ul>
+        <li><a href="#1-primitive-types">1. Primitive Types</a></li>
+        <li><a href="#2-reference-types">2. Reference Types</a></li>
+      </ul>
+    </li>
+    <li><a href="#type-checking">Type Checking</a></li>
+    <li><a href="#const-với-objects-và-arrays">Const với Objects và Arrays</a>
+      <ul>
+        <li><a href="#objects-với-const">Objects với const</a></li>
+        <li><a href="#arrays-với-const">Arrays với const</a></li>
+      </ul>
+    </li>
+    <li><a href="#scope-phạm-vi">Scope (Phạm Vi)</a>
+      <ul>
+        <li><a href="#global-scope">Global Scope</a></li>
+        <li><a href="#function-scope">Function Scope</a></li>
+        <li><a href="#block-scope">Block Scope</a></li>
+      </ul>
+    </li>
+    <li><a href="#hoisting">Hoisting</a>
+      <ul>
+        <li><a href="#let-và-const">Let và Const</a></li>
+        <li><a href="#var-legacy-behavior">Var (Legacy behavior)</a></li>
+      </ul>
+    </li>
+    <li><a href="#best-practices">Best Practices</a>
+      <ul>
+        <li><a href="#1-ưu-tiên-const-sau-đó-let">1. Ưu tiên const, sau đó let</a></li>
+        <li><a href="#2-đặt-tên-có-ý-nghĩa">2. Đặt tên có ý nghĩa</a></li>
+        <li><a href="#3-nhóm-khai-báo">3. Nhóm khai báo</a></li>
+      </ul>
+    </li>
+    <li><a href="#ví-dụ-thực-tế">Ví Dụ Thực Tế</a>
+      <ul>
+        <li><a href="#1-shopping-cart">1. Shopping Cart</a></li>
+        <li><a href="#2-user-management">2. User Management</a></li>
+      </ul>
+    </li>
+    <li><a href="#bài-tập-thực-hành">Bài Tập Thực Hành</a>
+      <ul>
+        <li><a href="#bài-1-temperature-converter">Bài 1: Temperature Converter</a></li>
+        <li><a href="#bài-2-personal-information">Bài 2: Personal Information</a></li>
+        <li><a href="#bài-3-calculator">Bài 3: Calculator</a></li>
+      </ul>
+    </li>
+    <li><a href="#common-mistakes">Common Mistakes</a>
+      <ul>
+        <li><a href="#1-reassigning-const">1. Reassigning const</a></li>
+        <li><a href="#2-using-var-instead-of-letconst">2. Using var instead of let/const</a></li>
+        <li><a href="#3-undefined-variables">3. Undefined variables</a></li>
+      </ul>
+    </li>
+    <li><a href="#kết-luận">Kết Luận</a></li>
+  </ul>
+</nav>
+	</div>
+  
+	
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/images/avatar.png"
+    data-sizes="auto"
+    alt="Đoàn Đức Long"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Đoàn Đức Long</div>
+  <div class="sidebar-description">Blog chia sẻ học tập và kiến thức về code, công nghệ và các dự án cá nhân</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div><div class="sidebar-state-number">65</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      6
+    </div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-discord sidebar-social-icon">
+      <a
+        href="https://discord.com/users/757589425466245182"
+        itemprop="url"
+        target="_blank"
+        aria-label="discord"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-facebook sidebar-social-icon">
+      <a
+        href="https://www.facebook.com/iouas.04"
+        itemprop="url"
+        target="_blank"
+        aria-label="facebook"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/longdoan2k4"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-instagram sidebar-social-icon">
+      <a
+        href="https://www.instagram.com/oglas.z3_/"
+        itemprop="url"
+        target="_blank"
+        aria-label="instagram"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="Home"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Home</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="Archives"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Archives</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="About"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">About</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="Friend"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Friend</div>
+    </div></div></div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2025-10-20 00:00:00 &#43;0700 &#43;07" itemprop="datePublished"
+      >2025-10-20</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2025-10-20</time
+    >
+  </span></div>
+<div class="article-category"><a
+      class="article-category-link"
+      href="/categories/javascript-c%c6%a1-b%e1%ba%a3n"
+      data-aos="zoom-in"
+      >JAVASCRIPT CƠ BẢN</a
+    ></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h1 id="javascript-cơ-bản---bài-04-biến-và-hằng-số">
+<a class="header-anchor" href="#javascript-c%c6%a1-b%e1%ba%a3n---b%c3%a0i-04-bi%e1%ba%bfn-v%c3%a0-h%e1%ba%b1ng-s%e1%bb%91"></a>
+JavaScript Cơ Bản - Bài 04: Biến và Hằng Số
+</h1><p>Biến (Variables) và hằng số (Constants) là những khái niệm cốt lõi trong JavaScript. Chúng cho phép lưu trữ và thao tác với dữ liệu. Trong bài này, chúng ta sẽ học cách khai báo, sử dụng và phân biệt các loại biến.</p>
+<h2 id="video-hướng-dẫn">
+<a class="header-anchor" href="#video-h%c6%b0%e1%bb%9bng-d%e1%ba%abn"></a>
+Video Hướng Dẫn
+</h2><div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/5S2UOHZE5M0?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<h2 id="variables-biến-là-gì">
+<a class="header-anchor" href="#variables-bi%e1%ba%bfn-l%c3%a0-g%c3%ac"></a>
+Variables (Biến) Là Gì?
+</h2><p><strong>Biến</strong> là &ldquo;container&rdquo; để lưu trữ dữ liệu. Giá trị của biến có thể thay đổi trong quá trình chương trình chạy.</p>
+<h3 id="analogy-ví-dụ-tương-tự">
+<a class="header-anchor" href="#analogy-v%c3%ad-d%e1%bb%a5-t%c6%b0%c6%a1ng-t%e1%bb%b1"></a>
+Analogy (Ví dụ tương tự)
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Biến giống như chiếc hộp có nhãn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">box</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;apple&#34;</span>;     <span style="color:#75715e">// Hộp chứa &#34;apple&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">box</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;orange&#34;</span>;        <span style="color:#75715e">// Thay đổi thành &#34;orange&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">box</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;banana&#34;</span>;        <span style="color:#75715e">// Thay đổi thành &#34;banana&#34;
+</span></span></span></code></pre></div><h2 id="constants-hằng-số-là-gì">
+<a class="header-anchor" href="#constants-h%e1%ba%b1ng-s%e1%bb%91-l%c3%a0-g%c3%ac"></a>
+Constants (Hằng Số) Là Gì?
+</h2><p><strong>Hằng số</strong> là giá trị không thể thay đổi sau khi được khởi tạo. Sử dụng từ khóa <code>const</code> để khai báo.</p>
+<h3 id="ví-dụ-cơ-bản">
+<a class="header-anchor" href="#v%c3%ad-d%e1%bb%a5-c%c6%a1-b%e1%ba%a3n"></a>
+Ví dụ cơ bản
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Hằng số - không thể thay đổi
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">PI</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.14159</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">COMPANY_NAME</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;TechCorp&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">MAX_USERS</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// PI = 3.14;  // ❌ TypeError: Assignment to constant variable
+</span></span></span></code></pre></div><h2 id="cách-khai-báo-biến">
+<a class="header-anchor" href="#c%c3%a1ch-khai-b%c3%a1o-bi%e1%ba%bfn"></a>
+Cách Khai Báo Biến
+</h2><h3 id="1-sử-dụng-let-es6">
+<a class="header-anchor" href="#1-s%e1%bb%ad-d%e1%bb%a5ng-let-es6"></a>
+1. Sử dụng <code>let</code> (ES6+)
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Khai báo biến với let
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">userName</span>;              <span style="color:#75715e">// Khai báo, chưa gán giá trị
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span>;             <span style="color:#75715e">// Khai báo và gán giá trị
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">isStudent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;     <span style="color:#75715e">// Boolean variable
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">score</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">85.5</span>;         <span style="color:#75715e">// Number variable
+</span></span></span></code></pre></div><h3 id="2-sử-dụng-var-cũ-không-khuyến-khích">
+<a class="header-anchor" href="#2-s%e1%bb%ad-d%e1%bb%a5ng-var-c%c5%a9-kh%c3%b4ng-khuy%e1%ba%bfn-kh%c3%adch"></a>
+2. Sử dụng <code>var</code> (Cũ, không khuyến khích)
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Khai báo với var (legacy)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">oldStyle</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Cách cũ&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">counter</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span></code></pre></div><h3 id="3-sử-dụng-const-hằng-số">
+<a class="header-anchor" href="#3-s%e1%bb%ad-d%e1%bb%a5ng-const-h%e1%ba%b1ng-s%e1%bb%91"></a>
+3. Sử dụng <code>const</code> (Hằng số)
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Khai báo hằng số
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">API_URL</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://api.example.com&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">TAX_RATE</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">COLORS</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;red&#34;</span>, <span style="color:#e6db74">&#34;green&#34;</span>, <span style="color:#e6db74">&#34;blue&#34;</span>];
+</span></span></code></pre></div><h2 id="quy-tắc-đặt-tên">
+<a class="header-anchor" href="#quy-t%e1%ba%afc-%c4%91%e1%ba%b7t-t%c3%aan"></a>
+Quy Tắc Đặt Tên
+</h2><h3 id="-hợp-lệ">
+<a class="header-anchor" href="#-h%e1%bb%a3p-l%e1%bb%87"></a>
+✅ Hợp lệ
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Camel case (khuyến khích)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">firstName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;John&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">lastName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Doe&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">userAge</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Snake case
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">user_name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Jane&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">phone_number</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;123456789&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Với số và ký tự đặc biệt
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">user1</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;First user&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">$element</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;box&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">_private</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Internal use&#34;</span>;
+</span></span></code></pre></div><h3 id="-không-hợp-lệ">
+<a class="header-anchor" href="#-kh%c3%b4ng-h%e1%bb%a3p-l%e1%bb%87"></a>
+❌ Không hợp lệ
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#ae81ff">123</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Error&#34;</span>;        <span style="color:#75715e">// Không bắt đầu bằng số
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">my</span><span style="color:#f92672">-</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Error&#34;</span>;        <span style="color:#75715e">// Không có dấu gạch ngang
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">my</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Error&#34;</span>;        <span style="color:#75715e">// Không có khoảng trắng
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#66d9ef">class</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Error&#34;</span>;          <span style="color:#75715e">// Không dùng keyword
+</span></span></span></code></pre></div><h3 id="naming-conventions">
+<a class="header-anchor" href="#naming-conventions"></a>
+Naming Conventions
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Constants - UPPER_SNAKE_CASE
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">MAX_RETRY_COUNT</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">DEFAULT_TIMEOUT</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5000</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">API_BASE_URL</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://api.com&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Variables - camelCase
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">currentUser</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">isLoggedIn</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">shoppingCart</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Boolean variables - is/has/can prefix
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">isActive</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">hasPermission</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">canEdit</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span></code></pre></div><h2 id="khởi-tạo-biến">
+<a class="header-anchor" href="#kh%e1%bb%9fi-t%e1%ba%a1o-bi%e1%ba%bfn"></a>
+Khởi Tạo Biến
+</h2><h3 id="1-khai-báo-và-gán-cùng-lúc">
+<a class="header-anchor" href="#1-khai-b%c3%a1o-v%c3%a0-g%c3%a1n-c%c3%b9ng-l%c3%bac"></a>
+1. Khai báo và gán cùng lúc
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;JavaScript&#34;</span>;      <span style="color:#75715e">// String
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">version</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2023</span>;          <span style="color:#75715e">// Number
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">isModern</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;         <span style="color:#75715e">// Boolean
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">features</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;ES6&#34;</span>, <span style="color:#e6db74">&#34;ES2023&#34;</span>];  <span style="color:#75715e">// Array
+</span></span></span></code></pre></div><h3 id="2-khai-báo-trước-gán-sau">
+<a class="header-anchor" href="#2-khai-b%c3%a1o-tr%c6%b0%e1%bb%9bc-g%c3%a1n-sau"></a>
+2. Khai báo trước, gán sau
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">result</span>;              <span style="color:#75715e">// undefined
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">userInput</span>;           <span style="color:#75715e">// undefined
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Gán giá trị sau
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">calculateSum</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">userInput</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">prompt</span>(<span style="color:#e6db74">&#34;Nhập tên của bạn:&#34;</span>);
+</span></span></code></pre></div><h3 id="3-khai-báo-nhiều-biến">
+<a class="header-anchor" href="#3-khai-b%c3%a1o-nhi%e1%bb%81u-bi%e1%ba%bfn"></a>
+3. Khai báo nhiều biến
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Cách 1: Từng dòng
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">z</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Cách 2: Cùng một dòng
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Cách 3: Nhiều dòng, cùng từ khóa
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">firstName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;John&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">lastName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Doe&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span>;
+</span></span></code></pre></div><h2 id="data-types-kiểu-dữ-liệu">
+<a class="header-anchor" href="#data-types-ki%e1%bb%83u-d%e1%bb%af-li%e1%bb%87u"></a>
+Data Types (Kiểu Dữ Liệu)
+</h2><h3 id="1-primitive-types">
+<a class="header-anchor" href="#1-primitive-types"></a>
+1. Primitive Types
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// String
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">message</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello World&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">template</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`Welcome </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">message</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Number
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">integer</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">42</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">decimal</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.14</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">negative</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Boolean
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">isTrue</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">isFalse</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Undefined
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">notAssigned</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">notAssigned</span>);  <span style="color:#75715e">// undefined
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Null
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">emptyValue</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Symbol (ES6)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">symbol</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Symbol</span>(<span style="color:#e6db74">&#39;id&#39;</span>);
+</span></span></code></pre></div><h3 id="2-reference-types">
+<a class="header-anchor" href="#2-reference-types"></a>
+2. Reference Types
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Array
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numbers</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">mixed</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;hello&#34;</span>, <span style="color:#66d9ef">true</span>, <span style="color:#66d9ef">null</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">person</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;John&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">30</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">isEmployed</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">greet</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">name</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`Hello, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">!`</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="type-checking">
+<a class="header-anchor" href="#type-checking"></a>
+Type Checking
+</h2><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">42</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">value</span>);        <span style="color:#75715e">// &#34;number&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#e6db74">&#34;hello&#34;</span>);      <span style="color:#75715e">// &#34;string&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#66d9ef">true</span>);         <span style="color:#75715e">// &#34;boolean&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#66d9ef">undefined</span>);    <span style="color:#75715e">// &#34;undefined&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#66d9ef">null</span>);         <span style="color:#75715e">// &#34;object&#34; (quirk!)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]);    <span style="color:#75715e">// &#34;object&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> {<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>});       <span style="color:#75715e">// &#34;object&#34;
+</span></span></span></code></pre></div><h2 id="const-với-objects-và-arrays">
+<a class="header-anchor" href="#const-v%e1%bb%9bi-objects-v%c3%a0-arrays"></a>
+Const với Objects và Arrays
+</h2><h3 id="objects-với-const">
+<a class="header-anchor" href="#objects-v%e1%bb%9bi-const"></a>
+Objects với const
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">person</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;John&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">30</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ✅ Có thể thay đổi properties
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Jane&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">city</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;New York&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">person</span>);  <span style="color:#75715e">// {name: &#34;Jane&#34;, age: 25, city: &#34;New York&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ❌ Không thể reassign
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// person = {};  // TypeError
+</span></span></span></code></pre></div><h3 id="arrays-với-const">
+<a class="header-anchor" href="#arrays-v%e1%bb%9bi-const"></a>
+Arrays với const
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">colors</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;red&#34;</span>, <span style="color:#e6db74">&#34;green&#34;</span>, <span style="color:#e6db74">&#34;blue&#34;</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ✅ Có thể thay đổi elements
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">colors</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;yellow&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">colors</span>.<span style="color:#a6e22e">push</span>(<span style="color:#e6db74">&#34;purple&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">colors</span>.<span style="color:#a6e22e">pop</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">colors</span>);  <span style="color:#75715e">// [&#34;yellow&#34;, &#34;green&#34;, &#34;blue&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ❌ Không thể reassign
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// colors = [];  // TypeError
+</span></span></span></code></pre></div><h2 id="scope-phạm-vi">
+<a class="header-anchor" href="#scope-ph%e1%ba%a1m-vi"></a>
+Scope (Phạm Vi)
+</h2><h3 id="global-scope">
+<a class="header-anchor" href="#global-scope"></a>
+Global Scope
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Global variables
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">globalVar</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Truy cập được ở mọi nơi&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">GLOBAL_CONSTANT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hằng số global&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">showGlobal</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">globalVar</span>);        <span style="color:#75715e">// OK
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">GLOBAL_CONSTANT</span>);  <span style="color:#75715e">// OK
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h3 id="function-scope">
+<a class="header-anchor" href="#function-scope"></a>
+Function Scope
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">demonstrateScope</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">functionVar</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Chỉ trong function&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">FUNCTION_CONST</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hằng số function&#34;</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">functionVar</span>);      <span style="color:#75715e">// OK
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">FUNCTION_CONST</span>);   <span style="color:#75715e">// OK
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// console.log(functionVar);      // ReferenceError
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// console.log(FUNCTION_CONST);   // ReferenceError
+</span></span></span></code></pre></div><h3 id="block-scope">
+<a class="header-anchor" href="#block-scope"></a>
+Block Scope
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">blockVar</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Chỉ trong block&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">BLOCK_CONST</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hằng số block&#34;</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">blockVar</span>);      <span style="color:#75715e">// OK
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">BLOCK_CONST</span>);   <span style="color:#75715e">// OK
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// console.log(blockVar);      // ReferenceError
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// console.log(BLOCK_CONST);   // ReferenceError
+</span></span></span></code></pre></div><h2 id="hoisting">
+<a class="header-anchor" href="#hoisting"></a>
+Hoisting
+</h2><h3 id="let-và-const">
+<a class="header-anchor" href="#let-v%c3%a0-const"></a>
+Let và Const
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// ❌ ReferenceError - Temporal Dead Zone
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x</span>);  <span style="color:#75715e">// Cannot access &#39;x&#39; before initialization
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">y</span>);  <span style="color:#75715e">// Cannot access &#39;y&#39; before initialization
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span></code></pre></div><h3 id="var-legacy-behavior">
+<a class="header-anchor" href="#var-legacy-behavior"></a>
+Var (Legacy behavior)
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Hoisting với var
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">z</span>);  <span style="color:#75715e">// undefined (not error)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">z</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tương đương với:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// var z;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// console.log(z);  // undefined
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// z = 15;
+</span></span></span></code></pre></div><h2 id="best-practices">
+<a class="header-anchor" href="#best-practices"></a>
+Best Practices
+</h2><h3 id="1-ưu-tiên-const-sau-đó-let">
+<a class="header-anchor" href="#1-%c6%b0u-ti%c3%aan-const-sau-%c4%91%c3%b3-let"></a>
+1. Ưu tiên const, sau đó let
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// ✅ Tốt - sử dụng const khi có thể
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">PI</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.14159</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">users</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">config</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">timeout</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5000</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">retries</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Chỉ dùng let khi cần thay đổi
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">counter</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">currentPage</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span></code></pre></div><h3 id="2-đặt-tên-có-ý-nghĩa">
+<a class="header-anchor" href="#2-%c4%91%e1%ba%b7t-t%c3%aan-c%c3%b3-%c3%bd-ngh%c4%a9a"></a>
+2. Đặt tên có ý nghĩa
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// ❌ Tên không rõ nghĩa
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">d</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">u</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ✅ Tên rõ nghĩa
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">currentDate</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">userCount</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">taxAmount</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">TAX_RATE</span>;
+</span></span></code></pre></div><h3 id="3-nhóm-khai-báo">
+<a class="header-anchor" href="#3-nh%c3%b3m-khai-b%c3%a1o"></a>
+3. Nhóm khai báo
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// ✅ Nhóm theo logic
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// API Configuration
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">API_BASE_URL</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://api.example.com&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">API_TIMEOUT</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5000</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">API_KEY</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;your-api-key&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// User Interface
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">isLoading</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">currentTab</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;home&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">selectedItems</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Calculations
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">subtotal</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">taxAmount</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">totalAmount</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span></code></pre></div><h2 id="ví-dụ-thực-tế">
+<a class="header-anchor" href="#v%c3%ad-d%e1%bb%a5-th%e1%bb%b1c-t%e1%ba%bf"></a>
+Ví Dụ Thực Tế
+</h2><h3 id="1-shopping-cart">
+<a class="header-anchor" href="#1-shopping-cart"></a>
+1. Shopping Cart
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Shopping cart constants
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">TAX_RATE</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.08</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">SHIPPING_COST</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">FREE_SHIPPING_THRESHOLD</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Shopping cart variables
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">items</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">subtotal</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tax</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">shipping</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Add item function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">addItem</span>(<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">price</span>, <span style="color:#a6e22e">quantity</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">item</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> Date.<span style="color:#a6e22e">now</span>(),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">name</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">price</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">quantity</span>
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">item</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">calculateTotal</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">calculateTotal</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calculate subtotal
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">subtotal</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">sum</span>, <span style="color:#a6e22e">item</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">+</span> (<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">quantity</span>);
+</span></span><span style="display:flex;"><span>    }, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calculate tax
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">tax</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">subtotal</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">TAX_RATE</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calculate shipping
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">shipping</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">subtotal</span> <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">FREE_SHIPPING_THRESHOLD</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">SHIPPING_COST</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calculate total
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">subtotal</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">tax</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">shipping</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">displayCart</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">displayCart</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;=== SHOPPING CART ===&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Subtotal: $</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">subtotal</span>.<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">2</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Tax: $</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">tax</span>.<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">2</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Shipping: $</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">shipping</span>.<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">2</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Total: $</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">total</span>.<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">2</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="2-user-management">
+<a class="header-anchor" href="#2-user-management"></a>
+2. User Management
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// User constants
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">MIN_PASSWORD_LENGTH</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">MAX_LOGIN_ATTEMPTS</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">SESSION_TIMEOUT</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>; <span style="color:#75715e">// minutes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// User variables
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">currentUser</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">isLoggedIn</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">loginAttempts</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">lastActivity</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// User object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">createUser</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">username</span>, <span style="color:#a6e22e">email</span>, <span style="color:#a6e22e">password</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> Date.<span style="color:#a6e22e">now</span>(),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">username</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">username</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">email</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">email</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">password</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">password</span>, <span style="color:#75715e">// In reality, this should be hashed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">createdAt</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">new</span> Date(),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">isActive</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">loginCount</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="bài-tập-thực-hành">
+<a class="header-anchor" href="#b%c3%a0i-t%e1%ba%adp-th%e1%bb%b1c-h%c3%a0nh"></a>
+Bài Tập Thực Hành
+</h2><h3 id="bài-1-temperature-converter">
+<a class="header-anchor" href="#b%c3%a0i-1-temperature-converter"></a>
+Bài 1: Temperature Converter
+</h3><p>Tạo chương trình chuyển đổi nhiệt độ với constants và variables.</p>
+<h3 id="bài-2-personal-information">
+<a class="header-anchor" href="#b%c3%a0i-2-personal-information"></a>
+Bài 2: Personal Information
+</h3><p>Tạo object chứa thông tin cá nhân và functions để cập nhật.</p>
+<h3 id="bài-3-calculator">
+<a class="header-anchor" href="#b%c3%a0i-3-calculator"></a>
+Bài 3: Calculator
+</h3><p>Tạo calculator đơn giản với constants cho operations.</p>
+<h2 id="common-mistakes">
+<a class="header-anchor" href="#common-mistakes"></a>
+Common Mistakes
+</h2><h3 id="1-reassigning-const">
+<a class="header-anchor" href="#1-reassigning-const"></a>
+1. Reassigning const
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// ❌ Lỗi
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;John&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Jane&#34;</span>;  <span style="color:#75715e">// TypeError
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ✅ Đúng
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;John&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Jane&#34;</span>;  <span style="color:#75715e">// OK
+</span></span></span></code></pre></div><h3 id="2-using-var-instead-of-letconst">
+<a class="header-anchor" href="#2-using-var-instead-of-letconst"></a>
+2. Using var instead of let/const
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// ❌ Không khuyến khích
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">counter</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">message</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ✅ Modern approach
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">counter</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">message</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello&#34;</span>;
+</span></span></code></pre></div><h3 id="3-undefined-variables">
+<a class="header-anchor" href="#3-undefined-variables"></a>
+3. Undefined variables
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// ❌ Lỗi
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">undefinedVar</span>);  <span style="color:#75715e">// ReferenceError
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ✅ Đúng
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">definedVar</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;value&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">definedVar</span>);    <span style="color:#75715e">// &#34;value&#34;
+</span></span></span></code></pre></div><h2 id="kết-luận">
+<a class="header-anchor" href="#k%e1%ba%bft-lu%e1%ba%adn"></a>
+Kết Luận
+</h2><p>🎉 <strong>Bạn đã học được:</strong></p>
+<ul>
+<li>✅ Cách khai báo biến với <code>let</code>, <code>const</code>, và <code>var</code></li>
+<li>✅ Phân biệt Variables và Constants</li>
+<li>✅ Quy tắc đặt tên và naming conventions</li>
+<li>✅ Data types và type checking</li>
+<li>✅ Scope và hoisting</li>
+<li>✅ Best practices và common mistakes</li>
+</ul>
+<p><strong>Bước tiếp theo</strong>: Tìm hiểu sâu hơn về sự khác biệt giữa <code>var</code> và <code>let</code>!</p>
+<hr>
+<p><em>Variables và Constants là nền tảng của mọi chương trình JavaScript. Hãy thực hành nhiều để thành thạo!</em></p>
+</div>
+    <footer class="article-footer">
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="JavaScript Cơ Bản - Bài 05: Khởi Tạo Biến Bằng var và let"
+              class="lazyload"
+            /><a
+          href="/posts/javascript-co-ban-bai-05/"
+          aria-label="Prev:JavaScript Cơ Bản - Bài 05: Khởi Tạo Biến Bằng var và let"
+          title="Prev:JavaScript Cơ Bản - Bài 05: Khởi Tạo Biến Bằng var và let"
+        ></a>
+        <div class="article-nav-caption">Prev</div>
+        <h3 class="article-nav-title">JavaScript Cơ Bản - Bài 05: Khởi Tạo Biến Bằng var và let</h3>
+      </div><div class="article-nav-link-wrap right"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="JavaScript Cơ Bản - Bài 03: Chú Thích, Keywords và Khối Lệnh"
+              class="lazyload"
+            /><a
+          href="/posts/javascript-co-ban-bai-03/"
+          aria-label="Next:JavaScript Cơ Bản - Bài 03: Chú Thích, Keywords và Khối Lệnh"
+          title="Next:JavaScript Cơ Bản - Bài 03: Chú Thích, Keywords và Khối Lệnh"
+        ></a>
+        <div class="article-nav-caption">Next</div>
+        <h3 class="article-nav-title">JavaScript Cơ Bản - Bài 03: Chú Thích, Keywords và Khối Lệnh</h3>
+      </div></nav></article></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2020-2025<span class="footer-info-sep rotate"></span>
+      Đoàn Đức Long
+    </div>
+  </div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><div class="sidebar-toc-card" aria-label="Table of contents">
+	<h3 class="toc-title">Contents</h3>
+	<div class="sidebar-toc-wrapper toc-div-class" data-toc="sidebar">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#video-hướng-dẫn">Video Hướng Dẫn</a></li>
+    <li><a href="#variables-biến-là-gì">Variables (Biến) Là Gì?</a>
+      <ul>
+        <li><a href="#analogy-ví-dụ-tương-tự">Analogy (Ví dụ tương tự)</a></li>
+      </ul>
+    </li>
+    <li><a href="#constants-hằng-số-là-gì">Constants (Hằng Số) Là Gì?</a>
+      <ul>
+        <li><a href="#ví-dụ-cơ-bản">Ví dụ cơ bản</a></li>
+      </ul>
+    </li>
+    <li><a href="#cách-khai-báo-biến">Cách Khai Báo Biến</a>
+      <ul>
+        <li><a href="#1-sử-dụng-let-es6">1. Sử dụng <code>let</code> (ES6+)</a></li>
+        <li><a href="#2-sử-dụng-var-cũ-không-khuyến-khích">2. Sử dụng <code>var</code> (Cũ, không khuyến khích)</a></li>
+        <li><a href="#3-sử-dụng-const-hằng-số">3. Sử dụng <code>const</code> (Hằng số)</a></li>
+      </ul>
+    </li>
+    <li><a href="#quy-tắc-đặt-tên">Quy Tắc Đặt Tên</a>
+      <ul>
+        <li><a href="#-hợp-lệ">✅ Hợp lệ</a></li>
+        <li><a href="#-không-hợp-lệ">❌ Không hợp lệ</a></li>
+        <li><a href="#naming-conventions">Naming Conventions</a></li>
+      </ul>
+    </li>
+    <li><a href="#khởi-tạo-biến">Khởi Tạo Biến</a>
+      <ul>
+        <li><a href="#1-khai-báo-và-gán-cùng-lúc">1. Khai báo và gán cùng lúc</a></li>
+        <li><a href="#2-khai-báo-trước-gán-sau">2. Khai báo trước, gán sau</a></li>
+        <li><a href="#3-khai-báo-nhiều-biến">3. Khai báo nhiều biến</a></li>
+      </ul>
+    </li>
+    <li><a href="#data-types-kiểu-dữ-liệu">Data Types (Kiểu Dữ Liệu)</a>
+      <ul>
+        <li><a href="#1-primitive-types">1. Primitive Types</a></li>
+        <li><a href="#2-reference-types">2. Reference Types</a></li>
+      </ul>
+    </li>
+    <li><a href="#type-checking">Type Checking</a></li>
+    <li><a href="#const-với-objects-và-arrays">Const với Objects và Arrays</a>
+      <ul>
+        <li><a href="#objects-với-const">Objects với const</a></li>
+        <li><a href="#arrays-với-const">Arrays với const</a></li>
+      </ul>
+    </li>
+    <li><a href="#scope-phạm-vi">Scope (Phạm Vi)</a>
+      <ul>
+        <li><a href="#global-scope">Global Scope</a></li>
+        <li><a href="#function-scope">Function Scope</a></li>
+        <li><a href="#block-scope">Block Scope</a></li>
+      </ul>
+    </li>
+    <li><a href="#hoisting">Hoisting</a>
+      <ul>
+        <li><a href="#let-và-const">Let và Const</a></li>
+        <li><a href="#var-legacy-behavior">Var (Legacy behavior)</a></li>
+      </ul>
+    </li>
+    <li><a href="#best-practices">Best Practices</a>
+      <ul>
+        <li><a href="#1-ưu-tiên-const-sau-đó-let">1. Ưu tiên const, sau đó let</a></li>
+        <li><a href="#2-đặt-tên-có-ý-nghĩa">2. Đặt tên có ý nghĩa</a></li>
+        <li><a href="#3-nhóm-khai-báo">3. Nhóm khai báo</a></li>
+      </ul>
+    </li>
+    <li><a href="#ví-dụ-thực-tế">Ví Dụ Thực Tế</a>
+      <ul>
+        <li><a href="#1-shopping-cart">1. Shopping Cart</a></li>
+        <li><a href="#2-user-management">2. User Management</a></li>
+      </ul>
+    </li>
+    <li><a href="#bài-tập-thực-hành">Bài Tập Thực Hành</a>
+      <ul>
+        <li><a href="#bài-1-temperature-converter">Bài 1: Temperature Converter</a></li>
+        <li><a href="#bài-2-personal-information">Bài 2: Personal Information</a></li>
+        <li><a href="#bài-3-calculator">Bài 3: Calculator</a></li>
+      </ul>
+    </li>
+    <li><a href="#common-mistakes">Common Mistakes</a>
+      <ul>
+        <li><a href="#1-reassigning-const">1. Reassigning const</a></li>
+        <li><a href="#2-using-var-instead-of-letconst">2. Using var instead of let/const</a></li>
+        <li><a href="#3-undefined-variables">3. Undefined variables</a></li>
+      </ul>
+    </li>
+    <li><a href="#kết-luận">Kết Luận</a></li>
+  </ul>
+</nav>
+	</div>
+  
+	
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/images/avatar.png"
+    data-sizes="auto"
+    alt="Đoàn Đức Long"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Đoàn Đức Long</div>
+  <div class="sidebar-description">Blog chia sẻ học tập và kiến thức về code, công nghệ và các dự án cá nhân</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div><div class="sidebar-state-number">65</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      6
+    </div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-discord sidebar-social-icon">
+      <a
+        href="https://discord.com/users/757589425466245182"
+        itemprop="url"
+        target="_blank"
+        aria-label="discord"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-facebook sidebar-social-icon">
+      <a
+        href="https://www.facebook.com/iouas.04"
+        itemprop="url"
+        target="_blank"
+        aria-label="facebook"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/longdoan2k4"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-instagram sidebar-social-icon">
+      <a
+        href="https://www.instagram.com/oglas.z3_/"
+        itemprop="url"
+        target="_blank"
+        aria-label="instagram"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="Home"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Home</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="Archives"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Archives</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="About"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">About</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="Friend"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">Friend</div>
+    </div></div></div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous" ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script><script
+    src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js"
+    integrity="sha384-8LyaidD9GPxQQgLJO/WRw/O2h3BoNq/ApI/ecpvM6RsrCz2qP2ppBXUKihP4V/2d" crossorigin="anonymous"></script><script>
+  if (window.firework) {
+    const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+    options.excludeElements = options.excludeelements;
+    delete options.excludeelements;
+    window.firework(options);
+  }
+</script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "Đoàn Đức Long",
+          title: "JavaScript Cơ Bản - Bài 04: Biến và Hằng Số",
+          url: "https:\/\/longdoan2k4.github.io\/posts\/javascript-co-ban-bai-04\/",
+          description: "Học về Variables và Constants trong JavaScript - cách khai báo, sử dụng và phân biệt giữa let, const và var",
+          cover: "https:\/\/longdoan2k4.github.io\/images\/banner.webp",
+        };
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script></div>
+</div>
+
+<script
+    src="/js/toc-sidebar.js"
+    deferdata-pjax></script><script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    asyncintegrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script><script src="/js/search.js"></script></body>
+</html>
