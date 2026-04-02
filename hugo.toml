@@ -47,6 +47,7 @@ buildFuture = false
   # Social đúng chuẩn Reimu
   [params.social]
     github = "https://github.com/longdoan2k4"
+    linkedin = "https://www.linkedin.com/in/longdoanduc2112/"
     facebook = "https://www.facebook.com/iouas.04"
     instagram = "https://www.instagram.com/oglas.z3_/"
     discord = "https://discord.com/users/757589425466245182"

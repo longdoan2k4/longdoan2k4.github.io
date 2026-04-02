@@ -6,7 +6,7 @@
     <div class="hero-content">
       <div class="hero-avatar fade-in">
         <div class="avatar-glow fade-in">
-          <img src="{{ .Site.Params.avatar | default "/images/avatar.png" }}" alt="{{ .Site.Params.author }}">
+          <img src="{{ .Site.Params.avatar | default " /images/avatar.png" }}" alt="{{ .Site.Params.author }}">
         </div>
       </div>
       <h1 class="hero-title fade-in">{{ .Site.Params.author }}</h1>
@@ -19,22 +19,28 @@
         <a href="#contact" class="btn-secondary fade-in">Liên Hệ</a>
       </div>
     </div>
-  <div class="hero-bg-animation"></div>
-  <script src="/js/typewriter.js"></script>
-  <script src="/js/particles.js"></script>
+    <div class="hero-bg-animation"></div>
+    <script src="/js/typewriter.js"></script>
+    <script src="/js/particles.js"></script>
   </section>
 
   <!-- Skills Section với Modern Cards -->
   <section id="skills" class="skills-section fade-in">
     <div class="container">
       <div class="section-header">
-        <h2>🛠️ Kỹ Năng Chuyên Môn</h2>
+        <h2>Kỹ Năng Chuyên Môn</h2>
         <p>Các công nghệ và kỹ năng theo CV hiện tại của tôi</p>
       </div>
-      
+
       <div class="skills-grid">
         <div class="skill-card frontend">
-          <div class="skill-icon">🧩</div>
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #ff6b6b;">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="9" y1="21" x2="9" y2="9"></line>
+            </svg>
+          </div>
           <h3>Client-side</h3>
           <div class="skill-items">
             <span class="skill-tag">HTML</span>
@@ -45,7 +51,14 @@
         </div>
 
         <div class="skill-card backend">
-          <div class="skill-icon">🖥️</div>
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #6db33f;">
+              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+              <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+              <line x1="6" y1="6" x2="6.01" y2="6"></line>
+              <line x1="6" y1="18" x2="6.01" y2="18"></line>
+            </svg>
+          </div>
           <h3>Server-side</h3>
           <div class="skill-items">
             <span class="skill-tag">Java</span>
@@ -56,7 +69,15 @@
         </div>
 
         <div class="skill-card frameworks">
-          <div class="skill-icon">⚙️</div>
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #38bdf8;">
+              <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+              <line x1="12" y1="22" x2="12" y2="15.5"></line>
+              <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+              <polyline points="2 15.5 12 8.5 22 15.5"></polyline>
+              <line x1="12" y1="2" x2="12" y2="8.5"></line>
+            </svg>
+          </div>
           <h3>Frameworks</h3>
           <div class="skill-items">
             <span class="skill-tag">Spring Boot (Security, JPA)</span>
@@ -65,7 +86,13 @@
         </div>
 
         <div class="skill-card database">
-          <div class="skill-icon">🗄️</div>
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #00758f;">
+              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+            </svg>
+          </div>
           <h3>Database</h3>
           <div class="skill-items">
             <span class="skill-tag">MySQL</span>
@@ -75,7 +102,11 @@
         </div>
 
         <div class="skill-card tools">
-          <div class="skill-icon">🛠️</div>
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #f7df1e;">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+            </svg>
+          </div>
           <h3>Tools</h3>
           <div class="skill-items">
             <span class="skill-tag">Git/GitHub</span>
@@ -88,7 +119,14 @@
         </div>
 
         <div class="skill-card softskills">
-          <div class="skill-icon">🤝</div>
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #9b59b6;">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
           <h3>Soft Skills</h3>
           <div class="skill-items">
             <span class="skill-tag">Teamwork</span>
@@ -104,7 +142,7 @@
   <section id="projects" class="projects-section fade-in">
     <div class="container">
       <div class="section-header">
-        <h2>💼 Dự Án Tiêu Biểu</h2>
+        <h2>Dự Án Tiêu Biểu</h2>
         <p>Các dự án thực tế tôi đã xây dựng và đóng góp</p>
       </div>
 
@@ -112,7 +150,14 @@
         <!-- Project 1: Riviere Restaurant -->
         <div class="project-card">
           <div class="project-header">
-            <div class="project-icon">🍽️</div>
+            <div class="project-icon">
+              <!-- Restaurant/Food Icon -->
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #f89820;">
+                <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path>
+                <path d="M7 2v20"></path>
+                <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path>
+              </svg>
+            </div>
             <div class="project-meta">
               <span class="project-role">Fullstack Developer</span>
               <span class="project-date">01/2026 – 03/2026</span>
@@ -121,10 +166,10 @@
           <h3 class="project-title">Web Riviere Restaurant</h3>
           <p class="project-desc">Hệ thống đặt bàn và đặt món trước cho nhà hàng fine-dining, tích hợp thanh toán trực tuyến và xác thực bảo mật hiện đại.</p>
           <div class="project-features">
-            <span class="feature-tag">✅ Thanh toán VNPAY</span>
-            <span class="feature-tag">✅ Google OAuth2 + OTP</span>
-            <span class="feature-tag">✅ Chống spam tự động</span>
-            <span class="feature-tag">✅ Admin Dashboard</span>
+            <span class="feature-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-right: 4px;"><path d="M20 6L9 17l-5-5"></path></svg> Thanh toán VNPAY</span>
+            <span class="feature-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-right: 4px;"><path d="M20 6L9 17l-5-5"></path></svg> Google OAuth2 + OTP</span>
+            <span class="feature-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-right: 4px;"><path d="M20 6L9 17l-5-5"></path></svg> Chống spam tự động</span>
+            <span class="feature-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-right: 4px;"><path d="M20 6L9 17l-5-5"></path></svg> Admin Dashboard</span>
           </div>
           <div class="project-tech">
             <span class="tech-badge java">Java</span>
@@ -137,7 +182,13 @@
         <!-- Project 2: DiDongStore -->
         <div class="project-card">
           <div class="project-header">
-            <div class="project-icon">📱</div>
+            <div class="project-icon">
+              <!-- Smartphone Icon -->
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #38bdf8;">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+            </div>
             <div class="project-meta">
               <span class="project-role">Fullstack Developer</span>
               <span class="project-date">04/2025 – 06/2025</span>
@@ -146,10 +197,10 @@
           <h3 class="project-title">Website DiDongStore</h3>
           <p class="project-desc">Nền tảng thương mại điện tử chuyên về điện thoại di động, với giỏ hàng AJAX, phân quyền admin và xuất hóa đơn tự động.</p>
           <div class="project-features">
-            <span class="feature-tag">✅ Giỏ hàng AJAX</span>
-            <span class="feature-tag">✅ Phân quyền Admin</span>
-            <span class="feature-tag">✅ Xuất hóa đơn PDF</span>
-            <span class="feature-tag">✅ Đặt hàng trực tuyến</span>
+            <span class="feature-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-right: 4px;"><path d="M20 6L9 17l-5-5"></path></svg> Giỏ hàng AJAX</span>
+            <span class="feature-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-right: 4px;"><path d="M20 6L9 17l-5-5"></path></svg> Phân quyền Admin</span>
+            <span class="feature-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-right: 4px;"><path d="M20 6L9 17l-5-5"></path></svg> Xuất hóa đơn PDF</span>
+            <span class="feature-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-right: 4px;"><path d="M20 6L9 17l-5-5"></path></svg> Đặt hàng trực tuyến</span>
           </div>
           <div class="project-tech">
             <span class="tech-badge php">PHP (MVC)</span>
@@ -166,110 +217,110 @@
   <section id="recent-posts" class="recent-posts-section">
     <div class="container">
       <div class="section-header">
-        <h2>📝 Bài Viết Gần Đây</h2>
+        <h2>Bài Viết Gần Đây</h2>
         <p>Những bài viết mới nhất từ blog của tôi</p>
       </div>
-      
+
       {{ $recentPosts := (where .Site.RegularPages "Section" "posts") | first 3 }}
       {{ if $recentPosts }}
-        <div class="posts-grid">
-          {{ range $index, $post := $recentPosts }}
-            <article class="post-card" data-aos="fade-up" data-aos-delay="{{ mul $index 200 }}">
-              <div class="post-meta">
-                <time datetime="{{ $post.Date.Format "2006-01-02" }}">
-                  {{ $post.Date.Format "02/01/2006" }}
-                </time>
-                {{ if $post.Params.categories }}
-                  <div class="post-categories">
-                    {{ range first 1 $post.Params.categories }}
-                      <span class="category-tag">{{ . }}</span>
-                    {{ end }}
-                  </div>
-                {{ end }}
-              </div>
-              
-              <h3 class="post-title">
-                <a href="{{ $post.Permalink }}">{{ $post.Title }}</a>
-              </h3>
-              
-              <p class="post-excerpt">
-                {{ if $post.Description }}
-                  {{ $post.Description }}
-                {{ else if $post.Summary }}
-                  {{ $post.Summary | truncate 120 }}
-                {{ else }}
-                  {{ $post.Content | plainify | truncate 120 }}
-                {{ end }}
-              </p>
-              
-              <div class="post-footer">
-                <a href="{{ $post.Permalink }}" class="read-more">
-                  Đọc thêm
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14m-7-7 7 7-7 7"/>
-                  </svg>
-                </a>
-                
-                <span class="post-time">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polyline points="12,6 12,12 16,14"/>
-                  </svg>
-                  {{ $timeDiff := sub now.Unix $post.Date.Unix }}
-                  {{ $minutesSince := div $timeDiff 60 }}
-                  {{ $hoursSince := div $timeDiff 3600 }}
-                  {{ $daysSince := div $timeDiff 86400 }}
-                  
-                  {{ if lt $minutesSince 1 }}
-                    Vừa xong
-                  {{ else if lt $minutesSince 60 }}
-                    {{ $minutesSince }} phút trước
-                  {{ else if lt $hoursSince 24 }}
-                    {{ $hoursSince }} giờ trước
-                  {{ else if eq $daysSince 1 }}
-                    1 ngày trước
-                  {{ else if lt $daysSince 7 }}
-                    {{ $daysSince }} ngày trước
-                  {{ else if lt $daysSince 30 }}
-                    {{ $weeksSince := div $daysSince 7 }}
-                    {{ if eq $weeksSince 1 }}
-                      1 tuần trước
-                    {{ else }}
-                      {{ $weeksSince }} tuần trước
-                    {{ end }}
-                  {{ else if lt $daysSince 365 }}
-                    {{ $monthsSince := div $daysSince 30 }}
-                    {{ if eq $monthsSince 1 }}
-                      1 tháng trước
-                    {{ else }}
-                      {{ $monthsSince }} tháng trước
-                    {{ end }}
-                  {{ else }}
-                    {{ $yearsSince := div $daysSince 365 }}
-                    {{ if eq $yearsSince 1 }}
-                      1 năm trước
-                    {{ else }}
-                      {{ $yearsSince }} năm trước
-                    {{ end }}
-                  {{ end }}
-                </span>
-              </div>
-            </article>
-          {{ end }}
-        </div>
-        
-        <div class="posts-cta">
-          <a href="/posts/" class="btn-outline">
-            Xem Tất Cả Bài Viết
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14m-7-7 7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
+      <div class="posts-grid">
+        {{ range $index, $post := $recentPosts }}
+        <article class="post-card" data-aos="fade-up" data-aos-delay="{{ mul $index 200 }}">
+          <div class="post-meta">
+            <time datetime="{{ $post.Date.Format " 2006-01-02" }}">
+              {{ $post.Date.Format "02/01/2006" }}
+            </time>
+            {{ if $post.Params.categories }}
+            <div class="post-categories">
+              {{ range first 1 $post.Params.categories }}
+              <span class="category-tag">{{ . }}</span>
+              {{ end }}
+            </div>
+            {{ end }}
+          </div>
+
+          <h3 class="post-title">
+            <a href="{{ $post.Permalink }}">{{ $post.Title }}</a>
+          </h3>
+
+          <p class="post-excerpt">
+            {{ if $post.Description }}
+            {{ $post.Description }}
+            {{ else if $post.Summary }}
+            {{ $post.Summary | truncate 120 }}
+            {{ else }}
+            {{ $post.Content | plainify | truncate 120 }}
+            {{ end }}
+          </p>
+
+          <div class="post-footer">
+            <a href="{{ $post.Permalink }}" class="read-more">
+              Đọc thêm
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14m-7-7 7 7-7 7" />
+              </svg>
+            </a>
+
+            <span class="post-time">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12,6 12,12 16,14" />
+              </svg>
+              {{ $timeDiff := sub now.Unix $post.Date.Unix }}
+              {{ $minutesSince := div $timeDiff 60 }}
+              {{ $hoursSince := div $timeDiff 3600 }}
+              {{ $daysSince := div $timeDiff 86400 }}
+
+              {{ if lt $minutesSince 1 }}
+              Vừa xong
+              {{ else if lt $minutesSince 60 }}
+              {{ $minutesSince }} phút trước
+              {{ else if lt $hoursSince 24 }}
+              {{ $hoursSince }} giờ trước
+              {{ else if eq $daysSince 1 }}
+              1 ngày trước
+              {{ else if lt $daysSince 7 }}
+              {{ $daysSince }} ngày trước
+              {{ else if lt $daysSince 30 }}
+              {{ $weeksSince := div $daysSince 7 }}
+              {{ if eq $weeksSince 1 }}
+              1 tuần trước
+              {{ else }}
+              {{ $weeksSince }} tuần trước
+              {{ end }}
+              {{ else if lt $daysSince 365 }}
+              {{ $monthsSince := div $daysSince 30 }}
+              {{ if eq $monthsSince 1 }}
+              1 tháng trước
+              {{ else }}
+              {{ $monthsSince }} tháng trước
+              {{ end }}
+              {{ else }}
+              {{ $yearsSince := div $daysSince 365 }}
+              {{ if eq $yearsSince 1 }}
+              1 năm trước
+              {{ else }}
+              {{ $yearsSince }} năm trước
+              {{ end }}
+              {{ end }}
+            </span>
+          </div>
+        </article>
+        {{ end }}
+      </div>
+
+      <div class="posts-cta">
+        <a href="/posts/" class="btn-outline">
+          Xem Tất Cả Bài Viết
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14m-7-7 7 7-7 7" />
+          </svg>
+        </a>
+      </div>
       {{ else }}
-        <div class="no-posts">
-          <p>Chưa có bài viết nào được xuất bản.</p>
-        </div>
+      <div class="no-posts">
+        <p>Chưa có bài viết nào được xuất bản.</p>
+      </div>
       {{ end }}
     </div>
   </section>
@@ -278,34 +329,65 @@
   <section id="contact" class="contact-section">
     <div class="container">
       <div class="section-header fade-in">
-        <h2 class="fade-in">📫 Kết Nối Với Tôi</h2>
+        <h2 class="fade-in">Kết Nối Với Tôi</h2>
         <p class="fade-in">Hãy cùng nhau học hỏi và chia sẻ kiến thức!</p>
       </div>
-      
+
       <div class="social-grid fade-in">
         {{ if .Site.Params.social.github }}
-          <a href="{{ .Site.Params.social.github }}" target="_blank" class="social-link github fade-in">
-            <div class="social-icon fade-in">📚</div>
-            <span class="fade-in">GitHub</span>
-          </a>
+        <a href="{{ .Site.Params.social.github }}" target="_blank" class="social-link github fade-in">
+          <div class="social-icon fade-in">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path
+                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+            </svg>
+          </div>
+          <span class="fade-in">GitHub</span>
+        </a>
+        {{ end }}
+        {{ if .Site.Params.social.linkedin }}
+        <a href="{{ .Site.Params.social.linkedin }}" target="_blank" class="social-link linkedin fade-in">
+          <div class="social-icon fade-in">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </div>
+          <span class="fade-in">LinkedIn</span>
+        </a>
         {{ end }}
         {{ if .Site.Params.social.facebook }}
-          <a href="{{ .Site.Params.social.facebook }}" target="_blank" class="social-link facebook fade-in">
-            <div class="social-icon fade-in">📘</div>
-            <span class="fade-in">Facebook</span>
-          </a>
+        <a href="{{ .Site.Params.social.facebook }}" target="_blank" class="social-link facebook fade-in">
+          <div class="social-icon fade-in">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg>
+          </div>
+          <span class="fade-in">Facebook</span>
+        </a>
         {{ end }}
         {{ if .Site.Params.social.instagram }}
-          <a href="{{ .Site.Params.social.instagram }}" target="_blank" class="social-link instagram fade-in">
-            <div class="social-icon fade-in">📸</div>
-            <span class="fade-in">Instagram</span>
-          </a>
+        <a href="{{ .Site.Params.social.instagram }}" target="_blank" class="social-link instagram fade-in">
+          <div class="social-icon fade-in">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+            </svg>
+          </div>
+          <span class="fade-in">Instagram</span>
+        </a>
         {{ end }}
         {{ if .Site.Params.social.discord }}
-          <a href="{{ .Site.Params.social.discord }}" target="_blank" class="social-link discord fade-in">
-            <div class="social-icon fade-in">💬</div>
-            <span class="fade-in">Discord</span>
-          </a>
+        <a href="{{ .Site.Params.social.discord }}" target="_blank" class="social-link discord fade-in">
+          <div class="social-icon fade-in">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path
+                d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.081.118 18.105.14 18.12a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+            </svg>
+          </div>
+          <span class="fade-in">Discord</span>
+        </a>
         {{ end }}
       </div>
     </div>
@@ -313,937 +395,969 @@
 </main>
 
 <style>
-/* Global Styles */
-.homepage {
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.section-header h2 {
-  font-size: 2.5rem;
-  background: linear-gradient(135deg, #ff6b6b, #ff8e8e, #ffa8a8);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
-  font-weight: 700;
-}
-
-.section-header p {
-  font-size: 1.1rem;
-  color: #999;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* Hero Section */
-.hero-section {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
-  overflow: hidden;
-}
-
-.hero-bg-animation {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(97, 218, 251, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(251, 187, 206, 0.1) 0%, transparent 50%);
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(2deg); }
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  animation: fadeInUp 1s ease-out;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+  /* Global Styles */
+  .homepage {
+    min-height: 100vh;
+    overflow-x: hidden;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
   }
-}
 
-.hero-avatar {
-  margin-bottom: 2rem;
-}
-
-.avatar-glow {
-  position: relative;
-  display: inline-block;
-}
-
-.avatar-glow img {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  border: 4px solid rgba(255, 107, 107, 0.3);
-  box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.5);
-  animation: pulse 2s infinite;
-  transition: all 0.3s ease;
-}
-
-.avatar-glow:hover img {
-  transform: scale(1.05);
-  box-shadow: 0 0 0 20px rgba(255, 107, 107, 0);
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 20px rgba(255, 107, 107, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
-  }
-}
-
-.hero-title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #ff6b6b, #ff8e8e, #ffa8a8);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
-  animation: slideInDown 1s ease-out 0.3s both;
-}
-
-.hero-subtitle {
-  font-size: 1.4rem;
-  color: #ddd;
-  margin-bottom: 1.5rem;
-  animation: slideInDown 1s ease-out 0.6s both;
-}
-
-.hero-description {
-  font-size: 1.1rem;
-  color: #bbb;
-  max-width: 600px;
-  margin: 0 auto 2.5rem;
-  line-height: 1.6;
-  animation: slideInDown 1s ease-out 0.9s both;
-}
-
-@keyframes slideInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.hero-cta {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  animation: fadeIn 1s ease-out 1.2s both;
-}
-
-@media (max-width: 768px) {
-  .hero-cta {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .btn-primary, .btn-secondary {
-    width: 200px;
+  .section-header {
     text-align: center;
+    margin-bottom: 3rem;
   }
-}
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Buttons */
-.btn-primary, .btn-secondary {
-  display: inline-block;
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-primary {
-  background: transparent;
-  color: #ff6b6b;
-  border: 2px solid #ff6b6b;
-  box-shadow: none;
-}
-
-.btn-primary:hover {
-  background: #ff6b6b;
-  color: white;
-  border-color: #ff6b6b;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: #ff6b6b;
-  border: 2px solid #ff6b6b;
-}
-
-.btn-secondary:hover {
-  background: #ff6b6b;
-  color: white;
-  transform: translateY(-2px);
-}
-
-/* Skills Section */
-.skills-section {
-  padding: 6rem 0;
-  background: linear-gradient(180deg, #0f0f23 0%, #1a1a2e 100%);
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-}
-
-.skill-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.skill-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, #ff6b6b, #61dafb, #68d391, #9b59b6);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.skill-card:hover::before {
-  transform: scaleX(1);
-}
-
-.skill-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 107, 107, 0.3);
-}
-
-.skill-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.skill-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  color: #fff;
-}
-
-.skill-items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.skill-tag {
-  background: rgba(255, 107, 107, 0.2);
-  color: #ff6b6b;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  border: 1px solid rgba(255, 107, 107, 0.3);
-  transition: all 0.3s ease;
-}
-
-.skill-tag:hover {
-  background: rgba(255, 107, 107, 0.3);
-  transform: scale(1.05);
-}
-
-/* Game Development Card Styling */
-.skill-card.game:hover {
-  border-color: rgba(155, 89, 182, 0.3);
-}
-
-.skill-card.game .skill-tag {
-  background: rgba(155, 89, 182, 0.2);
-  color: #9b59b6;
-  border: 1px solid rgba(155, 89, 182, 0.3);
-}
-
-.skill-card.game .skill-tag:hover {
-  background: rgba(155, 89, 182, 0.3);
-}
-
-/* Projects Section */
-.projects-section {
-  padding: 6rem 0;
-  background: linear-gradient(180deg, #1a1a2e 0%, #0f1929 100%);
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 2rem;
-}
-
-.project-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.project-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, #ff6b6b, #ffd700, #ff8e8e);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.project-card:hover::before {
-  transform: scaleX(1);
-}
-
-.project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  border-color: rgba(255, 107, 107, 0.4);
-}
-
-.project-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.project-icon {
-  font-size: 2.5rem;
-  flex-shrink: 0;
-}
-
-.project-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.project-role {
-  font-size: 0.85rem;
-  color: #ff6b6b;
-  font-weight: 600;
-  background: rgba(255, 107, 107, 0.15);
-  padding: 0.2rem 0.6rem;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 107, 107, 0.3);
-  display: inline-block;
-}
-
-.project-date {
-  font-size: 0.8rem;
-  color: #888;
-}
-
-.project-title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0 0 0.8rem 0;
-}
-
-.project-desc {
-  font-size: 0.95rem;
-  color: #bbb;
-  line-height: 1.6;
-  margin-bottom: 1.2rem;
-}
-
-.project-features {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.2rem;
-}
-
-.feature-tag {
-  font-size: 0.8rem;
-  color: #68d391;
-  background: rgba(104, 211, 145, 0.1);
-  border: 1px solid rgba(104, 211, 145, 0.25);
-  padding: 0.3rem 0.7rem;
-  border-radius: 12px;
-}
-
-.project-tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.tech-badge {
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0.3rem 0.8rem;
-  border-radius: 12px;
-}
-
-.tech-badge.java {
-  background: rgba(248, 152, 32, 0.2);
-  color: #f89820;
-  border: 1px solid rgba(248, 152, 32, 0.3);
-}
-
-.tech-badge.spring {
-  background: rgba(109, 179, 63, 0.2);
-  color: #6db33f;
-  border: 1px solid rgba(109, 179, 63, 0.3);
-}
-
-.tech-badge.db {
-  background: rgba(0, 117, 143, 0.2);
-  color: #00758f;
-  border: 1px solid rgba(0, 117, 143, 0.3);
-}
-
-.tech-badge.tw {
-  background: rgba(56, 189, 248, 0.2);
-  color: #38bdf8;
-  border: 1px solid rgba(56, 189, 248, 0.3);
-}
-
-.tech-badge.php {
-  background: rgba(119, 123, 180, 0.2);
-  color: #777bb4;
-  border: 1px solid rgba(119, 123, 180, 0.3);
-}
-
-.tech-badge.js {
-  background: rgba(247, 223, 30, 0.2);
-  color: #f7df1e;
-  border: 1px solid rgba(247, 223, 30, 0.3);
-}
-
-@media (max-width: 768px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
+  .section-header h2 {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #ff6b6b, #ff8e8e, #ffa8a8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    font-weight: 700;
   }
-}
 
-/* Recent Posts Section */
-.recent-posts-section {
-  padding: 6rem 0;
-  background: linear-gradient(180deg, #0f1929 0%, #16213e 100%);
-}
-
-.posts-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-
-
-.post-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  height: fit-content;
-}
-
-.post-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.post-card:hover::before {
-  transform: scaleX(1);
-}
-
-.post-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 107, 107, 0.3);
-}
-
-.post-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.post-meta time {
-  font-size: 0.9rem;
-  color: #aaa;
-  font-weight: 500;
-}
-
-.post-categories {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.category-tag {
-  background: rgba(255, 107, 107, 0.2);
-  color: #ff6b6b;
-  padding: 0.3rem 0.8rem;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  border: 1px solid rgba(255, 107, 107, 0.3);
-}
-
-.post-title {
-  margin: 0 0 1rem 0;
-  font-size: 1.3rem;
-  line-height: 1.4;
-}
-
-.post-title a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  position: relative;
-  z-index: 10;
-  cursor: pointer;
-}
-
-.post-title a:hover {
-  color: #ff6b6b;
-}
-
-.post-excerpt {
-  color: #ccc;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  font-size: 0.95rem;
-}
-
-.post-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  position: relative;
-  z-index: 10;
-}
-
-.read-more {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #ff6b6b;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 10;
-  cursor: pointer;
-}
-
-.read-more:hover {
-  color: #ff8e8e;
-  transform: translateX(5px);
-}
-
-.read-more svg {
-  transition: transform 0.3s ease;
-}
-
-.read-more:hover svg {
-  transform: translateX(3px);
-}
-
-.post-time {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.85rem;
-  color: #aaa;
-}
-
-.post-time svg {
-  opacity: 0.7;
-}
-
-.posts-cta {
-  text-align: center;
-}
-
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.8rem;
-  padding: 1rem 2.5rem;
-  border: 2px solid #ff6b6b;
-  background: transparent;
-  color: #ff6b6b;
-  text-decoration: none;
-  border-radius: 50px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  font-size: 1rem;
-  position: relative;
-  z-index: 10;
-  cursor: pointer;
-}
-
-.btn-outline:hover {
-  background: #ff6b6b;
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
-}
-
-.btn-outline svg {
-  transition: transform 0.3s ease;
-}
-
-.btn-outline:hover svg {
-  transform: translateX(5px);
-}
-
-.no-posts {
-  text-align: center;
-  padding: 3rem;
-  color: #aaa;
-  font-style: italic;
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .posts-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .section-header p {
+    font-size: 1.1rem;
+    color: #999;
+    max-width: 600px;
+    margin: 0 auto;
   }
-}
 
-@media (max-width: 768px) {
-  .recent-posts-section {
-    padding: 4rem 0;
+  /* Hero Section */
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    overflow: hidden;
   }
-  
-  .posts-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+
+  .hero-bg-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+      radial-gradient(circle at 20% 80%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(97, 218, 251, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(251, 187, 206, 0.1) 0%, transparent 50%);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+      transform: translateY(-20px) rotate(2deg);
+    }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-avatar {
     margin-bottom: 2rem;
   }
 
-  
-  .post-card {
-    padding: 1.5rem;
+  .avatar-glow {
+    position: relative;
+    display: inline-block;
   }
-  
-  .post-meta {
-    flex-direction: column;
-    align-items: flex-start;
+
+  .avatar-glow img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 107, 107, 0.3);
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.5);
+    animation: pulse 2s infinite;
+    transition: all 0.3s ease;
+  }
+
+  .avatar-glow:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 20px rgba(255, 107, 107, 0);
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+    }
+
+    70% {
+      box-shadow: 0 0 0 20px rgba(255, 107, 107, 0);
+    }
+
+    100% {
+      box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+    }
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ff6b6b, #ff8e8e, #ffa8a8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    animation: slideInDown 1s ease-out 0.3s both;
+  }
+
+  .hero-subtitle {
+    font-size: 1.4rem;
+    color: #ddd;
+    margin-bottom: 1.5rem;
+    animation: slideInDown 1s ease-out 0.6s both;
+  }
+
+  .hero-description {
+    font-size: 1.1rem;
+    color: #bbb;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+    animation: slideInDown 1s ease-out 0.9s both;
+  }
+
+  @keyframes slideInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeIn 1s ease-out 1.2s both;
+  }
+
+  @media (max-width: 768px) {
+    .hero-cta {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: 200px;
+      text-align: center;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Buttons */
+  .btn-primary,
+  .btn-secondary {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary {
+    background: transparent;
+    color: #ff6b6b;
+    border: 2px solid #ff6b6b;
+    box-shadow: none;
+  }
+
+  .btn-primary:hover {
+    background: #ff6b6b;
+    color: white;
+    border-color: #ff6b6b;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: #ff6b6b;
+    border: 2px solid #ff6b6b;
+  }
+
+  .btn-secondary:hover {
+    background: #ff6b6b;
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  /* Skills Section */
+  .skills-section {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, #0f0f23 0%, #1a1a2e 100%);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  .skill-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6b6b, #61dafb, #68d391, #9b59b6);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .skill-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .skill-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 107, 107, 0.3);
+  }
+
+  .skill-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .skill-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+  }
+
+  .skill-items {
+    display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
   }
-  
-  .post-title {
-    font-size: 1.2rem;
-  }
-  
-  .post-footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.8rem;
-  }
-  
-  .btn-outline {
-    padding: 0.8rem 2rem;
+
+  .skill-tag {
+    background: rgba(255, 107, 107, 0.2);
+    color: #ff6b6b;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
     font-size: 0.9rem;
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    transition: all 0.3s ease;
   }
-}
 
-@media (max-width: 480px) {
-  .recent-posts-section {
-    padding: 3rem 0;
+  .skill-tag:hover {
+    background: rgba(255, 107, 107, 0.3);
+    transform: scale(1.05);
   }
-  
-  .post-card {
-    padding: 1.2rem;
+
+  /* Game Development Card Styling */
+  .skill-card.game:hover {
+    border-color: rgba(155, 89, 182, 0.3);
   }
-  
-  .section-header h2 {
-    font-size: 2rem;
+
+  .skill-card.game .skill-tag {
+    background: rgba(155, 89, 182, 0.2);
+    color: #9b59b6;
+    border: 1px solid rgba(155, 89, 182, 0.3);
   }
-}
 
-/* Contact Section */
-.contact-section {
-  padding: 6rem 0;
-  background: linear-gradient(180deg, #16213e 0%, #0f0f23 100%);
-}
-
-.social-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  text-decoration: none;
-  color: #fff;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.social-link:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.social-link.github:hover {
-  border-color: #333;
-  box-shadow: 0 10px 20px rgba(51, 51, 51, 0.3);
-}
-
-.social-link.facebook:hover {
-  border-color: #1877f2;
-  box-shadow: 0 10px 20px rgba(24, 119, 242, 0.3);
-}
-
-.social-link.instagram:hover {
-  border-color: #e4405f;
-  box-shadow: 0 10px 20px rgba(228, 64, 95, 0.3);
-}
-
-.social-link.discord:hover {
-  border-color: #5865f2;
-  box-shadow: 0 10px 20px rgba(88, 101, 242, 0.3);
-}
-
-.social-icon {
-  font-size: 1.5rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 1rem;
+  .skill-card.game .skill-tag:hover {
+    background: rgba(155, 89, 182, 0.3);
   }
-  
-  .hero-title {
+
+  /* Projects Section */
+  .projects-section {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, #1a1a2e 0%, #0f1929 100%);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+  }
+
+  .project-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6b6b, #ffd700, #ff8e8e);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .project-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 107, 107, 0.4);
+  }
+
+  .project-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .project-icon {
     font-size: 2.5rem;
+    flex-shrink: 0;
   }
-  
-  .hero-cta {
+
+  .project-meta {
+    display: flex;
     flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .project-role {
+    font-size: 0.85rem;
+    color: #ff6b6b;
+    font-weight: 600;
+    background: rgba(255, 107, 107, 0.15);
+    padding: 0.2rem 0.6rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    display: inline-block;
+  }
+
+  .project-date {
+    font-size: 0.8rem;
+    color: #888;
+  }
+
+  .project-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 0.8rem 0;
+  }
+
+  .project-desc {
+    font-size: 0.95rem;
+    color: #bbb;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+  }
+
+  .project-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .feature-tag {
+    font-size: 0.8rem;
+    color: #68d391;
+    background: rgba(104, 211, 145, 0.1);
+    border: 1px solid rgba(104, 211, 145, 0.25);
+    padding: 0.3rem 0.7rem;
+    border-radius: 12px;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-badge {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+  }
+
+  .tech-badge.java {
+    background: rgba(248, 152, 32, 0.2);
+    color: #f89820;
+    border: 1px solid rgba(248, 152, 32, 0.3);
+  }
+
+  .tech-badge.spring {
+    background: rgba(109, 179, 63, 0.2);
+    color: #6db33f;
+    border: 1px solid rgba(109, 179, 63, 0.3);
+  }
+
+  .tech-badge.db {
+    background: rgba(0, 117, 143, 0.2);
+    color: #00758f;
+    border: 1px solid rgba(0, 117, 143, 0.3);
+  }
+
+  .tech-badge.tw {
+    background: rgba(56, 189, 248, 0.2);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+  }
+
+  .tech-badge.php {
+    background: rgba(119, 123, 180, 0.2);
+    color: #777bb4;
+    border: 1px solid rgba(119, 123, 180, 0.3);
+  }
+
+  .tech-badge.js {
+    background: rgba(247, 223, 30, 0.2);
+    color: #f7df1e;
+    border: 1px solid rgba(247, 223, 30, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Recent Posts Section */
+  .recent-posts-section {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, #0f1929 0%, #16213e 100%);
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+    /* ✅ Không dùng align-items: start — dùng stretch mặc định để các card cùng chiều cao */
+  }
+
+
+  .post-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    /* ✅ Flex column: buộc post-footer xuống đáy card dù nội dung ngắn hay dài */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .post-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .post-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 107, 107, 0.3);
+  }
+
+  .post-meta {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
-  
-  .skills-grid {
-    grid-template-columns: 1fr;
+
+  .post-meta time {
+    font-size: 0.9rem;
+    color: #aaa;
+    font-weight: 500;
   }
-  
+
+  .post-categories {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .category-tag {
+    background: rgba(255, 107, 107, 0.2);
+    color: #ff6b6b;
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba(255, 107, 107, 0.3);
+  }
+
+  .post-title {
+    margin: 0 0 1rem 0;
+    font-size: 1.3rem;
+    line-height: 1.4;
+  }
+
+  .post-title a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    position: relative;
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  .post-title a:hover {
+    color: #ff6b6b;
+  }
+
+  .post-excerpt {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    flex: 1; /* ✅ Giãn ra chiếm phần còn lại — đẩy .post-footer xuống đáy */
+  }
+
+  .post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  .read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #ff6b6b;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  .read-more:hover {
+    color: #ff8e8e;
+    transform: translateX(5px);
+  }
+
+  .read-more svg {
+    transition: transform 0.3s ease;
+  }
+
+  .read-more:hover svg {
+    transform: translateX(3px);
+  }
+
+  .post-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: #aaa;
+  }
+
+  .post-time svg {
+    opacity: 0.7;
+  }
+
+  .posts-cta {
+    text-align: center;
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 2.5rem;
+    border: 2px solid #ff6b6b;
+    background: transparent;
+    color: #ff6b6b;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    position: relative;
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  .btn-outline:hover {
+    background: #ff6b6b;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+  }
+
+  .btn-outline svg {
+    transition: transform 0.3s ease;
+  }
+
+  .btn-outline:hover svg {
+    transform: translateX(5px);
+  }
+
+  .no-posts {
+    text-align: center;
+    padding: 3rem;
+    color: #aaa;
+    font-style: italic;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .posts-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .recent-posts-section {
+      padding: 4rem 0;
+    }
+
+    .posts-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+
+    .post-card {
+      padding: 1.5rem;
+    }
+
+    .post-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .post-title {
+      font-size: 1.2rem;
+    }
+
+    .post-footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+
+    .btn-outline {
+      padding: 0.8rem 2rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .recent-posts-section {
+      padding: 3rem 0;
+    }
+
+    .post-card {
+      padding: 1.2rem;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+    }
+  }
+
+  /* Contact Section */
+  .contact-section {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, #16213e 0%, #0f0f23 100%);
+  }
+
   .social-grid {
-    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
   }
-  
-  .section-header h2 {
-    font-size: 2rem;
-  }
-  
-  .skill-card {
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
     padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    transition: all 0.3s ease;
   }
-}
 
-@media (max-width: 480px) {
-  .social-grid {
-    grid-template-columns: 1fr;
+  .social-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   }
-  
-  .hero-title {
-    font-size: 2rem;
+
+  .social-link.github:hover {
+    border-color: #333;
+    box-shadow: 0 10px 20px rgba(51, 51, 51, 0.3);
   }
-  
-  .avatar-glow img {
-    width: 150px;
-    height: 150px;
+
+  .social-link.facebook:hover {
+    border-color: #1877f2;
+    box-shadow: 0 10px 20px rgba(24, 119, 242, 0.3);
   }
-}
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
+  .social-link.instagram:hover {
+    border-color: #e4405f;
+    box-shadow: 0 10px 20px rgba(228, 64, 95, 0.3);
+  }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
+  .social-link.discord:hover {
+    border-color: #5865f2;
+    box-shadow: 0 10px 20px rgba(88, 101, 242, 0.3);
+  }
 
-::-webkit-scrollbar-track {
-  background: #1a1a2e;
-}
+  .social-link.linkedin:hover {
+    border-color: #0077b5;
+    box-shadow: 0 10px 20px rgba(0, 119, 181, 0.3);
+  }
 
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
-  border-radius: 4px;
-}
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+  }
 
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #ff5252, #ff6b6b);
-}
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 1rem;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-cta {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .social-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+    }
+
+    .skill-card {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .social-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .avatar-glow img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1a1a2e;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #ff5252, #ff6b6b);
+  }
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
+  document.addEventListener('DOMContentLoaded', function () {
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add entrance animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe skill cards, project cards and post cards
+    document.querySelectorAll('.skill-card, .post-card, .project-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
+
+      // Ensure links are clickable after animation
+      card.addEventListener('transitionend', function () {
+        const links = card.querySelectorAll('a');
+        links.forEach(link => {
+          link.style.pointerEvents = 'auto';
+          link.style.position = 'relative';
+          link.style.zIndex = '100';
         });
-      }
+      });
     });
-  });
-  
-  // Add entrance animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
+
+    // Staggered animation for post cards
+    document.querySelectorAll('.post-card').forEach((card, index) => {
+      card.style.transitionDelay = `${index * 0.2}s`;
     });
-  }, observerOptions);
-  
-  // Observe skill cards, project cards and post cards
-  document.querySelectorAll('.skill-card, .post-card, .project-card').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(30px)';
-    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(card);
-    
-    // Ensure links are clickable after animation
-    card.addEventListener('transitionend', function() {
-      const links = card.querySelectorAll('a');
-      links.forEach(link => {
+
+    // Staggered animation for project cards
+    document.querySelectorAll('.project-card').forEach((card, index) => {
+      card.style.transitionDelay = `${index * 0.15}s`;
+    });
+
+    // Ensure all links are clickable (fallback)
+    setTimeout(() => {
+      document.querySelectorAll('.post-card a, .read-more').forEach(link => {
         link.style.pointerEvents = 'auto';
         link.style.position = 'relative';
         link.style.zIndex = '100';
       });
-    });
+    }, 100);
   });
-  
-  // Staggered animation for post cards
-  document.querySelectorAll('.post-card').forEach((card, index) => {
-    card.style.transitionDelay = `${index * 0.2}s`;
-  });
-  
-  // Staggered animation for project cards
-  document.querySelectorAll('.project-card').forEach((card, index) => {
-    card.style.transitionDelay = `${index * 0.15}s`;
-  });
-  
-  // Ensure all links are clickable (fallback)
-  setTimeout(() => {
-    document.querySelectorAll('.post-card a, .read-more').forEach(link => {
-      link.style.pointerEvents = 'auto';
-      link.style.position = 'relative';
-      link.style.zIndex = '100';
-    });
-  }, 100);
-});
 </script>
 {{ end }}
