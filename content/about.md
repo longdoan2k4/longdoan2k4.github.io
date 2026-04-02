@@ -5,49 +5,85 @@ draft: false
 type: "page"
 ---
 
-# Xin chào, tôi là Đoàn Đức Long! 👋
+# Doan Duc Long
 
-Chào mừng bạn đến với blog cá nhân của tôi!
+**Frontend Developer Intern**
 
-## Giới thiệu
-Tôi là một sinh viên năm thứ 4 và học tại Đại Học Công Nghệ Thành Phố Hồ Chí Minh (HUTECH).
+## Professional Summary
 
-Tôi là một người đam mê công nghệ và luôn muốn học hỏi những điều mới mẻ. Blog này được tạo ra để chia sẻ hành trình học tập, những kiến thức về lập trình và các dự án cá nhân mà tôi đang thực hiện.
+I am a final-year Software Engineering student with a strong passion for web development. Through my coursework and personal projects, I have built a solid foundation in creating clean and user-friendly interfaces.
 
-"Tri thức là hành trang quý giá nhất trên con đường chinh phục ước mơ. "
+## Career Goals
 
-## Kỹ năng và sở thích
+- **Short-term goal:** Find a Frontend Developer Internship to apply my web development skills in real projects, improve teamwork skills (Jira/Trello), and gain practical experience from senior mentors.
+- **Long-term goal:** Become a strong full-time Frontend Developer who can build clean, fast, and user-friendly web applications.
 
-- **Ngôn ngữ lập trình**: Python, JavaScript, HTML/CSS
-- **Framework**: React, Django, Hugo
-- **Tools**: Git, VS Code, Docker
-- **Sở thích**: Đọc sách công nghệ, tìm hiểu AI/ML, xây dựng side projects
+## Technical Skills
 
-## Chứng chỉ
+### Client-side
+- HTML
+- CSS
+- Tailwind CSS
+- JavaScript (ES6+)
 
-- [JavaScript Essentials 1](/files/certificate1.pdf)
-- [NetWork Basic](/files/certificate2.pdf)
-- [JavaScript Essentials2](/files/certificate3.pdf)
+### Server-side
+- Java
+- Node.js
+- C#
+- PHP
 
-## Tự động deploy website
+### Frameworks
+- Spring Boot (Security, JPA)
+- Laravel
 
-Blog này đã được cấu hình GitHub Actions để tự động deploy lên:
+### Database
+- MySQL
+- SQL Server
+- MongoDB
 
-https://longdoan2k4.github.io/
+### Tools
+- Git/GitHub
+- Postman
+- Figma
+- VS Code
+- Laragon
+- IntelliJ IDEA
 
-Mỗi khi mình `git add`, `git commit` và `git push` lên nhánh `main`, hệ thống sẽ tự động:
+### Soft Skills
+- Teamwork
+- Time Management
+- Communication
 
-- Build lại toàn bộ website bằng Hugo
-- Deploy lên GitHub Pages
-- Cập nhật nội dung mới trên trang web sau ít phút
+## Education
 
-## Liên hệ
+- **HCM University Of Technology (HUTECH)**
+- Major: **Software Engineering**
+- Location: Thu Duc, Ho Chi Minh, Vietnam
+- GPA: **3.0**
+- Period: **2022 - 2026 (expected)**
 
-Nếu bạn muốn trao đổi hoặc có câu hỏi gì, đừng ngại liên hệ với tôi qua:
+## Featured Projects
 
-- 🐙 **GitHub**: [github.com/longdoan2k4](https://github.com/longdoan2k4)
-- 📧 **Email**: longdoanduc2004@gmail.com
+### Web RiviereRestaurant | Foundation Project
+- GitHub: [WebRiviereRestaurant](https://github.com/longdoan2k4/WebRiviereRestaurant)
+- Role: Fullstack Developer
+- Developed a restaurant booking and pre-order system with real-time table conflict checking and loyalty/voucher module.
+- Integrated Google OAuth2, email OTP authentication, and VNPAY API with secure callback validation.
+- Implemented anti-spam logic and scheduled auto-cancel for pending bookings.
+- Built an admin dashboard to manage tables, users, kitchen orders, and revenue statistics.
 
----
+### Website DiDongStore | Foundation Project
+- GitHub: [WebDIDONGSTORE](https://github.com/longdoan2k4/WebDIDONGSTORE)
+- Role: Fullstack Developer
+- Built a complete e-commerce flow with custom PHP MVC and AJAX-updated cart.
+- Integrated Google OAuth 2.0 and email OTP for secure account flows.
+- Developed role-based admin module for product/category/brand CRUD operations.
+- Configured PHPMailer and generated automated PDF invoices with mPDF.
 
-*Cảm ơn bạn đã ghé thăm blog của tôi! Hy vọng những chia sẻ ở đây sẽ hữu ích cho bạn.* 😊
+## Contact
+
+- LinkedIn: [linkedin.com/in/longdoanduc2112](https://www.linkedin.com/in/longdoanduc2112/)
+- GitHub: [github.com/longdoan2k4](https://github.com/longdoan2k4)
+- Email: longdoanduc2004@gmail.com
+- Phone: 0356743140
+- Location: Ho Chi Minh City, Viet Nam
