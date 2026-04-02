@@ -1,22 +1,23 @@
 @echo off
-REM === Hugo Auto Deploy Script ===
-REM Author: ChatGPT (for LongDoan)
-REM Blog: DoanDucLong - Hugo Reimu Theme
+REM === Hugo Build Helper ===
+REM This script only builds locally.
+REM Deployment is handled by GitHub Actions on push to main.
 
-echo 🚀 Building Hugo site...
-hugo -D
+echo Building Hugo site...
+hugo --gc --minify
+
+if errorlevel 1 (
+  echo.
+  echo Build failed. Please fix errors and run again.
+  pause
+  exit /b 1
+)
 
 echo.
-echo ✅ Build complete. Deploying to GitHub...
-
-cd public
-git add .
-git commit -m "Deploy blog"
-git push origin main
-
-cd ..
-echo.
-echo 🎉 Blog deployed successfully!
-echo 🌍 Check it here: https://longdoan2k4.github.io/
+echo Build complete.
+echo Deployment step:
+echo   1. git add .
+echo   2. git commit -m "Update content"
+echo   3. git push origin main
+echo GitHub Actions will publish from this repository automatically.
 pause
-
